@@ -4,6 +4,29 @@ import Site from "../layouts/Site.astro";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (p: string) => `${base}${p}`;
 
+const heroImage = "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=2400&q=80";
+
+const heroCards = [
+  {
+    title: "IR Briefing",
+    cta: "May 2026 update",
+    href: "#",
+    icon: `<svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="6" width="28" height="36" rx="4" fill="#fff7d6"/><rect x="14" y="12" width="14" height="14" rx="2" fill="#ffd400"/><path d="M14 30h20M14 35h12"/></svg>`,
+  },
+  {
+    title: "Our Growth Story",
+    cta: "Learn more",
+    href: link("/about/"),
+    icon: `<svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="28" width="6" height="14" fill="#fff7d6"/><rect x="16" y="22" width="6" height="20" fill="#fff7d6"/><rect x="26" y="14" width="6" height="28" fill="#ffd400"/><rect x="36" y="10" width="6" height="32" fill="#ffd400"/><circle cx="39" cy="8" r="3" fill="#ffd400" stroke="#171717"/></svg>`,
+  },
+  {
+    title: "IPO Process",
+    cta: "Roadmap & timeline",
+    href: link("/ipo/"),
+    icon: `<svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="14" fill="#fff7d6"/><path d="M24 16v8l6 4" stroke="#171717"/><circle cx="24" cy="24" r="2" fill="#ffd400" stroke="#171717"/></svg>`,
+  },
+];
+
 const kpis = [
   { value: "10.2M", label: "Tickets sold (2025)" },
   { value: "$269M", label: "Gross merchandise value" },
@@ -14,39 +37,33 @@ const kpis = [
   { value: "2,800", label: "Promoters & venues" },
   { value: "95%+", label: "Client retention" },
 ];
-
-const cards = [
-  { id: "thesis", href: link("/thesis/"), eyebrow: "Investment thesis", title: "Data is the asset.", body: "Why we are not a ticketing company. The same playbook Stripe, Toast and Shopify followed, applied to LATAM live entertainment.", accent: "yellow" },
-  { id: "market", href: link("/market/"), eyebrow: "Market opportunity", title: "LATAM is growing 4× the world.", body: "$27.7B → $45.5B by 2028. Smart ticketing at 16.6% CAGR. 670M+ people. Underserved by global incumbents.", accent: "red" },
-  { id: "business", href: link("/business/"), eyebrow: "Business model", title: "Two models, one platform.", body: "Full Operation is the engine. White-Label is the M&A pipeline. We operate partners for years before we convert them.", accent: "yellow" },
-  { id: "platform", href: link("/platform/"), eyebrow: "Platform & moat", title: "12 years in-house.", body: "Five integrated modules: ticketing, payments, data, access, on-site. No reliance on third-party core infrastructure.", accent: "red" },
-  { id: "leadership", href: link("/leadership/"), eyebrow: "Leadership", title: "Three founders. Twelve years.", body: "Bootstrapped, profitable, aligned through long-term equity. 100% pre-IPO ownership held by founders, Chairman and key employees.", accent: "yellow" },
-  { id: "ipo", href: link("/ipo/"), eyebrow: "IPO process", title: "Ten institutions. One filter.", body: "NASDAQ ticker TP reserved. Roth, Bancroft, MDB underwriters. Bevilacqua, Lucosky Brookman counsel. Baker Tilly PCAOB audit.", accent: "red" },
-];
 ---
-<Site title="Ticketplus · Investor Relations" current="home" description="Infrastructure for the live economy of Latin America. NASDAQ ticker TP reserved, Q2 2026 target.">
-  <header class="hero">
-    <div class="hero__inner">
-      <p class="hero__eyebrow">Investor Relations · Mayo 2026</p>
-      <h1 class="hero__title">
-        Infrastructure for the <span class="accent">Live Economy</span> of Latin America.
+<Site title="Ticketplus · Investor Relations" current="home" description="The leading live-entertainment infrastructure platform in Latin America. NASDAQ ticker TP reserved, Q2 2026 target.">
+  <header class="hero-ml">
+    <div class="hero-ml__media" style={`background-image: url(${heroImage});`} aria-hidden="true"></div>
+    <div class="hero-ml__scrim" aria-hidden="true"></div>
+    <div class="hero-ml__inner">
+      <h1 class="hero-ml__title">
+        The Leading Live-Entertainment<br/>
+        Infrastructure Platform in<br/>
+        Latin America
       </h1>
-      <p class="hero__lead">
-        Ticketplus is the operating system for community-scale live entertainment. We power 10.2 million tickets per year across 11 countries on a proprietary technology platform built in-house since 2014 — bootstrapped, profitable, and aligned for the long term.
-      </p>
-      <ul class="hero__pills">
-        <li><strong>$269M</strong> 2025 GMV</li>
-        <li><strong>$29.5M</strong> Net revenue</li>
-        <li><strong>37.3%</strong> EBITDA margin</li>
-        <li><strong>95%+</strong> Client retention</li>
-        <li><strong>11</strong> Countries</li>
-      </ul>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href={link("/thesis/")}>Read the thesis</a>
-        <a class="btn btn--ghost" href={link("/ipo/")}>IPO process</a>
-      </div>
     </div>
   </header>
+
+  <section class="hero-cards">
+    <div class="container">
+      <div class="hero-cards__grid">
+        {heroCards.map((c) => (
+          <a class="hcard" href={c.href}>
+            <span class="hcard__icon" set:html={c.icon}></span>
+            <h3 class="hcard__title">{c.title}</h3>
+            <span class="hcard__cta">{c.cta} <span aria-hidden="true">›</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <section class="kpis">
     <div class="container">
@@ -61,23 +78,6 @@ const cards = [
           </li>
         ))}
       </ul>
-    </div>
-  </section>
-
-  <section class="quicklinks" style="padding: 100px 0;">
-    <div class="container">
-      <p class="section__eyebrow">Explore</p>
-      <h2 class="section__title" style="margin-bottom: 48px;">Six entry points to the story.</h2>
-      <div class="quicklinks__grid">
-        {cards.map((c) => (
-          <a class="qcard" href={c.href} style={`border-top: 4px solid var(--${c.accent === "yellow" ? "yellow" : "red"});`}>
-            <p class="qcard__eyebrow">{c.eyebrow}</p>
-            <h3>{c.title}</h3>
-            <p class="qcard__body">{c.body}</p>
-            <span class="qcard__cta">Read →</span>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
 

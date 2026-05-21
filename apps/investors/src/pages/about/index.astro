@@ -1,0 +1,76 @@
+---
+import Site from "../../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const link = (p: string) => `${base}${p}`;
+
+const sections = [
+  {
+    id: "thesis",
+    eyebrow: "Investment thesis",
+    title: "We capture the data layer.",
+    body: "Ticketing is the entry point. The long-term opportunity is the transaction, data and operating layer around live entertainment in Latin America — payments, BI, dynamic pricing and financial services for partners. The asset compounds; it cannot be acquired.",
+    href: link("/thesis/"),
+    cta: "Read full thesis",
+  },
+  {
+    id: "market",
+    eyebrow: "Market opportunity",
+    title: "LATAM is growing 4× the world.",
+    body: "$27.7B → $45.5B by 2028 in LATAM live entertainment. Smart ticketing growing 16.6% CAGR vs. 3.8% globally. 670M+ people, 11 country regulatory & payments stack, underserved by global incumbents.",
+    href: link("/market/"),
+    cta: "See market sizing",
+  },
+  {
+    id: "business",
+    eyebrow: "Business model",
+    title: "Two models, one platform.",
+    body: "Full Operation is the engine (94% of revenue). White-Label is the M&A pipeline — we operate partners for years on our infrastructure before we convert them. Land, learn, then convert.",
+    href: link("/business/"),
+    cta: "Explore the model",
+  },
+  {
+    id: "platform",
+    eyebrow: "Platform & moat",
+    title: "12 years in-house.",
+    body: "Five integrated modules: ticketing, payments, data, access control, on-site operations. No reliance on third-party core infrastructure. AI embedded across customer-facing services and internal operations.",
+    href: link("/platform/"),
+    cta: "Explore the platform",
+  },
+];
+---
+<Site title="About Ticketplus · Investor Relations" current="about">
+  <header class="page-header">
+    <div class="page-header__inner">
+      <p class="page-header__eyebrow">About Ticketplus</p>
+      <h1 class="page-header__title">The infrastructure for the <span class="accent">live economy</span> of Latin America.</h1>
+      <p class="page-header__lead">Thesis, market, business model and platform — the four lenses on the same operating system. Bootstrapped 12 years, profitable, aligned for the long term.</p>
+    </div>
+  </header>
+
+  {sections.map((s, i) => (
+    <section id={s.id} class={`about-block ${i % 2 === 1 ? "about-block--inv" : ""}`}>
+      <div class="container about-block__inner">
+        <div>
+          <p class={`section__eyebrow ${i % 2 === 1 ? "section__eyebrow--inv" : ""}`}>{s.eyebrow}</p>
+          <h2 class={`section__title ${i % 2 === 1 ? "section__title--inv" : ""}`}>{s.title}</h2>
+          <p class="about-block__body">{s.body}</p>
+          <a class={`btn ${i % 2 === 1 ? "btn--primary" : "btn--dark"}`} href={s.href}>{s.cta} →</a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <nav class="pagenav">
+    <div class="container pagenav__inner">
+      <a class="pagenav__side" href={link("/")}>
+        <span class="pagenav__label">← Back</span>
+        <span class="pagenav__title">Overview</span>
+      </a>
+      <a class="pagenav__side pagenav__side--next" href={link("/leadership/")}>
+        <span class="pagenav__label">Next →</span>
+        <span class="pagenav__title">Leadership</span>
+      </a>
+    </div>
+  </nav>
+</Site>

@@ -13,10 +13,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (path: string) => `${base}${path}`;
 
 const navItems = [
-  { id: "thesis", label: "Thesis", href: link("/thesis/") },
-  { id: "market", label: "Market", href: link("/market/") },
-  { id: "business", label: "Business model", href: link("/business/") },
-  { id: "platform", label: "Platform", href: link("/platform/") },
+  { id: "about", label: "About Ticketplus", href: link("/about/") },
   { id: "leadership", label: "Leadership", href: link("/leadership/") },
   { id: "ipo", label: "IPO", href: link("/ipo/") },
   { id: "contact", label: "Contact", href: link("/contact/") },
@@ -65,10 +62,10 @@ const wordmark = link("/logo/wordmark-white.png");
           <div>
             <h5>Story</h5>
             <ul>
-              <li><a href={link("/thesis/")}>Thesis</a></li>
-              <li><a href={link("/market/")}>Market opportunity</a></li>
-              <li><a href={link("/business/")}>Business model</a></li>
-              <li><a href={link("/platform/")}>Platform</a></li>
+              <li><a href={link("/about/")}>About Ticketplus</a></li>
+              <li><a href={link("/about/#market")}>Market opportunity</a></li>
+              <li><a href={link("/about/#business")}>Business model</a></li>
+              <li><a href={link("/about/#platform")}>Platform</a></li>
             </ul>
           </div>
           <div>
