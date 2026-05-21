@@ -1503,10 +1503,10 @@ section[class*="ipo"] .section__lead {
 }
 .hero-ml__title {
   font-family: var(--font-heading);
-  font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
-  font-size: clamp(40px, 5.6vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  font-size: 12px;
   max-width: 760px;
   color: #fff;
   margin: 0;
@@ -1515,7 +1515,7 @@ section[class*="ipo"] .section__lead {
 @media (max-width: 720px) {
   .hero-ml { min-height: 70vh; }
   .hero-ml__inner { padding: 140px 24px 160px; }
-  .hero-ml__title { font-size: clamp(32px, 9vw, 44px); max-width: 100%; }
+  .hero-ml__title { max-width: 100%; }
 }
 
 /* Cards overlapping the hero bottom */
