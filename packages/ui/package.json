@@ -1,0 +1,10 @@
+{
+  "name": "@tp/ui",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./BackHome.astro": "./src/BackHome.astro",
+    "./tokens.css": "./src/tokens.css"
+  }
+}

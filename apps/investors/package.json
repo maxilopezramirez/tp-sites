@@ -1,0 +1,15 @@
+{
+  "name": "investors",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 4323 --host",
+    "build": "astro build",
+    "preview": "astro preview --port 4323"
+  },
+  "dependencies": {
+    "astro": "^5.14.0",
+    "@tp/ui": "workspace:*"
+  }
+}

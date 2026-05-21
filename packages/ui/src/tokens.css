@@ -1,0 +1,20 @@
+:root {
+  --tp-ink: #0a0a0a;
+  --tp-paper: #ffffff;
+  --tp-yellow: #f79802;
+  --tp-red: #ff1313;
+  --tp-muted: #6b6b6b;
+  --tp-border: #e8e8e8;
+  --tp-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--tp-font);
+  color: var(--tp-ink);
+  background: var(--tp-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }

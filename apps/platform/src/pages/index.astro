@@ -1,0 +1,47 @@
+---
+import Site from "../layouts/Site.astro";
+---
+<Site title="platform.ticketplus.com">
+  <main>
+    <p class="eyebrow">platform.ticketplus.com</p>
+    <h1>Platform</h1>
+    <p class="lead">Whitelabel · opera tu ticketera con la infraestructura TP.</p>
+    <p class="hello">hello world</p>
+  </main>
+
+  <style>
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tp-yellow);
+      margin: 0 0 12px;
+    }
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+    .lead {
+      font-size: 18px;
+      color: var(--tp-muted);
+      max-width: 620px;
+      margin: 0 0 40px;
+    }
+    .hello {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 14px;
+      color: var(--tp-muted);
+      padding: 10px 14px;
+      display: inline-block;
+      border: 1px dashed var(--tp-border);
+      border-radius: 6px;
+    }
+  </style>
+</Site>

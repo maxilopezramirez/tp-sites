@@ -1,0 +1,20 @@
+---
+import "@tp/ui/tokens.css";
+import BackHome from "@tp/ui/BackHome.astro";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <BackHome />
+    <slot />
+  </body>
+</html>
