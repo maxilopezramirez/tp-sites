@@ -1647,86 +1647,7 @@ section[class*="ipo"] .section__lead {
 }
 
 /* =========================================================
-   Module list — TP Is at the Center of the Live Economy
-   5 stacked module rows with gradient bar + big gradient number
-   ========================================================= */
-.modlist-sec { padding: 96px 0 112px; background: var(--color-surface-elevated); }
-.modlist-sec__inner { display: flex; flex-direction: column; align-items: center; }
-.modlist-sec__inner > .ecosystem__title { text-align: center; margin-bottom: 48px; }
-
-.modlist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 1100px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.modlist__item {
-  display: grid;
-  grid-template-columns: 110px 1fr 1fr;
-  align-items: center;
-  gap: 32px;
-  padding: 28px 32px 28px 22px;
-  background: #f4f4fb;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-}
-.modlist__item::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 6px;
-  background: var(--gradient-brand);
-}
-.modlist__num {
-  font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: 60px;
-  line-height: 1;
-  background: var(--gradient-brand-text);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  letter-spacing: -0.04em;
-}
-.modlist__title h3 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: -0.025em;
-  color: var(--color-text-primary);
-  margin: 0 0 8px;
-}
-.modlist__tags {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin: 0;
-  line-height: 1.45;
-}
-.modlist__desc {
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--color-text-primary);
-  margin: 0;
-}
-@media (max-width: 880px) {
-  .modlist__item { grid-template-columns: 70px 1fr; row-gap: 12px; padding: 22px 22px 22px 18px; }
-  .modlist__num { font-size: 44px; }
-  .modlist__desc { grid-column: 1 / -1; }
-}
-
-/* =========================================================
-   Legacy tabs CSS (kept in case other pages reuse it later)
+   Tabs section — TP Is at the Center of the Live Economy
    ========================================================= */
 .tabsec { padding: 96px 0 112px; background: var(--color-surface-elevated); }
 .tabsec__inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -1791,6 +1712,16 @@ section[class*="ipo"] .section__lead {
 }
 .tabsec__visual svg { max-width: 100%; height: auto; }
 .tabsec__content > .ecosystem__bar { margin-bottom: 20px; }
+.tabsec__tags {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+  color: var(--color-primary) !important;
+  margin: 0 0 10px !important;
+  line-height: 1.45;
+}
 .tabsec__content h3 {
   font-family: var(--font-heading);
   font-weight: 700;

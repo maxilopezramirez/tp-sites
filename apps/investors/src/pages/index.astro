@@ -81,52 +81,143 @@ const kpis = [
     </div>
   </section>
 
-  <section class="modlist-sec">
-    <div class="container modlist-sec__inner">
+  <section class="tabsec">
+    <div class="container tabsec__inner">
       <span class="ecosystem__bar" aria-hidden="true"></span>
       <h2 class="ecosystem__title">Ticketplus Is at the Center of the Live Economy</h2>
-      <ol class="modlist">
-        <li class="modlist__item">
-          <span class="modlist__num">01</span>
-          <div class="modlist__title">
-            <h3>Event Ticketing</h3>
-            <p class="modlist__tags">VIRTUAL QUEUE · 3D LAYOUTS</p>
+      <nav class="tabsec__nav" role="tablist">
+        <button class="tabsec__btn is-active" data-target="m-ticketing" role="tab">Event Ticketing</button>
+        <button class="tabsec__btn" data-target="m-payments" role="tab">Payments &amp; Banking</button>
+        <button class="tabsec__btn" data-target="m-data" role="tab">Data &amp; Analytics</button>
+        <button class="tabsec__btn" data-target="m-access" role="tab">Access Control</button>
+        <button class="tabsec__btn" data-target="m-onsite" role="tab">On-Site Operations</button>
+      </nav>
+
+      <div id="m-ticketing" class="tabsec__panel is-active" role="tabpanel">
+        <div class="tabsec__visual">
+          <svg viewBox="0 0 480 360" width="100%" height="100%" aria-hidden="true">
+            <defs>
+              <linearGradient id="blobM" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffd86b"/><stop offset="100%" stop-color="#ffab24"/></linearGradient>
+              <linearGradient id="icoM" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f79802"/><stop offset="100%" stop-color="#ff1313"/></linearGradient>
+            </defs>
+            <path d="M120,60 C220,30 360,40 410,140 C460,240 380,330 250,320 C120,310 50,230 70,150 C85,95 70,80 120,60 Z" fill="url(#blobM)"/>
+            <g transform="translate(150,110)" stroke="url(#icoM)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="40" width="150" height="90" rx="14"/>
+              <path d="M70 40 v90 M80 50 v70" stroke-dasharray="6 6"/>
+              <circle cx="135" cy="85" r="10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tabsec__content">
+          <span class="ecosystem__bar" aria-hidden="true"></span>
+          <p class="tabsec__tags">VIRTUAL QUEUE · 3D LAYOUTS · ELASTIC INFRA</p>
+          <h3>Event Ticketing</h3>
+          <p>High-concurrency sales engine for massive demand. Fair-randomization virtual queues handle spikes from a 100-seat theater to a national stadium. 3D seat-level layouts, real-time inventory sync, anti-bot, dynamic pricing. The same stack ran Ed Sheeran in Argentina &amp; Paraguay (90,000 tickets) and FIFA U-20 World Cup Chile 2025.</p>
+          <div class="tabsec__stats">
+            <div><strong>10.2M</strong><span>Tickets issued in 2025</span></div>
+            <div><strong>39,800</strong><span>Events orchestrated · 99.9% uptime</span></div>
           </div>
-          <p class="modlist__desc">High-concurrency sales engine for massive demand.</p>
-        </li>
-        <li class="modlist__item">
-          <span class="modlist__num">02</span>
-          <div class="modlist__title">
-            <h3>Payments &amp; Banking</h3>
-            <p class="modlist__tags">ACQUIRERS · BNPL · DIGITAL WALLETS · CARDS</p>
+        </div>
+      </div>
+
+      <div id="m-payments" class="tabsec__panel" role="tabpanel">
+        <div class="tabsec__visual">
+          <svg viewBox="0 0 480 360" width="100%" height="100%" aria-hidden="true">
+            <path d="M100,80 C200,40 340,50 410,150 C470,250 380,330 230,320 C100,310 40,220 70,140 C85,100 60,100 100,80 Z" fill="url(#blobM)"/>
+            <g transform="translate(150,100)" stroke="url(#icoM)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="50" width="160" height="100" rx="10"/>
+              <path d="M20 80 H180"/>
+              <path d="M40 120 H80 M100 120 H140"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tabsec__content">
+          <span class="ecosystem__bar" aria-hidden="true"></span>
+          <p class="tabsec__tags">ACQUIRERS · BNPL · DIGITAL WALLETS · CARDS</p>
+          <h3>Payments &amp; Banking</h3>
+          <p>50+ country-specific payment methods across LATAM — regional and country-specific gateways, BNPL providers, international card networks, local debit and digital wallets. Each new market adds payment primitives to a shared infrastructure, deepening the moat against global incumbents.</p>
+          <div class="tabsec__stats">
+            <div><strong>50+</strong><span>Country-specific payment methods</span></div>
+            <div><strong>$269M</strong><span>2025 GMV processed across 11 countries</span></div>
           </div>
-          <p class="modlist__desc">50+ country-specific payment methods across LATAM.</p>
-        </li>
-        <li class="modlist__item">
-          <span class="modlist__num">03</span>
-          <div class="modlist__title">
-            <h3>Data &amp; Analytics</h3>
-            <p class="modlist__tags">REAL-TIME EVENT MANAGEMENT DATA · BUSINESS INTELLIGENCE</p>
+        </div>
+      </div>
+
+      <div id="m-data" class="tabsec__panel" role="tabpanel">
+        <div class="tabsec__visual">
+          <svg viewBox="0 0 480 360" width="100%" height="100%" aria-hidden="true">
+            <path d="M120,70 C230,40 360,50 420,150 C470,240 370,320 230,320 C110,320 50,230 70,150 C85,105 80,90 120,70 Z" fill="url(#blobM)"/>
+            <g transform="translate(150,110)" stroke="url(#icoM)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="100" width="22" height="40"/>
+              <rect x="55" y="70" width="22" height="70"/>
+              <rect x="90" y="40" width="22" height="100"/>
+              <rect x="125" y="55" width="22" height="85"/>
+              <rect x="160" y="20" width="22" height="120"/>
+              <path d="M10 30 L180 10" stroke-dasharray="0"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tabsec__content">
+          <span class="ecosystem__bar" aria-hidden="true"></span>
+          <p class="tabsec__tags">REAL-TIME EVENT MANAGEMENT · BUSINESS INTELLIGENCE · AI</p>
+          <h3>Data &amp; Analytics</h3>
+          <p>Live operational data across markets and partners — multi-year P&amp;L visibility into every partner running on Ticketplus, in real time. AI is embedded across customer-facing services and internal operations: anti-fraud, dynamic pricing, demand forecasting. The data layer is the asset; ticketing is the first vertical.</p>
+          <div class="tabsec__stats">
+            <div><strong>100%</strong><span>Transaction visibility · 11 jurisdictions</span></div>
+            <div><strong>12 yrs</strong><span>Multi-market operating data</span></div>
           </div>
-          <p class="modlist__desc">Live operational data across markets and partners. Detailed on slides ahead.</p>
-        </li>
-        <li class="modlist__item">
-          <span class="modlist__num">04</span>
-          <div class="modlist__title">
-            <h3>Access Control</h3>
-            <p class="modlist__tags">DYNAMIC QR · BIOMETRIC · RFID/NFC</p>
+        </div>
+      </div>
+
+      <div id="m-access" class="tabsec__panel" role="tabpanel">
+        <div class="tabsec__visual">
+          <svg viewBox="0 0 480 360" width="100%" height="100%" aria-hidden="true">
+            <path d="M110,80 C220,40 350,50 420,140 C470,230 380,320 250,320 C120,320 60,240 70,150 C85,110 75,95 110,80 Z" fill="url(#blobM)"/>
+            <g transform="translate(170,100)" stroke="url(#icoM)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="30" y="30" width="100" height="100" rx="10"/>
+              <rect x="50" y="50" width="20" height="20"/>
+              <rect x="90" y="50" width="20" height="20"/>
+              <rect x="50" y="90" width="20" height="20"/>
+              <rect x="90" y="90" width="20" height="20"/>
+              <path d="M30 80 L130 80 M80 30 L80 130" stroke-dasharray="4 4"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tabsec__content">
+          <span class="ecosystem__bar" aria-hidden="true"></span>
+          <p class="tabsec__tags">DYNAMIC QR · BIOMETRIC · RFID / NFC</p>
+          <h3>Access Control</h3>
+          <p>Multi-layer validation, frictionless entry. Real-time validation, anti-fraud, facial recognition for VIP, cashless wristbands for festivals. The same access engine that runs a stadium gate also runs a national park trailhead (Rapa Nui, Torres del Paine) — offline-capable, biometric-ready, fraud-resilient.</p>
+          <div class="tabsec__stats">
+            <div><strong>99.9%</strong><span>Platform uptime · offline-capable validation</span></div>
+            <div><strong>2,800</strong><span>Active partners · venues, parks, federations</span></div>
           </div>
-          <p class="modlist__desc">Multi-layer validation, frictionless entry.</p>
-        </li>
-        <li class="modlist__item">
-          <span class="modlist__num">05</span>
-          <div class="modlist__title">
-            <h3>On-Site Operations</h3>
-            <p class="modlist__tags">KIOSKS · MOBILE POS · CASHLESS NFC</p>
+        </div>
+      </div>
+
+      <div id="m-onsite" class="tabsec__panel" role="tabpanel">
+        <div class="tabsec__visual">
+          <svg viewBox="0 0 480 360" width="100%" height="100%" aria-hidden="true">
+            <path d="M115,70 C220,40 350,55 420,140 C470,230 380,320 250,320 C110,320 50,230 70,150 C85,105 85,85 115,70 Z" fill="url(#blobM)"/>
+            <g transform="translate(160,100)" stroke="url(#icoM)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="30" width="80" height="120" rx="10"/>
+              <path d="M40 60 H80 M40 80 H80 M40 100 H70"/>
+              <rect x="120" y="60" width="50" height="90" rx="8"/>
+              <circle cx="145" cy="135" r="5" fill="url(#icoM)" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tabsec__content">
+          <span class="ecosystem__bar" aria-hidden="true"></span>
+          <p class="tabsec__tags">KIOSKS · MOBILE POS · CASHLESS NFC</p>
+          <h3>On-Site Operations</h3>
+          <p>Seamless box office and in-venue experience. Self-service pickup, roaming sales with inventory sync, NFC for F&amp;B and VIP. Just 36 people sit on direct payroll — indirectly, in Chile alone, the platform sustains the monthly work of 2,000+ box office, access and on-site cashless operators.</p>
+          <div class="tabsec__stats">
+            <div><strong>2,000+</strong><span>Monthly on-site operators orchestrated · CL</span></div>
+            <div><strong>36</strong><span>People on direct payroll · AI-leveraged ops</span></div>
           </div>
-          <p class="modlist__desc">Seamless box office, in-venue experience.</p>
-        </li>
-      </ol>
+        </div>
+      </div>
     </div>
   </section>
 
