@@ -21,6 +21,8 @@ const navItems = [
   { id: "ipo", label: "IPO", href: link("/ipo/") },
   { id: "contact", label: "Contact", href: link("/contact/") },
 ];
+
+const wordmark = link("/logo/wordmark-white.png");
 ---
 <html lang="en">
   <head>
@@ -28,19 +30,23 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <BackHome />
 
-    <nav class="topnav">
+    <nav class="topnav" id="topnav">
       <div class="topnav__inner">
-        <a href={link("/")} class="logo">ticketplus<span>+</span></a>
+        <a href={link("/")} class="logo" aria-label="Ticketplus Investor Relations">
+          <img src={wordmark} alt="Ticketplus" />
+        </a>
         <ul class="topnav__links">
           {navItems.map((item) => (
             <li><a href={item.href} class={current === item.id ? "active" : ""}>{item.label}</a></li>
           ))}
         </ul>
-        <span class="ticker">NASDAQ · ticker <strong>TP</strong> · Q2 2026</span>
+        <span class="ticker">NASDAQ · <strong>TP</strong> · Q2 2026</span>
       </div>
     </nav>
 
@@ -48,14 +54,16 @@ const navItems = [
 
     <footer class="ir-footer">
       <div class="container">
-        <p class="ir-footer__brand">ticketplus<span>+</span></p>
+        <p class="ir-footer__brand">
+          <img src={wordmark} alt="Ticketplus" />
+        </p>
         <div class="ir-footer__cols">
           <div>
             <h5>About</h5>
-            <p style="margin: 0; max-width: 360px;">Infrastructure for the live economy of Latin America. The operating system for community-scale live entertainment.</p>
+            <p style="margin: 0; max-width: 360px; color: rgba(255,255,255,0.78);">Infrastructure for the live economy of Latin America. The operating system for community-scale live entertainment.</p>
           </div>
           <div>
-            <h5>Sections</h5>
+            <h5>Story</h5>
             <ul>
               <li><a href={link("/thesis/")}>Thesis</a></li>
               <li><a href={link("/market/")}>Market opportunity</a></li>
@@ -76,8 +84,21 @@ const navItems = [
         <p class="ir-footer__note">
           <strong>Forward-looking statements.</strong> This page contains forward-looking statements subject to the safe harbor provisions of the Private Securities Litigation Reform Act of 1995. Final terms, structure and offering size will be determined at F-1 effectiveness. The information herein does not constitute an offer to sell or a solicitation of an offer to buy any securities. Capabilities matrices and market data are based on publicly available information as of May 2026.
         </p>
-        <p class="ir-footer__meta">© 2026 Ticketplus. Investor relations · v2.</p>
+        <p class="ir-footer__meta">© 2026 Ticketplus. Investor relations · v3.</p>
       </div>
     </footer>
+
+    <script is:inline>
+      (function () {
+        var nav = document.getElementById("topnav");
+        if (!nav) return;
+        function apply() {
+          if (window.scrollY > 20) nav.classList.add("is-scrolled");
+          else nav.classList.remove("is-scrolled");
+        }
+        apply();
+        window.addEventListener("scroll", apply, { passive: true });
+      })();
+    </script>
   </body>
 </html>
