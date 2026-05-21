@@ -1,0 +1,136 @@
+---
+import Site from "../../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const link = (p: string) => `${base}${p}`;
+
+const sectors = [
+  { name: "Sports", pct: 32 },
+  { name: "Music", pct: 30 },
+  { name: "Holiday Events", pct: 22 },
+  { name: "Other", pct: 7 },
+  { name: "Travel", pct: 5 },
+  { name: "Theater & Arts", pct: 4 },
+];
+---
+<Site title="Business Model · Ticketplus" current="business">
+  <header class="page-header">
+    <div class="page-header__inner">
+      <p class="page-header__eyebrow">Business model</p>
+      <h1 class="page-header__title">Full Operation drives the business. <span class="accent">White-Label accelerates the pipeline.</span></h1>
+      <p class="page-header__lead">Two models on the same codebase, in every market. Full Operation compounds on its own; White-Label conversions are optional upside.</p>
+    </div>
+  </header>
+
+  <section class="model">
+    <div class="container">
+      <p class="section__eyebrow">Two models</p>
+      <h2 class="section__title">Same platform. <span class="accent">Different monetization depth.</span></h2>
+      <div class="model__grid">
+        <article class="model__card model__card--wl">
+          <header>
+            <h3>White-Label SaaS</h3>
+            <span class="tag tag--amber">Accelerator</span>
+          </header>
+          <p class="model__sub">Partners adopt the platform under their own brand. Tech is ours, market access is theirs.</p>
+          <ul class="model__stats">
+            <li><strong>6%</strong><span>of 2025 revenue</span></li>
+            <li><strong>1.6%</strong><span>take rate</span></li>
+            <li><strong>$109M</strong><span>2025 GMV</span></li>
+          </ul>
+          <ul class="model__bullets">
+            <li>Profitable, asset-light regional expansion.</li>
+            <li>Full data visibility = M&amp;A pipeline.</li>
+            <li>Operating data flows from day one.</li>
+          </ul>
+        </article>
+        <article class="model__card model__card--fo">
+          <header>
+            <h3>Full Operation</h3>
+            <span class="tag tag--red">Core</span>
+          </header>
+          <p class="model__sub">Full event management + advanced sales + marketing + on-site operations, end-to-end.</p>
+          <ul class="model__stats">
+            <li><strong>94%</strong><span>of 2025 revenue</span></li>
+            <li><strong>17.3%</strong><span>take rate</span></li>
+            <li><strong>$160M</strong><span>2025 GMV</span></li>
+          </ul>
+          <ul class="model__bullets">
+            <li>High-profile events: concerts, sports, festivals.</li>
+            <li>Full margin capture across the event lifecycle.</li>
+            <li>Embedded support drives stickiness across 11 markets.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="model__note">Both models operate on the same codebase. We aren't running two businesses — we're running one continuum where partners enter at White-Label and graduate to Full Operation when the data tells us they are ready.</p>
+    </div>
+  </section>
+
+  <section class="flywheel">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Partnership strategy</p>
+      <h2 class="section__title section__title--inv">We operate our partners <span class="accent">for years</span> before we convert them.</h2>
+      <ol class="fw">
+        <li>
+          <span class="fw__n">1</span>
+          <p class="fw__phase">Land</p>
+          <h3>Market entry via White-Label</h3>
+          <p>Partner adopts the platform under their brand at a 1.6% take rate. Operating data flows from day one.</p>
+        </li>
+        <li>
+          <span class="fw__n">2</span>
+          <p class="fw__phase">Learn</p>
+          <h3>Full business intelligence</h3>
+          <p>Real-time sales, margins and growth trends. Multi-year evidence de-risks every conversion decision.</p>
+        </li>
+        <li>
+          <span class="fw__n own">3</span>
+          <p class="fw__phase">Convert</p>
+          <h3>Full Operation conversion</h3>
+          <p>Strategic conversion of top performers at 17.3% take rate, full revenue capture and minimal integration risk.</p>
+        </li>
+      </ol>
+      <p class="fw__footer"><strong>50+ conversion targets in pipeline.</strong> 11 → 25 markets. We see every partner's real P&amp;L, churn and margins because they have run on our infrastructure for 2–5 years.</p>
+    </div>
+  </section>
+
+  <section class="div">
+    <div class="container">
+      <p class="section__eyebrow">Diversification</p>
+      <h2 class="section__title">Diversified across sectors. <span class="accent-red">Loved by our customers.</span></h2>
+      <div class="div__grid">
+        <div class="div__chart">
+          <p class="div__chart-title">Sector mix · 2025 GMV</p>
+          <ul class="bars">
+            {sectors.map((s) => (
+              <li>
+                <span class="bars__label">{s.name}</span>
+                <span class="bars__bar"><span class="bars__fill" style={`width:${s.pct * 2.5}%`}></span></span>
+                <span class="bars__pct">{s.pct}%</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="nps">
+          <div class="nps__card"><strong>+59</strong><span>NPS promoter</span></div>
+          <div class="nps__card"><strong>+58</strong><span>NPS buyer</span></div>
+          <div class="nps__card nps__card--amber"><strong>95%+</strong><span>Client retention</span></div>
+          <p class="nps__note">Top-quartile NPS for live entertainment. No single category dominates · 11-country diversification · no material client concentration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pagenav">
+    <div class="container pagenav__inner">
+      <a class="pagenav__side" href={link("/market/")}>
+        <span class="pagenav__label">← Previous</span>
+        <span class="pagenav__title">Market opportunity</span>
+      </a>
+      <a class="pagenav__side pagenav__side--next" href={link("/platform/")}>
+        <span class="pagenav__label">Next →</span>
+        <span class="pagenav__title">Platform &amp; moat</span>
+      </a>
+    </div>
+  </nav>
+</Site>

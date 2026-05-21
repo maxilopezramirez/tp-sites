@@ -1,0 +1,71 @@
+---
+import Site from "../../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const link = (p: string) => `${base}${p}`;
+---
+<Site title="Contact · Ticketplus Investor Relations" current="contact">
+  <header class="page-header">
+    <div class="page-header__inner">
+      <p class="page-header__eyebrow">Investor relations</p>
+      <h1 class="page-header__title">Get in <span class="accent">touch.</span></h1>
+      <p class="page-header__lead">For investor relations, F-1 access (subject to filing), background briefings or institutional inquiries.</p>
+    </div>
+  </header>
+
+  <section class="ipo">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Direct channel</p>
+      <h2 class="section__title section__title--inv">Investor relations</h2>
+      <div class="ipo__grid">
+        <article class="ipo__card">
+          <p class="ipo__label">Email</p>
+          <p class="ipo__value"><a href="mailto:ir@ticketplus.com" style="color:#fff; text-decoration:none;">ir@ticketplus.com</a></p>
+          <p class="ipo__sub">For investor inquiries, F-1 access (subject to filing), and institutional briefings.</p>
+        </article>
+        <article class="ipo__card">
+          <p class="ipo__label">Press &amp; media</p>
+          <p class="ipo__value"><a href="mailto:press@ticketplus.com" style="color:#fff; text-decoration:none;">press@ticketplus.com</a></p>
+          <p class="ipo__sub">Media inquiries handled by the company&apos;s communications team.</p>
+        </article>
+        <article class="ipo__card">
+          <p class="ipo__label">Corporate hub</p>
+          <p class="ipo__value">Miami, FL</p>
+          <p class="ipo__sub">Strategy, finance and investor relations. Operations, engineering and product development centralized in Chile.</p>
+        </article>
+        <article class="ipo__card">
+          <p class="ipo__label">Listing target</p>
+          <p class="ipo__value">NASDAQ · Ticker TP</p>
+          <p class="ipo__sub">Target window: Q2 2026 · Subject to F-1 effectiveness and customary closing conditions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="proceeds">
+    <div class="container">
+      <p class="section__eyebrow">Disclosures</p>
+      <h2 class="section__title">Forward-looking statements <span class="accent-red">&amp; safe harbor.</span></h2>
+      <article style="background: var(--paper-2); padding: 32px 32px; border-radius: 14px; line-height: 1.65; font-size: 15px; color: var(--ink);">
+        <p style="margin: 0 0 14px;"><strong>Forward-looking statements.</strong> This site contains forward-looking statements within the meaning of the safe harbor provisions of the Private Securities Litigation Reform Act of 1995. Forward-looking statements include, but are not limited to, statements regarding the proposed initial public offering, the listing of the Class A ordinary shares on NASDAQ (or alternatively NYSE), target timing for the offering, use of proceeds, expansion plans across new markets, conversion of partners from White-Label to Full Operation, and expected financial performance.</p>
+        <p style="margin: 0 0 14px;"><strong>Risk factors.</strong> These statements are based on current expectations and assumptions that are subject to risks and uncertainties, including those described in the Company&apos;s Registration Statement on Form F-1 (when filed publicly) and other documents filed with the U.S. Securities and Exchange Commission. Actual results may differ materially from those expressed or implied in the forward-looking statements.</p>
+        <p style="margin: 0 0 14px;"><strong>No offer or solicitation.</strong> This site does not constitute an offer to sell or a solicitation of an offer to buy any securities, and there will not be any sale of these securities in any state or jurisdiction in which such offer, solicitation, or sale would be unlawful prior to registration or qualification under the securities laws of any such state or jurisdiction.</p>
+        <p style="margin: 0 0 14px;"><strong>Independent verification.</strong> Market and industry data presented on this site is based on publicly available information from sources including PwC GE&amp;M Outlook, Worldometer, Grand View Horizon and Mordor Intelligence. Capabilities matrices are based on publicly available information from each company&apos;s website and public disclosures as of May 2026.</p>
+        <p style="margin: 0;"><strong>Comparable companies.</strong> References to MercadoLibre, Nubank, DLocal and others are shown for business-model parallel only and are not intended for valuation reference. No projection of company size, valuation or future performance is implied.</p>
+      </article>
+    </div>
+  </section>
+
+  <nav class="pagenav">
+    <div class="container pagenav__inner">
+      <a class="pagenav__side" href={link("/ipo/")}>
+        <span class="pagenav__label">← Previous</span>
+        <span class="pagenav__title">IPO process</span>
+      </a>
+      <a class="pagenav__side pagenav__side--next" href={link("/")}>
+        <span class="pagenav__label">Back to top</span>
+        <span class="pagenav__title">Overview</span>
+      </a>
+    </div>
+  </nav>
+</Site>

@@ -1,0 +1,101 @@
+---
+import Site from "../../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const link = (p: string) => `${base}${p}`;
+
+const cards = [
+  { label: "Exchange & ticker", value: "NASDAQ (priority) / NYSE (alt)", sub: "Ticker reserved: TP · Target window: Q2 2026" },
+  { label: "Underwriters", value: "Roth Capital · Bancroft Capital · MDB Capital", sub: "Lead bookrunner: Roth Capital Partners." },
+  { label: "Issuer counsel", value: "Bevilacqua PLLC", sub: "200+ SEC transactions in track record." },
+  { label: "Underwriters' counsel", value: "Lucosky Brookman LLP", sub: "National leader in NASDAQ & NYSE uplistings." },
+  { label: "Auditor", value: "Baker Tilly", sub: "PCAOB-registered · IFRS 2024-2025." },
+  { label: "FINRA", value: "No Objections Letter", sub: "Issued April 13, 2026." },
+];
+
+const proceeds = [
+  { pct: "40%", title: "Partnerships & International Expansion", body: "Strategic partnerships with operating ticketing companies in white-label markets, plus multi-year venue agreements. Targets in active dialogue; execution to follow IPO close." },
+  { pct: "25%", title: "Platform Development", body: "Payment gateways, regulatory modules and equipment to support expansion across up to 14 additional markets (11 → 25). Variable spend, tied to expansion." },
+  { pct: "20%", title: "Sales & Marketing", body: "Integration capital that converts partnerships into revenue (3–5 people per country, asset-light) plus WL pipeline CAC for Year 2-3 conversion targets." },
+  { pct: "15%", title: "Working Capital & G.C.P.", body: "Public-company readiness (PCAOB, IR, D&O, governance) plus revolving promoter advances. Sub-12-month rotation cycle on operating advances." },
+];
+---
+<Site title="IPO Process · Ticketplus" current="ipo">
+  <header class="page-header">
+    <div class="page-header__inner">
+      <p class="page-header__eyebrow">IPO process</p>
+      <h1 class="page-header__title">Ten institutions. <span class="accent">One filter.</span></h1>
+      <p class="page-header__lead">A professional apparatus of ten independent institutions — underwriters, counsel, auditor, regulators and the company — aligned behind the listing process.</p>
+    </div>
+  </header>
+
+  <section class="ipo">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Process &amp; partners</p>
+      <h2 class="section__title section__title--inv">A rigorous validation chain.</h2>
+      <p class="ipo__lead">Ticketplus is structuring its listing for US capital markets, with NASDAQ as the priority venue and NYSE as an open alternative. Ticker TP reserved. Target window: Q2 2026.</p>
+      <div class="ipo__grid">
+        {cards.map((c) => (
+          <article class="ipo__card">
+            <p class="ipo__label">{c.label}</p>
+            <p class="ipo__value">{c.value}</p>
+            <p class="ipo__sub">{c.sub}</p>
+          </article>
+        ))}
+      </div>
+      <p class="ipo__strip">Banking partners through 12 years of organic, bootstrapped growth: <strong>Banco Santander</strong> · <strong>BancoEstado</strong> · <strong>Itaú</strong>.</p>
+    </div>
+  </section>
+
+  <section class="proceeds">
+    <div class="container">
+      <p class="section__eyebrow">Use of proceeds</p>
+      <h2 class="section__title">Capital for <span class="accent-red">consolidation</span>, not growth burn.</h2>
+      <p class="section__lead">Allocation framework with asset-deployment focus. Subject to forward-looking safe harbor language in the F-1.</p>
+      <ol class="proceeds__list">
+        {proceeds.map((p, i) => (
+          <li class={i >= 2 ? "amber" : ""}>
+            <span class="proceeds__pct">{p.pct}</span>
+            <div>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="source">Source: F-1 use of proceeds · subject to forward-looking safe harbor.</p>
+    </div>
+  </section>
+
+  <section class="thesis" style="padding: 90px 0;">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Beyond the listing</p>
+      <h2 class="section__title section__title--inv">Wall Street is the vehicle. <span class="accent">Not the destination.</span></h2>
+      <div class="thesis__grid">
+        <div class="thesis__copy">
+          <p>A company doesn&apos;t go public to raise only the initial offering amount. The IPO is the door into the largest institutional capital pool in the world.</p>
+          <p>MercadoLibre listed on NASDAQ in 2007 at a valuation near $600M; today it is worth more than $100B because, once listed, it used capital markets to scale through follow-ons, secondaries, convertible debt and equity as M&amp;A currency.</p>
+          <p>DLocal followed a similar path from 2021. The opportunity that lies beyond the IPO is the same one those platforms accessed: follow-on rounds, use of equity for regional M&amp;A, and the ability to operate as a public technology platform in a public-markets ecosystem.</p>
+        </div>
+        <div class="thesis__copy">
+          <p><strong style="color: var(--yellow);">The pattern.</strong> Argentina opened the path with MercadoLibre in 2007. Brazil followed with Nubank, Stone, PagSeguro, XP. Uruguay with DLocal. Chile, after a decade of Start-Up Chile and billions in software exports, has not yet had a tech emblem listed directly on US capital markets.</p>
+          <p>The eight current Chilean ADRs (BCH, BSAC, CCU, AKO.A/B, ENIC, LTM, SQM) are all from traditional sectors: banking, beverages, utilities, mining, aviation. Zero tech.</p>
+          <p><strong style="color: var(--yellow);">If Ticketplus completes this path, it would be the first case.</strong> A chapter that opens a door which then stays open for those who come next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pagenav">
+    <div class="container pagenav__inner">
+      <a class="pagenav__side" href={link("/leadership/")}>
+        <span class="pagenav__label">← Previous</span>
+        <span class="pagenav__title">Leadership</span>
+      </a>
+      <a class="pagenav__side pagenav__side--next" href={link("/contact/")}>
+        <span class="pagenav__label">Next →</span>
+        <span class="pagenav__title">Contact IR</span>
+      </a>
+    </div>
+  </nav>
+</Site>

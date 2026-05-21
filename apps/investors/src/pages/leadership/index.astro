@@ -1,0 +1,91 @@
+---
+import Site from "../../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const link = (p: string) => `${base}${p}`;
+
+const founders = [
+  {
+    initials: "CC",
+    name: "Chien-Fu Chen",
+    role: "CEO & Co-Founder",
+    lines: [
+      "Architected the proprietary platform from day one.",
+      "Built and scaled the in-house core stack across 11 markets.",
+    ],
+  },
+  {
+    initials: "JJ",
+    name: "Joaquín Jadue",
+    role: "CFO & Co-Founder",
+    lines: [
+      "Built financial controls and led expansion to 11 LatAm countries.",
+      "PCAOB audit ready · 37.3% EBITDA margin built on financial discipline.",
+    ],
+  },
+  {
+    initials: "YD",
+    name: "Yethro Dinamarca",
+    role: "Chairman",
+    lines: [
+      "Sets long-term strategy and governance.",
+      "Architected the path from Chile to NASDAQ.",
+    ],
+  },
+];
+---
+<Site title="Leadership & Alignment · Ticketplus" current="leadership">
+  <header class="page-header">
+    <div class="page-header__inner">
+      <p class="page-header__eyebrow">Leadership &amp; alignment</p>
+      <h1 class="page-header__title">Three founders. <span class="accent">Twelve years.</span></h1>
+      <p class="page-header__lead">Bootstrapped, profitable, aligned with shareholders through long-term equity. 100% ownership pre-IPO held by founders, Chairman and key employees.</p>
+    </div>
+  </header>
+
+  <section class="leadership">
+    <div class="container">
+      <p class="section__eyebrow">Operators, not promoters</p>
+      <h2 class="section__title">The team behind the platform.</h2>
+      <div class="founders">
+        {founders.map((f) => (
+          <article class="founder">
+            <span class="founder__avatar">{f.initials}</span>
+            <p class="founder__role">{f.role}</p>
+            <h3>{f.name}</h3>
+            <ul>
+              {f.lines.map((l) => <li>{l}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <p class="leadership__strip">
+        <strong>100% ownership pre-IPO</strong> held by founders, Chairman and key employees. The Chairman has never drawn salary or director fees; the founders have historically held compensation below market and plan to remain below market post-IPO, with long-term alignment through the Equity Incentive Plan.
+      </p>
+
+      <article class="letter">
+        <p class="letter__eyebrow">A letter from the founders</p>
+        <h3>From Chile to NASDAQ. Twelve years and counting.</h3>
+        <p>Twelve years ago, two longtime friends from Chile wrote the first lines of code for what is now Ticketplus. Eight years ago, our Chairman joined to build the financial architecture and the path to capital markets. Today we serve 11 countries, 2,800 partners, 39,800 events per year and 10.2 million tickets processed annually — profitably, with our own technology built in-house.</p>
+        <p>Before Ticketplus, our team had spent years building software products across industries. When live entertainment came knocking, we applied the same DNA: product strategy, operational thinking, and technology built in-house. Ticketplus was never an accident. It was muscle memory.</p>
+        <p><strong>NASDAQ is not the goal. It is the vehicle.</strong> It is the table where leading Latin American technology platforms already sit. And now it is Chile&apos;s turn.</p>
+        <p>The next ten years will not be about ticketing. They will be about becoming the operating system for live experiences across Latin America, and then beyond. The platform is the company. The vertical is the wedge. The horizon is open.</p>
+        <p>We are aligned with our shareholders through long-term equity ownership. Pre-IPO ownership remains 100% with founders, Chairman and key employees. Our bet is the long-term value of what we build together.</p>
+        <p class="letter__sign">Chien-Fu Chen · Joaquín Jadue · Yethro Dinamarca</p>
+      </article>
+    </div>
+  </section>
+
+  <nav class="pagenav">
+    <div class="container pagenav__inner">
+      <a class="pagenav__side" href={link("/platform/")}>
+        <span class="pagenav__label">← Previous</span>
+        <span class="pagenav__title">Platform &amp; moat</span>
+      </a>
+      <a class="pagenav__side pagenav__side--next" href={link("/ipo/")}>
+        <span class="pagenav__label">Next →</span>
+        <span class="pagenav__title">IPO process</span>
+      </a>
+    </div>
+  </nav>
+</Site>

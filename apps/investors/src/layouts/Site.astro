@@ -1,20 +1,83 @@
 ---
 import "@tp/ui/tokens.css";
+import "../styles/ir.css";
 import BackHome from "@tp/ui/BackHome.astro";
 
 interface Props {
   title: string;
+  current?: string;
+  description?: string;
 }
-const { title } = Astro.props;
+const { title, current, description } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const link = (path: string) => `${base}${path}`;
+
+const navItems = [
+  { id: "thesis", label: "Thesis", href: link("/thesis/") },
+  { id: "market", label: "Market", href: link("/market/") },
+  { id: "business", label: "Business model", href: link("/business/") },
+  { id: "platform", label: "Platform", href: link("/platform/") },
+  { id: "leadership", label: "Leadership", href: link("/leadership/") },
+  { id: "ipo", label: "IPO", href: link("/ipo/") },
+  { id: "contact", label: "Contact", href: link("/contact/") },
+];
 ---
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    {description && <meta name="description" content={description} />}
   </head>
   <body>
     <BackHome />
+
+    <nav class="topnav">
+      <div class="topnav__inner">
+        <a href={link("/")} class="logo">ticketplus<span>+</span></a>
+        <ul class="topnav__links">
+          {navItems.map((item) => (
+            <li><a href={item.href} class={current === item.id ? "active" : ""}>{item.label}</a></li>
+          ))}
+        </ul>
+        <span class="ticker">NASDAQ · ticker <strong>TP</strong> · Q2 2026</span>
+      </div>
+    </nav>
+
     <slot />
+
+    <footer class="ir-footer">
+      <div class="container">
+        <p class="ir-footer__brand">ticketplus<span>+</span></p>
+        <div class="ir-footer__cols">
+          <div>
+            <h5>About</h5>
+            <p style="margin: 0; max-width: 360px;">Infrastructure for the live economy of Latin America. The operating system for community-scale live entertainment.</p>
+          </div>
+          <div>
+            <h5>Sections</h5>
+            <ul>
+              <li><a href={link("/thesis/")}>Thesis</a></li>
+              <li><a href={link("/market/")}>Market opportunity</a></li>
+              <li><a href={link("/business/")}>Business model</a></li>
+              <li><a href={link("/platform/")}>Platform</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Investor info</h5>
+            <ul>
+              <li><a href={link("/leadership/")}>Leadership</a></li>
+              <li><a href={link("/ipo/")}>IPO process</a></li>
+              <li><a href={link("/contact/")}>Contact</a></li>
+              <li><a href="mailto:ir@ticketplus.com">ir@ticketplus.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="ir-footer__note">
+          <strong>Forward-looking statements.</strong> This page contains forward-looking statements subject to the safe harbor provisions of the Private Securities Litigation Reform Act of 1995. Final terms, structure and offering size will be determined at F-1 effectiveness. The information herein does not constitute an offer to sell or a solicitation of an offer to buy any securities. Capabilities matrices and market data are based on publicly available information as of May 2026.
+        </p>
+        <p class="ir-footer__meta">© 2026 Ticketplus. Investor relations · v2.</p>
+      </div>
+    </footer>
   </body>
 </html>
