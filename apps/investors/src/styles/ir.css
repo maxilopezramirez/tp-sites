@@ -1594,4 +1594,57 @@ section[class*="ipo"] .section__lead {
 }
 .about-block--inv .about-block__body { color: rgba(255,255,255,0.78); }
 
+/* =========================================================
+   Ecosystem (home) — title + video placeholder, ML-style
+   ========================================================= */
+.ecosystem { padding: 96px 0 112px; background: var(--color-surface-elevated); }
+.ecosystem__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.ecosystem__bar {
+  width: 48px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--gradient-brand);
+  margin-bottom: 28px;
+}
+.ecosystem__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 44px);
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin: 0 0 56px;
+  max-width: 880px;
+}
+.ecosystem__video {
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  background: #1a1a1a;
+  border-radius: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+.ecosystem__play { position: relative; z-index: 2; }
+.ecosystem__placeholder {
+  position: absolute;
+  bottom: 18px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+
 
