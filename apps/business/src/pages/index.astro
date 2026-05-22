@@ -1,5 +1,6 @@
 ---
 import Site from "../layouts/Site.astro";
+import PaymentsSection from "../components/PaymentsSection.astro";
 
 const pillars = [
   {
@@ -213,36 +214,21 @@ const faqs = [
     </div>
   </section>
 
-  <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="pagos">
-    <div class="container">
-      <p class="section__eyebrow" style="color:var(--color-secondary);">Pagos</p>
-      <h2 class="section__title">Ecosistema de pagos hecho para LATAM</h2>
-      <div class="tp-grid-3" style="margin:48px 0;">
-        {[
-          { t:"Recaudación gestionada", b:"Operamos la recaudación, liquidamos a tu cuenta en 48-72h post-evento con split de comisiones, facturación electrónica y reembolsos en un clic." },
-          { t:"Multi-país desde un panel", b:"Vende en Chile, Argentina, México o España sin crear cuentas separadas. Un solo backoffice, múltiples mercados." },
-          { t:"Monedas y regulaciones locales", b:"Impuestos, monedas y regulaciones ya están configurados. Tú solo eliges los países donde quieres operar." },
-        ].map(c => (
-          <div style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:28px;">
-            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; margin:0 0 10px;">{c.t}</h4>
-            <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--color-text-muted); line-height:1.55; margin:0;">{c.b}</p>
-          </div>
-        ))}
-      </div>
-      {payments.map(row => (
-        <div class="country-row-tp">
-          <div class="country-label-tp"><span>{row.flag}</span> {row.country}</div>
-          <div class="pay-pills-tp">
-            {row.pills.map(p => <span class="pay-pill-tp">{p}</span>)}
-          </div>
-        </div>
-      ))}
-      <div style="margin-top:56px; background:#000; color:#fff; border-radius:var(--radius-card); padding:48px 32px; text-align:center;">
-        <div style="font-family:var(--font-heading); font-weight:900; font-size:clamp(3rem,6vw,5rem); letter-spacing:-0.04em; line-height:1;">50+</div>
-        <div style="font-family:var(--font-body); font-size:1rem; margin-top:10px; opacity:0.92;">pasarelas de pago integradas en LATAM y Europa</div>
-      </div>
+  <!-- PAGOS LATAM -->
+  <PaymentsSection title="Ecosistema de pagos<br/>hecho para LATAM" id="pagos">
+    <div class="tp-payments__value-card">
+      <h3 class="tp-payments__value-title">Recaudación gestionada</h3>
+      <p class="tp-payments__value-desc">Operamos la recaudación, liquidamos a tu cuenta en 48-72h post-evento con split de comisiones, facturación electrónica y reembolsos en un clic.</p>
     </div>
-  </section>
+    <div class="tp-payments__value-card">
+      <h3 class="tp-payments__value-title">Multi-país desde un panel</h3>
+      <p class="tp-payments__value-desc">Vende en Chile, Argentina, México o España sin crear cuentas separadas. Un solo backoffice, múltiples mercados.</p>
+    </div>
+    <div class="tp-payments__value-card">
+      <h3 class="tp-payments__value-title">Monedas y regulaciones locales</h3>
+      <p class="tp-payments__value-desc">Impuestos, monedas y regulaciones ya están configurados. Tú solo eliges los países donde quieres operar.</p>
+    </div>
+  </PaymentsSection>
 
   <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="contacto">
     <div class="container">

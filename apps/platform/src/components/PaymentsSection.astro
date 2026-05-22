@@ -1,0 +1,142 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = "Ecosistema de pagos<br/>hecho para LATAM" } = Astro.props;
+
+const countries = [
+  { flag: "/images/flags/cl.svg", emoji: null, name: "Chile", methods: [
+    { img: "/images/payments/webpay.png", label: "Webpay" },
+    { img: "/images/payments/webpay.png", label: "Webpay Oneclick" },
+    { img: "/images/payments/webpay.png", label: "TbkWebpayPlus" },
+    { img: "/images/payments/webpay.png", label: "TbkOneclick" },
+    { img: "/images/payments/mach-pay.png", label: "MACH Pay" },
+    { img: "/images/payments/getnet.png", label: "GetnetWeb" },
+    { img: "/images/payments/compraqui.png", label: "Compraqui" },
+    { img: null, label: "Multicaja Efectivo" },
+    { img: null, label: "Multicaja Transferencia" },
+    { img: "/images/payments/bamboo.png", label: "Bamboo" },
+    { img: "/images/payments/dpago.png", label: "Dpago" },
+    { img: "/images/payments/fintoc.png", label: "Fintoc" },
+  ]},
+  { flag: "/images/flags/pe.svg", emoji: null, name: "Perú", methods: [
+    { img: "/images/payments/izipay.png", label: "Izipay" },
+    { img: "/images/payments/pagoefectivo.png", label: "PagoEfectivo" },
+    { img: "/images/payments/niubiz.png", label: "Niubiz" },
+  ]},
+  { flag: "/images/flags/mx.svg", emoji: null, name: "México", methods: [
+    { img: "/images/payments/nuvei.png", label: "Nuvei" },
+    { img: "/images/payments/openpay.png", label: "Openpay" },
+  ]},
+  { flag: "/images/flags/co.svg", emoji: null, name: "Colombia", methods: [
+    { img: "/images/payments/wompi.png", label: "Wompi" },
+    { img: "/images/payments/nequi.png", label: "Nequi" },
+    { img: "/images/payments/payvalida.png", label: "Payvalida" },
+    { img: "/images/payments/paymentez.png", label: "Paymentez" },
+  ]},
+  { flag: "/images/flags/br.svg", emoji: null, name: "Brasil", methods: [
+    { img: "/images/payments/pagseguro.svg", label: "PagSeguro" },
+    { img: "/images/payments/picpay.svg", label: "PicPay" },
+    { img: "/images/payments/paypal.svg", label: "PayPal" },
+  ]},
+  { flag: "/images/flags/ar.svg", emoji: null, name: "Argentina", methods: [
+    { img: "/images/payments/mercadopago.png", label: "MercadoPago" },
+    { img: "/images/payments/decidir.png", label: "Decidir" },
+  ]},
+  { flag: "/images/flags/uy.svg", emoji: null, name: "Uruguay", methods: [
+    { img: "/images/payments/mercadopago.png", label: "MercadoPago" },
+  ]},
+  { flag: "/images/flags/py.svg", emoji: null, name: "Paraguay", methods: [
+    { img: "/images/payments/bancard.png", label: "Bancard" },
+    { img: "/images/payments/pagopar.png", label: "Pagopar" },
+    { img: "/images/payments/bancard.png", label: "BancardQR" },
+  ]},
+  { flag: null, emoji: "🌎", name: "Multi-país", methods: [
+    { img: "/images/payments/dlocal.png", label: "Dlocal" },
+    { img: "/images/payments/mercadopago.png", label: "MercadoPago" },
+    { img: "/images/payments/paypal.svg", label: "PayPal" },
+    { img: "/images/payments/stripe.svg", label: "Stripe" },
+    { img: "/images/payments/payretailers.png", label: "PayRetailers" },
+  ]},
+  { flag: null, emoji: "➕", name: "Otros medios", methods: [
+    { img: "/images/payments/beepay.png", label: "BeePay" },
+    { img: "/images/payments/macro.png", label: "MacroClickPago" },
+    { img: "/images/payments/modo.png", label: "Modo" },
+    { img: "/images/payments/pagandocheck.png", label: "Pagandocheck" },
+    { img: "/images/payments/payzen.png", label: "Payzen" },
+    { img: null, label: "Vouchers" },
+    { img: "/images/payments/yappy.png", label: "Yappy" },
+  ]},
+];
+---
+
+<section class="tp-payments">
+  <div class="tp-payments__noise" aria-hidden="true"></div>
+  <div class="container">
+    <div class="tp-payments__header">
+      <span class="tp-payments__badge">PAGOS</span>
+      <h2 class="tp-payments__title" set:html={title}></h2>
+    </div>
+
+    <div class="tp-payments__value-grid">
+      <slot />
+    </div>
+
+    <div class="tp-payments__countries">
+      {countries.map(c => (
+        <div class="tp-payments__country-row">
+          <div class="tp-payments__country-header">
+            {c.flag
+              ? <img src={c.flag} alt={c.name} class="tp-payments__country-flag" />
+              : <span class="tp-payments__country-emoji">{c.emoji}</span>
+            }
+            <span class="tp-payments__country-name">{c.name}</span>
+          </div>
+          <div class="tp-payments__methods">
+            {c.methods.map(m => (
+              <span class="tp-payments__method-pill">
+                {m.img && <img src={m.img} alt="" class="tp-payments__method-icon" loading="lazy" />}
+                {m.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="tp-payments__total">
+      <div class="tp-payments__total-number">50+</div>
+      <p class="tp-payments__total-label">pasarelas de pago integradas en LATAM y Europa</p>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .tp-payments { position:relative; background:#0a0a0a; padding:7rem 0; overflow:hidden; border-top:1px solid rgba(255,255,255,.08); }
+  .tp-payments__noise { position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 20% 50%,rgba(247,152,2,.06) 0%,transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,19,19,.05) 0%,transparent 50%); }
+  .tp-payments__header { text-align:center; margin-bottom:64px; position:relative; z-index:1; }
+  .tp-payments__badge { display:inline-flex; align-items:center; font-family:var(--font-heading); font-size:.75rem; font-weight:500; color:rgba(255,255,255,.6); background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); padding:.5rem 1.25rem; border-radius:9999px; margin-bottom:2rem; }
+  .tp-payments__title { font-family:var(--font-heading); font-weight:700; letter-spacing:-.04em; font-size:clamp(2rem,4.5vw,3.5rem); color:#fff; line-height:1.1; margin:0; }
+  .tp-payments__value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:80px; position:relative; z-index:1; }
+  .tp-payments__value-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:1.75rem; transition:all .3s; }
+  .tp-payments__value-card:hover { background:rgba(255,255,255,.08); border-color:rgba(247,152,2,.3); }
+  .tp-payments__value-title { font-family:var(--font-heading); font-weight:600; font-size:1rem; color:#fff; margin:0 0 .375rem; }
+  .tp-payments__value-desc { font-family:var(--font-body); font-size:.8125rem; line-height:1.6; color:rgba(255,255,255,.6); margin:0; }
+  .tp-payments__countries { position:relative; display:flex; flex-direction:column; gap:.75rem; margin-bottom:3rem; z-index:1; }
+  .tp-payments__country-row { display:flex; align-items:center; background:#141414; border:1px solid rgba(255,255,255,.08); border-radius:8px; padding:1rem 1.25rem; flex-wrap:wrap; gap:.75rem; transition:border-color .2s; }
+  .tp-payments__country-row:hover { border-color:rgba(255,255,255,.15); }
+  .tp-payments__country-header { display:flex; align-items:center; gap:.625rem; flex-shrink:0; min-width:120px; }
+  .tp-payments__country-flag { width:20px; height:20px; border-radius:50%; object-fit:cover; }
+  .tp-payments__country-emoji { font-size:1.25rem; line-height:1; }
+  .tp-payments__country-name { font-family:var(--font-heading); font-weight:500; font-size:.875rem; color:#fff; }
+  .tp-payments__methods { display:flex; flex-wrap:wrap; gap:.5rem; flex:1; }
+  .tp-payments__method-pill { display:inline-flex; align-items:center; gap:5px; font-family:var(--font-heading); font-size:.75rem; font-weight:500; color:rgba(255,255,255,.6); background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); padding:.25rem .75rem; border-radius:9999px; white-space:nowrap; }
+  .tp-payments__method-icon { width:20px; height:20px; object-fit:contain; border-radius:3px; }
+  .tp-payments__total { text-align:center; padding-top:48px; border-top:1px solid rgba(255,255,255,.06); position:relative; z-index:1; }
+  .tp-payments__total-number { font-family:var(--font-heading); font-weight:900; font-size:80px; line-height:1; margin-bottom:8px; background:linear-gradient(178deg,#f79802,#ff1313); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .tp-payments__total-label { font-family:var(--font-body); font-size:1rem; color:rgba(255,255,255,.5); margin:0; }
+  @media (max-width:768px) {
+    .tp-payments__value-grid { grid-template-columns:1fr; }
+    .tp-payments__country-header { min-width:100%; }
+  }
+</style>
