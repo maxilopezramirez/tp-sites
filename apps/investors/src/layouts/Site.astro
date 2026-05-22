@@ -1,6 +1,7 @@
 ---
 import "@tp/ui/tokens.css";
 import "../styles/ir.css";
+import BackHome from "@tp/ui/BackHome.astro";
 
 interface Props {
   title: string;
@@ -43,6 +44,7 @@ const wordmark = link("/logo/wordmark-white.png");
       </div>
     </nav>
 
+    <BackHome />
     <slot />
 
     <footer class="ir-footer">
