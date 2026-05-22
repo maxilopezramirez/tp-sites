@@ -53,16 +53,24 @@ const founders = [
         ))}
       </div>
 
-      <article class="letter">
-        <p class="letter__eyebrow">A letter from the founders</p>
-        <h3>From Chile to Nasdaq. Twelve years and counting.</h3>
-        <p>Twelve years ago, two longtime friends from Chile wrote the first lines of code for what is now Ticketplus. Eight years ago, our Chairman joined to build the financial architecture and the path to capital markets. Today we serve 11 countries, 2,800 partners, 39,800 events per year and 10.2 million tickets processed annually — profitably, with our own technology built in-house.</p>
-        <p>Before Ticketplus, our team had spent years building software products across industries. When live entertainment came knocking, we applied the same DNA: product strategy, operational thinking, and technology built in-house. Ticketplus was never an accident. It was muscle memory.</p>
-        <p><strong>Nasdaq is not the goal. It is the vehicle.</strong> It is the table where leading Latin American technology platforms already sit. And now it is Chile&apos;s turn.</p>
-        <p>The next ten years will not be about ticketing. They will be about becoming the operating system for live experiences across Latin America, and then beyond. The platform is the company. The vertical is the wedge. The horizon is open.</p>
-        <p>We are aligned with our shareholders through long-term equity ownership. Pre-IPO ownership remains 100% with founders, Chairman and key employees. Our bet is the long-term value of what we build together.</p>
-        <p class="letter__sign">Chien-Fu Chen · Joaquín Jadue · Yethro Dinamarca</p>
-      </article>
+      <div class="founders-letter">
+        <div class="founders-letter__header">
+          <span class="founders-letter__label">A letter from the founders</span>
+          <h3 class="founders-letter__title">From Chile to Nasdaq.<br/>Twelve years and counting.</h3>
+        </div>
+        <div class="founders-letter__body">
+          <p>Twelve years ago, two longtime friends from Chile wrote the first lines of code for what is now Ticketplus. Eight years ago, our Chairman joined to build the financial architecture and the path to capital markets. Today we serve 11 countries, 2,800 partners, 39,800 events per year and 10.2 million tickets processed annually — profitably, with our own technology built in-house.</p>
+          <p>Before Ticketplus, our team had spent years building software products across industries. When live entertainment came knocking, we applied the same DNA: product strategy, operational thinking, and technology built in-house. Ticketplus was never an accident. It was muscle memory.</p>
+          <p><strong>Nasdaq is not the goal. It is the vehicle.</strong> It is the table where leading Latin American technology platforms already sit. And now it is Chile's turn.</p>
+          <p>The next ten years will not be about ticketing. They will be about becoming the operating system for live experiences across Latin America, and then beyond. The platform is the company. The vertical is the wedge. The horizon is open.</p>
+          <p>We are aligned with our shareholders through long-term equity ownership. Pre-IPO ownership remains 100% with founders, Chairman and key employees. Our bet is the long-term value of what we build together.</p>
+        </div>
+        <div class="founders-letter__sign">
+          <span>Chien-Fu Chen</span>
+          <span>Joaquín Jadue</span>
+          <span>Yethro Dinamarca</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -176,5 +184,73 @@ const founders = [
   @media (max-width: 880px) {
     .ldr-grid { grid-template-columns: 1fr; }
     .ldr-card { min-height: 320px; }
+  }
+
+  /* Founders letter */
+  .founders-letter {
+    margin-top: 64px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .founders-letter__header {
+    padding: 48px 56px 40px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .founders-letter__label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .founders-letter__title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .founders-letter__body {
+    padding: 40px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .founders-letter__body p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  .founders-letter__body strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+  .founders-letter__sign {
+    padding: 28px 56px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .founders-letter__sign span {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-text-primary);
+  }
+  @media (max-width: 720px) {
+    .founders-letter__header,
+    .founders-letter__body,
+    .founders-letter__sign { padding-left: 28px; padding-right: 28px; }
   }
 </style>
