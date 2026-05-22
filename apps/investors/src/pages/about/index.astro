@@ -40,13 +40,6 @@ const competitors = [
   { name: "VividSeats", latam: false, local: false, primary: false, partners: false, wl: false },
 ];
 
-const modules = [
-  { n: "01", title: "Event Ticketing", sub: "Virtual queue · 3D layouts · elastic infra", body: "High-concurrency sales engine for massive demand. Fair randomization, real-time tracking, seat-level visualization." },
-  { n: "02", title: "Payments & Banking", sub: "Acquirers · BNPL · digital wallets · cards", body: "50+ country-specific payment methods. Leading regional gateways, BNPL, international card networks and local debit." },
-  { n: "03", title: "Data & Analytics", sub: "Real-time event management · BI", body: "Live operational data across markets and partners. Multi-year visibility into every partner running on our infrastructure." },
-  { n: "04", title: "Access Control", sub: "Dynamic QR · Biometric · RFID/NFC", body: "Multi-layer validation, frictionless entry. Real-time validation, anti-fraud, facial recognition, cashless wristbands." },
-  { n: "05", title: "On-Site Operations", sub: "Kiosks · Mobile POS · Cashless NFC", body: "Seamless box office and in-venue experience. Self-service pickup, roaming sales, NFC for F&amp;B and VIP." },
-];
 
 const dataLayer = [
   { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
@@ -229,34 +222,20 @@ const team = [
     </div>
   </section>
 
-  <!-- 6. MOAT & PLATFORM -->
+  <!-- 6. MOAT -->
   <section class="platform">
     <div class="container">
       <p class="section__eyebrow">Platform &amp; moat</p>
       <h2 class="section__title">Why global players <span class="accent-red">can't capture this market.</span></h2>
-      <div class="platform__grid">
-        <aside class="moat">
-          <h3>What blocks the incumbents</h3>
-          <ul>
-            <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
-            <li><strong>Payment gateways</strong> · local acquirers, BNPL, wallets across 11 markets</li>
-            <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops</li>
-            <li><strong>Data</strong> · 12 years multi-market · no mono-country can match</li>
-          </ul>
-          <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
-        </aside>
-        <ol class="modules">
-          {modules.map((m) => (
-            <li class="module">
-              <span class="module__n">{m.n}</span>
-              <div>
-                <h4>{m.title}</h4>
-                <p class="module__sub">{m.sub}</p>
-                <p set:html={m.body}></p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      <div class="moat moat--wide">
+        <h3>What blocks the incumbents</h3>
+        <ul>
+          <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
+          <li><strong>Payment gateways</strong> · local acquirers, BNPL, wallets across 11 markets</li>
+          <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops</li>
+          <li><strong>Data</strong> · 12 years multi-market · no mono-country can match</li>
+        </ul>
+        <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
       </div>
     </div>
   </section>
@@ -486,7 +465,16 @@ const team = [
     max-width: 760px;
     margin: 24px 0 40px;
   }
+  .moat--wide {
+    max-width: 720px;
+  }
+  .moat--wide ul {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 14px;
+  }
   @media (max-width: 880px) {
     .glance__grid { grid-template-columns: 1fr; gap: 40px; }
+    .moat--wide ul { grid-template-columns: 1fr; }
   }
 </style>
