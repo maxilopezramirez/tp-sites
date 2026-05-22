@@ -1959,7 +1959,9 @@ section[class*="ipo"] .section__lead {
   .flywheel-compact__steps { grid-template-columns: 1fr; }
 
   /* Pagenav */
-  .pagenav__inner { flex-direction: column; gap: 16px; }
+  .pagenav__inner { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 16px; padding: 0; }
+  .pagenav__side { max-width: 48%; }
+  .pagenav { padding: 40px 0; }
 }
 
 @media (max-width: 480px) {
