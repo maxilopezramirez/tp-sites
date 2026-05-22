@@ -120,10 +120,10 @@ const segments = [
 ];
 
 const dataLayer = [
-  { brand: "Stripe", color: "#635BFF", asset: "Payment data", expansion: "Commerce intelligence" },
-  { brand: "Toast", color: "#FF4500", asset: "Restaurant ops", expansion: "Expanding within installed base" },
-  { brand: "Shopify", color: "#96BF48", asset: "Merchant data", expansion: "Financial services" },
-  { brand: "Ticketplus", color: null, asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
+  { brand: "Stripe", logo: "/logos/stripe.svg", logoH: 18, asset: "Payment data", expansion: "Commerce intelligence" },
+  { brand: "Toast", logo: "/logos/toast.svg", logoH: 22, asset: "Restaurant ops", expansion: "Expanding within installed base" },
+  { brand: "Shopify", logo: "/logos/shopify.svg", logoH: 20, asset: "Merchant data", expansion: "Financial services" },
+  { brand: "Ticketplus", logo: "/logo/wordmark-color.png", logoH: 18, asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
 ];
 ---
 <Site title="Ticketplus · Investor Relations" current="home" description="The operating system for live entertainment across Latin America.">
@@ -247,10 +247,7 @@ const dataLayer = [
               {dataLayer.map((row) => (
                 <tr class={row.own ? "own" : ""}>
                   <td>
-                    {row.own
-                      ? <span class="brand-badge brand-badge--tp">{row.brand}</span>
-                      : <span class="brand-badge" style={`background:${row.color}18;color:${row.color};border-color:${row.color}40`}>{row.brand}</span>
-                    }
+                    <img src={row.logo} alt={row.brand} height={row.logoH} style="display:block;max-width:100px;object-fit:contain;" />
                   </td>
                   <td>{row.asset}</td>
                   <td>{row.expansion}</td>
