@@ -218,27 +218,48 @@ const segments = [
     <div class="container">
       <p class="section__eyebrow section__eyebrow--inv">Competitive advantage · The data layer</p>
       <h2 class="section__title section__title--inv">We do not compete against ticketing companies. <span class="accent">We capture the data layer.</span></h2>
+      <div class="thesis__strip" style="margin: 32px 0 48px;">
+        <span><strong>100%</strong> Transaction visibility</span>
+        <span><strong>11</strong> Country regulatory &amp; payments stack</span>
+        <span><strong>12 years</strong> of multi-market operating data</span>
+      </div>
       <div class="thesis__copy">
         <p>Over 10.2 million tickets a year across 11 jurisdictions, we capture the full data layer of regional live entertainment: who buys, what they buy, when, in which venue, with which payment method, at which price, with which behavioral pattern.</p>
         <p>That data composes — day by day, across 11 markets, 50+ payment methods, thousands of local commercial relationships. No global player can replicate it by acquisition. It is the asset, and it compounds.</p>
         <p>Ticketing is the first vertical. The verticals adjacent to the data layer — payments, BI, dynamic pricing, financial services for partners — are the long-term expansion thesis.</p>
       </div>
-      <div class="thesis__strip">
-        <span><strong>100%</strong> Transaction visibility</span>
-        <span><strong>11</strong> Country regulatory &amp; payments stack</span>
-        <span><strong>12 years</strong> of multi-market operating data</span>
+      <div class="data-flow">
+        <div class="data-flow__input">
+          <span class="data-flow__value">10.2M</span>
+          <span class="data-flow__label">tickets / year</span>
+        </div>
+        <svg class="data-flow__arrow" viewBox="0 0 40 20" width="40" height="20" fill="none">
+          <line x1="0" y1="10" x2="32" y2="10" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <polyline points="26,4 32,10 26,16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="data-flow__core">
+          <span>The data layer</span>
+        </div>
+        <svg class="data-flow__arrow" viewBox="0 0 40 20" width="40" height="20" fill="none">
+          <line x1="0" y1="10" x2="32" y2="10" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <polyline points="26,4 32,10 26,16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="data-flow__outputs">
+          <span>Dynamic pricing</span>
+          <span>Financial services</span>
+          <span>Partner BI</span>
+          <span>Demand forecasting</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. CLOSING -->
-  <section class="thesis" style="padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.08);">
+  <!-- 6. CONTACT -->
+  <section class="ir-contact">
     <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">The opportunity ahead</p>
-      <h2 class="section__title section__title--inv">This is not a validation event.<br/>It is an <span class="accent">acceleration event.</span></h2>
-      <p class="home-closing__lead">Nasdaq is the vehicle, not the goal. The goal is to build the operating, transaction and data infrastructure layer for live entertainment across Latin America.</p>
-      <p class="home-closing__urgency">The consolidation race is already underway. Live Nation acquired OCESA in 2025. CTS Eventim acquired Punto Ticket in 2023. Credicorp acquired Joinnus in 2025. Global incumbents are moving into Latin America. The 95% they cannot reach is where we have been operating for twelve years — and where this capital deploys next.</p>
-      <a class="btn btn--primary" href={link("/contact/")} style="margin-top: 32px; display: inline-flex;">Contact IR</a>
+      <h3 class="ir-contact__title">Any questions? Get in touch.</h3>
+      <p class="ir-contact__sub">Get in touch with our investor relations team for more information.</p>
+      <a class="btn btn--primary" href="mailto:ir@ticketplus.com">Contact us</a>
     </div>
   </section>
 
@@ -652,6 +673,70 @@ const segments = [
     border-color: rgba(255,171,36,0.4);
   }
 
+  /* Data flow diagram */
+  .data-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 48px;
+    padding: 32px 36px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-card);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .data-flow__input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .data-flow__value {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  .data-flow__label {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: -0.01em;
+  }
+  .data-flow__arrow { flex-shrink: 0; }
+  .data-flow__core {
+    padding: 10px 20px;
+    background: var(--gradient-brand);
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .data-flow__core span {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .data-flow__outputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .data-flow__outputs span {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(247,152,2,0.35);
+    color: var(--color-secondary);
+    white-space: nowrap;
+  }
+
   /* Data compound visualization */
   .data-compound {
     display: flex;
@@ -723,6 +808,48 @@ const segments = [
     margin: 20px 0 0;
     border-left: 2px solid var(--color-primary);
     padding-left: 20px;
+  }
+
+  /* IR Contact section */
+  .ir-contact {
+    background: var(--color-surface-elevated);
+    border-top: 1px solid var(--color-border);
+    padding: 72px 0;
+    text-align: center;
+  }
+  .ir-contact__title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin: 0 0 12px;
+  }
+  .ir-contact__sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text-muted);
+    margin: 0 0 24px;
+  }
+  .ir-contact__email {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .ir-contact__email:hover { text-decoration: underline; }
+
+  /* Closing bridge */
+  .closing__bridge {
+    font-family: var(--font-body);
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: #ffffff;
+    max-width: 640px;
+    margin: 0 0 32px;
   }
 
   /* Home closing lead */
