@@ -109,13 +109,26 @@ const faqs = [
     </div>
   </nav>
 
-  <header class="page-header" style="padding:180px 0 120px; min-height:60vh; display:flex; align-items:center;">
-    <div class="page-header__inner" style="max-width:1280px;">
-      <p class="page-header__eyebrow">Full Operation · Servicios para productores</p>
-      <h1 class="page-header__title">Todo lo que tu evento necesita:<br/><span class="accent">antes, durante y después.</span></h1>
-      <div style="display:flex; gap:12px; margin-top:40px; flex-wrap:wrap;">
-        <a href="#contacto" class="btn btn--primary">Agendar demo →</a>
-        <a href="#pilares" class="btn btn--ghost">Ver servicios</a>
+  <!-- HERO — Ticketmaster Business style -->
+  <header class="biz-hero">
+    <div class="container">
+      <div class="biz-hero__content">
+        <p class="biz-hero__eyebrow">Full Operation · Servicios para productores</p>
+        <h1 class="biz-hero__title">Opera el futuro del entretenimiento en vivo.</h1>
+        <p class="biz-hero__lead">Plataforma, equipo en terreno y soporte 24/7 — antes, durante y después del evento. Una sola operación para productores que quieren foco en su show.</p>
+        <div class="biz-hero__ctas">
+          <a href="#contacto" class="btn btn--primary">Agendar demo →</a>
+          <a href="#soluciones" class="btn btn--ghost">Ver soluciones</a>
+        </div>
+      </div>
+      <div class="biz-hero__video-wrap">
+        <div class="biz-hero__video-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+            <path d="M26 20 L48 32 L26 44 Z" fill="rgba(255,255,255,0.7)"/>
+          </svg>
+          <span>VIDEO PLACEHOLDER · 16:9</span>
+        </div>
       </div>
     </div>
   </header>
@@ -131,51 +144,100 @@ const faqs = [
     </div>
   </section>
 
-  <section style="background:#fff; padding:96px 0 72px; text-align:center;">
+  <!-- SOLUTIONS TABS -->
+  <section class="biz-solutions" id="soluciones">
     <div class="container">
-      <p class="section__eyebrow" style="color:var(--color-primary);">Servicios Ticketplus · 12 años iterando</p>
-      <h2 class="section__title" style="max-width:900px; margin:0 auto;">Una plataforma profunda. Elige las capacidades que tu evento necesita.</h2>
-    </div>
-  </section>
-
-  <section style="background:#fff; padding:0 0 120px;" id="pilares">
-    <div class="container">
-      <div class="tp-grid-3">
-        {[
-          { n:"01", tag:"ANTES", title:"Prepara y vende", body:"Configura el evento, captura la demanda y vende — mapas interactivos, pre-inscripciones, Booster y showpage con tu identidad.", href:"#antes" },
-          { n:"02", tag:"DURANTE", title:"Opera el día del evento", body:"Validación rápida, POS y tótems en venue, accreditation B2B, monitoreo en vivo y war room con ingenieros asignados.", href:"#durante" },
-          { n:"03", tag:"DESPUÉS", title:"Mide, liquida y retén", body:"Reportes consolidados, atribución multi-canal, liquidación 48-72h, extended products y loyalty para el siguiente evento.", href:"#despues" },
-        ].map(p => (
-          <div class="pillar-overview-card">
-            <span class="pillar-tag">{p.n} · {p.tag}</span>
-            <h3 class="pillar-title">{p.title}</h3>
-            <p class="pillar-body">{p.body}</p>
-            <a href={p.href} class="pillar-link">Ver capacidades ↓</a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {pillars.map((p) => (
-    <section id={p.id} style={`padding:120px 0; background:${p.dark ? '#000' : '#fff'}; color:${p.dark ? '#fff' : 'inherit'};`}>
-      <div class="container">
-        <p class="section__eyebrow" style="color:var(--color-secondary);">{p.n} · {p.tag}</p>
-        <h2 class="section__title" style={p.dark ? 'color:#fff;' : ''}>{p.title}</h2>
-        <p class="section__lead" style={`max-width:640px; margin-bottom:56px; color:${p.dark ? 'rgba(255,255,255,0.70)' : 'var(--color-text-muted)'};`}>{p.lead}</p>
-        <div class={`feature-cards-grid${p.features.length >= 4 ? ' feature-cards-grid--2col' : ''}`} style={`background:${p.dark ? 'rgba(255,255,255,0.08)' : 'var(--color-border)'};`}>
-          {p.features.map(f => (
-            <div class="feature-card" style={`background:${p.dark ? '#111' : '#fff'};`}>
-              <span class="feature-card__n">{f.n}</span>
-              <h3 class="feature-card__title" style={p.dark ? 'color:#fff;' : ''}>{f.title}</h3>
-              <p class="feature-card__body" style={p.dark ? 'color:rgba(255,255,255,0.62);' : ''}>{f.body}</p>
-              {f.badge && <span class="feature-card__badge">{f.badge}</span>}
-            </div>
-          ))}
+      <div class="biz-solutions__header">
+        <div>
+          <h2 class="biz-solutions__title">Nuestras soluciones<br/>rompen récords.</h2>
+        </div>
+        <div>
+          <p class="biz-solutions__lead">Con acceso a las mejores herramientas de la industria, te ayudamos a maximizar el potencial de cada evento — antes, durante y después de que abran las puertas.</p>
         </div>
       </div>
-    </section>
-  ))}
+
+      <div class="biz-tabs">
+        <nav class="biz-tabs__nav">
+          <button class="biz-tab-btn is-active" data-tab="t-antes">01 · Antes del evento</button>
+          <button class="biz-tab-btn" data-tab="t-durante">02 · El día del evento</button>
+          <button class="biz-tab-btn" data-tab="t-despues">03 · Después del evento</button>
+          <button class="biz-tab-btn" data-tab="t-plataforma">04 · Plataforma transversal</button>
+        </nav>
+
+        <div class="biz-tabs__panels">
+
+          <div class="biz-tab-panel is-active" id="t-antes">
+            <h3 class="biz-tab-panel__title">Prepara y vende — todas las palancas en una plataforma.</h3>
+            <div class="biz-tab-panel__body">
+              <div class="biz-tab-panel__left">
+                <div class="biz-stat">+34M</div>
+                <p class="biz-stat__label">visitas/año en el Marketplace Ticketplus</p>
+                <p class="biz-stat__desc">Lo configuras sin código y escala de un teatro a un estadio 100K+. Mapas interactivos, bundles, promo codes, nominative tickets, lista de espera, virtual queue, Booster Agency en Meta/Google/TikTok con atribución end-to-end al ticket vendido.</p>
+                <a href="#contacto" class="biz-tab-panel__cta">Ver solución →</a>
+              </div>
+              <div class="biz-tab-panel__right">
+                <div class="biz-img-placeholder">
+                  <span>IMAGEN / VIDEO PLACEHOLDER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="biz-tab-panel" id="t-durante" style="display:none">
+            <h3 class="biz-tab-panel__title">El día del evento, operado con plataforma y equipo en terreno.</h3>
+            <div class="biz-tab-panel__body">
+              <div class="biz-tab-panel__left">
+                <div class="biz-stat">&lt;200ms</div>
+                <p class="biz-stat__label">Validación QR · Probado en +320.000 asistentes sin caídas</p>
+                <p class="biz-stat__desc">Validación en smartphone o scanner Bluetooth, modo offline con auto-sync, POS y tótems con inventario real-time, cashless NFC, acreditación B2B sin Excel. War room con ingenieros asignados y operador Ticketplus on-site.</p>
+                <a href="#contacto" class="biz-tab-panel__cta">Ver solución →</a>
+              </div>
+              <div class="biz-tab-panel__right">
+                <div class="biz-img-placeholder">
+                  <span>IMAGEN / VIDEO PLACEHOLDER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="biz-tab-panel" id="t-despues" style="display:none">
+            <h3 class="biz-tab-panel__title">Mide, liquida y haz que el evento siga generando.</h3>
+            <div class="biz-tab-panel__body">
+              <div class="biz-tab-panel__left">
+                <div class="biz-stat">48-72h</div>
+                <p class="biz-stat__label">Liquidación a tu cuenta post-evento</p>
+                <p class="biz-stat__desc">Dashboards con atribución end-to-end desde click hasta ticket, exportes CSV/Excel/PDF, reporte post-evento en 24h. Memberships con cobro recurrente, streaming OTT, store/e-commerce y loyalty con Smart Promotions.</p>
+                <a href="#contacto" class="biz-tab-panel__cta">Ver solución →</a>
+              </div>
+              <div class="biz-tab-panel__right">
+                <div class="biz-img-placeholder">
+                  <span>IMAGEN / VIDEO PLACEHOLDER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="biz-tab-panel" id="t-plataforma" style="display:none">
+            <h3 class="biz-tab-panel__title">La infraestructura que hace posible todo lo anterior.</h3>
+            <div class="biz-tab-panel__body">
+              <div class="biz-tab-panel__left">
+                <div class="biz-stat">99.9%</div>
+                <p class="biz-stat__label">Uptime · Battle-tested en 600K+ asistentes</p>
+                <p class="biz-stat__desc">REST API con OpenAPI 3.0, SDKs Node.js, webhooks real-time. Multi-currency (CLP + USD en la misma URL). Compliance multi-país nativo: SII Chile, AFIP Argentina, DIAN Colombia, DNCP Paraguay. SLA con penalidades financieras.</p>
+                <a href="#contacto" class="biz-tab-panel__cta">Ver solución →</a>
+              </div>
+              <div class="biz-tab-panel__right">
+                <div class="biz-img-placeholder">
+                  <span>IMAGEN / VIDEO PLACEHOLDER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section style="background:#fff; padding:120px 0; border-top:1px solid var(--color-border);">
     <div class="container">
@@ -307,11 +369,207 @@ const faqs = [
     document.querySelectorAll('.collapse__head').forEach(function(h){
       h.addEventListener('click',function(){ h.parentElement.classList.toggle('is-open'); });
     });
+    // Biz tabs
+    var bizBtns = document.querySelectorAll('.biz-tab-btn');
+    var bizPanels = document.querySelectorAll('.biz-tab-panel');
+    bizBtns.forEach(function(b){
+      b.addEventListener('click', function(){
+        bizBtns.forEach(function(x){ x.classList.remove('is-active'); });
+        bizPanels.forEach(function(p){ p.style.display='none'; });
+        b.classList.add('is-active');
+        var t = document.getElementById(b.dataset.tab);
+        if(t) t.style.display='block';
+      });
+    });
   </script>
 
 </Site>
 
 <style>
+  /* ── Biz Hero ─────────────────────────────────────────── */
+  .biz-hero {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 120px 0 0;
+    position: relative;
+  }
+  .biz-hero .container { display: flex; flex-direction: column; gap: 64px; }
+  .biz-hero__eyebrow {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin: 0 0 20px;
+  }
+  .biz-hero__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    color: #fff;
+    margin: 0 0 24px;
+    max-width: 760px;
+  }
+  .biz-hero__lead {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 0 36px;
+  }
+  .biz-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .biz-hero__video-wrap { width: 100%; }
+  .biz-hero__video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #141414;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: rgba(255,255,255,0.35);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Solutions tabs ────────────────────────────────────── */
+  .biz-solutions { background: #fff; padding: 120px 0; }
+  .biz-solutions__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 72px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .biz-solutions__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin: 0;
+    text-transform: uppercase;
+    color: #0a0a0a;
+  }
+  .biz-solutions__lead {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .biz-tabs { display: grid; grid-template-columns: 220px 1fr; gap: 0; align-items: start; }
+
+  .biz-tabs__nav { display: flex; flex-direction: column; gap: 0; border-right: 1px solid var(--color-border); padding-right: 0; }
+  .biz-tab-btn {
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    padding: 18px 24px 18px 20px;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all .15s;
+    line-height: 1.3;
+  }
+  .biz-tab-btn:hover { color: var(--color-text-primary); border-left-color: var(--color-border); }
+  .biz-tab-btn.is-active { color: var(--color-primary); border-left-color: var(--color-primary); font-weight: 700; }
+
+  .biz-tabs__panels { padding-left: 56px; }
+  .biz-tab-panel__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0 0 40px;
+    color: #0a0a0a;
+  }
+  .biz-tab-panel__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .biz-stat {
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: #0a0a0a;
+    margin-bottom: 8px;
+  }
+  .biz-stat__label {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+  }
+  .biz-stat__desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0 0 24px;
+  }
+  .biz-tab-panel__cta {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0a0a0a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .biz-tab-panel__cta::after { content: '→'; }
+  .biz-tab-panel__cta:hover { color: var(--color-primary); }
+  .biz-img-placeholder {
+    aspect-ratio: 4/3;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray-400);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1024px) {
+    .biz-tabs { grid-template-columns: 180px 1fr; }
+    .biz-solutions__header { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 768px) {
+    .biz-tabs { grid-template-columns: 1fr; }
+    .biz-tabs__nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--color-border); }
+    .biz-tab-btn { border-left: none; border-bottom: 3px solid transparent; padding: 12px 16px; }
+    .biz-tab-btn.is-active { border-bottom-color: var(--color-primary); }
+    .biz-tabs__panels { padding-left: 0; padding-top: 32px; }
+    .biz-tab-panel__body { grid-template-columns: 1fr; }
+    .biz-hero__video-placeholder { aspect-ratio: 16/9; }
+  }
+
   .logos-cloud { background:#0a0a0a; padding:60px 0; border-top:1px solid rgba(255,255,255,0.06); }
   .logos-cloud__label { font-family:var(--font-heading); font-size:11px; color:rgba(255,255,255,0.38); letter-spacing:0.14em; text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:32px; }
   .logos-cloud__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:16px; }
