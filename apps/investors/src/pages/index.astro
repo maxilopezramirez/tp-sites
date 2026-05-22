@@ -182,6 +182,15 @@ const dataLayer = [
       <h2 class="section__title">Ticketplus Is at the Center of the <span class="accent">Live Economy.</span></h2>
       <p class="ecosystem-tabs__lead">2,800+ promoters, federations, festivals, venues and parks run on the same infrastructure — from a 100-seat theater to the FIFA U-20 World Cup.</p>
 
+      <ul class="platform-stats">
+        {scale.map((s) => (
+          <li class="platform-stats__item">
+            <span class="platform-stats__value">{s.value}</span>
+            <span class="platform-stats__label">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+
       <div class="eco-collage">
         <img src={`${base}/collage/c1.jpg`} alt="Football stadium" />
         <img src={`${base}/collage/c2.jpg`} alt="Music concert" />
@@ -481,6 +490,40 @@ const dataLayer = [
     text-transform: uppercase;
     position: absolute;
     bottom: 24px;
+  }
+
+  /* Platform stats strip */
+  .platform-stats {
+    list-style: none; padding: 0; margin: 40px 0 0;
+    display: flex; flex-wrap: wrap; gap: 0;
+    border-top: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+  }
+  .platform-stats__item {
+    flex: 1 1 0; min-width: 120px;
+    padding: 20px 24px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .platform-stats__value {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(22px, 2.5vw, 32px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+  .platform-stats__label {
+    display: block;
+    margin-top: 5px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+  @media (max-width: 600px) {
+    .platform-stats__item { flex: 1 1 40%; }
   }
 
   /* Collage */
