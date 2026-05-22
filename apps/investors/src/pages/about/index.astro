@@ -82,26 +82,6 @@ const moatItems = [
     </div>
   </section>
 
-  <section class="comparables">
-    <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Category</p>
-      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
-      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
-      <ul class="comp-grid">
-        {comparables.map((c) => (
-          <li class={`comp${c.own ? " comp--own" : ""}`}>
-            <span class="comp__flag">{c.flag}</span>
-            <h3>{c.brand}</h3>
-            <p class="comp__wedge">{c.wedge}</p>
-            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
-            <p class="comp__years">{c.years} years</p>
-          </li>
-        ))}
-      </ul>
-      <p class="comparables__footnote">Business-model parallel only · not for valuation reference. Subject to listing.</p>
-    </div>
-  </section>
-
   <!-- 3. THE MODEL -->
   <section class="model-about">
     <div class="container">
@@ -201,9 +181,27 @@ const moatItems = [
     </div>
   </section>
 
-  <!-- 6. CLOSING -->
-  <section class="thesis" style="padding: 120px 0;">
+  <!-- 6. CATEGORY + CLOSING (combined dark block) -->
+  <section class="thesis" style="padding: 96px 0 0;">
     <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Category</p>
+      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
+      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
+      <ul class="comp-grid">
+        {comparables.map((c) => (
+          <li class={`comp${c.own ? " comp--own" : ""}`}>
+            <span class="comp__flag">{c.flag}</span>
+            <h3>{c.brand}</h3>
+            <p class="comp__wedge">{c.wedge}</p>
+            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
+            <p class="comp__years">{c.years} years</p>
+          </li>
+        ))}
+      </ul>
+      <p class="comparables__footnote">Business-model parallel only · not for valuation reference. Subject to listing.</p>
+    </div>
+
+    <div class="container" style="padding-top: 96px; padding-bottom: 120px; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 80px;">
       <p class="section__eyebrow section__eyebrow--inv">The thesis</p>
       <h2 class="section__title section__title--inv">Ticketplus is building the operating system for live entertainment across Latin America. <span class="accent">Nasdaq is the vehicle, not the goal.</span></h2>
       <p class="about-closing__lead">The goal is to build the operating, transaction and data infrastructure layer for live entertainment across Latin America. This is not a validation event. It is an acceleration event.</p>
