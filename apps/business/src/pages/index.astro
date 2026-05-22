@@ -1,47 +1,365 @@
 ---
 import Site from "../layouts/Site.astro";
----
-<Site title="business.ticketplus.com">
-  <main>
-    <p class="eyebrow">business.ticketplus.com</p>
-    <h1>Business</h1>
-    <p class="lead">Operación full · productoras que delegan en Ticketplus.</p>
-    <p class="hello">hello world</p>
-  </main>
 
-  <style>
-    main {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 120px 24px 80px;
-    }
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--tp-muted);
-      margin: 0 0 12px;
-    }
-    h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.02;
-      letter-spacing: -0.02em;
-      margin: 0 0 16px;
-    }
-    .lead {
-      font-size: 18px;
-      color: var(--tp-muted);
-      max-width: 620px;
-      margin: 0 0 40px;
-    }
-    .hello {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 14px;
-      color: var(--tp-muted);
-      padding: 10px 14px;
-      display: inline-block;
-      border: 1px dashed var(--tp-border);
-      border-radius: 6px;
-    }
-  </style>
+const pillars = [
+  {
+    n: "01", tag: "ANTES", dark: false, id: "antes",
+    title: "Prepara y vende — todas las palancas en una plataforma.",
+    lead: "Configurar el evento, captar la demanda y vender con todas las herramientas que un productor necesita antes de abrir las puertas.",
+    features: [
+      { n: "01", title: "Ticketing · El motor de venta", body: "Lo configuras sin código y escala de un teatro de 200 butacas a un estadio de 100K+. Mapas interactivos del venue con butaca asignada y vista escenario reutilizables entre eventos. Bundles, promo codes con códigos únicos por sponsor o influencer, nominative tickets con reasignación sin reprocesar el pago, custom forms y cortesías masivas con tracking de aperturas.", badge: null },
+      { n: "02", title: "Pre-inscripciones, listas de espera y queue management", body: "Para drops masivos no abres la venta sin filtrar. Lista de Espera (aprobación individual) o Preventa Exclusiva (aprobación masiva) — solo aprobados compran. Para la venta abierta: virtual queue con posición visible, CAPTCHA adaptativo, anti-bot enterprise-grade, auto-scaling sin configuración previa e instancia dedicada en enterprise.", badge: "Alta Demanda · War Room" },
+      { n: "03", title: "Marketplace + Booster · Cómo captamos demanda contigo", body: "Tu evento se publica en ticketplus.com (+34M visitas/año) sin desviar tráfico propio, con email marketing masivo y automated emails. Encima sumamos Booster Agency — el equipo Ticketplus opera tus campañas en Meta, Google y TikTok con atribución end-to-end al ticket vendido.", badge: "Solo Full Operation" },
+      { n: "04", title: "Showpage y branding del evento", body: "La página de tu evento se publica con tu identidad. Plantillas pre-diseñadas, editor CSS con preview real-time, fonts custom, custom URL con publicación instantánea y SEO optimizado. Tracking pixel completo desde el día 1: Meta, TikTok, GTM y GA4 con eventos e-commerce pre-configurados.", badge: null },
+    ],
+  },
+  {
+    n: "02", tag: "DURANTE", dark: true, id: "durante",
+    title: "El día del evento, operado con plataforma y equipo en terreno.",
+    lead: "Validación, POS, tótems, accreditation y monitoreo en vivo. Cuando llega el día del show, nosotros estamos contigo en sitio — no solo en el call center.",
+    features: [
+      { n: "01", title: "On site · Validación rápida con scanner o smartphone", body: "App Validación Ticket (iOS + Android) con validación QR <200ms incluso con miles de asistentes, detección instantánea de duplicados y modo offline con auto-sync. Multi-access con prevención automática de double-entry entre puertas. Probado en eventos de +320.000 asistentes sin caídas.", badge: null },
+      { n: "02", title: "POS y Tótem · Hardware y software de venta en venue", body: "POS para boletería, barras y food courts con inventario real-time, alertas de restock y per-attendee consumption control. Tótems self-service con compra touch, pickup por QR, cashless NFC con recarga online y cierre de caja automático. Ambos comparten stock con la venta online.", badge: null },
+      { n: "03", title: "Print on-demand, wallets y entry stats en vivo", body: "Impresión física en lobby con tu diseño y QR custom. Apple Wallet + Google Wallet. Compatible con Bixolon, Zebra, Boca y Datamax. Para el día E: conteo de acreditados por minuto, aforo por zona al segundo, alertas al límite y panel compartible con producción, seguridad y autoridades.", badge: null },
+      { n: "04", title: "Acreditación para ferias, congresos y B2B", body: "Acreditación de visitantes y expositores con validación por QR, DNI o nombre. Perfil de expositor con stock de invitaciones propio, múltiples tipos de equipo con pre-acreditación sin Excel. Encima opera Netlink — reuniones 1-a-1, contact-tap, agendamiento, match por intereses y reportes para sponsors.", badge: null },
+      { n: "05", title: "Soporte 24/7 + War Room", body: "Account manager dedicado por evento, WhatsApp directo pre-asignado 72h antes del drop, soporte 24/7 en español con cobertura fin de semana. Para enterprise drops armamos war room con ingenieros asignados. Para eventos de alta complejidad, operador Ticketplus on-site el día del show.", badge: "Único en el mercado" },
+    ],
+  },
+  {
+    n: "03", tag: "DESPUÉS", dark: false, id: "despues",
+    title: "Mide, liquida y haz que el evento siga generando.",
+    lead: "Reportes consolidados, atribución multi-canal, liquidación automática y extended products para que tu base de compradores siga activa hasta el siguiente evento.",
+    features: [
+      { n: "01", title: "Data analytics · Dashboards en vivo + atribución", body: "Dashboards con revenue total, por tipo de ticket y por canal; sales curve cross-event; live checkout conversion rate; per-minute sales durante drops. Atribución end-to-end desde click hasta ticket con per-channel attribution, real-time sales per source y geographic data con demografía + device.", badge: null },
+      { n: "02", title: "Reportes y exports multi-formato", body: "Tu data es tuya y la sacas cuando quieras. Export en CSV / Excel / PDF con 1 click, scheduled reports por email, reports API para BI y data export para CRM / ERP. Reporte post-evento dentro de 24h con entradas, sales per channel, incidents y recomendaciones.", badge: null },
+      { n: "03", title: "Liquidación 48-72h + finanzas", body: "Liquidación a tu cuenta entre 48 y 72 horas post-evento en CLP, USD u otra moneda local. Stripe Connect con split de comisiones automático y revenue share configurable. Reembolsos en 1 clic con auditoría. Facturación electrónica multi-país nativa — SII Chile, AFIP Argentina, DIAN Colombia, DNCP Paraguay.", badge: null },
+      { n: "04", title: "Extended products / Gestión 360", body: "El ticket es solo el primer punto de contacto. Memberships con cobro recurrente, tiered plans y auto-renewal. Streaming / OTT con SVOD/TVOD, anti-share y watermark. Store / E-commerce con fulfillment, variantes, pre-order y tickets + merch bundles en mismo checkout.", badge: null },
+      { n: "05", title: "Loyalty Management · Smart Promotions + Email Automation", body: "Smart Promotions con reglas de negocio propias armadas en diagrama, Smart Showcase como vitrina inteligente de cross-sell, Smart Email Marketing como pilar loyalty y Email Automation con secuencias pre/post evento. Exclusive discounts para members, promos 2x1 y referral link.", badge: null },
+    ],
+  },
+  {
+    n: "04", tag: "PLATAFORMA", dark: true, id: "plataforma-transversal",
+    title: "La plataforma que hace posible que todo lo anterior funcione.",
+    lead: "APIs, multi-país, multi-moneda y trust & service. La capa cross-cutting que opera por debajo de cada momento del evento.",
+    features: [
+      { n: "01", title: "APIs, webhooks y SDKs", body: "REST API documentada con OpenAPI 3.0, OAuth 2.0, SDKs Node.js y sandbox sin tarjeta ni contrato. Real-time webhooks (sales, check-in, refunds) con retries automáticos. Integraciones nativas con GA4, Meta Pixel, HubSpot y herramientas de email.", badge: null },
+      { n: "02", title: "Multi-currency y multi-language", body: "CLP + USD en la misma transacción y la misma URL. El buyer elige moneda y se procesa en el gateway correcto sin redirect. Soporte para ARS, MXN, COP, BRL, PYG, PEN, EUR y más, con settlement en la moneda preferida del cliente.", badge: null },
+      { n: "03", title: "Compliance multi-país nativo", body: "Facturación electrónica integrada por país, sin contratar contadores locales: SII Chile (DTE), AFIP Argentina (Facturante + GoSocket), DIAN Colombia (Siigo) y DNCP Paraguay. Endpoint único que detecta país y aplica el formato correcto.", badge: "CL · AR · CO · PY" },
+      { n: "04", title: "SLA, infra y migración", body: "SLA con penalidades financieras, uptime contractual, auto-scaling sin configuración previa y simulación de carga 72h pre-drop. Battle-tested en drops de 50K-100K tickets y eventos +600K asistentes. Migración acompañada desde otra plataforma en semanas.", badge: "99.9% uptime" },
+    ],
+  },
+];
+
+const clients = [
+  { flag: "🇨🇱", name: "Mundial Sub-20 FIFA · Chile 2025", desc: "+600K asistentes, 4 estadios simultáneos, 52 partidos. El evento en vivo más grande gestionado en Chile.", stat: "+600K asistentes" },
+  { flag: "🇦🇷", name: "AFA Eliminatorias", desc: "Picos de demanda extrema sin caídas. +320K tickets vendidos en un solo día durante drops de eliminatorias.", stat: "+320K tickets/día" },
+  { flag: "🇨🇱", name: "CONAF · Parques Nacionales", desc: "17 parques con control de aforo, venta online, validación QR y reportería operativa.", stat: "17 parques" },
+  { flag: "🇨🇱", name: "Movistar Arena", desc: "16K asientos. Conciertos internacionales, espectáculos masivos y operación de venue todo el año.", stat: "16K asientos" },
+  { flag: "🇨🇱", name: "Teatro UC", desc: "Temporada cultural completa con abonos, butaca asignada, membresías y reportería para programación.", stat: "Temporada anual" },
+  { flag: "🇨🇱", name: "Teatro CA660", desc: "Espectáculos en cartelera con venta online, mapa interactivo de butacas y operación on-site.", stat: "660 butacas" },
+];
+
+const industries = [
+  { icon: "🎪", title: "Festivales y conciertos", body: "Drops masivos, alta demanda, picos de venta. Plataforma probada y equipo que opera contigo el día del show." },
+  { icon: "🎭", title: "Teatros y salas", body: "Temporadas con abonos, butaca asignada, programación cultural. Mapa interactivo, membresías y reportería." },
+  { icon: "⚽", title: "Estadios y deporte", body: "Boletería partido a partido, abonos de temporada, acreditación de prensa. La misma infra que operó FIFA Sub-20." },
+  { icon: "📋", title: "Ferias y conferencias", body: "Acreditación, networking corporativo, control de aforo en sala, reportería de asistencia. Para B2B y corporativo." },
+  { icon: "🎢", title: "Circos, parques y kids", body: "Funciones diarias, ratio adulto/niño, bundles familiares, add-ons como meet&greet en el mismo carrito." },
+  { icon: "🎉", title: "Fiestas y eventos nocturnos", body: "Preventas con códigos exclusivos, POS y tótems de autoservicio, cashless NFC y operación on-site nocturna." },
+  { icon: "🎤", title: "Espectáculos y giras", body: "De un show a una gira multi-ciudad. Misma plataforma para todas las paradas, reportería consolidada por gira." },
+  { icon: "🛍️", title: "Ferias temáticas", body: "Ferias gastronómicas, fashion, gaming, vintage. Venta anticipada, e-commerce en el venue y reportería por día." },
+];
+
+const payments = [
+  { flag: "🇨🇱", country: "Chile", pills: ["Webpay", "Webpay Oneclick", "MACH Pay", "GetnetWeb", "Compraqui", "Multicaja", "Fintoc", "Bamboo"] },
+  { flag: "🇦🇷", country: "Argentina", pills: ["MercadoPago", "Decidir"] },
+  { flag: "🇨🇴", country: "Colombia", pills: ["Wompi", "Nequi", "Payvalida", "Paymentez"] },
+  { flag: "🇲🇽", country: "México", pills: ["Nuvei", "Openpay"] },
+  { flag: "🇧🇷", country: "Brasil", pills: ["PagSeguro", "PicPay", "PayPal"] },
+  { flag: "🇵🇪", country: "Perú", pills: ["Izipay", "PagoEfectivo", "Niubiz"] },
+  { flag: "🇵🇾", country: "Paraguay", pills: ["Bancard", "Pagopar", "BancardQR"] },
+  { flag: "🇺🇾", country: "Uruguay", pills: ["MercadoPago"] },
+  { flag: "🌎", country: "Multi-país", pills: ["Dlocal", "MercadoPago", "PayPal", "Stripe", "PayRetailers"] },
+];
+
+const faqs = [
+  { q: "¿Cuánto cobra Ticketplus? ¿Cómo es el modelo de precios?", a: "Cobramos un cargo por servicio sobre cada ticket vendido. Sin licencia, sin mínimos, sin contrato de permanencia. El porcentaje se define según volumen estimado, tipo de evento y módulos activados. Recibes una cotización personalizada con tu evento específico." },
+  { q: "¿Tengo que usar todos los servicios o puedo elegir?", a: "Eliges. La página repasa todas las capacidades disponibles para que actives solo las que tu evento necesita. Un teatro en cartelera puede activar ticketing + on site + analytics sin necesitar POS/tótem o accreditation B2B. El plan se arma contigo según el tipo de evento." },
+  { q: "¿Cómo es la migración desde otra ticketera?", a: "Migración acompañada, no self-service. Llevamos tu base de datos de clientes, plantillas de eventos, mapas y configuraciones. Onboarding completo en pocas semanas con capacitación al equipo. Si tienes eventos en curso, podemos correr en paralelo durante la transición." },
+  { q: "¿Qué diferencia hay entre Full Operation y White Label?", a: "En Full Operation, el comprador final ve la marca Ticketplus, el checkout vive en ticketplus.cl, y nosotros operamos marketplace, marketing y terreno. En White Label, el comprador ve tu marca, el checkout vive en tu dominio, y la recaudación va directa a tu cuenta." },
+  { q: "¿Cuándo recibo el dinero de las ventas?", a: "Liquidación automática 48-72h post-evento. Split de comisiones, facturación electrónica SII Chile y pago en CLP, USD u otra moneda local. Reembolsos parciales en 1 clic con auditoría completa." },
+  { q: "¿Qué es Booster y por qué viene incluido?", a: "Booster es el motor de marketing gestionado de Ticketplus. El equipo opera tus campañas en Meta, Google y TikTok con atribución end-to-end al ticket vendido. Viene incluido en Full Op porque nuestra alineación de revenue depende de que tu evento se venda. Solo disponible en Full Operation." },
+  { q: "¿Qué tipo de soporte recibo y en qué horario?", a: "Soporte 24/7 con personas reales. Account manager asignado pre-evento, WhatsApp directo activado 72h antes del drop, escalamiento directo a ingeniería. Para enterprise drops armamos war room con ingenieros asignados. Para eventos de alta complejidad, operador Ticketplus on-site el día del show." },
+  { q: "¿Hay contrato de permanencia? ¿Y si quiero irme?", a: "Sin permanencia obligatoria ni penalidades de salida. Tu data sigue siendo tuya — exportable en JSON o CSV cuando quieras, incluyendo histórico de ventas y base de clientes." },
+];
+---
+<Site title="Ticketplus · Full Operation — Operación completa para tu evento">
+
+  <nav class="topnav is-solid" id="topnav">
+    <div class="topnav__inner">
+      <a href="/" class="logo"><img src="/wordmark-white.png" alt="Ticketplus" height="24" /></a>
+      <ul class="topnav__links">
+        <li><a href="#antes">Antes</a></li>
+        <li><a href="#durante">Durante</a></li>
+        <li><a href="#despues">Después</a></li>
+        <li><a href="#industrias">Para quién</a></li>
+      </ul>
+      <a href="#contacto" class="btn btn--primary">Agendar demo</a>
+    </div>
+  </nav>
+
+  <header class="page-header" style="padding:180px 0 120px; min-height:60vh; display:flex; align-items:center;">
+    <div class="page-header__inner" style="max-width:1280px;">
+      <p class="page-header__eyebrow">Full Operation · Servicios para productores</p>
+      <h1 class="page-header__title">Todo lo que tu evento necesita:<br/><span class="accent">antes, durante y después.</span></h1>
+      <div style="display:flex; gap:12px; margin-top:40px; flex-wrap:wrap;">
+        <a href="#contacto" class="btn btn--primary">Agendar demo →</a>
+        <a href="#pilares" class="btn btn--ghost">Ver servicios</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="logos-cloud">
+    <div class="container">
+      <p class="logos-cloud__label">Productores y venues que ya operan con Ticketplus Full Op</p>
+      <div class="logos-cloud__grid">
+        {["FIFA U-20 🇨🇱","AFA 🇦🇷","Movistar Arena 🇨🇱","CONAF 🇨🇱","Teatro UC 🇨🇱","Teatro CA660 🇨🇱","Caupolicán 🇨🇱","Ed Sheeran 🌎"].map(l => (
+          <div class="logo-tile-dark">{l}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff; padding:96px 0 72px; text-align:center;">
+    <div class="container">
+      <p class="section__eyebrow" style="color:var(--color-primary);">Servicios Ticketplus · 12 años iterando</p>
+      <h2 class="section__title" style="max-width:900px; margin:0 auto;">Una plataforma profunda. Elige las capacidades que tu evento necesita.</h2>
+    </div>
+  </section>
+
+  <section style="background:#fff; padding:0 0 120px;" id="pilares">
+    <div class="container">
+      <div class="tp-grid-3">
+        {[
+          { n:"01", tag:"ANTES", title:"Prepara y vende", body:"Configura el evento, captura la demanda y vende — mapas interactivos, pre-inscripciones, Booster y showpage con tu identidad.", href:"#antes" },
+          { n:"02", tag:"DURANTE", title:"Opera el día del evento", body:"Validación rápida, POS y tótems en venue, accreditation B2B, monitoreo en vivo y war room con ingenieros asignados.", href:"#durante" },
+          { n:"03", tag:"DESPUÉS", title:"Mide, liquida y retén", body:"Reportes consolidados, atribución multi-canal, liquidación 48-72h, extended products y loyalty para el siguiente evento.", href:"#despues" },
+        ].map(p => (
+          <div class="pillar-overview-card">
+            <span class="pillar-tag">{p.n} · {p.tag}</span>
+            <h3 class="pillar-title">{p.title}</h3>
+            <p class="pillar-body">{p.body}</p>
+            <a href={p.href} class="pillar-link">Ver capacidades ↓</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {pillars.map((p) => (
+    <section id={p.id} style={`padding:120px 0; background:${p.dark ? '#000' : '#fff'}; color:${p.dark ? '#fff' : 'inherit'};`}>
+      <div class="container">
+        <p class="section__eyebrow" style="color:var(--color-secondary);">{p.n} · {p.tag}</p>
+        <h2 class="section__title" style={p.dark ? 'color:#fff;' : ''}>{p.title}</h2>
+        <p class="section__lead" style={`max-width:640px; margin-bottom:56px; color:${p.dark ? 'rgba(255,255,255,0.70)' : 'var(--color-text-muted)'};`}>{p.lead}</p>
+        <div class={`feature-cards-grid${p.features.length >= 4 ? ' feature-cards-grid--2col' : ''}`} style={`background:${p.dark ? 'rgba(255,255,255,0.08)' : 'var(--color-border)'};`}>
+          {p.features.map(f => (
+            <div class="feature-card" style={`background:${p.dark ? '#111' : '#fff'};`}>
+              <span class="feature-card__n">{f.n}</span>
+              <h3 class="feature-card__title" style={p.dark ? 'color:#fff;' : ''}>{f.title}</h3>
+              <p class="feature-card__body" style={p.dark ? 'color:rgba(255,255,255,0.62);' : ''}>{f.body}</p>
+              {f.badge && <span class="feature-card__badge">{f.badge}</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section style="background:#fff; padding:120px 0; border-top:1px solid var(--color-border);">
+    <div class="container">
+      <div style="text-align:center; max-width:760px; margin:0 auto 56px;">
+        <h2 class="section__title">Eventos icónicos que ya operaron con <span class="accent">Ticketplus Full Operation</span></h2>
+      </div>
+      <div class="tp-grid-3">
+        {clients.map(c => (
+          <div style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:10px;">
+            <span style="font-size:1.4rem;">{c.flag}</span>
+            <div style="height:90px; background:var(--color-gray-100); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--color-gray-500); font-family:var(--font-mono); font-size:12px;">{c.stat}</div>
+            <h4 style="font-family:var(--font-heading); font-size:1rem; font-weight:700; letter-spacing:-0.01em; margin:0;">{c.name}</h4>
+            <p style="font-family:var(--font-body); font-size:0.87rem; color:var(--color-text-muted); margin:0;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="industrias">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
+        <p class="section__eyebrow" style="color:var(--color-primary);">Para quién es Full Operation</p>
+        <h2 class="section__title">¿Esto es para tu evento?</h2>
+        <p class="section__lead" style="color:var(--color-text-muted); max-width:540px; margin:0 auto;">Full Operation es para productores y venues que quieren foco en producir su evento — no en operar tecnología, marketing y atención al cliente en paralelo.</p>
+      </div>
+      <div class="tp-grid-4">
+        {industries.map(i => (
+          <a href="#contacto" style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:28px 24px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:10px;">
+            <span style="font-size:28px;">{i.icon}</span>
+            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; margin:0;">{i.title}</h4>
+            <p style="font-family:var(--font-body); font-size:0.87rem; color:var(--color-text-muted); line-height:1.5; margin:0;">{i.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="pagos">
+    <div class="container">
+      <p class="section__eyebrow" style="color:var(--color-secondary);">Pagos</p>
+      <h2 class="section__title">Ecosistema de pagos hecho para LATAM</h2>
+      <div class="tp-grid-3" style="margin:48px 0;">
+        {[
+          { t:"Recaudación gestionada", b:"Operamos la recaudación, liquidamos a tu cuenta en 48-72h post-evento con split de comisiones, facturación electrónica y reembolsos en un clic." },
+          { t:"Multi-país desde un panel", b:"Vende en Chile, Argentina, México o España sin crear cuentas separadas. Un solo backoffice, múltiples mercados." },
+          { t:"Monedas y regulaciones locales", b:"Impuestos, monedas y regulaciones ya están configurados. Tú solo eliges los países donde quieres operar." },
+        ].map(c => (
+          <div style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:28px;">
+            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; margin:0 0 10px;">{c.t}</h4>
+            <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--color-text-muted); line-height:1.55; margin:0;">{c.b}</p>
+          </div>
+        ))}
+      </div>
+      {payments.map(row => (
+        <div class="country-row-tp">
+          <div class="country-label-tp"><span>{row.flag}</span> {row.country}</div>
+          <div class="pay-pills-tp">
+            {row.pills.map(p => <span class="pay-pill-tp">{p}</span>)}
+          </div>
+        </div>
+      ))}
+      <div style="margin-top:56px; background:#000; color:#fff; border-radius:var(--radius-card); padding:48px 32px; text-align:center;">
+        <div style="font-family:var(--font-heading); font-weight:900; font-size:clamp(3rem,6vw,5rem); letter-spacing:-0.04em; line-height:1;">50+</div>
+        <div style="font-family:var(--font-body); font-size:1rem; margin-top:10px; opacity:0.92;">pasarelas de pago integradas en LATAM y Europa</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="contacto">
+    <div class="container">
+      <div class="form-grid-tp">
+        <div>
+          <p class="section__eyebrow" style="color:var(--color-secondary);">Hablemos de tu evento</p>
+          <h2 class="section__title">Agenda una demo personalizada para tu evento.</h2>
+          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Sin compromiso. Te respondemos en menos de 24 horas hábiles con un plan específico para tu evento.</p>
+          <ul style="list-style:none; padding:0; font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:2.2;">
+            {["Sin contrato de permanencia obligatoria","Setup completo en pocas semanas","Account manager dedicado pre-evento","Marketing Booster + marketplace incluidos","Operación en terreno el día del evento","Liquidación automática 48-72h post-evento"].map(item => (
+              <li><span style="color:#1a8a3a; font-weight:700;">✓</span> {item}</li>
+            ))}
+          </ul>
+        </div>
+        <div style="background:#fff; border:1px solid var(--color-border); padding:40px; border-radius:var(--radius-card); box-shadow:var(--shadow-elevated);">
+          <h3 style="font-family:var(--font-heading); font-size:1.4rem; font-weight:700; margin:0 0 6px; letter-spacing:-0.02em;">Agendar demo personalizada</h3>
+          <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--color-text-muted); margin:0 0 28px;">Respondemos en menos de 24 horas hábiles.</p>
+          {[["Nombre","text","Tu nombre"],["Email corporativo","email","tu@empresa.com"],["Empresa o productora","text","Nombre de tu empresa"]].map(([label,type,placeholder]) => (
+            <div style="margin-bottom:14px;">
+              <label style="display:block; font-family:var(--font-heading); font-size:12px; font-weight:600; color:var(--color-text-muted); margin-bottom:6px;">{label}</label>
+              <input type={type} placeholder={placeholder} style="width:100%; border:1px solid var(--color-border); background:#fff; color:var(--color-text-primary); padding:12px 14px; border-radius:8px; font-size:14px; font-family:inherit;" />
+            </div>
+          ))}
+          <div style="margin-bottom:20px;">
+            <label style="display:block; font-family:var(--font-heading); font-size:12px; font-weight:600; color:var(--color-text-muted); margin-bottom:6px;">Tipo de evento</label>
+            <select style="width:100%; border:1px solid var(--color-border); background:#fff; color:var(--color-text-primary); padding:12px 14px; border-radius:8px; font-size:14px; font-family:inherit;">
+              <option>Festival / Concierto</option>
+              <option>Teatro / Sala</option>
+              <option>Estadio / Deporte</option>
+              <option>Feria / Conferencia</option>
+              <option>Familiar / Parque</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <button style="width:100%; background:var(--gradient-brand); color:#fff; padding:14px; border:none; border-radius:var(--radius-button); font-family:var(--font-heading); font-weight:700; font-size:15px; cursor:pointer;">Agendar demo →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff; padding:120px 0; border-top:1px solid var(--color-border);" id="faq">
+    <div class="container" style="max-width:820px;">
+      <div style="text-align:center; margin-bottom:56px;">
+        <p class="section__eyebrow" style="color:var(--color-primary);">Preguntas frecuentes</p>
+        <h2 class="section__title">Lo que productores preguntan antes de elegir Ticketplus.</h2>
+      </div>
+      {faqs.map((f, i) => (
+        <details class={`collapse${i === 0 ? ' is-open' : ''}`} style="border-bottom:1px solid var(--color-border);">
+          <button class="collapse__head" type="button" style="width:100%; background:none; border:none; padding:22px 0; text-align:left; font-family:var(--font-heading); font-size:1.05rem; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; letter-spacing:-0.01em;">
+            <span>{f.q}</span><span class="chev" aria-hidden="true">⌃</span>
+          </button>
+          <div class="collapse__body" style="padding-bottom:22px;">
+            <p style="font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:1.65; margin:0;">{f.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section style="background:var(--gradient-brand); color:#fff; text-align:center; padding:120px 24px;">
+    <div class="container">
+      <h2 style="font-family:var(--font-heading); font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-0.03em; margin:0 0 14px; line-height:1.1;">Tu evento. Tu producción. Operación probada.</h2>
+      <p style="font-family:var(--font-body); font-size:1.1rem; opacity:0.92; margin:0 0 36px;">Demo personalizada en menos de 24 horas hábiles. Sin compromiso.</p>
+      <a href="#contacto" style="display:inline-block; background:#fff; color:var(--color-text-primary); padding:16px 40px; border-radius:var(--radius-button); font-family:var(--font-heading); font-weight:700; font-size:1rem; text-decoration:none;">Agendar demo →</a>
+    </div>
+  </section>
+
+  <footer style="background:#000; color:rgba(255,255,255,0.45); padding:40px 0; font-size:0.875rem; text-align:center; font-family:var(--font-body);">
+    <div class="container">
+      <img src="/wordmark-white.png" alt="Ticketplus" height="20" style="margin:0 auto 12px; display:block; opacity:0.6;" />
+      Plataforma de ticketing y operación de eventos para LATAM
+    </div>
+  </footer>
+
+  <script is:inline>
+    document.querySelectorAll('.collapse__head').forEach(function(h){
+      h.addEventListener('click',function(){ h.parentElement.classList.toggle('is-open'); });
+    });
+  </script>
+
 </Site>
+
+<style>
+  .logos-cloud { background:#0a0a0a; padding:60px 0; border-top:1px solid rgba(255,255,255,0.06); }
+  .logos-cloud__label { font-family:var(--font-heading); font-size:11px; color:rgba(255,255,255,0.38); letter-spacing:0.14em; text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:32px; }
+  .logos-cloud__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:16px; }
+  .logo-tile-dark { aspect-ratio:3/1.2; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.10); border-radius:8px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.60); font-size:0.82rem; font-weight:700; font-family:var(--font-heading); }
+
+  .tp-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .tp-grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+
+  .pillar-overview-card { border:1px solid var(--color-border); border-radius:var(--radius-card); padding:36px 28px; display:flex; flex-direction:column; gap:14px; }
+  .pillar-tag { display:inline-block; font-family:var(--font-heading); font-size:11px; font-weight:800; color:var(--color-primary); letter-spacing:0.15em; background:rgba(255,19,19,0.08); padding:4px 12px; border-radius:999px; align-self:flex-start; }
+  .pillar-title { font-family:var(--font-heading); font-size:1.4rem; font-weight:800; letter-spacing:-0.02em; margin:0; }
+  .pillar-body { font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:1.6; flex:1; margin:0; }
+  .pillar-link { font-family:var(--font-heading); font-size:0.85rem; font-weight:700; color:var(--color-primary); text-decoration:none; }
+
+  .feature-cards-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; border-radius:var(--radius-card); overflow:hidden; }
+  .feature-cards-grid--2col { grid-template-columns:repeat(2,1fr); }
+  .feature-card { padding:40px 36px; display:flex; flex-direction:column; gap:16px; }
+  .feature-card__n { font-family:var(--font-heading); font-weight:900; font-size:56px; line-height:1; letter-spacing:-0.04em; background:var(--gradient-brand-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent; }
+  .feature-card__title { font-family:var(--font-heading); font-size:1.2rem; font-weight:700; letter-spacing:-0.02em; margin:0; }
+  .feature-card__body { font-family:var(--font-body); font-size:0.9rem; line-height:1.65; margin:0; color:var(--color-text-muted); }
+  .feature-card__badge { display:inline-block; font-family:var(--font-heading); font-size:0.7rem; font-weight:700; color:var(--color-secondary); background:rgba(255,171,36,0.10); border:1px solid rgba(255,171,36,0.30); border-radius:4px; padding:3px 8px; letter-spacing:0.05em; text-transform:uppercase; align-self:flex-start; }
+
+  .country-row-tp { display:grid; grid-template-columns:180px 1fr; gap:24px; align-items:center; padding:18px 0; border-top:1px solid var(--color-border); }
+  .country-label-tp { display:flex; align-items:center; gap:10px; font-family:var(--font-heading); font-weight:700; font-size:0.95rem; }
+  .pay-pills-tp { display:flex; flex-wrap:wrap; gap:8px; }
+  .pay-pill-tp { font-family:var(--font-body); font-size:0.78rem; font-weight:600; background:#fff; border:1px solid var(--color-border); color:var(--color-text-primary); padding:5px 12px; border-radius:999px; }
+  .form-grid-tp { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+
+  @media (max-width:1024px) {
+    .tp-grid-4 { grid-template-columns:repeat(2,1fr); }
+    .tp-grid-3 { grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:768px) {
+    .tp-grid-3, .tp-grid-4, .feature-cards-grid, .form-grid-tp { grid-template-columns:1fr !important; }
+    .country-row-tp { grid-template-columns:1fr; gap:12px; }
+  }
+</style>
