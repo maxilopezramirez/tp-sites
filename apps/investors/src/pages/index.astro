@@ -167,6 +167,13 @@ const dataLayer = [
       <h2 class="section__title">Ticketplus Is at the Center of the <span class="accent">Live Economy.</span></h2>
       <p class="ecosystem-tabs__lead">2,800+ promoters, federations, festivals, venues and parks run on the same infrastructure — from a 100-seat theater to the FIFA U-20 World Cup.</p>
 
+      <div class="eco-collage">
+        <img src="/collage/c1.jpg" alt="Football stadium" />
+        <img src="/collage/c2.jpg" alt="Music concert" />
+        <img src="/collage/c3.jpg" alt="Theater" />
+        <img src="/collage/c4.jpg" alt="Sports arena" />
+      </div>
+
       <nav class="eco-nav" role="tablist">
         {segments.map((s, i) => (
           <button
@@ -428,6 +435,25 @@ const dataLayer = [
     gap: 12px;
     margin-top: 32px;
     flex-wrap: wrap;
+  }
+
+  /* Collage */
+  .eco-collage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 40px 0 48px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .eco-collage img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .eco-collage { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* Ecosystem tabs */
