@@ -1519,10 +1519,10 @@ section[class*="ipo"] .section__lead {
 }
 .hero-ml__title {
   font-family: var(--font-heading);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-  font-size: 2em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  font-size: clamp(44px, 5.5vw, 60px);
   max-width: 760px;
   color: #fff;
   margin: 0;

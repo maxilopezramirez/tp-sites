@@ -5,12 +5,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (p: string) => `${base}${p}`;
 
 
-const comparables = [
-  { flag: "ARG", brand: "MercadoLibre", logo: `${base}/logos/mercadolibre.png`, logoH: 28, wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
-  { flag: "BRA", brand: "Nubank", logo: `${base}/logos/nubank.svg`, logoH: 36, wedge: "Financial services wedge", founded: 2013, ipo: 2021, years: 8 },
-  { flag: "URU", brand: "DLocal", logo: `${base}/logos/dlocal.svg`, logoH: 24, wedge: "Cross-border payments wedge", founded: 2016, ipo: 2021, years: 5 },
-  { flag: "CHL", brand: "Ticketplus", logo: `${base}/logo/wordmark-white.png`, logoH: 24, wedge: "Live entertainment wedge", founded: 2014, ipo: 2026, years: 12, own: true },
-];
 
 const models = [
   {
@@ -45,8 +39,8 @@ const moatItems = [
     <div class="hero-ml__media" style={`background-image: url('${base}/hero-about.jpg');`} aria-hidden="true"></div>
     <div class="hero-ml__scrim" aria-hidden="true"></div>
     <div class="hero-ml__inner">
-      <h1 class="hero-ml__title">Twelve years building the operating system for LATAM live entertainment.</h1>
-      <p class="hero-ml__sub">Ticketing is the entry point. The long-term opportunity is the operating, transaction and data layer across Latin America.</p>
+      <h1 class="hero-ml__title">Twelve years building the infrastructure of the Latin American live economy.</h1>
+      <p class="hero-ml__sub" style="max-width: 650px; text-align: left;">We started with ticketing to earn our position in the market. We stayed to run the entire transaction layer for a $40B industry.</p>
       <a class="btn btn--ghost" href={link("/contact/")} style="margin-top: 32px; display: inline-flex;">Contact IR</a>
     </div>
   </header>
@@ -54,35 +48,11 @@ const moatItems = [
   <!-- 2. THE MODEL -->
   <section class="model-about">
     <div class="container">
-      <p class="section__eyebrow">Business model</p>
-      <h2 class="section__title">Two models. <span class="accent">One platform.</span></h2>
-      <p class="section__lead" style="margin-bottom: 48px;">Full Operation is the core. White-Label is the accelerator. Not two businesses — one continuum where partners enter at 1.6% and graduate to 17.3% when the data tells us they are ready.</p>
-
-      <div class="model-cols">
-        {models.map((m, i) => (
-          <div class={`model-col${i === 1 ? " model-col--dark" : ""}`}>
-            <div class="model-col__header">
-              <h3 class="model-col__title">{m.label}</h3>
-              <span class={`tag ${m.tagClass}`}>{m.tag}</span>
-            </div>
-            <p class="model-panel__sub">{m.sub}</p>
-            <ul class="model-panel__stats">
-              {m.stats.map((s) => (
-                <li>
-                  <strong>{s.v}</strong>
-                  <span>{s.l}</span>
-                </li>
-              ))}
-            </ul>
-            <ul class="model-panel__bullets">
-              {m.bullets.map((b) => <li>{b}</li>)}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <p class="section__eyebrow">The model</p>
+      <h2 class="section__title">Land, Learn, <span class="accent">Convert.</span></h2>
+      <p class="section__lead" style="margin-bottom: 48px;">Others perform diligence from the outside. We perform it from inside the operation — years before converting a partner.</p>
 
       <div class="flywheel-cards">
-        <p class="flywheel-cards__label">How the conversion engine works</p>
         <ol class="flywheel-cards__grid">
           <li class="fw-card">
             <div class="fw-card__icon">
@@ -122,14 +92,40 @@ const moatItems = [
         </ol>
         <p class="flywheel-cards__note">Other acquirers perform diligence from the outside. We perform it from inside the operating infrastructure itself.</p>
       </div>
+
+      <div class="model-cols-block">
+        <h3 class="model-cols-label">From 1.6% to 17.3%.</h3>
+        <div class="model-cols">
+          {models.map((m, i) => (
+            <div class={`model-col${i === 1 ? " model-col--dark" : ""}`}>
+              <div class="model-col__header">
+                <h3 class="model-col__title">{m.label}</h3>
+                <span class={`tag ${m.tagClass}`}>{m.tag}</span>
+              </div>
+              <p class="model-panel__sub">{m.sub}</p>
+              <ul class="model-panel__stats">
+                {m.stats.map((s) => (
+                  <li>
+                    <strong>{s.v}</strong>
+                    <span>{s.l}</span>
+                  </li>
+                ))}
+              </ul>
+              <ul class="model-panel__bullets">
+                {m.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- 4. THE PROOF -->
   <section class="proof" style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
     <div class="container">
-      <p class="section__eyebrow">Diversification &amp; financials</p>
-      <h2 class="section__title">Growing fast. <span class="accent">Growing profitably.</span></h2>
+      <p class="section__eyebrow">Financials</p>
+      <h2 class="section__title">Proven <span class="accent">at Scale.</span></h2>
 
       <div class="proof__grid">
         <div class="proof__div">
@@ -165,13 +161,13 @@ const moatItems = [
     </div>
   </section>
 
-  <!-- 5b. MARKET (after proof) -->
-  <section class="market">
+  <!-- 5. MARKET & CATEGORY -->
+  <section class="thesis" style="padding: 96px 0;">
     <div class="container">
-      <p class="section__eyebrow">Market opportunity</p>
-      <h2 class="section__title">A $40B market, growing at <span class="accent-red">4× the global rate.</span></h2>
-      <div class="market__cards">
-        <article class="mcard">
+      <p class="section__eyebrow section__eyebrow--inv">Market & category</p>
+      <h2 class="section__title section__title--inv">A $40B market <span class="accent">waiting for its infrastructure layer.</span></h2>
+      <div class="market__cards" style="margin-top: 48px;">
+        <article class="mcard mcard--inv">
           <p class="mcard__eyebrow">South American live events market</p>
           <p class="mcard__from">2022 · $27.7B</p>
           <p class="mcard__arrow">→</p>
@@ -179,6 +175,11 @@ const moatItems = [
           <p class="mcard__delta">+8.6% CAGR</p>
         </article>
         <article class="mcard mcard--dark">
+          <svg class="mcard__trend" viewBox="0 0 40 40" width="40" height="40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" stroke="rgba(255,171,36,0.25)" stroke-width="1.5"/>
+            <polyline points="10,26 18,16 24,20 30,12" stroke="#ffab24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="25,12 30,12 30,17" stroke="#ffab24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           <p class="mcard__eyebrow">Smart ticketing LATAM</p>
           <p class="mcard__from">2024 · $1B</p>
           <p class="mcard__arrow">→</p>
@@ -186,45 +187,9 @@ const moatItems = [
           <p class="mcard__delta">+16.6% CAGR · 4× global</p>
         </article>
       </div>
-      <ul class="market-facts">
-        <li class="market-fact">
-          <h3 class="market-fact__title">Structurally fragmented.</h3>
-          <p class="market-fact__body">Global ticketing leaders hold less than 20% market share across most of Latin America outside Mexico and Brazil, compared with more than 80% in the US and Europe.</p>
-        </li>
-        <li class="market-fact">
-          <h3 class="market-fact__title">Consolidation race underway.</h3>
-          <p class="market-fact__body">Live Nation → OCESA (2025). CTS Eventim → Punto Ticket (2023). Credicorp → Joinnus (2025). The window to consolidate the underserved 95% is closing.</p>
-        </li>
-        <li class="market-fact">
-          <h3 class="market-fact__title">Infrastructure gap.</h3>
-          <p class="market-fact__body">Most of the region has been underserved not just in ticketing — but in professional event infrastructure. Promoters need more than a ticketing page.</p>
-        </li>
-      </ul>
-      <p class="source">Sources: PwC GE&amp;M Outlook · Worldometer · Grand View Horizon · Mordor Intelligence.</p>
+      <p class="comparables__lead" style="margin-top: 48px;">Markets this large, growing this fast, with this little infrastructure — historically, that gap creates category leaders. When MercadoLibre listed in 2007, Latin American e-commerce was fragmented and underpenetrated. When Nubank IPO'd in 2021, Brazilian fintech was running on inadequate infrastructure. That is exactly where live entertainment in Latin America is today.</p>
+      <p class="comparables__footnote">Business-model parallel only · not for valuation reference. Subject to listing. Sources: PwC GE&amp;M Outlook · Worldometer · Grand View Horizon · Mordor Intelligence.</p>
     </div>
-  </section>
-
-  <!-- 6. CATEGORY + CLOSING (combined dark block) -->
-  <section class="thesis" style="padding: 96px 0 0;">
-    <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Category</p>
-      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
-      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
-      <ul class="comp-grid">
-        {comparables.map((c) => (
-          <li class={`comp${c.own ? " comp--own" : ""}`}>
-            <span class="comp__flag">{c.flag}</span>
-            <img src={c.logo} alt={c.brand} height={c.logoH} style="display:block;max-width:140px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.9;margin:12px 0 8px;" />
-            <p class="comp__wedge">{c.wedge}</p>
-            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
-            <p class="comp__years">{c.years} years</p>
-          </li>
-        ))}
-      </ul>
-      <p class="comparables__footnote">Business-model parallel only · not for valuation reference. Subject to listing.</p>
-    </div>
-
-    <div class="container" style="padding-bottom: 96px;"></div>
   </section>
 
   <nav class="pagenav">
@@ -242,10 +207,36 @@ const moatItems = [
 </Site>
 
 <style>
+  /* Market inv card (on dark background) */
+  .mcard--inv {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .mcard--inv .mcard__eyebrow { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+  .mcard--inv .mcard__from { color: rgba(255,255,255,0.6); }
+  .mcard--inv .mcard__to { color: #fff; }
+  .mcard--inv .mcard__delta { background: var(--gradient-brand); color: #fff; }
+  .mcard--inv .mcard__arrow { -webkit-text-fill-color: initial; background: none; color: var(--color-secondary); }
+
   /* Market dark card */
   .mcard--dark {
     background: #000;
-    border-color: rgba(255,255,255,0.1);
+    border-color: var(--color-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+  .mcard__trend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  @media (min-width: 721px) {
+    .mcard__trend {
+      width: 72px;
+      height: 72px;
+    }
   }
   .mcard--dark .mcard__eyebrow { background: rgba(255,171,36,0.12); color: var(--color-secondary); }
   .mcard--dark .mcard__from { color: rgba(255,255,255,0.6); }
@@ -285,6 +276,17 @@ const moatItems = [
     line-height: 1.6;
     color: var(--color-text-muted);
     margin: 0;
+  }
+
+  /* Model cols block */
+  .model-cols-block { margin-top: 64px; }
+  .model-cols-label {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--color-text-primary);
+    margin: 0 0 32px;
   }
 
   /* Flywheel cards */
