@@ -1,47 +1,611 @@
 ---
 import Site from "../layouts/Site.astro";
 ---
-<Site title="platform.ticketplus.com">
-  <main>
-    <p class="eyebrow">platform.ticketplus.com</p>
-    <h1>Platform</h1>
-    <p class="lead">Whitelabel · opera tu ticketera con la infraestructura TP.</p>
-    <p class="hello">hello world</p>
-  </main>
+<Site title="Ticketplus Platform · Whitelabel SaaS para LATAM">
 
-  <style>
-    main {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 120px 24px 80px;
-    }
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--tp-yellow);
-      margin: 0 0 12px;
-    }
-    h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.02;
-      letter-spacing: -0.02em;
-      margin: 0 0 16px;
-    }
-    .lead {
-      font-size: 18px;
-      color: var(--tp-muted);
-      max-width: 620px;
-      margin: 0 0 40px;
-    }
-    .hello {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 14px;
-      color: var(--tp-muted);
-      padding: 10px 14px;
-      display: inline-block;
-      border: 1px dashed var(--tp-border);
-      border-radius: 6px;
-    }
-  </style>
+  <!-- NAV -->
+  <nav class="tp-nav">
+    <div class="tp-nav__inner">
+      <a href="/" class="tp-nav__logo">ticket<b>plus</b></a>
+      <ul class="tp-nav__links">
+        <li><a href="#pilares">Plataforma</a></li>
+        <li><a href="#por-que">Por qué WL</a></li>
+        <li><a href="#industrias">Para quién</a></li>
+        <li><a href="#comparativa">Comparar</a></li>
+      </ul>
+      <a href="#contacto" class="tp-nav__cta">Solicitar demo</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="tp-hero">
+    <div class="container">
+      <div class="tp-hero__inner">
+        <div>
+          <span class="eyebrow eyebrow--amber">Whitelabel SaaS · Plataforma de ticketing</span>
+          <h1 class="tp-hero__title">Tu marca. Tu dominio.<br/><span class="accent">Tu data.</span></h1>
+          <p class="tp-hero__lead">Ticketplus opera bajo el capó — tú operas la relación con el cliente. La plataforma de ticketing whitelabel que escala con tu marca, no con la nuestra.</p>
+          <ul class="tp-hero__bullets">
+            <li>Dominio propio, app iOS+Android bajo tu nombre, checkout 100% white-label</li>
+            <li>Recaudación directa a tu cuenta — liquidación en 48-72h vía Stripe Connect</li>
+            <li>Multi-país, multi-currency, multi-compliance — sin contadores locales</li>
+            <li>Sandbox sin tarjeta · Migración acompañada · Cero permanencia obligatoria</li>
+          </ul>
+          <div class="tp-hero__ctas">
+            <a href="#contacto" class="btn-tp">Solicitar demo →</a>
+            <a href="#pilares" class="btn-outline">Ver la plataforma</a>
+          </div>
+        </div>
+        <div class="hero-form">
+          <h3>Solicitar demo + sandbox</h3>
+          <p class="hero-form__sub">Respondemos en menos de 24 horas hábiles con acceso sandbox.</p>
+          <div class="form-field">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" />
+          </div>
+          <div class="form-field">
+            <label>Email corporativo</label>
+            <input type="email" placeholder="tu@empresa.com" />
+          </div>
+          <div class="form-field">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nombre de tu empresa" />
+          </div>
+          <div class="form-field">
+            <label>Tipo de operación</label>
+            <select>
+              <option>Productora grande</option>
+              <option>Venue / Arena / Recinto</option>
+              <option>Ticketera regional</option>
+              <option>Equipo deportivo</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <button class="btn-tp btn-tp--full">Solicitar demo →</button>
+          <p class="legal">Sin tarjeta. Sin compromiso. Tus datos quedan en LATAM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS CLOUD -->
+  <section class="logos-cloud">
+    <div class="container">
+      <p class="logos-cloud__label">Operan con Ticketplus Whitelabel</p>
+      <div class="logos-cloud__grid">
+        <div class="logo-tile">Livepass 🇦🇷</div>
+        <div class="logo-tile">Autoentrada 🇦🇷</div>
+        <div class="logo-tile">Ticketea 🇵🇾</div>
+        <div class="logo-tile">La Maraka 🇲🇽</div>
+        <div class="logo-tile">Startickets 🇲🇽</div>
+        <div class="logo-tile">Pases Parques 🇨🇱</div>
+        <div class="logo-tile">Teatro UC 🇨🇱</div>
+        <div class="logo-tile">Audax Italiano 🇨🇱</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIDGE -->
+  <section class="bridge">
+    <div class="container">
+      <span class="eyebrow eyebrow--red">SaaS B2B · 12 años iterando</span>
+      <h2 class="bridge__title">El SaaS de ticketing que escala con tu marca, no con la nuestra.</h2>
+    </div>
+  </section>
+
+  <!-- 3 PILARES -->
+  <section class="pillars" id="pilares">
+    <div class="container">
+      <div class="pillars__grid">
+        <div class="pillar-card">
+          <span class="pillar-card__num">01 · MARCA</span>
+          <h3>Tu marca, tu dominio, tu app</h3>
+          <p>Branded experience completa: tu dominio (tumarca.com), app iOS+Android publicada bajo tu cuenta de desarrollador, checkout 100% white-label, scripts injection para tu propio analytics y pixel.</p>
+          <a href="#pilar-marca" class="pillar-card__link">Ver capa de marca</a>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-card__num">02 · ECONOMÍA</span>
+          <h3>Tu economía, tu data</h3>
+          <p>Recaudación directa a tu cuenta vía Stripe Connect, liquidación en 48-72h, sin contrato de permanencia, data export en JSON/CSV cuando quieras. Cero permanencia obligatoria: te llevas todo si decides irte.</p>
+          <a href="#pilar-economia" class="pillar-card__link">Ver capa económica</a>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-card__num">03 · ESCALA</span>
+          <h3>Tu operación a escala</h3>
+          <p>APIs REST + webhooks + SDKs, multi-currency (CLP/USD operados como eventos separados), compliance multi-país nativo y hardware compatible. Operas 1K o 1M tickets/año en la misma plataforma, sin re-arquitectura.</p>
+          <a href="#pilar-escala" class="pillar-card__link">Ver capa de escala</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILAR 1 — MARCA -->
+  <section class="deep-dive deep-dive--white" id="pilar-marca">
+    <div class="container">
+      <div class="deep-dive__header">
+        <span class="eyebrow eyebrow--amber">01 · Tu marca, tu dominio, tu app</span>
+        <h2 class="section-title">El cliente final nunca ve Ticketplus.</h2>
+        <p class="section-lead section-lead--muted">Tu audiencia compra en tu sitio, en tu app, con tu marca. Ticketplus opera la infraestructura — invisible. Sin co-branding, sin "powered by".</p>
+      </div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-num">01</div>
+          <div class="feature-content">
+            <h4>Dominio propio + checkout white-label end-to-end</h4>
+            <p>Tu dominio (tumarca.com o tickets.tumarca.com), certificado SSL gestionado, emails transaccionales desde tu dominio (DKIM/SPF). Checkout, tickets PDF, confirmaciones y reminders 100% bajo tu identidad visual. <strong>El cliente final nunca ve la marca Ticketplus.</strong></p>
+            <span class="badge">Diferenciador clave vs Full Op</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">02</div>
+          <div class="feature-content">
+            <h4>App iOS + Android publicada bajo tu cuenta</h4>
+            <p>App nativa publicada en App Store y Google Play bajo tu cuenta de desarrollador. Branding completo: ícono, splash, paleta, tipografías. Push notifications desde tu marca, deep linking a eventos y wallet integrado (Apple Wallet + Google Wallet).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILAR 2 — ECONOMÍA -->
+  <section class="deep-dive deep-dive--black" id="pilar-economia">
+    <div class="container">
+      <div class="deep-dive__header">
+        <span class="eyebrow eyebrow--amber">02 · Tu economía, tu data</span>
+        <h2 class="section-title">El dinero pasa por tu cuenta. La data, también.</h2>
+        <p class="section-lead section-lead--white">A diferencia de Full Op, en Whitelabel la recaudación va directa a tu cuenta — Ticketplus cobra una fee SaaS, no se queda con el float.</p>
+      </div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-num">01</div>
+          <div class="feature-content">
+            <h4>Liquidación directa — el dinero llega a tu cuenta</h4>
+            <p>Stripe Connect con cuenta propia: el comprador paga y el dinero entra a <strong>tu</strong> cuenta bancaria, no a la de Ticketplus. Liquidación automática en 48-72h. Sin float retenido, sin "te liquidamos después del evento", sin cuentas escrow opacas.</p>
+            <span class="badge">Diferenciador clave vs Full Op</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">02</div>
+          <div class="feature-content">
+            <h4>Modelo SaaS predecible</h4>
+            <p>Fee mensual SaaS + fee por ticket vendido (transparente, sin sorpresas), en lugar de % sobre revenue total. Operación previsible para tu CFO: presupuestas el costo de plataforma, no compartes ingreso del evento.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">03</div>
+          <div class="feature-content">
+            <h4>Tu data es tuya — exportable cuando quieras</h4>
+            <p>Acceso completo a la base de compradores con consentimiento, exportable en JSON o CSV vía API o panel. <strong>Sin contratos de permanencia.</strong> Si decides irte, te llevas tus eventos, tus compradores, tu histórico transaccional. La data no se queda secuestrada.</p>
+            <span class="badge">Cero permanencia obligatoria</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">04</div>
+          <div class="feature-content">
+            <h4>Multi-currency real — CLP y USD operados como eventos separados</h4>
+            <p>Vende en CLP en Chile y en USD para audiencia internacional, sin conversiones implícitas. Cada moneda se opera como evento separado con su propia liquidación y su propia conciliación bancaria. Sin spreads ocultos de tipo de cambio.</p>
+            <div class="country-pills">
+              <span class="country-pill">🇨🇱 Chile · CLP</span>
+              <span class="country-pill">🇦🇷 Argentina · ARS</span>
+              <span class="country-pill">🇺🇾 Uruguay · UYU</span>
+              <span class="country-pill">🇵🇾 Paraguay · PYG</span>
+              <span class="country-pill">🇧🇷 Brasil · BRL</span>
+              <span class="country-pill">🇨🇴 Colombia · COP</span>
+              <span class="country-pill">🇲🇽 México · MXN</span>
+              <span class="country-pill">🇵🇪 Perú · PEN</span>
+              <span class="country-pill">🇪🇸 España · EUR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILAR 3 — ESCALA -->
+  <section class="deep-dive deep-dive--white" id="pilar-escala">
+    <div class="container">
+      <div class="deep-dive__header">
+        <span class="eyebrow eyebrow--amber">03 · Tu operación a escala</span>
+        <h2 class="section-title">De 1K a 1M tickets/año en la misma plataforma.</h2>
+        <p class="section-lead section-lead--muted">El stack no cambia cuando creces. La misma API que opera un teatro de 200 butacas operó FIFA U-20 con +320K tickets en un día.</p>
+      </div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-num">01</div>
+          <div class="feature-content">
+            <h4>Compliance multi-país nativo</h4>
+            <p>Facturación electrónica integrada por país, <strong>sin contratar contadores locales</strong>: SII en Chile (boleta + factura electrónica), AFIP en Argentina vía Facturante + GoSocket, DIAN en Colombia vía Siigo, DNCP en Paraguay. Cada operación se factura en la jurisdicción correcta automáticamente.</p>
+            <span class="badge">CL · AR · CO · PY</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">02</div>
+          <div class="feature-content">
+            <h4>Hardware compatible — usa lo que ya tienes</h4>
+            <p>Compatibilidad nativa con impresoras Zebra, Honeywell, Verifone, Bixolon y Boca. Si tu venue ya tiene infraestructura, la reutilizas. POS, tótems, lectores QR y validadores funcionan con tu plataforma WL.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">03</div>
+          <div class="feature-content">
+            <h4>Misma arquitectura 1K a 1M tickets/año</h4>
+            <p>El stack que opera un teatro de 200 butacas es el mismo que operó <strong>FIFA U-20 con +320K tickets en un día</strong>. No hay re-arquitectura cuando creces, no cambias de plan ni migras de base de datos.</p>
+            <span class="badge">99.9% uptime</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY TICKETPLUS -->
+  <section class="why-block" id="por-que">
+    <div class="container">
+      <div class="why-block__header">
+        <span class="eyebrow eyebrow--amber">Por qué Whitelabel Ticketplus</span>
+        <h2 class="section-title" style="color:#fff;">Build vs buy ya no es la pregunta correcta.</h2>
+        <p class="section-lead section-lead--white">La pregunta es: ¿cuánto cuesta mantener tu plataforma propia los próximos 5 años vs operar bajo una probada que escala contigo?</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card__num">01</div>
+          <div class="why-card__icon">🛡️</div>
+          <h3>Plataforma probada</h3>
+          <p>FIFA U-20, +320K tickets/día, 99.9% uptime. 12 años iterando sobre el mismo core. Cada caso límite ya lo vivimos.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__num">02</div>
+          <div class="why-card__icon">🌎</div>
+          <h3>Compliance multi-país</h3>
+          <p>SII Chile, AFIP Argentina, DIAN Colombia, DNCP Paraguay — facturación electrónica nativa. No contratas contadores locales.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__num">03</div>
+          <div class="why-card__icon">📐</div>
+          <h3>Cero re-arquitectura</h3>
+          <p>Mismo stack para 1K o 1M tickets/año. No migras de base de datos cuando creces. Tu equipo de ingeniería sigue trabajando.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__num">04</div>
+          <div class="why-card__icon">🔓</div>
+          <h3>Migration in / out</h3>
+          <p>Onboarding acompañado en menos de 4 semanas. Si decides irte, te llevas tu data y tus compradores. Cero permanencia obligatoria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industrias">
+    <div class="container">
+      <div class="industries__header">
+        <span class="eyebrow eyebrow--red">Para quién es Whitelabel</span>
+        <h2 class="section-title">¿Esto es para ti?</h2>
+        <p class="section-lead section-lead--muted">Whitelabel es una decisión de plataforma, no de evento. Estos perfiles ya tomaron esa decisión.</p>
+      </div>
+      <div class="industry-grid">
+        <a href="#contacto" class="industry-card">
+          <div class="industry-card__icon">🎪</div>
+          <h4>Productoras grandes</h4>
+          <p>Vas a construir plataforma propia o cambiar de proveedor. Quieres tu marca front-end y operación probada atrás.</p>
+        </a>
+        <a href="#contacto" class="industry-card">
+          <div class="industry-card__icon">🏟️</div>
+          <h4>Venues / Arenas</h4>
+          <p>Ya tienes ticketing in-house pero pesa mantenerlo. Quieres conservar tu marca y delegar la infraestructura.</p>
+        </a>
+        <a href="#contacto" class="industry-card">
+          <div class="industry-card__icon">🌐</div>
+          <h4>Ticketeras regionales</h4>
+          <p>Operas en un país o ciudad con marca consolidada. Necesitas core SaaS sin perder identidad ni clientes.</p>
+        </a>
+        <a href="#contacto" class="industry-card">
+          <div class="industry-card__icon">⚽</div>
+          <h4>Equipos de fútbol</h4>
+          <p>Boletería propia, abonos socios, partido a partido, acreditación prensa — bajo tu marca de club.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM / WL CLIENTS -->
+  <section class="ecosystem" id="ecosistema">
+    <div class="container">
+      <div class="ecosystem__header">
+        <h2 class="ecosystem__title">Un ecosistema de productores, venues y marcas que apuestan por nuestra <span>tecnología SaaS Whitelabel</span></h2>
+      </div>
+      <div class="platform-grid">
+        <a href="https://livepass.com.ar" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-card__flag">🇦🇷</div>
+          <div class="platform-card__shot">livepass.com.ar</div>
+          <h4>Livepass</h4>
+          <p>Entre las ticketeras más grandes de Argentina.</p>
+          <span class="platform-card__link">livepass.com.ar</span>
+        </a>
+        <a href="https://ventas.autoentrada.com" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-card__flag">🇦🇷</div>
+          <div class="platform-card__shot">ventas.autoentrada.com</div>
+          <h4>Autoentrada</h4>
+          <p>Entre las ticketeras más grandes de Argentina.</p>
+          <span class="platform-card__link">ventas.autoentrada.com</span>
+        </a>
+        <a href="https://ticketea.com.py" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-card__flag">🇵🇾</div>
+          <div class="platform-card__shot">ticketea.com.py</div>
+          <h4>Ticketea</h4>
+          <p>La principal ticketera de Paraguay.</p>
+          <span class="platform-card__link">ticketea.com.py</span>
+        </a>
+        <a href="https://tickets.lamaraka.com.mx" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-card__flag">🇲🇽</div>
+          <div class="platform-card__shot">tickets.lamaraka.com.mx</div>
+          <h4>La Maraka</h4>
+          <p>Líder en entretenimiento en México.</p>
+          <span class="platform-card__link">tickets.lamaraka.com.mx</span>
+        </a>
+        <a href="https://startickets.com.mx" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-card__flag">🇲🇽</div>
+          <div class="platform-card__shot">startickets.com.mx</div>
+          <h4>Startickets</h4>
+          <p>Tecnología de venta de entradas en México.</p>
+          <span class="platform-card__link">startickets.com.mx</span>
+        </a>
+        <a href="https://tickets.pasesparques.cl" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-card__flag">🇨🇱</div>
+          <div class="platform-card__shot">tickets.pasesparques.cl</div>
+          <h4>Pases Parques</h4>
+          <p>Todos los parques nacionales de Chile se venden aquí.</p>
+          <span class="platform-card__link">tickets.pasesparques.cl</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="compare" id="comparativa">
+    <div class="container">
+      <div class="compare__header">
+        <span class="eyebrow eyebrow--red">Comparativa rápida</span>
+        <h2 class="section-title">Ticketplus WL vs alternativas</h2>
+        <p class="section-lead section-lead--muted">Comparativa de alto nivel. Para profundizar en cada competidor, ver landings de comparación dedicadas.</p>
+      </div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capacidad</th>
+            <th class="tp-col">Ticketplus WL</th>
+            <th>Palco4</th>
+            <th>Vivenu</th>
+            <th>Build in-house</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat">Dominio + app propios end-to-end</td>
+            <td class="yes">Sí</td>
+            <td class="partial">Parcial</td>
+            <td class="yes">Sí</td>
+            <td class="yes">Sí</td>
+          </tr>
+          <tr>
+            <td class="feat">Recaudación directa a tu cuenta</td>
+            <td class="yes">Sí</td>
+            <td class="no">No (escrow)</td>
+            <td class="yes">Sí</td>
+            <td class="yes">Sí</td>
+          </tr>
+          <tr>
+            <td class="feat">Multi-país compliance LATAM</td>
+            <td class="yes">CL · AR · CO · PY</td>
+            <td class="partial">CL · AR</td>
+            <td class="no">EU foco</td>
+            <td class="no">Tú lo construyes</td>
+          </tr>
+          <tr>
+            <td class="feat">Migration out + data export</td>
+            <td class="yes">Garantizado</td>
+            <td class="no">No documentado</td>
+            <td class="partial">Vía API</td>
+            <td class="yes">N/A</td>
+          </tr>
+          <tr>
+            <td class="feat">Sandbox sin tarjeta</td>
+            <td class="yes">Sí</td>
+            <td class="no">No</td>
+            <td class="partial">Demo agendada</td>
+            <td class="no">N/A</td>
+          </tr>
+          <tr>
+            <td class="feat">Costo total de ownership 5 años</td>
+            <td class="yes">SaaS predecible</td>
+            <td class="partial">Take rate</td>
+            <td class="partial">SaaS + fee</td>
+            <td class="no">+++ (dev + ops + compliance)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PAGOS LATAM -->
+  <section class="pagos" id="pagos">
+    <div class="container">
+      <div class="pagos__header">
+        <span class="eyebrow eyebrow--amber">Pagos</span>
+        <h2 class="section-title">Ecosistema de pagos<br/>hecho para LATAM</h2>
+      </div>
+      <div class="pagos-cards">
+        <div class="pagos-card">
+          <h4>Recaudación directa</h4>
+          <p>El dinero va a tu cuenta bancaria. Sin pasar por Ticketplus, sin retenciones. Tú operas, tú cobras.</p>
+        </div>
+        <div class="pagos-card">
+          <h4>Multi-país desde un panel</h4>
+          <p>Vende en Chile, Argentina, México o España sin crear cuentas separadas. Un solo backoffice, múltiples mercados.</p>
+        </div>
+        <div class="pagos-card">
+          <h4>Monedas y regulaciones locales</h4>
+          <p>Impuestos, monedas y regulaciones ya están configurados. Tú solo eliges los países donde quieres operar.</p>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇨🇱</span> Chile</div>
+        <div class="pay-pills">
+          <span class="pay-pill">Webpay</span><span class="pay-pill">Webpay Oneclick</span><span class="pay-pill">MACH Pay</span><span class="pay-pill">GetnetWeb</span><span class="pay-pill">Compraqui</span><span class="pay-pill">Multicaja Efectivo</span><span class="pay-pill">Fintoc</span><span class="pay-pill">Bamboo</span><span class="pay-pill">Dpago</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇦🇷</span> Argentina</div>
+        <div class="pay-pills">
+          <span class="pay-pill">MercadoPago</span><span class="pay-pill">Decidir</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇨🇴</span> Colombia</div>
+        <div class="pay-pills">
+          <span class="pay-pill">Wompi</span><span class="pay-pill">Nequi</span><span class="pay-pill">Payvalida</span><span class="pay-pill">Paymentez</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇲🇽</span> México</div>
+        <div class="pay-pills">
+          <span class="pay-pill">Nuvei</span><span class="pay-pill">Openpay</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇧🇷</span> Brasil</div>
+        <div class="pay-pills">
+          <span class="pay-pill">PagSeguro</span><span class="pay-pill">PicPay</span><span class="pay-pill">PayPal</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇵🇪</span> Perú</div>
+        <div class="pay-pills">
+          <span class="pay-pill">Izipay</span><span class="pay-pill">PagoEfectivo</span><span class="pay-pill">Niubiz</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇵🇾</span> Paraguay</div>
+        <div class="pay-pills">
+          <span class="pay-pill">Bancard</span><span class="pay-pill">Pagopar</span><span class="pay-pill">BancardQR</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🇺🇾</span> Uruguay</div>
+        <div class="pay-pills">
+          <span class="pay-pill">MercadoPago</span>
+        </div>
+      </div>
+      <div class="country-row">
+        <div class="country-label"><span class="country-flag">🌎</span> Multi-país</div>
+        <div class="pay-pills">
+          <span class="pay-pill">Dlocal</span><span class="pay-pill">MercadoPago</span><span class="pay-pill">PayPal</span><span class="pay-pill">Stripe</span><span class="pay-pill">PayRetailers</span>
+        </div>
+      </div>
+      <div class="pagos-stat">
+        <div class="pagos-stat__num">50+</div>
+        <div class="pagos-stat__label">pasarelas de pago integradas en LATAM y Europa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="form-section" id="contacto">
+    <div class="container">
+      <div class="form-section__inner">
+        <div>
+          <span class="eyebrow eyebrow--amber">Hablemos de tu plataforma</span>
+          <h2 class="section-title">Sandbox antes de firmar.<br/>Demo en 24 horas hábiles.</h2>
+          <p class="section-lead section-lead--muted">Sin compromiso. Te enviamos acceso a sandbox + agenda de demo con product manager + propuesta SaaS para tu caso.</p>
+          <ul class="form-section__checklist">
+            <li>Sin contratos de permanencia</li>
+            <li>Onboarding completo en menos de 4 semanas</li>
+            <li>Sandbox sin tarjeta antes de firmar nada</li>
+            <li>Soporte 24/7 con SLA contractual</li>
+            <li>Migración acompañada desde tu plataforma actual</li>
+            <li>Cero permanencia obligatoria: tu data sale en JSON o CSV cuando quieras</li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <h3>Solicitar demo + sandbox</h3>
+          <p class="form-sub">Respondemos en menos de 24 horas hábiles.</p>
+          <div class="form-field">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" />
+          </div>
+          <div class="form-field">
+            <label>Email corporativo</label>
+            <input type="email" placeholder="tu@empresa.com" />
+          </div>
+          <div class="form-field">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nombre de tu empresa" />
+          </div>
+          <div class="form-field">
+            <label>Tipo de operación</label>
+            <select>
+              <option>Productora grande</option>
+              <option>Venue / Arena / Recinto</option>
+              <option>Ticketera regional</option>
+              <option>Equipo deportivo</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <button class="btn-tp btn-tp--full">Solicitar demo →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq__header">
+        <span class="eyebrow eyebrow--red">Preguntas frecuentes</span>
+        <h2 class="section-title">Lo que CTOs y CFOs nos preguntan antes de firmar</h2>
+      </div>
+      <div class="faq__list">
+        <details class="faq-item" open>
+          <summary>¿Puedo migrar mi data desde otra plataforma WL?</summary>
+          <p>Sí. Tenemos pipelines de migración acompañada desde plataformas WL comunes (Palco4, Vivenu, Tessitura, Eventbrite Pro, sistemas propios). El proceso típico toma 2 a 4 semanas con ingeniería TP dedicada y un Account Manager asignado.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Cuánto cuesta? ¿Es revenue share o SaaS fee?</summary>
+          <p>Es <strong>modelo SaaS</strong> — fee mensual fija de plataforma + fee transparente por ticket vendido. <strong>No tomamos % sobre el revenue total del evento</strong>, a diferencia del modelo Full Op. La fee se calcula según volumen anual esperado, módulos activados y tier de soporte. Cotización personalizada con TCO estimado a 5 años en menos de 24h.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Hay sandbox antes de contratar?</summary>
+          <p>Sí. Tienes acceso sandbox completo sin tarjeta de crédito desde el día 1 de la conversación comercial. Puedes probar el API, simular ventas, integrar contra tu propio frontend, y validar el flujo end-to-end antes de firmar contrato. Documentación OpenAPI 3.0 abierta, SDKs Node.js, webhooks de prueba.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa con mi facturación en cada país donde opero?</summary>
+          <p>Compliance multi-país nativo en los 4 mercados donde operamos hoy: <strong>SII Chile</strong> (boleta y factura electrónica), <strong>AFIP Argentina</strong> vía Facturante + GoSocket, <strong>DIAN Colombia</strong> vía Siigo, <strong>DNCP Paraguay</strong>. Cada operación se factura en la jurisdicción correcta automáticamente, sin que tengas que contratar contadores locales en cada país.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Quién es dueño de los datos? ¿Qué pasa si me voy?</summary>
+          <p>Los datos son tuyos. Tienes acceso a exportar la base completa de compradores, histórico transaccional, configuración de eventos y reportes en JSON o CSV vía API o panel — en cualquier momento, sin restricciones contractuales. Si decides cerrar el contrato, te asistimos en la migración. Cero permanencia obligatoria, cero data secuestrada.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿En qué se diferencia de Full Operation de Ticketplus?</summary>
+          <p>En Full Operation, el comprador final ve la marca Ticketplus, el checkout vive en ticketplus.cl, y la recaudación pasa por nuestra cuenta antes de liquidarse. En <strong>Whitelabel</strong>, el comprador final ve <strong>tu marca</strong>, el checkout vive en <strong>tu dominio</strong>, y la recaudación va <strong>directa a tu cuenta</strong>. Full Op es ideal para productoras que quieren foco en su evento; WL es para quienes quieren ser dueños de la plataforma.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Tu plataforma. Tu marca. Operación probada.</h2>
+      <p>Demo + sandbox en menos de 24 horas hábiles. Sin compromiso.</p>
+      <a href="#contacto" class="btn-white">Solicitar demo →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="tp-footer">
+    <div class="container">
+      Ticketplus · Plataforma de ticketing whitelabel para LATAM
+    </div>
+  </footer>
+
 </Site>
