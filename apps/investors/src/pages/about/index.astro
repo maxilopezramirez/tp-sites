@@ -4,20 +4,31 @@ import Site from "../../layouts/Site.astro";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (p: string) => `${base}${p}`;
 
-// ===== Thesis data =====
+const glanceLeft = [
+  "Technology-first · vertically integrated · built fully in-house",
+  "AI embedded across customer-facing services and internal operations",
+  "11 countries · 30+ strategic cities · deepest LATAM footprint in the category",
+  "Serving the underserved 95% the global incumbents do not reach",
+  "Bootstrapped twelve years · profitable · financed through operations",
+  "No material concentration across categories, geographies or clients",
+];
+const glanceRight = [
+  { v: "10.2M", l: "Tickets processed (2025)" },
+  { v: "$269M", l: "Platform gross sales" },
+  { v: "2,800", l: "Active promoters & venues" },
+  { v: "39,800", l: "Events managed" },
+  { v: "46M", l: "User sessions" },
+  { v: "95%+", l: "Client retention" },
+];
+
 const highlights = [
-  { n: "01", title: "Large, underpenetrated market.", body: "~$40B LATAM live entertainment opportunity. Smart ticketing growing 16.6% CAGR — more than 4× the global rate of 3.8%." },
-  { n: "02", title: "Structural moat.", body: "Core software stack built in-house since 2014. Deployed across 11 countries, with 12 years of multi-market operating data and 2,800+ partner relationships." },
-  { n: "03", title: "Scale & proof.", body: "$269M GMV in 2025. Revenue +64% YoY. EBITDA margin expanded from 32.8% to 37.3%. Q1 2026 revenue +41% YoY. 95%+ retention." },
-  { n: "04", title: "Category creation.", body: "The technology platform for LATAM live entertainment. We serve the underserved 95% the global incumbents do not reach. Bootstrapped 12 years. Profitable." },
-  { n: "05", title: "Proprietary AI-driven stack.", body: "AI embedded across customer-facing services and internal operations. Anti-fraud, dynamic pricing, demand forecasting. Built in-house with no reliance on third-party core infrastructure." },
+  { n: "01", title: "Large, underpenetrated market.", body: "$40B Latin American live entertainment opportunity. Smart ticketing growing at 16.6% CAGR — more than 4× the global rate of 3.8%. More than 670 million people, median age low 30s, 85% urbanized, expanding middle class, 70% smartphone penetration growing 8% annually." },
+  { n: "02", title: "Structural moat.", body: "Core software stack built in-house since 2014. Deployed across 11 countries, with 12 years of multi-market operating data and 2,800+ partner relationships running on our infrastructure every day. More than 50 local payment methods integrated. Capital can compress many things. It cannot compress accumulated operational history." },
+  { n: "03", title: "Scale & proof.", body: "$269M gross sales in 2025. Revenue grew 64% year over year. EBITDA margin expanded from 32.8% to 37.3%. Q1 2026 revenue up 41% year over year, EBITDA margin 44.6% — on the seasonally weakest quarter. More than 95% client retention." },
+  { n: "04", title: "Category creation.", body: "The technology platform for Latin American live entertainment. We serve the underserved 95% the global incumbents do not reach — particularly independent promoters, venues and regional operators where global players historically have had limited penetration. Bootstrapped twelve years. Profitable." },
+  { n: "05", title: "Proprietary AI-driven stack.", body: "AI embedded across customer-facing services and internal operations: anti-fraud, dynamic pricing, demand forecasting. Built in-house with no reliance on third-party core infrastructure. The same codebase runs a 100-ticket-per-night theater and the FIFA U-20 World Cup." },
 ];
-const dataLayer = [
-  { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
-  { brand: "Toast", asset: "Restaurant ops", expansion: "Expanding within installed base" },
-  { brand: "Shopify", asset: "Merchant data", expansion: "Financial services" },
-  { brand: "Ticketplus", asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
-];
+
 const comparables = [
   { flag: "ARG", brand: "MercadoLibre", wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
   { flag: "BRA", brand: "Nubank", wedge: "Financial services wedge", founded: 2013, ipo: 2021, years: 8 },
@@ -25,9 +36,8 @@ const comparables = [
   { flag: "CHL", brand: "Ticketplus", wedge: "Live entertainment wedge", founded: 2014, ipo: 2026, years: 12, own: true },
 ];
 
-// ===== Market data =====
 const competitors = [
-  { name: "Ticketplus", us: true, latam: true, local: true, primary: true, partners: true, wl: true },
+  { name: "Ticketplus", latam: true, local: true, primary: true, partners: true, wl: true, own: true },
   { name: "Ticketmaster", latam: true, local: false, primary: true, partners: true, wl: false },
   { name: "Fever", latam: true, local: false, primary: true, partners: true, wl: false },
   { name: "SeatGeek", latam: false, local: false, primary: true, partners: true, wl: false },
@@ -37,7 +47,21 @@ const competitors = [
   { name: "VividSeats", latam: false, local: false, primary: false, partners: false, wl: false },
 ];
 
-// ===== Business data =====
+const modules = [
+  { n: "01", title: "Event Ticketing", sub: "Virtual queue · 3D layouts · elastic infra", body: "High-concurrency sales engine for massive demand. Fair randomization, real-time tracking, seat-level visualization." },
+  { n: "02", title: "Payments & Banking", sub: "Acquirers · BNPL · digital wallets · cards", body: "50+ country-specific payment methods. Leading regional gateways, BNPL, international card networks and local debit." },
+  { n: "03", title: "Data & Analytics", sub: "Real-time event management · BI", body: "Live operational data across markets and partners. Multi-year visibility into every partner running on our infrastructure." },
+  { n: "04", title: "Access Control", sub: "Dynamic QR · Biometric · RFID/NFC", body: "Multi-layer validation, frictionless entry. Real-time validation, anti-fraud, facial recognition, cashless wristbands." },
+  { n: "05", title: "On-Site Operations", sub: "Kiosks · Mobile POS · Cashless NFC", body: "Seamless box office and in-venue experience. Self-service pickup, roaming sales, NFC for F&amp;B and VIP." },
+];
+
+const dataLayer = [
+  { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
+  { brand: "Toast", asset: "Restaurant ops", expansion: "Expanding within installed base" },
+  { brand: "Shopify", asset: "Merchant data", expansion: "Financial services" },
+  { brand: "Ticketplus", asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
+];
+
 const sectors = [
   { name: "Sports", pct: 32 },
   { name: "Music", pct: 30 },
@@ -47,69 +71,56 @@ const sectors = [
   { name: "Theater & Arts", pct: 4 },
 ];
 
-// ===== Platform data =====
-const modules = [
-  { n: "01", title: "Event Ticketing", sub: "Virtual queue · 3D layouts · elastic infra", body: "High-concurrency sales engine for massive demand. Fair randomization, real-time tracking, seat-level visualization." },
-  { n: "02", title: "Payments & Banking", sub: "Acquirers · BNPL · digital wallets · cards", body: "50+ country-specific payment methods across Latin America. Leading regional and country-specific gateways, BNPL providers, international card networks and local debit." },
-  { n: "03", title: "Data & Analytics", sub: "Real-time event management · BI", body: "Live operational data across markets and partners. Multi-year P&L visibility into every partner running on our infrastructure." },
-  { n: "04", title: "Access Control", sub: "Dynamic QR · Biometric · RFID/NFC", body: "Multi-layer validation, frictionless entry. Real-time validation, anti-fraud, facial recognition for VIP, cashless wristbands for festivals." },
-  { n: "05", title: "On-Site Operations", sub: "Kiosks · Mobile POS · Cashless NFC", body: "Seamless box office and in-venue experience. Self-service pickup, roaming sales with inventory sync, NFC for F&B and VIP." },
+const team = [
+  { initials: "YD", name: "Yethro Dinamarca", role: "Chairman", body: "Long-term strategy, governance and the transition from regional platform to public company. Joined eight years ago to build the financial architecture and the path to capital markets." },
+  { initials: "CC", name: "Chien-Fu Chen", role: "CEO & Co-Founder", body: "Wrote the first lines of code in 2014 and has architected the platform ever since. Every module of the operating system was built under his technical direction." },
+  { initials: "JJ", name: "Joaquín Jadue", role: "CFO & Co-Founder", body: "Built the financial discipline and operating structure that brought the company to PCAOB-level public company standards. Bootstrapped without institutional equity for twelve years." },
 ];
 ---
 <Site title="About Ticketplus · Investor Relations" current="about">
+
+  <!-- 1. PAGE HEADER -->
   <header class="page-header">
     <div class="page-header__inner">
       <p class="page-header__eyebrow">About Ticketplus</p>
-      <h1 class="page-header__title">The infrastructure for the <span class="accent">live economy</span> of Latin America.</h1>
-      <p class="page-header__lead">Thesis, market, business model and platform — the full story on a single page. Bootstrapped 12 years, profitable, aligned for the long term.</p>
+      <h1 class="page-header__title">Twelve years building the <span class="accent">operating system</span> for LATAM live entertainment.</h1>
+      <p class="page-header__lead">Ticketing is the entry point. The long-term opportunity is the operating, transaction and data layer across Latin America.</p>
     </div>
   </header>
 
-  <!-- =================== THESIS =================== -->
-  <section id="thesis" class="thesis">
+  <!-- 2. AT A GLANCE -->
+  <section class="glance">
     <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Investment thesis · The data layer</p>
-      <h2 class="section__title section__title--inv">We do not compete against ticketing companies. <span class="accent">We capture the data layer.</span></h2>
-      <div class="thesis__grid">
-        <div class="thesis__copy">
-          <p>Over 10.2 million tickets a year across 11 jurisdictions, we capture the full data layer of regional live entertainment: who buys, what they buy, when, in which venue, with which payment method, at which price, with which behavioral pattern.</p>
-          <p>That data composes — day by day, across 11 markets, 50+ payment methods, thousands of local commercial relationships. No global player can replicate it by acquisition. It is the asset, and it compounds.</p>
-          <p>Ticketing is the first vertical. The verticals adjacent to the data layer — payments, BI, dynamic pricing, financial services for partners — are the long-term expansion thesis.</p>
+      <p class="section__eyebrow">At a glance · 2025</p>
+      <div class="glance__grid">
+        <div class="glance__left">
+          <h2 class="section__title">This is already a <span class="accent">scaled infrastructure</span> platform.</h2>
+          <ul class="glance__bullets">
+            {glanceLeft.map((item) => <li>{item}</li>)}
+          </ul>
         </div>
-        <div class="thesis__table">
-          <p class="thesis__table-title">A proven playbook</p>
-          <table>
-            <thead>
-              <tr><th>Company</th><th>Data captured</th><th>Adjacent expansion</th></tr>
-            </thead>
-            <tbody>
-              {dataLayer.map((row) => (
-                <tr class={row.own ? "own" : ""}>
-                  <td>{row.brand}</td>
-                  <td>{row.asset}</td>
-                  <td>{row.expansion}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p class="thesis__footnote">Business-model parallel only · not a valuation reference.</p>
+        <div class="glance__right">
+          <ul class="glance__kpis">
+            {glanceRight.map((k) => (
+              <li>
+                <span class="glance__kpi-value">{k.v}</span>
+                <span class="glance__kpi-label">{k.l}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <div class="thesis__strip">
-        <span><strong>100%</strong> Transaction visibility</span>
-        <span><strong>11</strong> Country regulatory & payments stack</span>
-        <span><strong>12 years</strong> of multi-market operating data</span>
       </div>
     </div>
   </section>
 
+  <!-- 3. INVESTMENT CASE (expanded) -->
   <section class="highlights">
     <div class="container">
-      <p class="section__eyebrow">Investment highlights</p>
-      <h2 class="section__title">Why this. Why now.</h2>
+      <p class="section__eyebrow">Investment case</p>
+      <h2 class="section__title">Five reasons <span class="accent">this matters.</span></h2>
       <ol class="hl-list">
         {highlights.map((h, i) => (
-          <li class={`hl ${i >= 3 ? "hl--amber" : ""}`}>
+          <li class={`hl${i >= 3 ? " hl--amber" : ""}`}>
             <span class="hl__n">{h.n}</span>
             <div>
               <h3>{h.title}</h3>
@@ -121,28 +132,8 @@ const modules = [
     </div>
   </section>
 
-  <section class="comparables">
-    <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Category</p>
-      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
-      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
-      <ul class="comp-grid">
-        {comparables.map((c) => (
-          <li class={`comp ${c.own ? "comp--own" : ""}`}>
-            <span class="comp__flag">{c.flag}</span>
-            <h3>{c.brand}</h3>
-            <p class="comp__wedge">{c.wedge}</p>
-            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
-            <p class="comp__years">{c.years} years</p>
-          </li>
-        ))}
-      </ul>
-      <p class="comparables__footnote">Comparables shown for business-model parallel only · not for valuation reference. Subject to listing.</p>
-    </div>
-  </section>
-
-  <!-- =================== MARKET =================== -->
-  <section id="market" class="market">
+  <!-- 4. MARKET -->
+  <section class="market">
     <div class="container">
       <p class="section__eyebrow">Market opportunity · Market sizing</p>
       <h2 class="section__title">A $40B market, growing at <span class="accent-red">4× the global rate.</span></h2>
@@ -164,10 +155,135 @@ const modules = [
       </div>
       <ul class="market__bullets">
         <li><strong>670M+ population</strong> · median age low 30s · 85% urbanized · expanding middle class · 70% smartphone penetration growing +8% / yr.</li>
-        <li><strong>{`<20%`} share</strong> of LATAM ticketing market held by top global leaders (excl. Mexico, Brazil), vs. {`>80%`} in US/EU — one of the few large markets where global incumbents have not consolidated.</li>
+        <li><strong>&lt;20% share</strong> of LATAM ticketing market held by top global leaders (excl. Mexico, Brazil), vs. &gt;80% in US/EU — one of the few large markets where global incumbents have not consolidated.</li>
         <li><strong>Consolidation race underway.</strong> Live Nation acquired OCESA in Mexico (2025). CTS Eventim acquired Punto Ticket in Chile (2023). Credicorp acquired Joinnus in Peru (2025). The window to consolidate the underserved 95% is closing.</li>
       </ul>
       <p class="source">Sources: PwC GE&amp;M Outlook · Worldometer · Grand View Horizon · Mordor Intelligence.</p>
+    </div>
+  </section>
+
+  <section class="comparables">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Category</p>
+      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
+      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
+      <ul class="comp-grid">
+        {comparables.map((c) => (
+          <li class={`comp${c.own ? " comp--own" : ""}`}>
+            <span class="comp__flag">{c.flag}</span>
+            <h3>{c.brand}</h3>
+            <p class="comp__wedge">{c.wedge}</p>
+            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
+            <p class="comp__years">{c.years} years</p>
+          </li>
+        ))}
+      </ul>
+      <p class="comparables__footnote">Comparables shown for business-model parallel only · not for valuation reference. Subject to listing.</p>
+    </div>
+  </section>
+
+  <!-- 5. BUSINESS MODEL → PARTNERSHIP -->
+  <section class="model">
+    <div class="container">
+      <p class="section__eyebrow">Business model · Two models</p>
+      <h2 class="section__title">Same platform. <span class="accent">Different monetization depth.</span></h2>
+      <div class="model__grid">
+        <article class="model__card model__card--wl">
+          <header>
+            <h3>White-Label SaaS</h3>
+            <span class="tag tag--amber">Accelerator</span>
+          </header>
+          <p class="model__sub">Partners adopt the platform under their own brand. Tech is ours, market access is theirs.</p>
+          <ul class="model__stats">
+            <li><strong>6%</strong><span>of 2025 revenue</span></li>
+            <li><strong>1.6%</strong><span>take rate</span></li>
+            <li><strong>$109M</strong><span>2025 gross sales</span></li>
+          </ul>
+          <ul class="model__bullets">
+            <li>Profitable, asset-light regional expansion.</li>
+            <li>Full data visibility = M&amp;A pipeline.</li>
+            <li>Operating data flows from day one.</li>
+          </ul>
+        </article>
+        <article class="model__card model__card--fo">
+          <header>
+            <h3>Full Operation</h3>
+            <span class="tag tag--red">Core</span>
+          </header>
+          <p class="model__sub">Full event management + advanced sales + marketing + on-site operations, end-to-end.</p>
+          <ul class="model__stats">
+            <li><strong>94%</strong><span>of 2025 revenue</span></li>
+            <li><strong>17.3%</strong><span>take rate</span></li>
+            <li><strong>$160M</strong><span>2025 gross sales</span></li>
+          </ul>
+          <ul class="model__bullets">
+            <li>High-profile events: concerts, sports, festivals.</li>
+            <li>Full margin capture across the event lifecycle.</li>
+            <li>Embedded support drives stickiness across 11 markets.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="model__note">Both models operate on the same codebase. We aren't running two businesses — we're running one continuum where partners enter at White-Label and graduate to Full Operation when the data tells us they are ready.</p>
+    </div>
+  </section>
+
+  <section class="flywheel">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Partnership strategy</p>
+      <h2 class="section__title section__title--inv">We operate our partners <span class="accent">for years</span> before we convert them.</h2>
+      <ol class="fw">
+        <li>
+          <span class="fw__n">1</span>
+          <p class="fw__phase">Land</p>
+          <h3>Market entry via White-Label</h3>
+          <p>Partner adopts the platform under their brand at a 1.6% take rate. Operating data starts flowing from day one.</p>
+        </li>
+        <li>
+          <span class="fw__n">2</span>
+          <p class="fw__phase">Learn</p>
+          <h3>Full business intelligence</h3>
+          <p>Real-time sales, margins and growth trends. Multi-year evidence de-risks every conversion decision.</p>
+        </li>
+        <li>
+          <span class="fw__n">3</span>
+          <p class="fw__phase">Convert</p>
+          <h3>Full Operation conversion</h3>
+          <p>Strategic conversion of top performers at 17.3% take rate, full revenue capture and minimal integration risk.</p>
+        </li>
+      </ol>
+      <p class="fw__footer"><strong>50+ conversion targets in pipeline.</strong> 11 → 25 markets. We see every partner's real P&amp;L, churn and margins because they have run on our infrastructure for 2–5 years.</p>
+    </div>
+  </section>
+
+  <!-- 6. MOAT & PLATFORM -->
+  <section class="platform">
+    <div class="container">
+      <p class="section__eyebrow">Platform &amp; moat</p>
+      <h2 class="section__title">Why global players <span class="accent-red">can't capture this market.</span></h2>
+      <div class="platform__grid">
+        <aside class="moat">
+          <h3>What blocks the incumbents</h3>
+          <ul>
+            <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
+            <li><strong>Payment gateways</strong> · local acquirers, BNPL, wallets across 11 markets</li>
+            <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops</li>
+            <li><strong>Data</strong> · 12 years multi-market · no mono-country can match</li>
+          </ul>
+          <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
+        </aside>
+        <ol class="modules">
+          {modules.map((m) => (
+            <li class="module">
+              <span class="module__n">{m.n}</span>
+              <div>
+                <h4>{m.title}</h4>
+                <p class="module__sub">{m.sub}</p>
+                <p set:html={m.body}></p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -190,7 +306,7 @@ const modules = [
           </thead>
           <tbody>
             {competitors.map((c) => (
-              <tr class={c.us ? "own" : ""}>
+              <tr class={c.own ? "own" : ""}>
                 <th scope="row">{c.name}</th>
                 <td>{c.latam ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
                 <td>{c.local ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
@@ -206,103 +322,53 @@ const modules = [
     </div>
   </section>
 
-  <section class="thesis" style="padding: 90px 0;">
+  <!-- 7. DATA LAYER (crescendo) -->
+  <section id="thesis" class="thesis">
     <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Structural gap</p>
-      <h2 class="section__title section__title--inv">A fragmented industry. <span class="accent">A structural opportunity.</span></h2>
+      <p class="section__eyebrow section__eyebrow--inv">Competitive advantage · The data layer</p>
+      <h2 class="section__title section__title--inv">We do not compete against ticketing companies. <span class="accent">We capture the data layer.</span></h2>
       <div class="thesis__grid">
         <div class="thesis__copy">
-          <p><strong style="color: var(--yellow);">The gap.</strong> The long tail is unserved. Small theaters, independent promoters, regional venues, federations, parks, museums and cultural institutions run events without proper tools. 670M+ people, thousands of events per year, no professional infrastructure built for them.</p>
-          <p><strong style="color: var(--yellow);">Our position.</strong> Local-first technology with regional compliance, integrated payments, white-label flexibility. Already operating in 11 markets, with the deepest LATAM footprint in the category.</p>
+          <p>Over 10.2 million tickets a year across 11 jurisdictions, we capture the full data layer of regional live entertainment: who buys, what they buy, when, in which venue, with which payment method, at which price, with which behavioral pattern.</p>
+          <p>That data composes — day by day, across 11 markets, 50+ payment methods, thousands of local commercial relationships. No global player can replicate it by acquisition. It is the asset, and it compounds.</p>
+          <p>Ticketing is the first vertical. The verticals adjacent to the data layer — payments, BI, dynamic pricing, financial services for partners — are the long-term expansion thesis.</p>
+          <p style="margin-top: 8px; font-style: italic; color: rgba(255,255,255,0.65); font-size: 15px;">"The company that owns the operating and transaction layer of an industry often becomes far more valuable than the entry product itself."</p>
         </div>
-        <div class="thesis__copy">
-          <p><strong style="color: var(--yellow);">The opportunity.</strong> Consolidate a fragmented market with technology that scales. Global incumbents control more than 80% of US and EU ticketing; in LATAM (excluding Mexico, Brazil) they hold less than 20%.</p>
-          <p>Regulatory complexity, monetary fragmentation, local payment methods and cultural proximity make multi-market presence with 12 years of construction a moat almost impossible to replicate in short timeframes.</p>
+        <div class="thesis__table">
+          <p class="thesis__table-title">A proven playbook</p>
+          <table>
+            <thead>
+              <tr><th>Company</th><th>Data captured</th><th>Adjacent expansion</th></tr>
+            </thead>
+            <tbody>
+              {dataLayer.map((row) => (
+                <tr class={row.own ? "own" : ""}>
+                  <td>{row.brand}</td>
+                  <td>{row.asset}</td>
+                  <td>{row.expansion}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="thesis__footnote">Business-model parallel only · not a valuation reference.</p>
         </div>
+      </div>
+      <div class="thesis__strip">
+        <span><strong>100%</strong> Transaction visibility</span>
+        <span><strong>11</strong> Country regulatory &amp; payments stack</span>
+        <span><strong>12 years</strong> of multi-market operating data</span>
       </div>
     </div>
   </section>
 
-  <!-- =================== BUSINESS =================== -->
-  <section id="business" class="model">
-    <div class="container">
-      <p class="section__eyebrow">Business model · Two models</p>
-      <h2 class="section__title">Same platform. <span class="accent">Different monetization depth.</span></h2>
-      <div class="model__grid">
-        <article class="model__card model__card--wl">
-          <header>
-            <h3>White-Label SaaS</h3>
-            <span class="tag tag--amber">Accelerator</span>
-          </header>
-          <p class="model__sub">Partners adopt the platform under their own brand. Tech is ours, market access is theirs.</p>
-          <ul class="model__stats">
-            <li><strong>6%</strong><span>of 2025 revenue</span></li>
-            <li><strong>1.6%</strong><span>take rate</span></li>
-            <li><strong>$109M</strong><span>2025 GMV</span></li>
-          </ul>
-          <ul class="model__bullets">
-            <li>Profitable, asset-light regional expansion.</li>
-            <li>Full data visibility = M&amp;A pipeline.</li>
-            <li>Operating data flows from day one.</li>
-          </ul>
-        </article>
-        <article class="model__card model__card--fo">
-          <header>
-            <h3>Full Operation</h3>
-            <span class="tag tag--red">Core</span>
-          </header>
-          <p class="model__sub">Full event management + advanced sales + marketing + on-site operations, end-to-end.</p>
-          <ul class="model__stats">
-            <li><strong>94%</strong><span>of 2025 revenue</span></li>
-            <li><strong>17.3%</strong><span>take rate</span></li>
-            <li><strong>$160M</strong><span>2025 GMV</span></li>
-          </ul>
-          <ul class="model__bullets">
-            <li>High-profile events: concerts, sports, festivals.</li>
-            <li>Full margin capture across the event lifecycle.</li>
-            <li>Embedded support drives stickiness across 11 markets.</li>
-          </ul>
-        </article>
-      </div>
-      <p class="model__note">Both models operate on the same codebase. We aren't running two businesses — we're running one continuum where partners enter at White-Label and graduate to Full Operation when the data tells us they are ready.</p>
-    </div>
-  </section>
-
-  <section class="flywheel">
-    <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Partnership strategy</p>
-      <h2 class="section__title section__title--inv">We operate our partners <span class="accent">for years</span> before we convert them.</h2>
-      <ol class="fw">
-        <li>
-          <span class="fw__n">1</span>
-          <p class="fw__phase">Land</p>
-          <h3>Market entry via White-Label</h3>
-          <p>Partner adopts the platform under their brand at a 1.6% take rate. Operating data flows from day one.</p>
-        </li>
-        <li>
-          <span class="fw__n">2</span>
-          <p class="fw__phase">Learn</p>
-          <h3>Full business intelligence</h3>
-          <p>Real-time sales, margins and growth trends. Multi-year evidence de-risks every conversion decision.</p>
-        </li>
-        <li>
-          <span class="fw__n own">3</span>
-          <p class="fw__phase">Convert</p>
-          <h3>Full Operation conversion</h3>
-          <p>Strategic conversion of top performers at 17.3% take rate, full revenue capture and minimal integration risk.</p>
-        </li>
-      </ol>
-      <p class="fw__footer"><strong>50+ conversion targets in pipeline.</strong> 11 → 25 markets. We see every partner's real P&amp;L, churn and margins because they have run on our infrastructure for 2–5 years.</p>
-    </div>
-  </section>
-
+  <!-- 8. PROOF -->
   <section class="div">
     <div class="container">
       <p class="section__eyebrow">Diversification</p>
       <h2 class="section__title">Diversified across sectors. <span class="accent-red">Loved by our customers.</span></h2>
       <div class="div__grid">
         <div class="div__chart">
-          <p class="div__chart-title">Sector mix · 2025 GMV</p>
+          <p class="div__chart-title">Sector mix · 2025 gross sales</p>
           <ul class="bars">
             {sectors.map((s) => (
               <li>
@@ -323,52 +389,52 @@ const modules = [
     </div>
   </section>
 
-  <!-- =================== PLATFORM =================== -->
-  <section id="platform" class="platform">
+  <section class="kpis">
     <div class="container">
-      <p class="section__eyebrow">Platform &amp; moat</p>
-      <h2 class="section__title">Why global players <span class="accent-red">can't capture this market.</span></h2>
-      <div class="platform__grid">
-        <aside class="moat">
-          <h3>What blocks the incumbents</h3>
-          <ul>
-            <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
-            <li><strong>Payment gateways</strong> · local acquirers, BNPL, wallets across 11 markets</li>
-            <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops</li>
-            <li><strong>Data</strong> · 12 yrs multi-market · no mono-country can match</li>
-          </ul>
-          <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
-        </aside>
-        <ol class="modules">
-          {modules.map((m) => (
-            <li class="module">
-              <span class="module__n">{m.n}</span>
-              <div>
-                <h4>{m.title}</h4>
-                <p class="module__sub">{m.sub}</p>
-                <p>{m.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <p class="section__eyebrow">Financials · 2023–2026</p>
+      <h2 class="section__title">Growing fast. <span class="accent">Growing profitably.</span></h2>
+      <p class="section__lead">Audited under IFRS by Baker Tilly (PCAOB-registered). Revenue doubled 2023→2025. EBITDA grew 77% in 2025. Zero institutional equity raised in twelve years.</p>
+      <ul class="kpi-grid">
+        <li class="kpi"><span class="kpi__value">$29.5M</span><span class="kpi__label">Net revenue (2025 audited)</span></li>
+        <li class="kpi"><span class="kpi__value">+64%</span><span class="kpi__label">Revenue YoY (2024→2025)</span></li>
+        <li class="kpi"><span class="kpi__value">37.3%</span><span class="kpi__label">EBITDA margin (2025)</span></li>
+        <li class="kpi"><span class="kpi__value">+41%</span><span class="kpi__label">Revenue YoY (Q1 2026)</span></li>
+        <li class="kpi"><span class="kpi__value">44.6%</span><span class="kpi__label">EBITDA margin (Q1 2026)</span></li>
+        <li class="kpi"><span class="kpi__value">0</span><span class="kpi__label">Institutional equity raised in 12 years</span></li>
+      </ul>
+      <p class="source">Q1 2026 preliminary. Source: Ticketplus audited IFRS financials (Baker Tilly, PCAOB-registered).</p>
     </div>
   </section>
 
-  <section class="thesis" style="padding: 90px 0;">
+  <!-- 9. TEAM -->
+  <section class="leadership">
     <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">AI &amp; technology</p>
-      <h2 class="section__title section__title--inv">Twelve years in-house. <span class="accent">A compounding moat.</span></h2>
-      <div class="thesis__grid">
-        <div class="thesis__copy">
-          <p>Every new module deepens stickiness on top of the same partner base. AI is embedded across the customer-facing services and internal operations — anti-fraud, dynamic pricing, demand forecasting.</p>
-          <p>The platform is not a stitched assembly of third-party SaaS tools. It is one codebase, owned end-to-end, refined across 12 years of multi-market operation.</p>
-        </div>
-        <div class="thesis__copy">
-          <p><strong style="color: var(--yellow);">The compounding advantage.</strong> Each new module adds value across thousands of partner relationships. Each new market adds payment methods, regulatory primitives and behavioral data to the same shared infrastructure.</p>
-          <p>This is not a code-rewriting business. It is a code-extending business — which is why the platform can serve a 100-ticket-per-night theater and the FIFA U-20 World Cup on the same stack.</p>
-        </div>
+      <p class="section__eyebrow">Leadership</p>
+      <h2 class="section__title">Operators, <span class="accent">not promoters.</span></h2>
+      <p class="section__lead">The three people below built every layer of this company. Pre-IPO ownership remains 100% with founders, chairman and key employees.</p>
+      <div class="founders">
+        {team.map((t) => (
+          <div class="founder">
+            <span class="founder__avatar">{t.initials}</span>
+            <p class="founder__role">{t.role}</p>
+            <h3>{t.name}</h3>
+            <ul>
+              <li>{t.body}</li>
+            </ul>
+          </div>
+        ))}
       </div>
+      <p class="leadership__strip">Leadership remains deeply aligned with the business, with ownership concentrated among founders, management and key employees. <strong>The IPO is our first equity raise — not a liquidity event.</strong></p>
+    </div>
+  </section>
+
+  <!-- 10. CLOSING -->
+  <section class="thesis" style="padding: 120px 0;">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">The thesis</p>
+      <h2 class="section__title section__title--inv">Ticketplus is building the operating system for live entertainment across Latin America. <span class="accent">Nasdaq is the vehicle, not the goal.</span></h2>
+      <p class="about-closing__lead">The goal is to build the operating, transaction and data infrastructure layer for live entertainment across Latin America. This is not a validation event. It is an acceleration event.</p>
+      <a class="btn btn--primary" href={link("/contact/")} style="display: inline-flex;">Contact IR</a>
     </div>
   </section>
 
@@ -385,3 +451,68 @@ const modules = [
     </div>
   </nav>
 </Site>
+
+<style>
+  .glance { background: var(--color-surface-elevated); }
+  .glance__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  .glance__bullets {
+    list-style: none; padding: 0; margin: 24px 0 0;
+    display: grid; gap: 0;
+  }
+  .glance__bullets li {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .glance__bullets li:first-child { border-top: none; padding-top: 0; }
+  .glance__kpis {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+  }
+  .glance__kpis li {
+    padding: 24px 20px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .glance__kpi-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+  .glance__kpi-label {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+  .about-closing__lead {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.82);
+    max-width: 760px;
+    margin: 24px 0 40px;
+  }
+  @media (max-width: 880px) {
+    .glance__grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
