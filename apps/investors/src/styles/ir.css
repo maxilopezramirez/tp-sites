@@ -1449,6 +1449,27 @@ section[class*="ipo"] .section__lead {
 /* =========================================================
    Page nav (prev / next)
    ========================================================= */
+.ir-contact {
+  background: var(--color-surface-elevated);
+  border-top: 1px solid var(--color-border);
+  padding: 72px 0;
+  text-align: center;
+}
+.ir-contact__title {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin: 0 0 12px;
+}
+.ir-contact__sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin: 0 0 24px;
+}
+
 .pagenav {
   background: var(--color-surface-elevated);
   padding: 64px 0;
