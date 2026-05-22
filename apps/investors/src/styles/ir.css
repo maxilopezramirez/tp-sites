@@ -2041,3 +2041,24 @@ section[class*="ipo"] .section__lead {
     padding: 14px 20px;
   }
 }
+
+/* ── Mobile top bar ────────────────────────────────────── */
+.topbar-mobile {
+  display: none;
+  background: #000;
+  color: rgba(255,255,255,0.65);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 8px 16px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 51;
+}
+.topbar-mobile strong { color: var(--color-secondary); font-weight: 700; }
+@media (max-width: 720px) {
+  .topbar-mobile { display: block; }
+  .topnav { top: 30px; }
+}
