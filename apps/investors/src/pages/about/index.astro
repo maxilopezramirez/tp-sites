@@ -150,7 +150,7 @@ const dataLayer = [
         ))}
       </nav>
       {models.map((m, i) => (
-        <div id={m.id} class={`model-panel${i === 0 ? " is-active" : ""}`} role="tabpanel">
+        <div id={m.id} class={`model-panel${i === 0 ? " is-active" : ""}`} role="tabpanel" style={i !== 0 ? "display:none" : ""}>
           <div class="model-panel__inner">
             <div class="model-panel__left">
               <span class={`tag ${m.tagClass}`}>{m.tag}</span>
@@ -298,10 +298,10 @@ const dataLayer = [
       tabs.forEach(function (t) {
         t.addEventListener('click', function () {
           tabs.forEach(function (x) { x.classList.remove('is-active'); });
-          panels.forEach(function (p) { p.classList.remove('is-active'); });
+          panels.forEach(function (p) { p.style.display = 'none'; });
           t.classList.add('is-active');
           var target = document.getElementById(t.dataset.target);
-          if (target) target.classList.add('is-active');
+          if (target) target.style.display = 'block';
         });
       });
     })();
