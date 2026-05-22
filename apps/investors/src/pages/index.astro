@@ -120,10 +120,10 @@ const segments = [
 ];
 
 const dataLayer = [
-  { brand: "Stripe", logo: "/logos/stripe.svg", logoH: 18, asset: "Payment data", expansion: "Commerce intelligence" },
-  { brand: "Toast", logo: "/logos/toast.svg", logoH: 22, asset: "Restaurant ops", expansion: "Expanding within installed base" },
-  { brand: "Shopify", logo: "/logos/shopify.svg", logoH: 20, asset: "Merchant data", expansion: "Financial services" },
-  { brand: "Ticketplus", logo: "/logo/wordmark-color.png", logoH: 18, asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
+  { brand: "Stripe", logo: `${base}/logos/stripe.svg`, logoH: 18, asset: "Payment data", expansion: "Commerce intelligence" },
+  { brand: "Toast", logo: `${base}/logos/toast.svg`, logoH: 22, asset: "Restaurant ops", expansion: "Expanding within installed base" },
+  { brand: "Shopify", logo: `${base}/logos/shopify.svg`, logoH: 20, asset: "Merchant data", expansion: "Financial services" },
+  { brand: "Ticketplus", logo: `${base}/logo/wordmark-color.png`, logoH: 18, asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
 ];
 ---
 <Site title="Ticketplus · Investor Relations" current="home" description="The operating system for live entertainment across Latin America.">
@@ -183,10 +183,10 @@ const dataLayer = [
       <p class="ecosystem-tabs__lead">2,800+ promoters, federations, festivals, venues and parks run on the same infrastructure — from a 100-seat theater to the FIFA U-20 World Cup.</p>
 
       <div class="eco-collage">
-        <img src="/collage/c1.jpg" alt="Football stadium" />
-        <img src="/collage/c2.jpg" alt="Music concert" />
-        <img src="/collage/c3.jpg" alt="Theater" />
-        <img src="/collage/c4.jpg" alt="Sports arena" />
+        <img src={`${base}/collage/c1.jpg`} alt="Football stadium" />
+        <img src={`${base}/collage/c2.jpg`} alt="Music concert" />
+        <img src={`${base}/collage/c3.jpg`} alt="Theater" />
+        <img src={`${base}/collage/c4.jpg`} alt="Sports arena" />
       </div>
 
       <nav class="eco-nav" role="tablist">

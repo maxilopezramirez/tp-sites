@@ -6,10 +6,10 @@ const link = (p: string) => `${base}${p}`;
 
 
 const comparables = [
-  { flag: "ARG", brand: "MercadoLibre", logo: "/logos/mercadolibre.png", logoH: 28, wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
-  { flag: "BRA", brand: "Nubank", logo: "/logos/nubank.svg", logoH: 36, wedge: "Financial services wedge", founded: 2013, ipo: 2021, years: 8 },
-  { flag: "URU", brand: "DLocal", logo: "/logos/dlocal.svg", logoH: 24, wedge: "Cross-border payments wedge", founded: 2016, ipo: 2021, years: 5 },
-  { flag: "CHL", brand: "Ticketplus", logo: "/logo/wordmark-white.png", logoH: 24, wedge: "Live entertainment wedge", founded: 2014, ipo: 2026, years: 12, own: true },
+  { flag: "ARG", brand: "MercadoLibre", logo: `${base}/logos/mercadolibre.png`, logoH: 28, wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
+  { flag: "BRA", brand: "Nubank", logo: `${base}/logos/nubank.svg`, logoH: 36, wedge: "Financial services wedge", founded: 2013, ipo: 2021, years: 8 },
+  { flag: "URU", brand: "DLocal", logo: `${base}/logos/dlocal.svg`, logoH: 24, wedge: "Cross-border payments wedge", founded: 2016, ipo: 2021, years: 5 },
+  { flag: "CHL", brand: "Ticketplus", logo: `${base}/logo/wordmark-white.png`, logoH: 24, wedge: "Live entertainment wedge", founded: 2014, ipo: 2026, years: 12, own: true },
 ];
 
 const models = [
@@ -42,7 +42,7 @@ const moatItems = [
 
   <!-- 1. HEADER + AT A GLANCE -->
   <header class="hero-ml">
-    <div class="hero-ml__media" style="background-image: url('/hero-about.jpg');" aria-hidden="true"></div>
+    <div class="hero-ml__media" style={`background-image: url('${base}/hero-about.jpg');`} aria-hidden="true"></div>
     <div class="hero-ml__scrim" aria-hidden="true"></div>
     <div class="hero-ml__inner">
       <h1 class="hero-ml__title">Twelve years building the operating system for LATAM live entertainment.</h1>
