@@ -139,15 +139,19 @@ const dataLayer = [
       <p class="hero-ml__sub">
         We entered through ticketing. We stayed to build the infrastructure.
       </p>
-      <div class="hero-ml__ctas">
-        <a class="btn btn--primary" href={link("/about/")}>About Ticketplus</a>
-        <a class="btn btn--ghost" href={link("/leadership/")}>Leadership</a>
-      </div>
+      <a href="#story" class="hero-story-card">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="20" width="6" height="8"/><rect x="13" y="14" width="6" height="14"/><rect x="22" y="8" width="6" height="20"/>
+          <circle cx="25" cy="5" r="2.5" fill="var(--color-secondary)" stroke="none"/>
+        </svg>
+        <span class="hero-story-card__title">Our Growth Story</span>
+        <span class="hero-story-card__cta">Learn more ›</span>
+      </a>
     </div>
   </header>
 
   <!-- VIDEO PLACEHOLDER -->
-  <section class="video-section">
+  <section class="video-section" id="story">
     <div class="container">
       <span class="ecosystem__bar" aria-hidden="true"></span>
       <h2 class="ecosystem__title">Ticketing companies sell tickets.<br/>Ticketplus <span class="accent">runs the event.</span></h2>
@@ -476,6 +480,41 @@ const dataLayer = [
     text-transform: uppercase;
     position: absolute;
     bottom: 24px;
+  }
+
+  /* Hero story card */
+  .hero-story-card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    margin-top: 32px;
+    min-width: 180px;
+    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  }
+  .hero-story-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  }
+  .hero-story-card__title {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+  .hero-story-card__cta {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
   }
 
   /* Platform stats strip */
