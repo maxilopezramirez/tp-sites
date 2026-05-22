@@ -82,36 +82,51 @@ const moatItems = [
         ))}
       </div>
 
-      <div class="flywheel-compact">
-        <p class="flywheel-compact__label">How the conversion engine works · Land · Learn · Convert</p>
-        <ol class="flywheel-compact__steps">
-          <li><strong>Land</strong> — A regional operator adopts our infrastructure under its own brand at 1.6% take rate. Operating data starts flowing from day one.</li>
-          <li><strong>Learn</strong> — Over multiple years, we build full business intelligence on the partner — real-time sales, margins, growth trends, execution quality. We are not buying relationships blindly. We are converting operating relationships we already understand deeply.</li>
-          <li><strong>Convert</strong> — We move the strongest operators to Full Operation at 17.3% take rate. Integration risk is minimal because we have been inside their business for years. <strong>50+ operators in pipeline today.</strong></li>
+      <div class="flywheel-cards">
+        <p class="flywheel-cards__label">How the conversion engine works</p>
+        <ol class="flywheel-cards__grid">
+          <li class="fw-card">
+            <div class="fw-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4v14M8 12l6 6 6-6"/>
+                <path d="M4 22h20"/>
+              </svg>
+            </div>
+            <span class="fw-card__phase">Land</span>
+            <p class="fw-card__body">A regional operator adopts our infrastructure under its own brand at 1.6% take rate. Operating data starts flowing from day one.</p>
+          </li>
+          <li class="fw-card">
+            <div class="fw-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="14" cy="14" r="10"/>
+                <circle cx="14" cy="14" r="4"/>
+                <line x1="14" y1="4" x2="14" y2="10"/>
+                <line x1="14" y1="18" x2="14" y2="24"/>
+                <line x1="4" y1="14" x2="10" y2="14"/>
+                <line x1="18" y1="14" x2="24" y2="14"/>
+              </svg>
+            </div>
+            <span class="fw-card__phase">Learn</span>
+            <p class="fw-card__body">Over multiple years, we build full business intelligence on the partner — real-time sales, margins, growth trends, execution quality. We are not buying relationships blindly. We are converting operating relationships we already understand deeply.</p>
+          </li>
+          <li class="fw-card fw-card--highlight">
+            <div class="fw-card__icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4,20 10,12 16,16 24,6"/>
+                <polyline points="18,6 24,6 24,12"/>
+              </svg>
+            </div>
+            <span class="fw-card__phase">Convert</span>
+            <p class="fw-card__body">We move the strongest operators to Full Operation at 17.3% take rate. Integration risk is minimal because we have been inside their business for years.</p>
+            <p class="fw-card__stat">50+ operators in pipeline today.</p>
+          </li>
         </ol>
-        <p class="flywheel-compact__note">Other acquirers perform diligence from the outside. We perform it from inside the operating infrastructure itself.</p>
+        <p class="flywheel-cards__note">Other acquirers perform diligence from the outside. We perform it from inside the operating infrastructure itself.</p>
       </div>
     </div>
   </section>
 
-  <!-- 4. THE MOAT -->
-  <section class="moat-section">
-    <div class="container">
-      <p class="section__eyebrow">Moat &amp; geographic footprint</p>
-      <h2 class="section__title">Why this position is <span class="accent-red">impossible to replicate quickly.</span></h2>
-      <p class="section__lead">Eleven countries operating live. A roadmap toward twenty-five. Same platform. Same operating model. Same playbook. Every market added became another barrier a new entrant has to rebuild from zero.</p>
-      <div class="moat-grid">
-        {moatItems.map((m) => (
-          <div class="moat-card">
-            <h3 class="moat-card__label">{m.label}</h3>
-            <p class="moat-card__body">{m.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. THE PROOF -->
+  <!-- 4. THE PROOF -->
   <section class="proof">
     <div class="container">
       <p class="section__eyebrow">Diversification &amp; financials</p>
@@ -164,7 +179,7 @@ const moatItems = [
           <p class="mcard__to">2028 · $45.5B</p>
           <p class="mcard__delta">+8.6% CAGR</p>
         </article>
-        <article class="mcard mcard--amber">
+        <article class="mcard mcard--dark">
           <p class="mcard__eyebrow">Smart ticketing LATAM</p>
           <p class="mcard__from">2024 · $1B</p>
           <p class="mcard__arrow">→</p>
@@ -172,10 +187,19 @@ const moatItems = [
           <p class="mcard__delta">+16.6% CAGR · 4× global</p>
         </article>
       </div>
-      <ul class="market__bullets">
-        <li><strong>Structurally fragmented.</strong> Global ticketing leaders hold less than 20% market share across most of Latin America outside Mexico and Brazil, compared with more than 80% in the US and Europe.</li>
-        <li><strong>Consolidation race underway.</strong> Live Nation → OCESA (2025). CTS Eventim → Punto Ticket (2023). Credicorp → Joinnus (2025). The window to consolidate the underserved 95% is closing.</li>
-        <li><strong>Infrastructure gap.</strong> Most of the region has been underserved not just in ticketing — but in professional event infrastructure. Promoters need more than a ticketing page. They need technology that helps them sell more, operate better and manage events more efficiently.</li>
+      <ul class="market-facts">
+        <li class="market-fact">
+          <h3 class="market-fact__title">Structurally fragmented.</h3>
+          <p class="market-fact__body">Global ticketing leaders hold less than 20% market share across most of Latin America outside Mexico and Brazil, compared with more than 80% in the US and Europe.</p>
+        </li>
+        <li class="market-fact">
+          <h3 class="market-fact__title">Consolidation race underway.</h3>
+          <p class="market-fact__body">Live Nation → OCESA (2025). CTS Eventim → Punto Ticket (2023). Credicorp → Joinnus (2025). The window to consolidate the underserved 95% is closing.</p>
+        </li>
+        <li class="market-fact">
+          <h3 class="market-fact__title">Infrastructure gap.</h3>
+          <p class="market-fact__body">Most of the region has been underserved not just in ticketing — but in professional event infrastructure. Promoters need more than a ticketing page.</p>
+        </li>
       </ul>
       <p class="source">Sources: PwC GE&amp;M Outlook · Worldometer · Grand View Horizon · Mordor Intelligence.</p>
     </div>
@@ -219,6 +243,119 @@ const moatItems = [
 </Site>
 
 <style>
+  /* Market dark card */
+  .mcard--dark {
+    background: #000;
+    border-color: rgba(255,255,255,0.1);
+  }
+  .mcard--dark .mcard__eyebrow { background: rgba(255,171,36,0.12); color: var(--color-secondary); }
+  .mcard--dark .mcard__from { color: rgba(255,255,255,0.6); }
+  .mcard--dark .mcard__to { color: #fff; }
+  .mcard--dark .mcard__delta { background: var(--gradient-brand); color: #fff; }
+  .mcard--dark .mcard__arrow { -webkit-text-fill-color: initial; background: none; color: var(--color-secondary); }
+
+  /* Market facts 3-col */
+  .market-facts {
+    list-style: none; padding: 0; margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .market-fact {
+    background: var(--color-surface-elevated);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .market-fact__title {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  .market-fact__body {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* Flywheel cards */
+  .flywheel-cards { margin-top: 48px; }
+  .flywheel-cards__label {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin: 0 0 32px;
+    line-height: 1.15;
+  }
+  .flywheel-cards__grid {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .fw-card {
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+  .fw-card--highlight {
+    background: #000;
+    border-color: rgba(255,171,36,0.3);
+  }
+  .fw-card--highlight .fw-card__phase { color: var(--color-secondary); }
+  .fw-card--highlight .fw-card__body { color: rgba(255,255,255,0.72); }
+  .fw-card--highlight .fw-card__icon { color: var(--color-secondary); }
+  .fw-card__icon { color: var(--color-text-primary); }
+  .fw-card__phase {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+  .fw-card__body {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .fw-card__stat {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin: 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,171,36,0.25);
+  }
+  .flywheel-cards__note {
+    margin-top: 20px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
   /* At a glance */
   .glance { background: var(--color-surface-elevated); padding: 72px 0 96px; }
   .glance__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
