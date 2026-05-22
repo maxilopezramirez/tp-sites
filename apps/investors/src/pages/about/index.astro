@@ -4,21 +4,6 @@ import Site from "../../layouts/Site.astro";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (p: string) => `${base}${p}`;
 
-const glanceLeft = [
-  "Technology-first · vertically integrated · built fully in-house",
-  "AI embedded across customer-facing services and internal operations",
-  "11 countries · 30+ strategic cities · deepest LATAM footprint in the category",
-  "Serving the underserved 95% the global incumbents do not reach",
-  "Bootstrapped twelve years · profitable · financed through operations",
-  "No material concentration across categories, geographies or clients",
-];
-
-const glanceKpis = [
-  { v: "10.2M", l: "Tickets sold (2025)" },
-  { v: "$269M", l: "Gross sales" },
-  { v: "11", l: "Countries" },
-  { v: "95%+", l: "Client retention" },
-];
 
 const comparables = [
   { flag: "ARG", brand: "MercadoLibre", wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
@@ -63,24 +48,6 @@ const moatItems = [
       <p class="page-header__lead">Ticketing is the entry point. The long-term opportunity is the operating, transaction and data layer across Latin America.</p>
     </div>
   </header>
-
-  <section class="glance">
-    <div class="container">
-      <div class="glance__grid">
-        <ul class="glance__bullets">
-          {glanceLeft.map((item) => <li>{item}</li>)}
-        </ul>
-        <ul class="glance__kpis">
-          {glanceKpis.map((k) => (
-            <li>
-              <span class="glance__kpi-value">{k.v}</span>
-              <span class="glance__kpi-label">{k.l}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
 
   <!-- 2. THE MARKET -->
   <section class="market">
