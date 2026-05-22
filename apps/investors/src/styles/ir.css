@@ -1872,3 +1872,99 @@ section[class*="ipo"] .section__lead {
 
 
 
+
+/* =========================================================
+   Mobile overrides
+   ========================================================= */
+@media (max-width: 720px) {
+  /* Layout */
+  .container { padding: 0 20px; }
+  section { padding: 64px 0; }
+
+  /* Nav — show compact links on mobile */
+  .topnav__inner {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    padding: 14px 20px;
+    gap: 0;
+  }
+  .topnav__links {
+    display: flex !important;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+  .topnav__links a { font-size: 12px; }
+  .ticker { display: none; }
+
+  /* Section titles */
+  .section__title { font-size: clamp(26px, 6vw, 36px); }
+  .section__lead { font-size: 16px; }
+
+  /* Thesis table — scroll horizontally */
+  .thesis__table { overflow-x: auto; }
+  .thesis__table table { min-width: 480px; }
+
+  /* Thesis strip — stack vertically */
+  .thesis__strip {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 40px;
+  }
+  .thesis__strip span { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 24px; }
+  .thesis__strip span:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* Thesis grid — stack */
+  .thesis__grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* Scale bar — 2 col */
+  .scalebar__list { gap: 24px; }
+  .scalebar__item { flex: 1 1 40%; border-right: none; margin-right: 0; padding-right: 0; }
+
+  /* Hero ML */
+  .hero-ml__inner { padding: 120px 20px 80px; }
+  .hero-ml__title { font-size: 1.8rem; line-height: 1.15; }
+  .hero-ml__sub { font-size: 15px; }
+  .hero-ml__ctas { flex-direction: column; align-items: flex-start; }
+
+  /* Platform tabs (eco-nav) — horizontal scroll */
+  .eco-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .eco-btn { flex-shrink: 0; font-size: 12px; padding: 10px 14px; }
+  .eco-panel__inner { grid-template-columns: 1fr; gap: 28px; }
+  .eco-panel__right { grid-template-columns: 1fr 1fr; }
+
+  /* Accordion */
+  .acc-body__inner { padding-left: 24px; }
+  .acc-head__title { font-size: 15px; }
+
+  /* Page header */
+  .page-header { padding: 100px 0 60px; }
+  .page-header__title { font-size: clamp(28px, 7vw, 44px); }
+
+  /* Compete table */
+  .compete__wrap { overflow-x: auto; }
+  .compete__table { font-size: 12px; }
+  .compete__table th, .compete__table td { padding: 10px 12px; }
+
+  /* About glance */
+  .glance__grid { grid-template-columns: 1fr; gap: 32px; }
+  .glance__kpis { grid-template-columns: 1fr 1fr; }
+
+  /* Model cols (about) */
+  .model-cols { grid-template-columns: 1fr; }
+  .model-col { border-left: none !important; padding: 32px 0 !important; }
+  .model-col:first-child { border-bottom: 1px solid var(--color-border); }
+
+  /* Flywheel cards */
+  .flywheel-cards__grid { grid-template-columns: 1fr; }
+  .flywheel-compact__steps { grid-template-columns: 1fr; }
+
+  /* Pagenav */
+  .pagenav__inner { flex-direction: column; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .topnav__links { display: none !important; }
+  section { padding: 48px 0; }
+  .scalebar__item { flex: 1 1 100%; }
+  .thesis__strip strong { font-size: clamp(32px, 8vw, 48px); }
+}
