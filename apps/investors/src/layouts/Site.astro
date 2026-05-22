@@ -41,6 +41,16 @@ const wordmark = link("/logo/wordmark-white.png");
           ))}
         </ul>
         <span class="ticker">NASDAQ · <strong>TP</strong> · Q2 2026</span>
+        <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile" id="nav-mobile">
+        <ul>
+          {navItems.map((item) => (
+            <li><a href={item.href} class={current === item.id ? "active" : ""}>{item.label}</a></li>
+          ))}
+        </ul>
       </div>
     </nav>
 
@@ -80,6 +90,18 @@ const wordmark = link("/logo/wordmark-white.png");
 
     <script is:inline>
       (function () {
+        var burger = document.getElementById("nav-burger");
+        var mobile = document.getElementById("nav-mobile");
+        if (burger && mobile) {
+          burger.addEventListener("click", function () {
+            var open = mobile.classList.toggle("is-open");
+            burger.setAttribute("aria-expanded", open ? "true" : "false");
+            burger.classList.toggle("is-open", open);
+          });
+          mobile.querySelectorAll("a").forEach(function(a){
+            a.addEventListener("click", function(){ mobile.classList.remove("is-open"); burger.classList.remove("is-open"); });
+          });
+        }
         var nav = document.getElementById("topnav");
         if (!nav) return;
         function apply() {
