@@ -2030,6 +2030,11 @@ section[class*="ipo"] .section__lead {
   .nav-burger { display: flex; }
   .nav-mobile { display: block; }
   .topnav__links { display: none !important; }
-  .ticker { display: none; }
-  .topnav__inner { grid-template-columns: auto 1fr auto; align-items: center; }
+  .ticker { display: none !important; }
+  .topnav__inner {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+  }
 }
