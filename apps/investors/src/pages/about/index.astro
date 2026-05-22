@@ -451,8 +451,9 @@ const moatItems = [
     .proof__grid { grid-template-columns: 1fr; gap: 48px; }
   }
   @media (max-width: 640px) {
-    .model-cols { gap: 0; }
-    .model-col { padding: 28px 0; }
+    .model-cols { gap: 0; border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+    .model-col { padding: 28px 24px !important; }
+    .model-col--dark { border-radius: 0 !important; margin: 0 !important; }
     .model-panel__stats { gap: 16px; }
     .model-panel__stats strong { font-size: 26px; }
     .model-col__title { font-size: 18px; }
