@@ -138,7 +138,6 @@ const faqs = [
         <li><a href="#pilares">Plataforma</a></li>
         <li><a href="#por-que">Por qué WL</a></li>
         <li><a href="#industrias">Para quién</a></li>
-        <li><a href="#comparativa">Comparar</a></li>
       </ul>
       <a href="#contacto" class="btn btn--primary">Solicitar demo</a>
     </div>
@@ -277,46 +276,6 @@ const faqs = [
     </div>
   </section>
 
-  <!-- COMPARE -->
-  <section style="background:#fff; padding:120px 0; border-top:1px solid var(--color-border);" id="comparativa">
-    <div class="container">
-      <p class="section__eyebrow" style="color:var(--color-primary);">Comparativa rápida</p>
-      <h2 class="section__title">Ticketplus WL vs alternativas</h2>
-      <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:40px;">Comparativa de alto nivel.</p>
-      <div class="compete__wrap">
-        <table class="compete__table" style="min-width:720px;">
-          <thead>
-            <tr>
-              <th style="text-align:left;">Capacidad</th>
-              <th style="background:var(--gradient-brand);">Ticketplus WL</th>
-              <th>Palco4</th>
-              <th>Vivenu</th>
-              <th>Build in-house</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ["Dominio + app propios end-to-end", "Sí", "Parcial", "Sí", "Sí"],
-              ["Recaudación directa a tu cuenta", "Sí", "No (escrow)", "Sí", "Sí"],
-              ["Multi-país compliance LATAM", "CL · AR · CO · PY", "CL · AR", "EU foco", "Tú lo construyes"],
-              ["Migration out + data export", "Garantizado", "No documentado", "Vía API", "N/A"],
-              ["Sandbox sin tarjeta", "Sí", "No", "Demo agendada", "N/A"],
-              ["Costo total de ownership 5 años", "SaaS predecible", "Take rate", "SaaS + fee", "+++ dev + ops"],
-            ].map(row => (
-              <tr>
-                <th scope="row">{row[0]}</th>
-                <td><span class="yes">{row[1]}</span></td>
-                <td style={row[2].startsWith("No") ? "color:var(--color-gray-400);" : row[2] === "Sí" ? "color:#1a8a3a; font-weight:700;" : "color:#b87600; font-style:italic; font-weight:600;"}>{row[2]}</td>
-                <td style={row[3] === "Sí" ? "color:#1a8a3a; font-weight:700;" : row[3].startsWith("No") || row[3] === "EU foco" ? "color:var(--color-gray-400);" : "color:#b87600; font-style:italic; font-weight:600;"}>{row[3]}</td>
-                <td style={row[4] === "Sí" || row[4] === "N/A" ? "color:#1a8a3a; font-weight:700;" : "color:var(--color-gray-400);"}>{row[4]}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <!-- PAGOS LATAM -->
   <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="pagos">
     <div class="container">
@@ -346,7 +305,7 @@ const faqs = [
           </div>
         </div>
       ))}
-      <div style="margin-top:56px; background:var(--gradient-brand); color:#fff; border-radius:var(--radius-card); padding:48px 32px; text-align:center;">
+      <div style="margin-top:56px; background:#000; color:#fff; border-radius:var(--radius-card); padding:48px 32px; text-align:center;">
         <div style="font-family:var(--font-heading); font-weight:900; font-size:clamp(3rem,6vw,5rem); letter-spacing:-0.04em; line-height:1;">50+</div>
         <div style="font-family:var(--font-body); font-size:1rem; font-weight:500; margin-top:10px; opacity:0.92;">pasarelas de pago integradas en LATAM y Europa</div>
       </div>
