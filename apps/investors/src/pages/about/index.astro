@@ -21,13 +21,6 @@ const glanceRight = [
   { v: "95%+", l: "Client retention" },
 ];
 
-const highlights = [
-  { n: "01", title: "Large, underpenetrated market.", body: "$40B Latin American live entertainment opportunity. Smart ticketing growing at 16.6% CAGR — more than 4× the global rate of 3.8%. More than 670 million people, median age low 30s, 85% urbanized, expanding middle class, 70% smartphone penetration growing 8% annually." },
-  { n: "02", title: "Structural moat.", body: "Core software stack built in-house since 2014. Deployed across 11 countries, with 12 years of multi-market operating data and 2,800+ partner relationships running on our infrastructure every day. More than 50 local payment methods integrated. Capital can compress many things. It cannot compress accumulated operational history." },
-  { n: "03", title: "Scale & proof.", body: "$269M gross sales in 2025. Revenue grew 64% year over year. EBITDA margin expanded from 32.8% to 37.3%. Q1 2026 revenue up 41% year over year, EBITDA margin 44.6% — on the seasonally weakest quarter. More than 95% client retention." },
-  { n: "04", title: "Category creation.", body: "The technology platform for Latin American live entertainment. We serve the underserved 95% the global incumbents do not reach — particularly independent promoters, venues and regional operators where global players historically have had limited penetration. Bootstrapped twelve years. Profitable." },
-  { n: "05", title: "Proprietary AI-driven stack.", body: "AI embedded across customer-facing services and internal operations: anti-fraud, dynamic pricing, demand forecasting. Built in-house with no reliance on third-party core infrastructure. The same codebase runs a 100-ticket-per-night theater and the FIFA U-20 World Cup." },
-];
 
 const comparables = [
   { flag: "ARG", brand: "MercadoLibre", wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
@@ -113,26 +106,7 @@ const team = [
     </div>
   </section>
 
-  <!-- 3. INVESTMENT CASE (expanded) -->
-  <section class="highlights">
-    <div class="container">
-      <p class="section__eyebrow">Investment case</p>
-      <h2 class="section__title">Five reasons <span class="accent">this matters.</span></h2>
-      <ol class="hl-list">
-        {highlights.map((h, i) => (
-          <li class={`hl${i >= 3 ? " hl--amber" : ""}`}>
-            <span class="hl__n">{h.n}</span>
-            <div>
-              <h3>{h.title}</h3>
-              <p>{h.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- 4. MARKET -->
+  <!-- 3. MARKET -->
   <section class="market">
     <div class="container">
       <p class="section__eyebrow">Market opportunity · Market sizing</p>
