@@ -39,16 +39,6 @@ const models = [
   },
 ];
 
-const competitors = [
-  { name: "Ticketplus", latam: true, local: true, primary: true, partners: true, wl: true, own: true },
-  { name: "Ticketmaster", latam: true, local: false, primary: true, partners: true, wl: false },
-  { name: "Fever", latam: true, local: false, primary: true, partners: true, wl: false },
-  { name: "SeatGeek", latam: false, local: false, primary: true, partners: true, wl: false },
-  { name: "AudienceView", latam: false, local: false, primary: false, partners: false, wl: true },
-  { name: "Vivenu", latam: false, local: false, primary: false, partners: false, wl: true },
-  { name: "StubHub", latam: false, local: false, primary: false, partners: false, wl: false },
-  { name: "VividSeats", latam: false, local: false, primary: false, partners: false, wl: false },
-];
 
 const dataLayer = [
   { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
@@ -144,32 +134,28 @@ const dataLayer = [
       <h2 class="section__title">Two models. <span class="accent">One platform.</span></h2>
       <p class="section__lead" style="margin-bottom: 40px;">Partners enter at White-Label and graduate to Full Operation when the data tells us they are ready. Not two businesses — one continuum.</p>
 
-      <nav class="tabsec__nav" role="tablist" style="margin-bottom: 0;">
-        {models.map((m, i) => (
-          <button class={`tabsec__btn${i === 0 ? " is-active" : ""}`} data-target={m.id} role="tab">{m.label}</button>
-        ))}
-      </nav>
-      {models.map((m, i) => (
-        <div id={m.id} class={`model-panel${i === 0 ? " is-active" : ""}`} role="tabpanel" style={i !== 0 ? "display:none" : ""}>
-          <div class="model-panel__inner">
-            <div class="model-panel__left">
+      <div class="model-cols">
+        {models.map((m) => (
+          <div class="model-col">
+            <div class="model-col__header">
+              <h3 class="model-col__title">{m.label}</h3>
               <span class={`tag ${m.tagClass}`}>{m.tag}</span>
-              <p class="model-panel__sub">{m.sub}</p>
-              <ul class="model-panel__stats">
-                {m.stats.map((s) => (
-                  <li>
-                    <strong>{s.v}</strong>
-                    <span>{s.l}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+            <p class="model-panel__sub">{m.sub}</p>
+            <ul class="model-panel__stats">
+              {m.stats.map((s) => (
+                <li>
+                  <strong>{s.v}</strong>
+                  <span>{s.l}</span>
+                </li>
+              ))}
+            </ul>
             <ul class="model-panel__bullets">
               {m.bullets.map((b) => <li>{b}</li>)}
             </ul>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       <div class="flywheel-compact">
         <p class="flywheel-compact__label">How it works</p>
@@ -182,54 +168,7 @@ const dataLayer = [
     </div>
   </section>
 
-  <!-- 4. THE POSITION -->
-  <section class="platform">
-    <div class="container">
-      <p class="section__eyebrow">Competitive position</p>
-      <h2 class="section__title">Why global players <span class="accent-red">can't capture this market.</span></h2>
-      <div class="position__grid">
-        <div class="moat moat--flat">
-          <h3>What blocks the incumbents</h3>
-          <ul>
-            <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
-            <li><strong>Payment gateways</strong> · 50+ local acquirers, BNPL, wallets across 11 markets</li>
-            <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops for years</li>
-            <li><strong>Data</strong> · 12 years multi-market · capital cannot compress operational history</li>
-          </ul>
-          <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
-        </div>
-        <div class="compete__wrap">
-          <table class="compete__table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>LATAM</th>
-                <th>Local focus</th>
-                <th>Primary</th>
-                <th>Partners</th>
-                <th>White-label</th>
-              </tr>
-            </thead>
-            <tbody>
-              {competitors.map((c) => (
-                <tr class={c.own ? "own" : ""}>
-                  <th scope="row">{c.name}</th>
-                  <td>{c.latam ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                  <td>{c.local ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                  <td>{c.primary ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                  <td>{c.partners ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                  <td>{c.wl ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <p class="source">Illustrative comparison · categories simplified · not a comprehensive competitive analysis. May 2026.</p>
-    </div>
-  </section>
-
-  <!-- 5. THE DATA LAYER (crescendo) -->
+  <!-- 4. THE DATA LAYER (crescendo) -->
   <section id="thesis" class="thesis">
     <div class="container">
       <p class="section__eyebrow section__eyebrow--inv">Competitive advantage · The data layer</p>
@@ -291,21 +230,6 @@ const dataLayer = [
     </div>
   </nav>
 
-  <script is:inline>
-    (function () {
-      var tabs = document.querySelectorAll('.model-about .tabsec__btn');
-      var panels = document.querySelectorAll('.model-panel');
-      tabs.forEach(function (t) {
-        t.addEventListener('click', function () {
-          tabs.forEach(function (x) { x.classList.remove('is-active'); });
-          panels.forEach(function (p) { p.style.display = 'none'; });
-          t.classList.add('is-active');
-          var target = document.getElementById(t.dataset.target);
-          if (target) target.style.display = 'block';
-        });
-      });
-    })();
-  </script>
 </Site>
 
 <style>
@@ -399,18 +323,38 @@ const dataLayer = [
     color: transparent;
   }
 
-  /* Model tabs */
+  /* Model two-column */
   .model-about { background: var(--color-surface-elevated); }
-  .model-panel { display: none; }
-  .model-panel.is-active { display: block; }
-  .model-panel__inner {
+  .model-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    padding: 40px 0;
+    gap: 0;
     border-top: 1px solid var(--color-border);
+    margin-top: 8px;
   }
-  .model-panel__left { display: flex; flex-direction: column; gap: 16px; }
+  .model-col {
+    padding: 40px 40px 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .model-col:last-child {
+    padding: 40px 0 40px 40px;
+    border-left: 1px solid var(--color-border);
+  }
+  .model-col__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .model-col__title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
   .model-panel__sub {
     font-family: var(--font-body);
     font-size: 16px;
@@ -552,8 +496,9 @@ const dataLayer = [
   }
   @media (max-width: 880px) {
     .glance__grid { grid-template-columns: 1fr; gap: 40px; }
-    .model-panel__inner { grid-template-columns: 1fr; gap: 32px; }
-    .model-panel__bullets { border-left: none; padding-left: 0; padding-top: 0; border-top: 1px solid var(--color-border); }
+    .model-cols { grid-template-columns: 1fr; }
+    .model-col { padding: 32px 0; border-left: none !important; }
+    .model-col:first-child { border-bottom: 1px solid var(--color-border); }
     .flywheel-compact__steps { grid-template-columns: 1fr; gap: 20px; }
   }
 </style>
