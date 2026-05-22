@@ -9,7 +9,11 @@
     "preview": "astro preview --port 4323"
   },
   "dependencies": {
-    "astro": "^5.14.0",
-    "@tp/ui": "workspace:*"
+    "@tp/ui": "workspace:*",
+    "astro": "^5.14.0"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "v0-sdk": "^0.16.4"
   }
 }
