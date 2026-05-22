@@ -247,7 +247,7 @@ const dataLayer = [
               {dataLayer.map((row) => (
                 <tr class={row.own ? "own" : ""}>
                   <td>
-                    <img src={row.logo} alt={row.brand} height={row.logoH} style="display:block;max-width:100px;object-fit:contain;" />
+                    <img src={row.logo} alt={row.brand} height={row.logoH} style="display:block;max-width:100px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.9;" />
                   </td>
                   <td>{row.asset}</td>
                   <td>{row.expansion}</td>
