@@ -22,40 +22,64 @@ const thesis = [
   { n: "05", title: "Proprietary AI.", body: "Anti-fraud, dynamic pricing, demand forecasting — built in-house. No reliance on third-party core infrastructure. Every module compounds on the same codebase." },
 ];
 
-const modules = [
-  { id: "m-ticketing", label: "Event Ticketing", tags: "VIRTUAL QUEUE · 3D LAYOUTS · ELASTIC INFRA", title: "Event Ticketing", body: "High-concurrency sales engine for massive demand. Fair-randomization virtual queues handle spikes from a 100-seat theater to a national stadium. 3D seat-level layouts, real-time inventory sync, anti-bot, dynamic pricing. The same stack ran Ed Sheeran in Argentina & Paraguay (90,000 tickets) and FIFA U-20 World Cup Chile 2025.", stats: [{ v: "10.2M", l: "Tickets issued in 2025" }, { v: "39,800", l: "Events orchestrated · 99.9% uptime" }] },
-  { id: "m-payments", label: "Payments & Banking", tags: "ACQUIRERS · BNPL · DIGITAL WALLETS · CARDS", title: "Payments & Banking", body: "50+ country-specific payment methods across LATAM. Regional and country-specific gateways, BNPL providers, international card networks, local debit and digital wallets. Each new market adds payment primitives to a shared infrastructure, deepening the moat against global incumbents.", stats: [{ v: "50+", l: "Country-specific payment methods" }, { v: "$269M", l: "2025 gross sales across 11 countries" }] },
-  { id: "m-data", label: "Data & Analytics", tags: "REAL-TIME EVENT MANAGEMENT · BUSINESS INTELLIGENCE · AI", title: "Data & Analytics", body: "Live operational data across markets and partners — multi-year visibility into every partner running on Ticketplus, in real time. AI embedded across customer-facing services and internal operations: anti-fraud, dynamic pricing, demand forecasting. The data layer is the asset; ticketing is the first vertical.", stats: [{ v: "100%", l: "Transaction visibility · 11 jurisdictions" }, { v: "12 yrs", l: "Multi-market operating data" }] },
-  { id: "m-access", label: "Access Control", tags: "DYNAMIC QR · BIOMETRIC · RFID / NFC", title: "Access Control", body: "Multi-layer validation, frictionless entry. Real-time validation, anti-fraud, facial recognition for VIP, cashless wristbands for festivals. The same access engine that runs a stadium gate also runs a national park trailhead — offline-capable, biometric-ready, fraud-resilient.", stats: [{ v: "99.9%", l: "Platform uptime · offline-capable validation" }, { v: "2,800", l: "Active partners · venues, parks, federations" }] },
-  { id: "m-onsite", label: "On-Site Operations", tags: "KIOSKS · MOBILE POS · CASHLESS NFC", title: "On-Site Operations", body: "Seamless box office and in-venue experience. Self-service pickup, roaming sales with inventory sync, NFC for F&B and VIP. 36 people on direct payroll — the platform sustains the monthly work of 2,000+ on-site operators in Chile alone.", stats: [{ v: "2,000+", l: "Monthly on-site operators orchestrated · CL" }, { v: "36", l: "People on direct payroll · AI-leveraged ops" }] },
+const segments = [
+  {
+    id: "s-promoters",
+    label: "Independent Promoters",
+    who: "Event organizers running concerts, sports, theater and cultural events across Latin America.",
+    capabilities: ["Event Ticketing", "Payments & Banking", "Data & Analytics", "Access Control", "On-Site Operations"],
+    stats: [
+      { v: "2,800+", l: "Active promoters & venues on the platform" },
+      { v: "4%", l: "Maximum revenue concentration per client" },
+    ],
+  },
+  {
+    id: "s-federations",
+    label: "National Federations",
+    who: "Sports governing bodies and national federations managing large-scale event infrastructure.",
+    capabilities: ["Event Ticketing", "Access Control", "Data & Analytics"],
+    stats: [
+      { v: "FIFA U-20", l: "World Cup Chile 2025 — same stack" },
+      { v: "100→90,000", l: "Seats — one platform, any scale" },
+    ],
+  },
+  {
+    id: "s-festivals",
+    label: "Festivals",
+    who: "Multi-day live music and entertainment festivals requiring cashless, high-capacity operations.",
+    capabilities: ["Event Ticketing", "Payments & Banking", "Access Control", "On-Site Operations"],
+    stats: [
+      { v: "90,000", l: "Tickets — Ed Sheeran, Argentina & Paraguay" },
+      { v: "RFID/NFC", l: "Cashless wristbands for F&B and VIP" },
+    ],
+  },
+  {
+    id: "s-venues",
+    label: "Venues",
+    who: "Stadiums, arenas, theaters and cultural centers embedding the platform into daily operations.",
+    capabilities: ["Event Ticketing", "Access Control", "On-Site Operations", "Data & Analytics"],
+    stats: [
+      { v: "99.9%", l: "Platform uptime — offline-capable" },
+      { v: "3D", l: "Interactive seat-level layouts, real-time inventory" },
+    ],
+  },
+  {
+    id: "s-parks",
+    label: "Parks & Attractions",
+    who: "National parks, theme parks and tourist attractions running access control at any location.",
+    capabilities: ["Event Ticketing", "Access Control", "Payments & Banking"],
+    stats: [
+      { v: "Rapa Nui", l: "Torres del Paine — same stack as national stadiums" },
+      { v: "Offline", l: "Validation — no connectivity required" },
+    ],
+  },
 ];
 
-const charts = [
-  {
-    title: "LATAM Smart Ticketing Is Growing 4× the World",
-    body: "South American live entertainment is moving from <strong>$27.7B in 2022 to $45.5B by 2028</strong> — a +64% expansion in six years. Inside that, smart ticketing is growing at <strong>16.6% CAGR vs. 3.8% globally</strong>: more than 4× the world rate. The structural underpenetration of digital ticketing in LATAM is exactly the window Ticketplus is consolidating.",
-    src: "Sources: PwC GE&M Outlook · Mordor Intelligence · Grand View Horizon.",
-  },
-  {
-    title: "Capturing the Data Layer of Live Entertainment",
-    body: "Stripe captured the payments data layer. Shopify captured merchant data. Toast captured restaurant ops data. The pattern is the same: <strong>capture the data layer first, monetize adjacent verticals second</strong> — payments, BI, dynamic pricing, financial services. Ticketplus is doing this in LATAM live entertainment. The first vertical is ticketing; the long-term asset is the data layer that compounds over 11 jurisdictions and 50+ payment methods.",
-    src: "Business-model parallel only · not a valuation reference. Source: public market data.",
-  },
-  {
-    title: "Why Capital Cannot Replicate Twelve Years of Operational Infrastructure",
-    body: "Eleven jurisdictions with different compliance systems. More than fifty local payment methods integrated across markets. More than twenty-eight hundred operating relationships embedded into the daily workflow of promoters and venues. And twelve years of operational and transaction data across multiple countries. <strong>Capital can compress many things. It cannot compress accumulated operational history.</strong>",
-    src: "Source: Ticketplus internal data.",
-  },
-  {
-    title: "The Land-and-Convert Flywheel: Built-In Intelligence Before Capital Deployment",
-    body: "Most acquirers evaluate companies from the outside — bankers, diligence processes, limited historical data. Ticketplus performs diligence from inside the operating infrastructure itself. White-label partners enter at a 1.6% take rate; operating data flows from day one. Over multiple years, Ticketplus builds full business intelligence on the partner — real-time sales, margins, growth trends, execution quality. <strong>Today, more than 50 operators sit inside the conversion pipeline.</strong> These are operating relationships Ticketplus already understands deeply.",
-    src: "Source: Ticketplus internal data.",
-  },
-  {
-    title: "Financial Operating Leverage: Every Incremental Dollar Is Highly Profitable",
-    body: "Revenue doubled from 2023 to 2025: $14.6M to $29.5M. EBITDA grew 77%, margin expanding from 34% to 37.3%. Q1 2026: revenue up 41% year over year, EBITDA margin 44.6% — <strong>on the seasonally weakest quarter</strong>. In a single quarter of 2026, Ticketplus delivered EBITDA close to what took a full year in 2023. This is a tech business with fixed costs — every incremental dollar of revenue is highly profitable.",
-    src: "Source: Ticketplus audited IFRS financials (Baker Tilly, PCAOB-registered). Q1 2026 preliminary.",
-  },
+const dataLayer = [
+  { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
+  { brand: "Toast", asset: "Restaurant ops", expansion: "Expanding within installed base" },
+  { brand: "Shopify", asset: "Merchant data", expansion: "Financial services" },
+  { brand: "Ticketplus", asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
 ];
 ---
 <Site title="Ticketplus · Investor Relations" current="home" description="The operating system for live entertainment across Latin America.">
@@ -68,9 +92,12 @@ const charts = [
       <h1 class="hero-ml__title">
         The operating system for live entertainment across Latin America.
       </h1>
+      <p class="hero-ml__sub">
+        Ticketing is the entry point. The long-term opportunity is the operating, transaction and data layer.
+      </p>
       <div class="hero-ml__ctas">
         <a class="btn btn--primary" href={link("/about/")}>Our story</a>
-        <a class="btn btn--ghost" href={link("/ipo/")}>IPO process</a>
+        <a class="btn btn--ghost" href={link("/contact/")}>Contact IR</a>
       </div>
     </div>
   </header>
@@ -89,7 +116,7 @@ const charts = [
     </div>
   </section>
 
-  <!-- 3. INVESTMENT THESIS — 5 CARDS -->
+  <!-- 3. FIVE REASONS -->
   <section class="highlights">
     <div class="container">
       <p class="section__eyebrow">Investment thesis</p>
@@ -108,26 +135,41 @@ const charts = [
     </div>
   </section>
 
-  <!-- 4. PLATFORM TABS -->
-  <section class="tabsec">
-    <div class="container tabsec__inner">
-      <p class="section__eyebrow section__eyebrow--inv">Platform</p>
-      <h2 class="ecosystem__title">Ticketplus Is at the <span class="accent">Center of the Live Economy.</span></h2>
-      <nav class="tabsec__nav" role="tablist">
-        {modules.map((m, i) => (
-          <button class={`tabsec__btn${i === 0 ? " is-active" : ""}`} data-target={m.id} role="tab">{m.label}</button>
+  <!-- 4. AT THE CENTER OF THE LIVE ECONOMY -->
+  <section class="ecosystem-tabs">
+    <div class="container">
+      <p class="section__eyebrow">The platform</p>
+      <h2 class="section__title">Ticketplus Is at the Center of the <span class="accent">Live Economy.</span></h2>
+      <p class="ecosystem-tabs__lead">2,800+ promoters, federations, festivals, venues and parks run on the same infrastructure — from a 100-seat theater to the FIFA U-20 World Cup.</p>
+
+      <nav class="eco-nav" role="tablist">
+        {segments.map((s, i) => (
+          <button
+            class={`eco-btn${i === 0 ? " is-active" : ""}`}
+            data-target={s.id}
+            role="tab"
+          >{s.label}</button>
         ))}
       </nav>
-      {modules.map((m, i) => (
-        <div id={m.id} class={`tabsec__panel${i === 0 ? " is-active" : ""}`} role="tabpanel">
-          <div class="tabsec__content">
-            <span class="ecosystem__bar" aria-hidden="true"></span>
-            <p class="tabsec__tags">{m.tags}</p>
-            <h3>{m.title}</h3>
-            <p>{m.body}</p>
-            <div class="tabsec__stats">
-              {m.stats.map((s) => (
-                <div><strong>{s.v}</strong><span>{s.l}</span></div>
+
+      {segments.map((s, i) => (
+        <div id={s.id} class="eco-panel" role="tabpanel" style={i !== 0 ? "display:none" : ""}>
+          <div class="eco-panel__inner">
+            <div class="eco-panel__left">
+              <p class="eco-panel__who">{s.who}</p>
+              <div class="eco-panel__caps">
+                <p class="eco-panel__caps-label">Platform delivers</p>
+                <ul class="eco-panel__caps-list">
+                  {s.capabilities.map((c) => <li>{c}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div class="eco-panel__right">
+              {s.stats.map((st) => (
+                <div class="eco-panel__stat">
+                  <span class="eco-panel__stat-value">{st.v}</span>
+                  <span class="eco-panel__stat-label">{st.l}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -136,51 +178,65 @@ const charts = [
     </div>
   </section>
 
-  <!-- 5. LONG-TERM VIEW — 5 CHARTS -->
-  <section class="longview">
-    <div class="container longview__inner">
-      <p class="section__eyebrow">Long-term view</p>
-      <h2 class="ecosystem__title">Our Long-Term View in <span class="accent">5 Charts.</span></h2>
-      {charts.map((c, i) => (
-        <div class={`collapse${i === 0 ? " is-open" : ""}`}>
-          <button class="collapse__head" type="button">
-            <span>{i + 1} · {c.title}</span>
-            <span class="chev" aria-hidden="true">⌃</span>
-          </button>
-          <div class="collapse__body">
-            <p set:html={c.body}></p>
-            <p class="chart__src">{c.src}</p>
-          </div>
+  <!-- 5. DATA LAYER -->
+  <section class="thesis">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Competitive advantage · The data layer</p>
+      <h2 class="section__title section__title--inv">We do not compete against ticketing companies. <span class="accent">We capture the data layer.</span></h2>
+      <div class="thesis__grid">
+        <div class="thesis__copy">
+          <p>Over 10.2 million tickets a year across 11 jurisdictions, we capture the full data layer of regional live entertainment: who buys, what they buy, when, in which venue, with which payment method, at which price, with which behavioral pattern.</p>
+          <p>That data composes — day by day, across 11 markets, 50+ payment methods, thousands of local commercial relationships. No global player can replicate it by acquisition. It is the asset, and it compounds.</p>
+          <p>Ticketing is the first vertical. The verticals adjacent to the data layer — payments, BI, dynamic pricing, financial services for partners — are the long-term expansion thesis.</p>
         </div>
-      ))}
+        <div class="thesis__table">
+          <p class="thesis__table-title">A proven playbook</p>
+          <table>
+            <thead>
+              <tr><th>Company</th><th>Data captured</th><th>Adjacent expansion</th></tr>
+            </thead>
+            <tbody>
+              {dataLayer.map((row) => (
+                <tr class={row.own ? "own" : ""}>
+                  <td>{row.brand}</td>
+                  <td>{row.asset}</td>
+                  <td>{row.expansion}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="thesis__footnote">Business-model parallel only · not a valuation reference.</p>
+        </div>
+      </div>
+      <div class="thesis__strip">
+        <span><strong>100%</strong> Transaction visibility</span>
+        <span><strong>11</strong> Country regulatory &amp; payments stack</span>
+        <span><strong>12 years</strong> of multi-market operating data</span>
+      </div>
     </div>
   </section>
 
   <!-- 6. CLOSING -->
-  <section class="thesis" style="padding: 120px 0;">
+  <section class="thesis" style="padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.08);">
     <div class="container">
       <p class="section__eyebrow section__eyebrow--inv">The opportunity ahead</p>
       <h2 class="section__title section__title--inv">This is not a validation event.<br/>It is an <span class="accent">acceleration event.</span></h2>
-      <a class="btn btn--primary" href={link("/contact/")} style="margin-top: 40px; display: inline-flex;">Contact IR</a>
+      <p class="home-closing__lead">Nasdaq is the vehicle, not the goal. The goal is to build the operating, transaction and data infrastructure layer for live entertainment across Latin America.</p>
+      <a class="btn btn--primary" href={link("/contact/")} style="margin-top: 8px; display: inline-flex;">Contact IR</a>
     </div>
   </section>
 
   <script is:inline>
     (function () {
-      var tabs = document.querySelectorAll('.tabsec__btn');
-      var panels = document.querySelectorAll('.tabsec__panel');
-      tabs.forEach(function (t) {
-        t.addEventListener('click', function () {
-          tabs.forEach(function (x) { x.classList.remove('is-active'); });
-          panels.forEach(function (p) { p.classList.remove('is-active'); });
-          t.classList.add('is-active');
-          var target = document.getElementById(t.dataset.target);
-          if (target) target.classList.add('is-active');
-        });
-      });
-      document.querySelectorAll('.collapse__head').forEach(function (h) {
-        h.addEventListener('click', function () {
-          h.parentElement.classList.toggle('is-open');
+      var btns = document.querySelectorAll('.eco-btn');
+      var panels = document.querySelectorAll('.eco-panel');
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          btns.forEach(function (x) { x.classList.remove('is-active'); });
+          panels.forEach(function (p) { p.style.display = 'none'; });
+          b.classList.add('is-active');
+          var target = document.getElementById(b.dataset.target);
+          if (target) target.style.display = 'block';
         });
       });
     })();
@@ -188,6 +244,7 @@ const charts = [
 </Site>
 
 <style>
+  /* Scale bar */
   .scalebar {
     background: var(--color-surface-elevated);
     padding: 56px 0;
@@ -221,14 +278,147 @@ const charts = [
     color: var(--color-text-muted);
     line-height: 1.4;
   }
+
+  /* Hero sub + CTAs */
+  .hero-ml__sub {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.78);
+    max-width: 600px;
+    margin: 16px 0 0;
+  }
   .hero-ml__ctas {
     display: flex;
     gap: 12px;
     margin-top: 32px;
     flex-wrap: wrap;
   }
+
+  /* Ecosystem tabs */
+  .ecosystem-tabs { background: var(--color-surface-elevated); }
+  .ecosystem-tabs__lead {
+    font-family: var(--font-body);
+    font-size: 17px;
+    color: var(--color-text-muted);
+    max-width: 720px;
+    line-height: 1.6;
+    margin: 0 0 48px;
+  }
+
+  .eco-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+  .eco-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 14px 20px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    letter-spacing: -0.01em;
+    transition: color .15s ease, border-color .15s ease;
+    white-space: nowrap;
+  }
+  .eco-btn:hover { color: var(--color-text-primary); }
+  .eco-btn.is-active {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  .eco-panel__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    padding: 48px 0 0;
+    align-items: start;
+  }
+  .eco-panel__who {
+    font-family: var(--font-body);
+    font-size: 17px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .eco-panel__caps-label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 14px;
+  }
+  .eco-panel__caps-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .eco-panel__caps-list li {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    background: #ededed;
+    color: var(--color-text-primary);
+  }
+  .eco-panel__right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+    align-self: start;
+  }
+  .eco-panel__stat {
+    padding: 28px 24px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .eco-panel__stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(24px, 2.5vw, 36px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+  .eco-panel__stat-label {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  /* Home closing lead */
+  .home-closing__lead {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.78);
+    max-width: 680px;
+    margin: 24px 0 32px;
+  }
+
+  @media (max-width: 880px) {
+    .eco-panel__inner { grid-template-columns: 1fr; gap: 40px; }
+    .eco-panel__right { grid-template-columns: 1fr 1fr; }
+  }
   @media (max-width: 720px) {
     .scalebar__item { flex: 1 1 40%; border-right: none; margin-right: 0; padding-right: 0; }
     .scalebar__list { gap: 28px; }
+    .eco-btn { font-size: 13px; padding: 12px 14px; }
   }
 </style>
