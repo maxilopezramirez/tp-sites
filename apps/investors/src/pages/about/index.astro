@@ -9,16 +9,16 @@ const link = (p: string) => `${base}${p}`;
 const models = [
   {
     label: "White-Label SaaS",
-    tag: "Accelerator",
-    tagClass: "tag--amber",
+    tag: "",
+    tagClass: "",
     sub: "Partners adopt the platform under their own brand. Tech is ours, market access is theirs.",
     stats: [{ v: "1.6%", l: "take rate" }, { v: "6%", l: "of 2025 revenue" }, { v: "$109M", l: "2025 gross sales" }],
     bullets: ["Every transaction builds the intelligence base for conversion."],
   },
   {
     label: "Full Operation",
-    tag: "Core",
-    tagClass: "tag--red",
+    tag: "",
+    tagClass: "",
     sub: "Full event management — advanced sales, marketing, data intelligence and on-site operations, end-to-end.",
     stats: [{ v: "17.3%", l: "take rate" }, { v: "94%", l: "of 2025 revenue" }, { v: "$160M", l: "2025 gross sales" }],
     bullets: ["Full margin capture across the complete event lifecycle."],
@@ -97,10 +97,10 @@ const moatItems = [
         <h3 class="model-cols-label">From 1.6% to 17.3%.</h3>
         <div class="model-cols">
           {models.map((m, i) => (
-            <div class={`model-col${i === 1 ? " model-col--dark" : ""}`}>
+            <div class={`model-col${i === 0 ? " model-col--dark" : " model-col--gradient"}`}>
               <div class="model-col__header">
                 <h3 class="model-col__title">{m.label}</h3>
-                <span class={`tag ${m.tagClass}`}>{m.tag}</span>
+                {m.tag && <span class={`tag ${m.tagClass}`}>{m.tag}</span>}
               </div>
               <p class="model-panel__sub">{m.sub}</p>
               <ul class="model-panel__stats">
@@ -168,21 +168,28 @@ const moatItems = [
       <h2 class="section__title section__title--inv">A $40B market <span class="accent">waiting for its infrastructure layer.</span></h2>
       <div class="market__cards" style="margin-top: 48px;">
         <article class="mcard mcard--inv">
-          <p class="mcard__eyebrow">South American live events market</p>
+          <svg class="mcard__trend" viewBox="0 0 40 40" width="40" height="40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" stroke="rgba(34,197,94,0.25)" stroke-width="1.5"/>
+            <line x1="20" y1="28" x2="20" y2="12" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+            <polyline points="13,19 20,12 27,19" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="mcard__eyebrow">Live entertainment industry · LATAM</p>
+          <p class="mcard__legend">Total market — concerts, sports, festivals, venues</p>
           <p class="mcard__from">2022 · $27.7B</p>
-          <p class="mcard__arrow">→</p>
+
           <p class="mcard__to">2028 · $45.5B</p>
           <p class="mcard__delta">+8.6% CAGR</p>
         </article>
-        <article class="mcard mcard--dark">
+        <article class="mcard mcard--inv">
           <svg class="mcard__trend" viewBox="0 0 40 40" width="40" height="40" fill="none" aria-hidden="true">
-            <circle cx="20" cy="20" r="19" stroke="rgba(255,171,36,0.25)" stroke-width="1.5"/>
-            <polyline points="10,26 18,16 24,20 30,12" stroke="#ffab24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="25,12 30,12 30,17" stroke="#ffab24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20" cy="20" r="19" stroke="rgba(34,197,94,0.25)" stroke-width="1.5"/>
+            <line x1="20" y1="28" x2="20" y2="12" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+            <polyline points="13,19 20,12 27,19" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p class="mcard__eyebrow">Smart ticketing LATAM</p>
+          <p class="mcard__eyebrow">Ticketing technology layer · LATAM</p>
+          <p class="mcard__legend">Software & infrastructure — Ticketplus's direct market</p>
           <p class="mcard__from">2024 · $1B</p>
-          <p class="mcard__arrow">→</p>
+
           <p class="mcard__to">2030 · $2.5B</p>
           <p class="mcard__delta">+16.6% CAGR · 4× global</p>
         </article>
@@ -207,6 +214,15 @@ const moatItems = [
 </Site>
 
 <style>
+  /* Market card legend */
+  .mcard__legend {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #ffffff;
+    margin: 4px 0 12px;
+    line-height: 1.4;
+  }
+
   /* Market inv card (on dark background) */
   .mcard--inv {
     background: rgba(255,255,255,0.06);
@@ -394,11 +410,23 @@ const moatItems = [
     border-color: rgba(255,255,255,0.12);
   }
   .model-col--dark .model-col__title { color: #fff; }
-  .model-col--dark .model-panel__sub { color: rgba(255,255,255,0.65); }
+  .model-col--dark .model-panel__sub { color: rgba(255,255,255,0.9); }
   .model-col--dark .model-panel__stats span { color: rgba(255,255,255,0.5); }
   .model-col--dark .model-panel__bullets li {
     color: rgba(255,255,255,0.65);
     border-bottom-color: rgba(255,255,255,0.1);
+  }
+  .model-col--gradient {
+    background: linear-gradient(135deg, #f79802, #ff1313);
+    border-color: transparent;
+  }
+  .model-col--gradient .model-col__title { color: #fff; }
+  .model-col--gradient .model-panel__sub { color: rgba(255,255,255,0.85); }
+  .model-col--gradient .model-panel__stats strong { color: #fff; }
+  .model-col--gradient .model-panel__stats span { color: rgba(255,255,255,0.75); }
+  .model-col--gradient .model-panel__bullets li {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.25);
   }
   .model-col__header { display: flex; align-items: center; justify-content: space-between; }
   .model-col__title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: -0.03em; margin: 0; color: var(--color-text-primary); }

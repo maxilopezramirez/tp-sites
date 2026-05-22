@@ -499,7 +499,7 @@ section[class*="ipo"] .section__lead {
 .kpi__value {
   font-family: var(--font-heading);
   font-size: clamp(32px, 3.6vw, 44px);
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1;
   background: var(--gradient-brand-text);
@@ -638,7 +638,7 @@ section[class*="ipo"] .section__lead {
 .mcard--amber .mcard__eyebrow { background: rgba(255,171,36,0.12); color: var(--color-secondary); }
 .mcard__from {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 25px;
   color: var(--color-text-muted);
   margin: 0;
 }
