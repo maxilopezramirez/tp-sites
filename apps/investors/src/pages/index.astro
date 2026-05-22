@@ -24,54 +24,39 @@ const thesis = [
 
 const segments = [
   {
-    id: "s-promoters",
-    label: "Independent Promoters",
-    who: "Event organizers running concerts, sports, theater and cultural events across Latin America.",
-    capabilities: ["Event Ticketing", "Payments & Banking", "Data & Analytics", "Access Control", "On-Site Operations"],
-    stats: [
-      { v: "2,800+", l: "Active promoters & venues on the platform" },
-      { v: "4%", l: "Maximum revenue concentration per client" },
-    ],
+    id: "s-ticketing",
+    label: "Event Ticketing",
+    tags: "VIRTUAL QUEUE · 3D LAYOUTS · ELASTIC INFRA",
+    body: "High-concurrency sales engine for massive demand. Fair-randomization virtual queues handle spikes from a 100-seat theater to a national stadium. 3D seat-level layouts, real-time inventory sync, anti-bot, dynamic pricing.",
+    stats: [{ v: "10.2M", l: "Tickets issued in 2025" }, { v: "39,800", l: "Events orchestrated · 99.9% uptime" }],
   },
   {
-    id: "s-federations",
-    label: "National Federations",
-    who: "Sports governing bodies and national federations managing large-scale event infrastructure.",
-    capabilities: ["Event Ticketing", "Access Control", "Data & Analytics"],
-    stats: [
-      { v: "FIFA U-20", l: "World Cup Chile 2025 — same stack" },
-      { v: "100→90,000", l: "Seats — one platform, any scale" },
-    ],
+    id: "s-payments",
+    label: "Payments & Banking",
+    tags: "ACQUIRERS · BNPL · DIGITAL WALLETS · CARDS",
+    body: "50+ country-specific payment methods across LATAM. Regional and country-specific gateways, BNPL providers, international card networks, local debit and digital wallets. Each new market adds payment primitives to the same shared infrastructure.",
+    stats: [{ v: "50+", l: "Country-specific payment methods" }, { v: "$269M", l: "Gross sales across 11 countries (2025)" }],
   },
   {
-    id: "s-festivals",
-    label: "Festivals",
-    who: "Multi-day live music and entertainment festivals requiring cashless, high-capacity operations.",
-    capabilities: ["Event Ticketing", "Payments & Banking", "Access Control", "On-Site Operations"],
-    stats: [
-      { v: "90,000", l: "Tickets — Ed Sheeran, Argentina & Paraguay" },
-      { v: "RFID/NFC", l: "Cashless wristbands for F&B and VIP" },
-    ],
+    id: "s-data",
+    label: "Data & Analytics",
+    tags: "REAL-TIME MANAGEMENT · BUSINESS INTELLIGENCE · AI",
+    body: "Live operational data across markets and partners — multi-year visibility into every partner running on Ticketplus, in real time. AI embedded across customer-facing services and internal operations: anti-fraud, dynamic pricing, demand forecasting.",
+    stats: [{ v: "100%", l: "Transaction visibility · 11 jurisdictions" }, { v: "12 yrs", l: "Multi-market operating data" }],
   },
   {
-    id: "s-venues",
-    label: "Venues",
-    who: "Stadiums, arenas, theaters and cultural centers embedding the platform into daily operations.",
-    capabilities: ["Event Ticketing", "Access Control", "On-Site Operations", "Data & Analytics"],
-    stats: [
-      { v: "99.9%", l: "Platform uptime — offline-capable" },
-      { v: "3D", l: "Interactive seat-level layouts, real-time inventory" },
-    ],
+    id: "s-access",
+    label: "Access Control",
+    tags: "DYNAMIC QR · BIOMETRIC · RFID / NFC",
+    body: "Multi-layer validation, frictionless entry. Real-time validation, anti-fraud, facial recognition for VIP, cashless wristbands for festivals. The same access engine that runs a stadium gate also runs a national park trailhead — offline-capable, fraud-resilient.",
+    stats: [{ v: "99.9%", l: "Platform uptime · offline-capable validation" }, { v: "Rapa Nui", l: "Torres del Paine — same stack as national stadiums" }],
   },
   {
-    id: "s-parks",
-    label: "Parks & Attractions",
-    who: "National parks, theme parks and tourist attractions running access control at any location.",
-    capabilities: ["Event Ticketing", "Access Control", "Payments & Banking"],
-    stats: [
-      { v: "Rapa Nui", l: "Torres del Paine — same stack as national stadiums" },
-      { v: "Offline", l: "Validation — no connectivity required" },
-    ],
+    id: "s-onsite",
+    label: "On-Site Operations",
+    tags: "KIOSKS · MOBILE POS · CASHLESS NFC",
+    body: "Seamless box office and in-venue experience. Self-service pickup, roaming sales with inventory sync, NFC for F&B and VIP. 36 people on direct payroll — the platform sustains the monthly work of 2,000+ on-site operators in Chile alone.",
+    stats: [{ v: "2,000+", l: "Monthly on-site operators orchestrated · CL" }, { v: "36", l: "People on direct payroll · AI-leveraged ops" }],
   },
 ];
 
@@ -156,13 +141,8 @@ const dataLayer = [
         <div id={s.id} class="eco-panel" role="tabpanel" style={i !== 0 ? "display:none" : ""}>
           <div class="eco-panel__inner">
             <div class="eco-panel__left">
-              <p class="eco-panel__who">{s.who}</p>
-              <div class="eco-panel__caps">
-                <p class="eco-panel__caps-label">Platform delivers</p>
-                <ul class="eco-panel__caps-list">
-                  {s.capabilities.map((c) => <li>{c}</li>)}
-                </ul>
-              </div>
+              <p class="eco-panel__tags">{s.tags}</p>
+              <p class="eco-panel__body">{s.body}</p>
             </div>
             <div class="eco-panel__right">
               {s.stats.map((st) => (
@@ -341,35 +321,21 @@ const dataLayer = [
     padding: 48px 0 0;
     align-items: start;
   }
-  .eco-panel__who {
-    font-family: var(--font-body);
-    font-size: 17px;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin: 0 0 32px;
-  }
-  .eco-panel__caps-label {
+  .eco-panel__tags {
     font-family: var(--font-heading);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-text-muted);
-    margin: 0 0 14px;
+    margin: 0 0 16px;
   }
-  .eco-panel__caps-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .eco-panel__caps-list li {
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    background: #ededed;
-    color: var(--color-text-primary);
+  .eco-panel__body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
   }
   .eco-panel__right {
     display: grid;
