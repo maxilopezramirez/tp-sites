@@ -116,25 +116,7 @@ const dataLayer = [
     </div>
   </section>
 
-  <!-- 3. FIVE REASONS -->
-  <section class="thesis-cards">
-    <div class="container">
-      <p class="section__eyebrow">Investment thesis</p>
-      <h2 class="section__title">Five reasons <span class="accent">this matters.</span></h2>
-      <ol class="tc-grid">
-        {thesis.map((t) => (
-          <li class="tc-card">
-            <div class="tc-card__icon" set:html={t.icon}></div>
-            <span class="tc-card__n">{t.n}</span>
-            <h3 class="tc-card__title">{t.title}</h3>
-            <p class="tc-card__body">{t.body}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- 4. AT THE CENTER OF THE LIVE ECONOMY -->
+  <!-- 3. AT THE CENTER OF THE LIVE ECONOMY -->
   <section class="ecosystem-tabs">
     <div class="container">
       <p class="section__eyebrow">The platform</p>
@@ -169,6 +151,30 @@ const dataLayer = [
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <!-- 4. FIVE REASONS — accordion -->
+  <section class="thesis-acc">
+    <div class="container">
+      <p class="section__eyebrow">Investment thesis</p>
+      <h2 class="section__title">Five reasons <span class="accent">this matters.</span></h2>
+      <ol class="acc-list">
+        {thesis.map((t, i) => (
+          <li class={`acc-item${i === 0 ? " is-open" : ""}`}>
+            <button class="acc-head" type="button">
+              <span class="acc-head__left">
+                <span class="acc-head__n">{t.n}</span>
+                <span class="acc-head__title">{t.title}</span>
+              </span>
+              <svg class="acc-head__chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="5,8 10,13 15,8"/></svg>
+            </button>
+            <div class="acc-body">
+              <div class="acc-body__inner" set:html={`<p>${t.body}</p>`}></div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -222,6 +228,15 @@ const dataLayer = [
 
   <script is:inline>
     (function () {
+      document.querySelectorAll('.acc-head').forEach(function (h) {
+        h.addEventListener('click', function () {
+          var item = h.parentElement;
+          var isOpen = item.classList.contains('is-open');
+          document.querySelectorAll('.acc-item').forEach(function (i) { i.classList.remove('is-open'); });
+          if (!isOpen) item.classList.add('is-open');
+        });
+      });
+
       var btns = document.querySelectorAll('.eco-btn');
       var panels = document.querySelectorAll('.eco-panel');
       btns.forEach(function (b) {
@@ -238,50 +253,64 @@ const dataLayer = [
 </Site>
 
 <style>
-  /* Thesis cards */
-  .thesis-cards { background: var(--color-surface-elevated); }
-  .tc-grid {
+  /* Thesis accordion */
+  .thesis-acc { background: var(--color-surface-elevated); }
+  .acc-list {
     list-style: none; padding: 0; margin: 48px 0 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--color-border);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    overflow: hidden;
+    border-top: 1px solid var(--color-border);
   }
-  .tc-card {
-    background: var(--color-surface-elevated);
-    padding: 36px 32px;
+  .acc-item { border-bottom: 1px solid var(--color-border); }
+  .acc-head {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 28px 0;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
   }
-  .tc-card__icon {
-    color: var(--color-text-primary);
-    margin-bottom: 4px;
+  .acc-head__left {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
   }
-  .tc-card__n {
+  .acc-head__n {
     font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     color: var(--color-text-muted);
+    flex-shrink: 0;
   }
-  .tc-card__title {
+  .acc-head__title {
     font-family: var(--font-heading);
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--color-text-primary);
-    margin: 0;
+    line-height: 1.2;
   }
-  .tc-card__body {
+  .acc-head__chev {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: transform .2s ease;
+  }
+  .acc-item.is-open .acc-head__chev { transform: rotate(180deg); }
+  .acc-body {
+    display: none;
+    padding: 0 0 28px 56px;
+  }
+  .acc-item.is-open .acc-body { display: block; }
+  .acc-body__inner p {
     font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--color-text-muted);
     margin: 0;
+    max-width: 760px;
   }
 
   /* Scale bar */
