@@ -160,6 +160,21 @@ const dataLayer = [
     </div>
   </section>
 
+  <!-- VIDEO PLACEHOLDER -->
+  <section class="video-section">
+    <div class="container">
+      <span class="ecosystem__bar" aria-hidden="true"></span>
+      <h2 class="ecosystem__title">Our Ecosystem is Our Strength</h2>
+      <div class="video-placeholder">
+        <svg class="video-placeholder__play" viewBox="0 0 96 96" width="64" height="64" aria-hidden="true">
+          <circle cx="48" cy="48" r="46" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <path d="M40 32 L68 48 L40 64 Z" fill="rgba(255,255,255,0.75)"/>
+        </svg>
+        <span class="video-placeholder__label">VIDEO PLACEHOLDER · 16:9</span>
+      </div>
+    </div>
+  </section>
+
   <!-- 3. AT THE CENTER OF THE LIVE ECONOMY -->
   <section class="ecosystem-tabs">
     <div class="container">
@@ -435,6 +450,33 @@ const dataLayer = [
     gap: 12px;
     margin-top: 32px;
     flex-wrap: wrap;
+  }
+
+  /* Video section */
+  .video-section { background: var(--color-surface-elevated); padding: 96px 0; }
+  .video-placeholder {
+    margin-top: 40px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #111;
+    border-radius: var(--radius-hero);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-elevated);
+  }
+  .video-placeholder__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 24px;
   }
 
   /* Collage */
