@@ -4,6 +4,15 @@ import Site from "../../layouts/Site.astro";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (p: string) => `${base}${p}`;
 
+const glanceLeft = [
+  "Technology-first · vertically integrated · built fully in-house",
+  "AI embedded across customer-facing services and internal operations",
+  "11 countries · 30+ strategic cities · deepest LATAM footprint in the category",
+  "Serving the underserved 95% the global incumbents do not reach",
+  "Bootstrapped twelve years · profitable · financed through operations",
+  "No material concentration across categories, geographies or clients",
+];
+
 const glanceKpis = [
   { v: "10.2M", l: "Tickets sold (2025)" },
   { v: "$269M", l: "Gross sales" },
@@ -20,31 +29,28 @@ const comparables = [
 
 const models = [
   {
-    id: "m-wl",
     label: "White-Label SaaS",
     tag: "Accelerator",
     tagClass: "tag--amber",
     sub: "Partners adopt the platform under their own brand. Tech is ours, market access is theirs.",
     stats: [{ v: "1.6%", l: "take rate" }, { v: "6%", l: "of 2025 revenue" }, { v: "$109M", l: "2025 gross sales" }],
-    bullets: ["Profitable, asset-light regional expansion.", "Full data visibility = M&A pipeline.", "Operating data flows from day one."],
+    bullets: ["Asset-light market entry across 11 countries.", "Full data visibility from day one — operating data flows before capital is deployed.", "Every transaction builds the intelligence base for conversion."],
   },
   {
-    id: "m-fo",
     label: "Full Operation",
     tag: "Core",
     tagClass: "tag--red",
-    sub: "Full event management + advanced sales + marketing + on-site operations, end-to-end.",
+    sub: "Full event management — advanced sales, marketing, data intelligence and on-site operations, end-to-end.",
     stats: [{ v: "17.3%", l: "take rate" }, { v: "94%", l: "of 2025 revenue" }, { v: "$160M", l: "2025 gross sales" }],
-    bullets: ["High-profile events: concerts, sports, festivals.", "Full margin capture across the event lifecycle.", "Embedded support drives stickiness across 11 markets."],
+    bullets: ["High-profile events: concerts, sports, festivals.", "Full margin capture across the complete event lifecycle.", "Embedded support drives 95%+ retention across 11 markets."],
   },
 ];
 
-
-const dataLayer = [
-  { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
-  { brand: "Toast", asset: "Restaurant ops", expansion: "Expanding within installed base" },
-  { brand: "Shopify", asset: "Merchant data", expansion: "Financial services" },
-  { brand: "Ticketplus", asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
+const moatItems = [
+  { label: "Regulation", body: "11 jurisdictions with different fiscal compliance systems. Built locally, not retrofitted globally." },
+  { label: "Payments", body: "50+ local payment methods integrated across markets. Every new market adds primitives to the same shared infrastructure." },
+  { label: "Relationships", body: "2,800+ partners embedded in daily operations. Not customers — operators who run their business on our platform." },
+  { label: "Data", body: "12 years of operational and transaction data across multiple countries. Capital can compress many things. It cannot compress accumulated operational history." },
 ];
 ---
 <Site title="About Ticketplus · Investor Relations" current="about">
@@ -62,12 +68,7 @@ const dataLayer = [
     <div class="container">
       <div class="glance__grid">
         <ul class="glance__bullets">
-          <li>Technology-first · vertically integrated · built fully in-house</li>
-          <li>AI embedded across customer-facing services and internal operations</li>
-          <li>11 countries · 30+ strategic cities · deepest LATAM footprint in the category</li>
-          <li>Serving the underserved 95% the global incumbents do not reach</li>
-          <li>Bootstrapped twelve years · profitable · no institutional equity raised</li>
-          <li>No material concentration across categories, geographies or clients</li>
+          {glanceLeft.map((item) => <li>{item}</li>)}
         </ul>
         <ul class="glance__kpis">
           {glanceKpis.map((k) => (
@@ -81,8 +82,8 @@ const dataLayer = [
     </div>
   </section>
 
-  <!-- 2. THE OPPORTUNITY -->
-  <section class="opportunity">
+  <!-- 2. THE MARKET -->
+  <section class="market">
     <div class="container">
       <p class="section__eyebrow">Market opportunity</p>
       <h2 class="section__title">A $40B market, growing at <span class="accent-red">4× the global rate.</span></h2>
@@ -103,27 +104,31 @@ const dataLayer = [
         </article>
       </div>
       <ul class="market__bullets">
-        <li><strong>&lt;20% share</strong> of LATAM ticketing held by global leaders (excl. Mexico, Brazil) vs. &gt;80% in US/EU. One of the few large markets where incumbents have not consolidated.</li>
+        <li><strong>Structurally fragmented.</strong> Global ticketing leaders hold less than 20% market share across most of Latin America outside Mexico and Brazil, compared with more than 80% in the US and Europe.</li>
         <li><strong>Consolidation race underway.</strong> Live Nation → OCESA (2025). CTS Eventim → Punto Ticket (2023). Credicorp → Joinnus (2025). The window to consolidate the underserved 95% is closing.</li>
+        <li><strong>Infrastructure gap.</strong> Most of the region has been underserved not just in ticketing — but in professional event infrastructure. Promoters need more than a ticketing page. They need technology that helps them sell more, operate better and manage events more efficiently.</li>
       </ul>
       <p class="source">Sources: PwC GE&amp;M Outlook · Worldometer · Grand View Horizon · Mordor Intelligence.</p>
+    </div>
+  </section>
 
-      <div class="opp__comps">
-        <p class="section__eyebrow" style="margin-top: 64px;">Category parallel</p>
-        <p class="opp__comps-lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented LATAM markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
-        <ul class="comp-grid comp-grid--light">
-          {comparables.map((c) => (
-            <li class={`comp comp--inv${c.own ? " comp--own" : ""}`}>
-              <span class="comp__flag">{c.flag}</span>
-              <h3>{c.brand}</h3>
-              <p class="comp__wedge">{c.wedge}</p>
-              <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
-              <p class="comp__years">{c.years} years</p>
-            </li>
-          ))}
-        </ul>
-        <p class="source">Business-model parallel only · not for valuation reference. Subject to listing.</p>
-      </div>
+  <section class="comparables">
+    <div class="container">
+      <p class="section__eyebrow section__eyebrow--inv">Category</p>
+      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
+      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
+      <ul class="comp-grid">
+        {comparables.map((c) => (
+          <li class={`comp${c.own ? " comp--own" : ""}`}>
+            <span class="comp__flag">{c.flag}</span>
+            <h3>{c.brand}</h3>
+            <p class="comp__wedge">{c.wedge}</p>
+            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
+            <p class="comp__years">{c.years} years</p>
+          </li>
+        ))}
+      </ul>
+      <p class="comparables__footnote">Business-model parallel only · not for valuation reference. Subject to listing.</p>
     </div>
   </section>
 
@@ -132,7 +137,7 @@ const dataLayer = [
     <div class="container">
       <p class="section__eyebrow">Business model</p>
       <h2 class="section__title">Two models. <span class="accent">One platform.</span></h2>
-      <p class="section__lead" style="margin-bottom: 40px;">Partners enter at White-Label and graduate to Full Operation when the data tells us they are ready. Not two businesses — one continuum.</p>
+      <p class="section__lead" style="margin-bottom: 48px;">Full Operation is the core. White-Label is the accelerator. Not two businesses — one continuum where partners enter at 1.6% and graduate to 17.3% when the data tells us they are ready.</p>
 
       <div class="model-cols">
         {models.map((m) => (
@@ -158,51 +163,70 @@ const dataLayer = [
       </div>
 
       <div class="flywheel-compact">
-        <p class="flywheel-compact__label">How it works</p>
+        <p class="flywheel-compact__label">How the conversion engine works · Land · Learn · Convert</p>
         <ol class="flywheel-compact__steps">
-          <li><strong>Land</strong> — Partner adopts White-Label at 1.6% take rate. Operating data flows from day one.</li>
-          <li><strong>Learn</strong> — Real-time sales, margins, growth trends. Multi-year intelligence before any conversion decision.</li>
-          <li><strong>Convert</strong> — Top performers move to Full Operation at 17.3% take rate. <strong>50+ operators in pipeline today.</strong></li>
+          <li><strong>Land</strong> — A regional operator adopts our infrastructure under its own brand at 1.6% take rate. Operating data starts flowing from day one.</li>
+          <li><strong>Learn</strong> — Over multiple years, we build full business intelligence on the partner — real-time sales, margins, growth trends, execution quality. We are not buying relationships blindly. We are converting operating relationships we already understand deeply.</li>
+          <li><strong>Convert</strong> — We move the strongest operators to Full Operation at 17.3% take rate. Integration risk is minimal because we have been inside their business for years. <strong>50+ operators in pipeline today.</strong></li>
         </ol>
+        <p class="flywheel-compact__note">Other acquirers perform diligence from the outside. We perform it from inside the operating infrastructure itself.</p>
       </div>
     </div>
   </section>
 
-  <!-- 4. THE DATA LAYER (crescendo) -->
-  <section id="thesis" class="thesis">
+  <!-- 4. THE MOAT -->
+  <section class="moat-section">
     <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Competitive advantage · The data layer</p>
-      <h2 class="section__title section__title--inv">We do not compete against ticketing companies. <span class="accent">We capture the data layer.</span></h2>
-      <div class="thesis__grid">
-        <div class="thesis__copy">
-          <p>Over 10.2 million tickets a year across 11 jurisdictions, we capture the full data layer of regional live entertainment: who buys, what they buy, when, in which venue, with which payment method, at which price, with which behavioral pattern.</p>
-          <p>That data composes — day by day, across 11 markets, 50+ payment methods, thousands of local commercial relationships. No global player can replicate it by acquisition. It is the asset, and it compounds.</p>
-          <p>Ticketing is the first vertical. The verticals adjacent to the data layer — payments, BI, dynamic pricing, financial services for partners — are the long-term expansion thesis.</p>
-          <p style="margin-top: 8px; font-style: italic; color: rgba(255,255,255,0.65); font-size: 15px;">"The company that owns the operating and transaction layer of an industry often becomes far more valuable than the entry product itself."</p>
-        </div>
-        <div class="thesis__table">
-          <p class="thesis__table-title">A proven playbook</p>
-          <table>
-            <thead>
-              <tr><th>Company</th><th>Data captured</th><th>Adjacent expansion</th></tr>
-            </thead>
-            <tbody>
-              {dataLayer.map((row) => (
-                <tr class={row.own ? "own" : ""}>
-                  <td>{row.brand}</td>
-                  <td>{row.asset}</td>
-                  <td>{row.expansion}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p class="thesis__footnote">Business-model parallel only · not a valuation reference.</p>
-        </div>
+      <p class="section__eyebrow">Moat &amp; geographic footprint</p>
+      <h2 class="section__title">Why this position is <span class="accent-red">impossible to replicate quickly.</span></h2>
+      <p class="section__lead">Eleven countries operating live. A roadmap toward twenty-five. Same platform. Same operating model. Same playbook. Every market added became another barrier a new entrant has to rebuild from zero.</p>
+      <div class="moat-grid">
+        {moatItems.map((m) => (
+          <div class="moat-card">
+            <h3 class="moat-card__label">{m.label}</h3>
+            <p class="moat-card__body">{m.body}</p>
+          </div>
+        ))}
       </div>
-      <div class="thesis__strip">
-        <span><strong>100%</strong> Transaction visibility</span>
-        <span><strong>11</strong> Country regulatory &amp; payments stack</span>
-        <span><strong>12 years</strong> of multi-market operating data</span>
+    </div>
+  </section>
+
+  <!-- 5. THE PROOF -->
+  <section class="proof">
+    <div class="container">
+      <p class="section__eyebrow">Diversification &amp; financials</p>
+      <h2 class="section__title">Growing fast. <span class="accent">Growing profitably.</span></h2>
+
+      <div class="proof__grid">
+        <div class="proof__div">
+          <p class="proof__sub-label">Three things about how this revenue is built</p>
+          <ul class="proof__three">
+            <li>
+              <strong>No sector carries us.</strong>
+              Sports 32% · Music 30% · Holiday Events 22% · Travel 5% · Theater 4% · Other 7%. If any one slowed down tomorrow, the business keeps running.
+            </li>
+            <li>
+              <strong>No single customer carries us.</strong>
+              Across 2,800 promoters and venues, no single client represents more than 4% of revenue.
+            </li>
+            <li>
+              <strong>Our customers recommend us.</strong>
+              On the Net Promoter Score scale from −100 to +100, both promoters and ticket buyers score us top-quartile for live entertainment. Retention above 95% reinforces that.
+            </li>
+          </ul>
+        </div>
+
+        <div class="proof__fin">
+          <p class="proof__sub-label">Three years of audited financials + Q1 2026</p>
+          <ul class="kpi-grid">
+            <li class="kpi"><span class="kpi__value">$29.5M</span><span class="kpi__label">Net revenue (2025 audited)</span></li>
+            <li class="kpi"><span class="kpi__value">+64%</span><span class="kpi__label">Revenue YoY (2024→2025)</span></li>
+            <li class="kpi"><span class="kpi__value">37.3%</span><span class="kpi__label">EBITDA margin (2025)</span></li>
+            <li class="kpi"><span class="kpi__value">44.6%</span><span class="kpi__label">EBITDA margin (Q1 2026 · weakest quarter)</span></li>
+          </ul>
+          <p class="proof__note">Revenue doubled 2023→2025. EBITDA grew 77%. In a single quarter of 2026, we delivered EBITDA close to what took a full year in 2023. Zero institutional equity raised in twelve years.</p>
+          <p class="source" style="margin-top: 16px;">Audited under IFRS by Baker Tilly (PCAOB-registered). Q1 2026 preliminary.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -229,276 +253,83 @@ const dataLayer = [
       </a>
     </div>
   </nav>
-
 </Site>
 
 <style>
   /* At a glance */
   .glance { background: var(--color-surface-elevated); padding: 72px 0 96px; }
-  .glance__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-  }
-  .glance__bullets {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; gap: 0;
-  }
+  .glance__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .glance__bullets { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
   .glance__bullets li {
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--color-text-muted);
-    line-height: 1.55;
-    padding: 14px 0;
-    border-top: 1px solid var(--color-border);
+    font-family: var(--font-body); font-size: 15px; color: var(--color-text-muted);
+    line-height: 1.55; padding: 14px 0; border-top: 1px solid var(--color-border);
   }
   .glance__bullets li:first-child { border-top: none; padding-top: 0; }
   .glance__kpis {
-    list-style: none; padding: 0; margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid var(--color-border);
-    border-left: 1px solid var(--color-border);
+    list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; border-top: 1px solid var(--color-border); border-left: 1px solid var(--color-border);
   }
-  .glance__kpis li {
-    padding: 28px 24px;
-    border-right: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-  }
+  .glance__kpis li { padding: 28px 24px; border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
   .glance__kpi-value {
-    display: block;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(32px, 3.5vw, 48px);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: var(--color-text-primary);
+    display: block; font-family: var(--font-heading); font-weight: 800;
+    font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -0.04em; line-height: 1; color: var(--color-text-primary);
   }
-  .glance__kpi-label {
-    display: block;
-    margin-top: 6px;
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--color-text-muted);
-    line-height: 1.4;
-  }
+  .glance__kpi-label { display: block; margin-top: 6px; font-family: var(--font-body); font-size: 13px; color: var(--color-text-muted); line-height: 1.4; }
 
-  /* Opportunity */
-  .opportunity { background: var(--color-surface-elevated); }
-  .opp__comps { border-top: 1px solid var(--color-border); padding-top: 64px; margin-top: 64px; }
-  .opp__comps-lead {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--color-text-muted);
-    max-width: 720px;
-    line-height: 1.6;
-    margin: 0 0 32px;
-  }
-  .comp-grid--light .comp--inv {
-    background: var(--color-gray-50);
-    border: 1px solid var(--color-border);
-  }
-  .comp-grid--light .comp--inv h3 { color: var(--color-text-primary); }
-  .comp-grid--light .comp--inv .comp__wedge { color: var(--color-text-muted); }
-  .comp-grid--light .comp--inv .comp__line { color: var(--color-text-muted); }
-  .comp-grid--light .comp--inv .comp__years { color: var(--color-text-primary); background: none; -webkit-text-fill-color: initial; }
-  .comp-grid--light .comp--own {
-    background: linear-gradient(180deg, rgba(255,171,36,0.07), rgba(255,19,19,0.03));
-    border-color: rgba(255,171,36,0.4);
-  }
-  .comp-grid--light .comp--own h3 {
-    background: var(--gradient-brand-text);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  .comp-grid--light .comp--own .comp__years {
-    background: var(--gradient-brand-text);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Model two-column */
+  /* Model */
   .model-about { background: var(--color-surface-elevated); }
-  .model-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-top: 1px solid var(--color-border);
-    margin-top: 8px;
-  }
-  .model-col {
-    padding: 40px 40px 40px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .model-col:last-child {
-    padding: 40px 0 40px 40px;
-    border-left: 1px solid var(--color-border);
-  }
-  .model-col__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .model-col__title {
-    font-family: var(--font-heading);
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin: 0;
-    color: var(--color-text-primary);
-  }
-  .model-panel__sub {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin: 0;
-  }
-  .model-panel__stats {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; gap: 32px; flex-wrap: wrap;
-  }
+  .model-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--color-border); margin-top: 8px; }
+  .model-col { padding: 40px 40px 40px 0; display: flex; flex-direction: column; gap: 20px; }
+  .model-col:last-child { padding: 40px 0 40px 40px; border-left: 1px solid var(--color-border); }
+  .model-col__header { display: flex; align-items: center; justify-content: space-between; }
+  .model-col__title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: -0.03em; margin: 0; color: var(--color-text-primary); }
+  .model-panel__sub { font-family: var(--font-body); font-size: 15px; color: var(--color-text-muted); line-height: 1.6; margin: 0; }
+  .model-panel__stats { list-style: none; padding: 0; margin: 0; display: flex; gap: 28px; flex-wrap: wrap; }
   .model-panel__stats li { display: flex; flex-direction: column; gap: 2px; }
   .model-panel__stats strong {
-    font-family: var(--font-heading);
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    background: var(--gradient-brand-text);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+    background: var(--gradient-brand-text); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
   }
-  .model-panel__stats span {
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--color-text-muted);
-  }
-  .model-panel__bullets {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; gap: 12px;
-    align-content: start;
-    padding-top: 40px;
-    border-left: 1px solid var(--color-border);
-    padding-left: 48px;
-  }
-  .model-panel__bullets li {
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--color-text-muted);
-    line-height: 1.55;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-border);
-  }
+  .model-panel__stats span { font-family: var(--font-body); font-size: 12px; color: var(--color-text-muted); }
+  .model-panel__bullets { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .model-panel__bullets li { font-family: var(--font-body); font-size: 14px; color: var(--color-text-muted); line-height: 1.55; padding-bottom: 10px; border-bottom: 1px solid var(--color-border); }
   .model-panel__bullets li:last-child { border-bottom: none; padding-bottom: 0; }
 
-  /* Flywheel compact */
-  .flywheel-compact {
-    margin-top: 48px;
-    padding: 32px 36px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    background: var(--color-gray-50);
-  }
-  .flywheel-compact__label {
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin: 0 0 20px;
-  }
-  .flywheel-compact__steps {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-  }
-  .flywheel-compact__steps li {
-    font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-    padding-top: 14px;
-    border-top: 2px solid var(--color-border);
-  }
-  .flywheel-compact__steps li strong {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
+  /* Flywheel */
+  .flywheel-compact { margin-top: 48px; padding: 36px 40px; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-gray-50); }
+  .flywheel-compact__label { font-family: var(--font-heading); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 24px; }
+  .flywheel-compact__steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .flywheel-compact__steps li { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--color-text-muted); padding-top: 16px; border-top: 2px solid var(--color-border); }
+  .flywheel-compact__steps li strong { display: block; font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .flywheel-compact__note { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--color-border); font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--color-text-muted); line-height: 1.55; }
 
-  /* Position */
-  .position__grid {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 32px;
-    align-items: start;
-    margin-top: 48px;
-  }
-  .moat--flat {
-    background: var(--color-gray-50);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    padding: 32px;
-    color: var(--color-text-primary);
-  }
-  .moat--flat h3 {
-    margin: 0 0 20px;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-    color: var(--color-text-primary);
-  }
-  .moat--flat h3::after { display: none; }
-  .moat--flat ul {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; gap: 12px;
-    font-size: 14px; line-height: 1.55;
-    color: var(--color-text-muted);
-  }
-  .moat--flat li strong {
-    font-family: var(--font-heading);
-    color: var(--color-text-primary);
-    display: inline;
-    font-weight: 700;
-    font-size: 13px;
-  }
-  .moat--flat .moat__quote {
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-  }
+  /* Moat */
+  .moat-section { background: var(--color-surface-elevated); }
+  .moat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 48px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+  .moat-card { background: var(--color-surface-elevated); padding: 36px 32px; }
+  .moat-card__label { font-family: var(--font-heading); font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--color-text-primary); margin: 0 0 12px; }
+  .moat-card__body { font-family: var(--font-body); font-size: 15px; color: var(--color-text-muted); line-height: 1.6; margin: 0; }
 
-  /* Closing lead */
-  .about-closing__lead {
-    font-family: var(--font-body);
-    font-size: 18px;
-    line-height: 1.65;
-    color: rgba(255,255,255,0.82);
-    max-width: 760px;
-    margin: 24px 0 40px;
-  }
+  /* Proof */
+  .proof { background: var(--color-surface-elevated); }
+  .proof__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; align-items: start; }
+  .proof__sub-label { font-family: var(--font-heading); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 24px; }
+  .proof__three { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  .proof__three li { font-family: var(--font-body); font-size: 15px; color: var(--color-text-muted); line-height: 1.6; padding: 18px 0; border-top: 1px solid var(--color-border); }
+  .proof__three li:first-child { border-top: none; padding-top: 0; }
+  .proof__three strong { font-family: var(--font-heading); color: var(--color-text-primary); font-size: 15px; font-weight: 700; display: block; margin-bottom: 4px; }
+  .proof__note { font-family: var(--font-body); font-size: 14px; color: var(--color-text-muted); line-height: 1.6; margin: 20px 0 0; }
 
-  @media (max-width: 1024px) {
-    .position__grid { grid-template-columns: 1fr; }
-  }
+  /* Closing */
+  .about-closing__lead { font-family: var(--font-body); font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.82); max-width: 760px; margin: 24px 0 40px; }
+
   @media (max-width: 880px) {
     .glance__grid { grid-template-columns: 1fr; gap: 40px; }
     .model-cols { grid-template-columns: 1fr; }
     .model-col { padding: 32px 0; border-left: none !important; }
     .model-col:first-child { border-bottom: 1px solid var(--color-border); }
     .flywheel-compact__steps { grid-template-columns: 1fr; gap: 20px; }
+    .moat-grid { grid-template-columns: 1fr; }
+    .proof__grid { grid-template-columns: 1fr; gap: 48px; }
   }
 </style>
