@@ -4,29 +4,39 @@ import Site from "../../layouts/Site.astro";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const link = (p: string) => `${base}${p}`;
 
-const glanceLeft = [
-  "Technology-first · vertically integrated · built fully in-house",
-  "AI embedded across customer-facing services and internal operations",
-  "11 countries · 30+ strategic cities · deepest LATAM footprint in the category",
-  "Serving the underserved 95% the global incumbents do not reach",
-  "Bootstrapped twelve years · profitable · financed through operations",
-  "No material concentration across categories, geographies or clients",
-];
-const glanceRight = [
-  { v: "10.2M", l: "Tickets processed (2025)" },
-  { v: "$269M", l: "Platform gross sales" },
-  { v: "2,800", l: "Active promoters & venues" },
-  { v: "39,800", l: "Events managed" },
-  { v: "46M", l: "User sessions" },
+const glanceKpis = [
+  { v: "10.2M", l: "Tickets sold (2025)" },
+  { v: "$269M", l: "Gross sales" },
+  { v: "11", l: "Countries" },
   { v: "95%+", l: "Client retention" },
 ];
-
 
 const comparables = [
   { flag: "ARG", brand: "MercadoLibre", wedge: "E-commerce wedge", founded: 1999, ipo: 2007, years: 8 },
   { flag: "BRA", brand: "Nubank", wedge: "Financial services wedge", founded: 2013, ipo: 2021, years: 8 },
   { flag: "URU", brand: "DLocal", wedge: "Cross-border payments wedge", founded: 2016, ipo: 2021, years: 5 },
   { flag: "CHL", brand: "Ticketplus", wedge: "Live entertainment wedge", founded: 2014, ipo: 2026, years: 12, own: true },
+];
+
+const models = [
+  {
+    id: "m-wl",
+    label: "White-Label SaaS",
+    tag: "Accelerator",
+    tagClass: "tag--amber",
+    sub: "Partners adopt the platform under their own brand. Tech is ours, market access is theirs.",
+    stats: [{ v: "1.6%", l: "take rate" }, { v: "6%", l: "of 2025 revenue" }, { v: "$109M", l: "2025 gross sales" }],
+    bullets: ["Profitable, asset-light regional expansion.", "Full data visibility = M&A pipeline.", "Operating data flows from day one."],
+  },
+  {
+    id: "m-fo",
+    label: "Full Operation",
+    tag: "Core",
+    tagClass: "tag--red",
+    sub: "Full event management + advanced sales + marketing + on-site operations, end-to-end.",
+    stats: [{ v: "17.3%", l: "take rate" }, { v: "94%", l: "of 2025 revenue" }, { v: "$160M", l: "2025 gross sales" }],
+    bullets: ["High-profile events: concerts, sports, festivals.", "Full margin capture across the event lifecycle.", "Embedded support drives stickiness across 11 markets."],
+  },
 ];
 
 const competitors = [
@@ -40,32 +50,16 @@ const competitors = [
   { name: "VividSeats", latam: false, local: false, primary: false, partners: false, wl: false },
 ];
 
-
 const dataLayer = [
   { brand: "Stripe", asset: "Payment data", expansion: "Commerce intelligence" },
   { brand: "Toast", asset: "Restaurant ops", expansion: "Expanding within installed base" },
   { brand: "Shopify", asset: "Merchant data", expansion: "Financial services" },
   { brand: "Ticketplus", asset: "Live entertainment data", expansion: "De-risked expansion", own: true },
 ];
-
-const sectors = [
-  { name: "Sports", pct: 32 },
-  { name: "Music", pct: 30 },
-  { name: "Holiday Events", pct: 22 },
-  { name: "Other", pct: 7 },
-  { name: "Travel", pct: 5 },
-  { name: "Theater & Arts", pct: 4 },
-];
-
-const team = [
-  { initials: "YD", name: "Yethro Dinamarca", role: "Chairman", body: "Long-term strategy, governance and the transition from regional platform to public company. Joined eight years ago to build the financial architecture and the path to capital markets." },
-  { initials: "CC", name: "Chien-Fu Chen", role: "CEO & Co-Founder", body: "Wrote the first lines of code in 2014 and has architected the platform ever since. Every module of the operating system was built under his technical direction." },
-  { initials: "JJ", name: "Joaquín Jadue", role: "CFO & Co-Founder", body: "Built the financial discipline and operating structure that brought the company to PCAOB-level public company standards. Bootstrapped without institutional equity for twelve years." },
-];
 ---
 <Site title="About Ticketplus · Investor Relations" current="about">
 
-  <!-- 1. PAGE HEADER -->
+  <!-- 1. HEADER + AT A GLANCE -->
   <header class="page-header">
     <div class="page-header__inner">
       <p class="page-header__eyebrow">About Ticketplus</p>
@@ -74,35 +68,33 @@ const team = [
     </div>
   </header>
 
-  <!-- 2. AT A GLANCE -->
   <section class="glance">
     <div class="container">
-      <p class="section__eyebrow">At a glance · 2025</p>
       <div class="glance__grid">
-        <div class="glance__left">
-          <h2 class="section__title">This is already a <span class="accent">scaled infrastructure</span> platform.</h2>
-          <ul class="glance__bullets">
-            {glanceLeft.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-        <div class="glance__right">
-          <ul class="glance__kpis">
-            {glanceRight.map((k) => (
-              <li>
-                <span class="glance__kpi-value">{k.v}</span>
-                <span class="glance__kpi-label">{k.l}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul class="glance__bullets">
+          <li>Technology-first · vertically integrated · built fully in-house</li>
+          <li>AI embedded across customer-facing services and internal operations</li>
+          <li>11 countries · 30+ strategic cities · deepest LATAM footprint in the category</li>
+          <li>Serving the underserved 95% the global incumbents do not reach</li>
+          <li>Bootstrapped twelve years · profitable · no institutional equity raised</li>
+          <li>No material concentration across categories, geographies or clients</li>
+        </ul>
+        <ul class="glance__kpis">
+          {glanceKpis.map((k) => (
+            <li>
+              <span class="glance__kpi-value">{k.v}</span>
+              <span class="glance__kpi-label">{k.l}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 3. MARKET -->
-  <section class="market">
+  <!-- 2. THE OPPORTUNITY -->
+  <section class="opportunity">
     <div class="container">
-      <p class="section__eyebrow">Market opportunity · Market sizing</p>
+      <p class="section__eyebrow">Market opportunity</p>
       <h2 class="section__title">A $40B market, growing at <span class="accent-red">4× the global rate.</span></h2>
       <div class="market__cards">
         <article class="mcard">
@@ -121,161 +113,123 @@ const team = [
         </article>
       </div>
       <ul class="market__bullets">
-        <li><strong>670M+ population</strong> · median age low 30s · 85% urbanized · expanding middle class · 70% smartphone penetration growing +8% / yr.</li>
-        <li><strong>&lt;20% share</strong> of LATAM ticketing market held by top global leaders (excl. Mexico, Brazil), vs. &gt;80% in US/EU — one of the few large markets where global incumbents have not consolidated.</li>
-        <li><strong>Consolidation race underway.</strong> Live Nation acquired OCESA in Mexico (2025). CTS Eventim acquired Punto Ticket in Chile (2023). Credicorp acquired Joinnus in Peru (2025). The window to consolidate the underserved 95% is closing.</li>
+        <li><strong>&lt;20% share</strong> of LATAM ticketing held by global leaders (excl. Mexico, Brazil) vs. &gt;80% in US/EU. One of the few large markets where incumbents have not consolidated.</li>
+        <li><strong>Consolidation race underway.</strong> Live Nation → OCESA (2025). CTS Eventim → Punto Ticket (2023). Credicorp → Joinnus (2025). The window to consolidate the underserved 95% is closing.</li>
       </ul>
       <p class="source">Sources: PwC GE&amp;M Outlook · Worldometer · Grand View Horizon · Mordor Intelligence.</p>
-    </div>
-  </section>
 
-  <section class="comparables">
-    <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Category</p>
-      <h2 class="section__title section__title--inv">Same playbook. Different vertical. <span class="accent">Chile's chapter hasn't been written yet.</span></h2>
-      <p class="comparables__lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented Latin American markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
-      <ul class="comp-grid">
-        {comparables.map((c) => (
-          <li class={`comp${c.own ? " comp--own" : ""}`}>
-            <span class="comp__flag">{c.flag}</span>
-            <h3>{c.brand}</h3>
-            <p class="comp__wedge">{c.wedge}</p>
-            <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
-            <p class="comp__years">{c.years} years</p>
-          </li>
-        ))}
-      </ul>
-      <p class="comparables__footnote">Comparables shown for business-model parallel only · not for valuation reference. Subject to listing.</p>
-    </div>
-  </section>
-
-  <!-- 5. BUSINESS MODEL → PARTNERSHIP -->
-  <section class="model">
-    <div class="container">
-      <p class="section__eyebrow">Business model · Two models</p>
-      <h2 class="section__title">Same platform. <span class="accent">Different monetization depth.</span></h2>
-      <div class="model__grid">
-        <article class="model__card model__card--wl">
-          <header>
-            <h3>White-Label SaaS</h3>
-            <span class="tag tag--amber">Accelerator</span>
-          </header>
-          <p class="model__sub">Partners adopt the platform under their own brand. Tech is ours, market access is theirs.</p>
-          <ul class="model__stats">
-            <li><strong>6%</strong><span>of 2025 revenue</span></li>
-            <li><strong>1.6%</strong><span>take rate</span></li>
-            <li><strong>$109M</strong><span>2025 gross sales</span></li>
-          </ul>
-          <ul class="model__bullets">
-            <li>Profitable, asset-light regional expansion.</li>
-            <li>Full data visibility = M&amp;A pipeline.</li>
-            <li>Operating data flows from day one.</li>
-          </ul>
-        </article>
-        <article class="model__card model__card--fo">
-          <header>
-            <h3>Full Operation</h3>
-            <span class="tag tag--red">Core</span>
-          </header>
-          <p class="model__sub">Full event management + advanced sales + marketing + on-site operations, end-to-end.</p>
-          <ul class="model__stats">
-            <li><strong>94%</strong><span>of 2025 revenue</span></li>
-            <li><strong>17.3%</strong><span>take rate</span></li>
-            <li><strong>$160M</strong><span>2025 gross sales</span></li>
-          </ul>
-          <ul class="model__bullets">
-            <li>High-profile events: concerts, sports, festivals.</li>
-            <li>Full margin capture across the event lifecycle.</li>
-            <li>Embedded support drives stickiness across 11 markets.</li>
-          </ul>
-        </article>
+      <div class="opp__comps">
+        <p class="section__eyebrow" style="margin-top: 64px;">Category parallel</p>
+        <p class="opp__comps-lead">MercadoLibre, Nubank and DLocal each built the infrastructure layer on fragmented LATAM markets through a different vertical wedge. Bootstrapped longer than any of them, Ticketplus is the next chapter.</p>
+        <ul class="comp-grid comp-grid--light">
+          {comparables.map((c) => (
+            <li class={`comp comp--inv${c.own ? " comp--own" : ""}`}>
+              <span class="comp__flag">{c.flag}</span>
+              <h3>{c.brand}</h3>
+              <p class="comp__wedge">{c.wedge}</p>
+              <p class="comp__line">Founded {c.founded} → IPO {c.ipo}</p>
+              <p class="comp__years">{c.years} years</p>
+            </li>
+          ))}
+        </ul>
+        <p class="source">Business-model parallel only · not for valuation reference. Subject to listing.</p>
       </div>
-      <p class="model__note">Both models operate on the same codebase. We aren't running two businesses — we're running one continuum where partners enter at White-Label and graduate to Full Operation when the data tells us they are ready.</p>
     </div>
   </section>
 
-  <section class="flywheel">
+  <!-- 3. THE MODEL -->
+  <section class="model-about">
     <div class="container">
-      <p class="section__eyebrow section__eyebrow--inv">Partnership strategy</p>
-      <h2 class="section__title section__title--inv">We operate our partners <span class="accent">for years</span> before we convert them.</h2>
-      <ol class="fw">
-        <li>
-          <span class="fw__n">1</span>
-          <p class="fw__phase">Land</p>
-          <h3>Market entry via White-Label</h3>
-          <p>Partner adopts the platform under their brand at a 1.6% take rate. Operating data starts flowing from day one.</p>
-        </li>
-        <li>
-          <span class="fw__n">2</span>
-          <p class="fw__phase">Learn</p>
-          <h3>Full business intelligence</h3>
-          <p>Real-time sales, margins and growth trends. Multi-year evidence de-risks every conversion decision.</p>
-        </li>
-        <li>
-          <span class="fw__n">3</span>
-          <p class="fw__phase">Convert</p>
-          <h3>Full Operation conversion</h3>
-          <p>Strategic conversion of top performers at 17.3% take rate, full revenue capture and minimal integration risk.</p>
-        </li>
-      </ol>
-      <p class="fw__footer"><strong>50+ conversion targets in pipeline.</strong> 11 → 25 markets. We see every partner's real P&amp;L, churn and margins because they have run on our infrastructure for 2–5 years.</p>
+      <p class="section__eyebrow">Business model</p>
+      <h2 class="section__title">Two models. <span class="accent">One platform.</span></h2>
+      <p class="section__lead" style="margin-bottom: 40px;">Partners enter at White-Label and graduate to Full Operation when the data tells us they are ready. Not two businesses — one continuum.</p>
+
+      <nav class="tabsec__nav" role="tablist" style="margin-bottom: 0;">
+        {models.map((m, i) => (
+          <button class={`tabsec__btn${i === 0 ? " is-active" : ""}`} data-target={m.id} role="tab">{m.label}</button>
+        ))}
+      </nav>
+      {models.map((m, i) => (
+        <div id={m.id} class={`model-panel${i === 0 ? " is-active" : ""}`} role="tabpanel">
+          <div class="model-panel__inner">
+            <div class="model-panel__left">
+              <span class={`tag ${m.tagClass}`}>{m.tag}</span>
+              <p class="model-panel__sub">{m.sub}</p>
+              <ul class="model-panel__stats">
+                {m.stats.map((s) => (
+                  <li>
+                    <strong>{s.v}</strong>
+                    <span>{s.l}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ul class="model-panel__bullets">
+              {m.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        </div>
+      ))}
+
+      <div class="flywheel-compact">
+        <p class="flywheel-compact__label">How it works</p>
+        <ol class="flywheel-compact__steps">
+          <li><strong>Land</strong> — Partner adopts White-Label at 1.6% take rate. Operating data flows from day one.</li>
+          <li><strong>Learn</strong> — Real-time sales, margins, growth trends. Multi-year intelligence before any conversion decision.</li>
+          <li><strong>Convert</strong> — Top performers move to Full Operation at 17.3% take rate. <strong>50+ operators in pipeline today.</strong></li>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <!-- 6. MOAT -->
+  <!-- 4. THE POSITION -->
   <section class="platform">
     <div class="container">
-      <p class="section__eyebrow">Platform &amp; moat</p>
+      <p class="section__eyebrow">Competitive position</p>
       <h2 class="section__title">Why global players <span class="accent-red">can't capture this market.</span></h2>
-      <div class="moat moat--wide">
-        <h3>What blocks the incumbents</h3>
-        <ul>
-          <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
-          <li><strong>Payment gateways</strong> · local acquirers, BNPL, wallets across 11 markets</li>
-          <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops</li>
-          <li><strong>Data</strong> · 12 years multi-market · no mono-country can match</li>
-        </ul>
-        <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="compete">
-    <div class="container">
-      <p class="section__eyebrow">Competitive landscape</p>
-      <h2 class="section__title">Competitive position in <span class="accent-red">Latin America.</span></h2>
-      <p class="section__lead">Ticketplus combines what others split. Capabilities matrix based on publicly available information as of May 2026.</p>
-      <div class="compete__wrap">
-        <table class="compete__table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>LATAM presence</th>
-              <th>Local market focus</th>
-              <th>Primary tickets</th>
-              <th>Partners &amp; sponsoring</th>
-              <th>White-label</th>
-            </tr>
-          </thead>
-          <tbody>
-            {competitors.map((c) => (
-              <tr class={c.own ? "own" : ""}>
-                <th scope="row">{c.name}</th>
-                <td>{c.latam ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                <td>{c.local ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                <td>{c.primary ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                <td>{c.partners ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
-                <td>{c.wl ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
+      <div class="position__grid">
+        <div class="moat moat--flat">
+          <h3>What blocks the incumbents</h3>
+          <ul>
+            <li><strong>Regulation</strong> · 11 jurisdictions · fiscal compliance per market</li>
+            <li><strong>Payment gateways</strong> · 50+ local acquirers, BNPL, wallets across 11 markets</li>
+            <li><strong>Relationships</strong> · 2,800+ partners embedded in daily ops for years</li>
+            <li><strong>Data</strong> · 12 years multi-market · capital cannot compress operational history</li>
+          </ul>
+          <p class="moat__quote">"Built in-house with no reliance on third-party core infrastructure."</p>
+        </div>
+        <div class="compete__wrap">
+          <table class="compete__table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>LATAM</th>
+                <th>Local focus</th>
+                <th>Primary</th>
+                <th>Partners</th>
+                <th>White-label</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {competitors.map((c) => (
+                <tr class={c.own ? "own" : ""}>
+                  <th scope="row">{c.name}</th>
+                  <td>{c.latam ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
+                  <td>{c.local ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
+                  <td>{c.primary ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
+                  <td>{c.partners ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
+                  <td>{c.wl ? <span class="yes">✓</span> : <span class="no">×</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      <p class="source">Illustrative comparison · categories simplified · not a comprehensive competitive analysis.</p>
+      <p class="source">Illustrative comparison · categories simplified · not a comprehensive competitive analysis. May 2026.</p>
     </div>
   </section>
 
-  <!-- 7. DATA LAYER (crescendo) -->
+  <!-- 5. THE DATA LAYER (crescendo) -->
   <section id="thesis" class="thesis">
     <div class="container">
       <p class="section__eyebrow section__eyebrow--inv">Competitive advantage · The data layer</p>
@@ -314,74 +268,7 @@ const team = [
     </div>
   </section>
 
-  <!-- 8. PROOF -->
-  <section class="div">
-    <div class="container">
-      <p class="section__eyebrow">Diversification</p>
-      <h2 class="section__title">Diversified across sectors. <span class="accent-red">Loved by our customers.</span></h2>
-      <div class="div__grid">
-        <div class="div__chart">
-          <p class="div__chart-title">Sector mix · 2025 gross sales</p>
-          <ul class="bars">
-            {sectors.map((s) => (
-              <li>
-                <span class="bars__label">{s.name}</span>
-                <span class="bars__bar"><span class="bars__fill" style={`width:${s.pct * 2.5}%`}></span></span>
-                <span class="bars__pct">{s.pct}%</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="nps">
-          <div class="nps__card"><strong>+59</strong><span>NPS promoter</span></div>
-          <div class="nps__card"><strong>+58</strong><span>NPS buyer</span></div>
-          <div class="nps__card nps__card--amber"><strong>95%+</strong><span>Client retention</span></div>
-          <p class="nps__note">Top-quartile NPS for live entertainment. No single category dominates · 11-country diversification · no material client concentration.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="kpis">
-    <div class="container">
-      <p class="section__eyebrow">Financials · 2023–2026</p>
-      <h2 class="section__title">Growing fast. <span class="accent">Growing profitably.</span></h2>
-      <p class="section__lead">Audited under IFRS by Baker Tilly (PCAOB-registered). Revenue doubled 2023→2025. EBITDA grew 77% in 2025. Zero institutional equity raised in twelve years.</p>
-      <ul class="kpi-grid">
-        <li class="kpi"><span class="kpi__value">$29.5M</span><span class="kpi__label">Net revenue (2025 audited)</span></li>
-        <li class="kpi"><span class="kpi__value">+64%</span><span class="kpi__label">Revenue YoY (2024→2025)</span></li>
-        <li class="kpi"><span class="kpi__value">37.3%</span><span class="kpi__label">EBITDA margin (2025)</span></li>
-        <li class="kpi"><span class="kpi__value">+41%</span><span class="kpi__label">Revenue YoY (Q1 2026)</span></li>
-        <li class="kpi"><span class="kpi__value">44.6%</span><span class="kpi__label">EBITDA margin (Q1 2026)</span></li>
-        <li class="kpi"><span class="kpi__value">0</span><span class="kpi__label">Institutional equity raised in 12 years</span></li>
-      </ul>
-      <p class="source">Q1 2026 preliminary. Source: Ticketplus audited IFRS financials (Baker Tilly, PCAOB-registered).</p>
-    </div>
-  </section>
-
-  <!-- 9. TEAM -->
-  <section class="leadership">
-    <div class="container">
-      <p class="section__eyebrow">Leadership</p>
-      <h2 class="section__title">Operators, <span class="accent">not promoters.</span></h2>
-      <p class="section__lead">The three people below built every layer of this company. Pre-IPO ownership remains 100% with founders, chairman and key employees.</p>
-      <div class="founders">
-        {team.map((t) => (
-          <div class="founder">
-            <span class="founder__avatar">{t.initials}</span>
-            <p class="founder__role">{t.role}</p>
-            <h3>{t.name}</h3>
-            <ul>
-              <li>{t.body}</li>
-            </ul>
-          </div>
-        ))}
-      </div>
-      <p class="leadership__strip">Leadership remains deeply aligned with the business, with ownership concentrated among founders, management and key employees. <strong>The IPO is our first equity raise — not a liquidity event.</strong></p>
-    </div>
-  </section>
-
-  <!-- 10. CLOSING -->
+  <!-- 6. CLOSING -->
   <section class="thesis" style="padding: 120px 0;">
     <div class="container">
       <p class="section__eyebrow section__eyebrow--inv">The thesis</p>
@@ -403,19 +290,35 @@ const team = [
       </a>
     </div>
   </nav>
+
+  <script is:inline>
+    (function () {
+      var tabs = document.querySelectorAll('.model-about .tabsec__btn');
+      var panels = document.querySelectorAll('.model-panel');
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          tabs.forEach(function (x) { x.classList.remove('is-active'); });
+          panels.forEach(function (p) { p.classList.remove('is-active'); });
+          t.classList.add('is-active');
+          var target = document.getElementById(t.dataset.target);
+          if (target) target.classList.add('is-active');
+        });
+      });
+    })();
+  </script>
 </Site>
 
 <style>
-  .glance { background: var(--color-surface-elevated); }
+  /* At a glance */
+  .glance { background: var(--color-surface-elevated); padding: 72px 0 96px; }
   .glance__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
-    margin-top: 48px;
     align-items: start;
   }
   .glance__bullets {
-    list-style: none; padding: 0; margin: 24px 0 0;
+    list-style: none; padding: 0; margin: 0;
     display: grid; gap: 0;
   }
   .glance__bullets li {
@@ -436,7 +339,7 @@ const team = [
     border-left: 1px solid var(--color-border);
   }
   .glance__kpis li {
-    padding: 24px 20px;
+    padding: 28px 24px;
     border-right: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
   }
@@ -444,19 +347,197 @@ const team = [
     display: block;
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: clamp(28px, 3vw, 40px);
+    font-size: clamp(32px, 3.5vw, 48px);
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--color-text-primary);
   }
   .glance__kpi-label {
     display: block;
-    margin-top: 4px;
+    margin-top: 6px;
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 13px;
     color: var(--color-text-muted);
     line-height: 1.4;
   }
+
+  /* Opportunity */
+  .opportunity { background: var(--color-surface-elevated); }
+  .opp__comps { border-top: 1px solid var(--color-border); padding-top: 64px; margin-top: 64px; }
+  .opp__comps-lead {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text-muted);
+    max-width: 720px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .comp-grid--light .comp--inv {
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-border);
+  }
+  .comp-grid--light .comp--inv h3 { color: var(--color-text-primary); }
+  .comp-grid--light .comp--inv .comp__wedge { color: var(--color-text-muted); }
+  .comp-grid--light .comp--inv .comp__line { color: var(--color-text-muted); }
+  .comp-grid--light .comp--inv .comp__years { color: var(--color-text-primary); background: none; -webkit-text-fill-color: initial; }
+  .comp-grid--light .comp--own {
+    background: linear-gradient(180deg, rgba(255,171,36,0.07), rgba(255,19,19,0.03));
+    border-color: rgba(255,171,36,0.4);
+  }
+  .comp-grid--light .comp--own h3 {
+    background: var(--gradient-brand-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .comp-grid--light .comp--own .comp__years {
+    background: var(--gradient-brand-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Model tabs */
+  .model-about { background: var(--color-surface-elevated); }
+  .model-panel { display: none; }
+  .model-panel.is-active { display: block; }
+  .model-panel__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .model-panel__left { display: flex; flex-direction: column; gap: 16px; }
+  .model-panel__sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .model-panel__stats {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; gap: 32px; flex-wrap: wrap;
+  }
+  .model-panel__stats li { display: flex; flex-direction: column; gap: 2px; }
+  .model-panel__stats strong {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: var(--gradient-brand-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .model-panel__stats span {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+  .model-panel__bullets {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 12px;
+    align-content: start;
+    padding-top: 40px;
+    border-left: 1px solid var(--color-border);
+    padding-left: 48px;
+  }
+  .model-panel__bullets li {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .model-panel__bullets li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  /* Flywheel compact */
+  .flywheel-compact {
+    margin-top: 48px;
+    padding: 32px 36px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-gray-50);
+  }
+  .flywheel-compact__label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 20px;
+  }
+  .flywheel-compact__steps {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .flywheel-compact__steps li {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    padding-top: 14px;
+    border-top: 2px solid var(--color-border);
+  }
+  .flywheel-compact__steps li strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Position */
+  .position__grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 48px;
+  }
+  .moat--flat {
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    color: var(--color-text-primary);
+  }
+  .moat--flat h3 {
+    margin: 0 0 20px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+  .moat--flat h3::after { display: none; }
+  .moat--flat ul {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 12px;
+    font-size: 14px; line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+  .moat--flat li strong {
+    font-family: var(--font-heading);
+    color: var(--color-text-primary);
+    display: inline;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .moat--flat .moat__quote {
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  /* Closing lead */
   .about-closing__lead {
     font-family: var(--font-body);
     font-size: 18px;
@@ -465,16 +546,14 @@ const team = [
     max-width: 760px;
     margin: 24px 0 40px;
   }
-  .moat--wide {
-    max-width: 720px;
-  }
-  .moat--wide ul {
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-    gap: 14px;
+
+  @media (max-width: 1024px) {
+    .position__grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 880px) {
     .glance__grid { grid-template-columns: 1fr; gap: 40px; }
-    .moat--wide ul { grid-template-columns: 1fr; }
+    .model-panel__inner { grid-template-columns: 1fr; gap: 32px; }
+    .model-panel__bullets { border-left: none; padding-left: 0; padding-top: 0; border-top: 1px solid var(--color-border); }
+    .flywheel-compact__steps { grid-template-columns: 1fr; gap: 20px; }
   }
 </style>
