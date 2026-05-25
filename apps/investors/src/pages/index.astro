@@ -231,7 +231,10 @@ const segments = [
       <div class="data-flow">
         <div class="data-flow__header">
           <span class="data-flow__value">10.2M</span>
-          <span class="data-flow__label">tickets / year → The data layer</span>
+          <span class="data-flow__label">tickets / year</span>
+        </div>
+        <div class="data-flow__core">
+          <span>The data layer</span>
         </div>
         <div class="data-flow__products">
           <div class="dfp-item">
@@ -699,6 +702,20 @@ const segments = [
     font-size: 16px;
     font-weight: 400;
     color: rgba(255,255,255,0.6);
+  }
+  .data-flow__core {
+    padding: 14px 28px;
+    background: var(--gradient-brand);
+    border-radius: 8px;
+    margin: 0 auto 32px;
+    display: inline-block;
+  }
+  .data-flow__core span {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
   }
   .data-flow__products {
     display: grid;
