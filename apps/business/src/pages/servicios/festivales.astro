@@ -3,7 +3,7 @@ import Site from "../../layouts/Site.astro";
 import PromesaTicketplus from "../../components/PromesaTicketplus.astro";
 import EquipoSection from "../../components/EquipoSection.astro";
 
-// 3 momentos del festival (lanzamiento / operación / día después)
+// 4 momentos festival + ferias unificados (lanzamiento / operación / expositores / día después)
 const moments = [
   {
     n: "01", tag: "EL LANZAMIENTO", dark: false, id: "lanzamiento",
@@ -18,15 +18,26 @@ const moments = [
   {
     n: "02", tag: "LA OPERACIÓN", dark: true, id: "operacion",
     title: "Buscas operar el festival en terreno.",
-    lead: "Encuentras validación offline, POS y tótems en barras, acreditación profesional y staff Ticketplus en sala. La fila avanza, la barra no se cae, la prensa entra sin Excel.",
+    lead: "Encuentras validación offline, POS y tótems en barras, acreditación profesional con credenciales en segundos, control multi-puerta con sync y staff Ticketplus en sala.",
     features: [
       { n: "01", title: "Validación offline confirmada — la fila avanza sin WiFi", body: "App QR con modo offline real (no \"degradado\"). Sync automática al reconectar, detección instantánea de duplicados.", badge: "vs Welcu/Passline/TicketSpice" },
       { n: "02", title: "POS y tótem autoatención", body: "Barras, food courts, merch stands con modo offline, sync automática, inventario en tiempo real entre canales.", badge: null },
-      { n: "03", title: "Acreditación profesional", body: "Prensa, artistas, sponsors con QR + foto + permisos diferenciados por color de cordón.", badge: null },
+      { n: "03", title: "Acreditación pro con credenciales en segundos", body: "Impresora térmica integrada — credencial con foto + nombre + empresa + cargo + categoría en menos de 5 segundos. Cordón por color según categoría (prensa, artista, sponsor, expositor). Cero fila el día uno.", badge: "vs Eventbrite check-in básico" },
+      { n: "04", title: "Control multi-puerta con sync", body: "Hasta 8 puertas operando en paralelo con sync en tiempo real. Anti-doble ingreso, validación offline con auto-sync entre accesos.", badge: "Multi-puerta con sync" },
     ],
   },
   {
-    n: "03", tag: "EL DÍA DESPUÉS", dark: false, id: "dia-despues",
+    n: "03", tag: "EXPOSITORES Y STANDS", dark: false, id: "expositores",
+    title: "Buscas que cada stand opere como negocio propio.",
+    lead: "Encuentras exhibitor management con login propio por stand, lead capture y reportes de tráfico que justifican la renovación del sponsor para la próxima edición.",
+    features: [
+      { n: "01", title: "Exhibitor management — panel propio por stand", body: "Cada expositor tiene login propio: configura su stock, asigna a sus promotores, ve sus propias ventas separadas. Multiple team types (press, stand staff, setup) con stock per-type y permisos delegados. Pre-acreditación independiente — sin Excel al organizador.", badge: "Único por stand" },
+      { n: "02", title: "Lead capture por expositor", body: "Escaneo de credencial del visitante → nombre + empresa + email + intereses → CRM del expositor. Cada conversación queda registrada como lead calificado para follow-up post-evento.", badge: null },
+      { n: "03", title: "Reportes de tráfico por stand para sponsors", body: "Visitantes únicos, tiempo en stand, leads capturados, perfil demográfico del tráfico. ROI medible por stand — el sponsor recibe el documento que justifica renovar el próximo año a mayor precio.", badge: "ROI medible por stand" },
+    ],
+  },
+  {
+    n: "04", tag: "EL DÍA DESPUÉS", dark: true, id: "dia-despues",
     title: "Buscas saber qué pasó y planificar el próximo.",
     lead: "Encuentras atribución multi-canal, liquidaciones en 48-72h y reportes listos para programar el próximo festival.",
     features: [
@@ -40,8 +51,9 @@ const moments = [
 
 const overview = [
   { tag: "01 · El lanzamiento", title: "Cola virtual + war room + simulación de carga + SLA con penalidades.", href: "#lanzamiento" },
-  { tag: "02 · La operación", title: "Validación offline + multi-puerta + POS y tótem + staff TP en terreno.", href: "#operacion" },
-  { tag: "03 · El día después", title: "Atribución multi-canal + liquidación 48-72h + reporte para el próximo festival.", href: "#dia-despues" },
+  { tag: "02 · La operación", title: "Validación offline + multi-puerta con sync + POS y tótem + credenciales en segundos.", href: "#operacion" },
+  { tag: "03 · Expositores y stands", title: "Panel propio por stand + lead capture + reportes ROI por sponsor.", href: "#expositores" },
+  { tag: "04 · El día después", title: "Atribución multi-canal + liquidación 48-72h + reporte para el próximo evento.", href: "#dia-despues" },
 ];
 
 const proofPoints = [
@@ -102,15 +114,15 @@ const faqs = [
   { q: "¿Puedo lanzar en 8 semanas si recién contrato ahora?", a: "Sí — onboarding acelerado para lanzamientos en menos de 60 días. War room contigo desde el día 1 de la contratación, migración paralela si vienes de otra plataforma. La condición: tu equipo de marketing y producción tiene que estar disponible para reuniones semanales durante el sprint." },
 ];
 ---
-<Site title="Servicios Ticketplus · Festivales masivos — Lanzamientos sin caídas, operación en terreno multi-día">
+<Site title="Servicios Ticketplus · Festivales y Ferias — Lanzamientos, operación multi-día y exhibitor management">
 
   <!-- HERO con proof points -->
   <header class="biz-hero">
     <div class="container">
       <div class="biz-hero__content">
-        <p class="biz-hero__eyebrow">Servicios Ticketplus · Festivales masivos</p>
-        <h1 class="biz-hero__title">La tecnología que opera tu festival sin caídas, del lanzamiento al día después.</h1>
-        <p class="biz-hero__lead">Cola virtual, war room con ingenieros Ticketplus asignados, simulación de carga 72h antes y SLA con penalidades. La infraestructura que tu próximo lanzamiento necesita + la operación en terreno para el día del festival.</p>
+        <p class="biz-hero__eyebrow">Servicios Ticketplus · Festivales y Ferias</p>
+        <h1 class="biz-hero__title">La tecnología que opera tu festival o feria, del lanzamiento al cierre.</h1>
+        <p class="biz-hero__lead">Cola virtual con war room para el lanzamiento, validación offline multi-puerta, POS y tótem en barras, exhibitor management con panel propio por stand y reportes ROI por sponsor. La infraestructura para festivales masivos y ferias B2B/gastronómicas/cerveza en una sola plataforma.</p>
 
         <div class="hero-proof">
           {proofPoints.map((p) => (
@@ -254,12 +266,44 @@ const faqs = [
     </div>
   </section>
 
-  <!-- MOMENTO 03 · EL DÍA DESPUÉS -->
+  <!-- MOMENTO 03 · EXPOSITORES Y STANDS -->
   {(() => {
     const p = moments[2];
     const pi = 2;
     return (
       <section class={`biz-scene biz-scene--light biz-scene--p${pi}`} id={p.id}>
+        <div class="container">
+          <header class="biz-scene__header">
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
+            <h2 class="biz-scene__title">{p.title}</h2>
+            {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
+          </header>
+
+          <div class={`biz-scene__grid biz-scene__grid--${p.features.length}`}>
+            {p.features.map((f, fi) => (
+              <article class="scene-card">
+                <div class={`scene-card__stage scene-card__stage--p${pi}-${fi}`} aria-hidden="true">
+                  <span class="scene-card__chip">{f.n}</span>
+                </div>
+                <div class="scene-card__body">
+                  <h4 class="scene-card__title">{f.title}</h4>
+                  <p class="scene-card__text">{f.body}</p>
+                  {f.badge && <span class="biz-scene__badge">{f.badge}</span>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  })()}
+
+  <!-- MOMENTO 04 · EL DÍA DESPUÉS -->
+  {(() => {
+    const p = moments[3];
+    const pi = 3;
+    return (
+      <section class={`biz-scene biz-scene--dark biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
             <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
