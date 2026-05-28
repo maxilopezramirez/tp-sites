@@ -8,6 +8,7 @@ interface Props {
   title: string;
 }
 const { title } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <html lang="es">
   <head>
@@ -22,5 +23,6 @@ const { title } = Astro.props;
     <Header />
     <slot />
     <Footer />
+    <script src={`${base}/notes-widget.js`}></script>
   </body>
 </html>
