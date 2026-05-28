@@ -3,6 +3,8 @@ interface Props {
   title?: string;
 }
 const { title = "Ecosistema de pagos<br/>hecho para LATAM" } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const withBase = (p: string) => p.startsWith("/") ? `${base}${p}` : p;
 
 const countries = [
   { flag: "/images/flags/cl.svg", emoji: null, name: "Chile", methods: [
@@ -87,7 +89,7 @@ const countries = [
         <div class="tp-payments__country-row">
           <div class="tp-payments__country-header">
             {c.flag
-              ? <img src={c.flag} alt={c.name} class="tp-payments__country-flag" />
+              ? <img src={withBase(c.flag)} alt={c.name} class="tp-payments__country-flag" />
               : <span class="tp-payments__country-emoji">{c.emoji}</span>
             }
             <span class="tp-payments__country-name">{c.name}</span>
@@ -95,7 +97,7 @@ const countries = [
           <div class="tp-payments__methods">
             {c.methods.map(m => (
               <span class="tp-payments__method-pill">
-                {m.img && <img src={m.img} alt="" class="tp-payments__method-icon" loading="lazy" />}
+                {m.img && <img src={withBase(m.img)} alt="" class="tp-payments__method-icon" loading="lazy" />}
                 {m.label}
               </span>
             ))}
