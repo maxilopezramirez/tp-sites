@@ -73,10 +73,10 @@ const overview = [
 ];
 
 const whyCards = [
-  { icon: "💳", title: "Cobro recurrente adaptado a tu club", body: "Frecuencias mensual / trimestral / anual con tarjeta guardada." },
-  { icon: "🗺️", title: "Mapa interactivo y validación rápida", body: "Mapa configurable por partido + PDAs / torniquetes existentes." },
-  { icon: "📅", title: "Acompañamiento los 365 días", body: "Account manager dedicado que conoce tu calendario." },
-  { icon: "⚽", title: "Multi-disciplina probada", body: "Fútbol, básquetbol, tenis, padel, voley." },
+  { iconPath: "M3 7h18v10H3zM3 11h18", title: "Cobro recurrente adaptado a tu club", body: "Frecuencias mensual / trimestral / anual con tarjeta guardada." },
+  { iconPath: "M12 21s-7-6-7-12a7 7 0 1 1 14 0c0 6-7 12-7 12zM12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", title: "Mapa interactivo y validación rápida", body: "Mapa configurable por partido + PDAs / torniquetes existentes." },
+  { iconPath: "M3 8h18M7 3v3M17 3v3M5 6h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z", title: "Acompañamiento los 365 días", body: "Account manager dedicado que conoce tu calendario." },
+  { iconPath: "M6 4h12v4a6 6 0 0 1-12 0V4zM6 6H4a2 2 0 0 0 0 4h2m12-4h2a2 2 0 0 1 0 4h-2M9 20h6M12 17v3", title: "Multi-disciplina probada", body: "Fútbol, básquetbol, tenis, padel, voley." },
 ];
 
 const casosReales = [
@@ -329,7 +329,11 @@ const faqs = [
       <div class="why-tp__grid">
         {whyCards.map((w) => (
           <article class="why-tp__card">
-            <div class="why-tp__icon">{w.icon}</div>
+            <div class="why-tp__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d={w.iconPath} />
+              </svg>
+            </div>
             <h3 class="why-tp__card-title">{w.title}</h3>
             <p class="why-tp__card-body">{w.body}</p>
           </article>
@@ -746,12 +750,13 @@ const faqs = [
     box-shadow: 0 12px 28px rgba(0,0,0,0.06);
   }
   .why-tp__icon {
-    font-size: 28px; line-height: 1;
     width: 52px; height: 52px;
     display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, rgba(255,19,19,0.08), rgba(255,171,36,0.10));
     border-radius: 12px;
+    color: var(--color-primary);
   }
+  .why-tp__icon svg { width: 24px; height: 24px; }
   .why-tp__card-title {
     font-family: var(--font-heading);
     font-size: 1.05rem; font-weight: 800;
