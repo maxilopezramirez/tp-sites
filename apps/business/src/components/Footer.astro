@@ -1,0 +1,405 @@
+---
+/*
+  Footer principal del sitio business.
+  Sección dark, grid 5 columnas (brand+social ocupa 2), responsive.
+*/
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+
+const industrias = [
+  { label: 'Festivales', href: '/servicios/festivales' },
+  { label: 'Teatros', href: '/servicios/teatros' },
+  { label: 'Deportes', href: '/servicios/deportes' },
+  { label: 'Conferencias', href: '/servicios/conferencias' },
+  { label: 'Familiar', href: '/servicios/familiar' },
+  { label: 'Fiestas', href: '/servicios/fiestas' },
+  { label: 'Espectáculo', href: '/servicios/espectaculo' },
+  { label: 'Ferias', href: '/servicios/ferias' },
+];
+
+const soluciones = [
+  { label: 'Onsite', href: '/servicios/onsite' },
+  { label: 'POS y Tótem', href: '/servicios/pos-y-totem' },
+  { label: 'Marketplace', href: '/servicios/marketplace' },
+  { label: 'Gestión 360', href: '/servicios/360' },
+  { label: 'Data analytics', href: '/servicios/data-analytics' },
+  { label: 'Trust & service', href: '/servicios/trust-service' },
+  { label: 'Agencia Booster', href: '/booster' },
+];
+
+const empresa = [
+  { label: 'Sobre Ticketplus', href: '/sobre' },
+  { label: 'Casos de éxito', href: '/casos' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Carreras', href: '/carreras' },
+  { label: 'Prensa', href: '/prensa' },
+  { label: 'Contacto', href: '#contacto' },
+];
+
+const legales = [
+  { label: 'Términos y condiciones', href: '/legal/terminos' },
+  { label: 'Política de privacidad', href: '/legal/privacidad' },
+  { label: 'Cookies', href: '/legal/cookies' },
+  { label: 'Compliance', href: '/legal/compliance' },
+];
+
+const socials = [
+  { key: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/ticketplus_chile' },
+  { key: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/ticketplus' },
+  { key: 'x', label: 'X', href: 'https://x.com/ticketplus' },
+  { key: 'youtube', label: 'YouTube', href: 'https://youtube.com/@ticketplus' },
+  { key: 'tiktok', label: 'TikTok', href: 'https://tiktok.com/@ticketplus' },
+];
+---
+
+<footer class="tp-footer">
+  <div class="tp-footer__inner">
+    <div class="tp-footer__top">
+      <div class="tp-footer__col tp-footer__col--brand">
+        <a href={`${base}/`} class="tp-footer__logo" aria-label="TicketPlus — Home">
+          <img src={`${base}/wordmark-white.png`} alt="TicketPlus" />
+        </a>
+
+        <p class="tp-footer__tagline">Operación completa para tu próximo evento.</p>
+
+        <div class="tp-footer__social" aria-label="Redes sociales">
+          {socials.map((s) => (
+            <a
+              href={s.href}
+              class="tp-footer__social-link"
+              aria-label={s.label}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {s.key === 'instagram' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+                </svg>
+              )}
+              {s.key === 'linkedin' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <line x1="8" y1="10.5" x2="8" y2="17" />
+                  <circle cx="8" cy="7.5" r="0.6" fill="currentColor" />
+                  <path d="M12 17v-4a2.5 2.5 0 0 1 5 0v4" />
+                  <line x1="12" y1="10.5" x2="12" y2="17" />
+                </svg>
+              )}
+              {s.key === 'x' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4l16 16" />
+                  <path d="M20 4L4 20" />
+                </svg>
+              )}
+              {s.key === 'youtube' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2.5" y="6" width="19" height="12" rx="3" />
+                  <path d="M10.5 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none" />
+                </svg>
+              )}
+              {s.key === 'tiktok' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5" />
+                  <path d="M14 4c.5 2.5 2.5 4 5 4" />
+                </svg>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="tp-footer__col">
+        <p class="tp-footer__heading">Industrias</p>
+        <ul class="tp-footer__list">
+          {industrias.map((i) => (
+            <li><a href={`${base}${i.href}`} class="tp-footer__link">{i.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="tp-footer__col">
+        <p class="tp-footer__heading">Soluciones</p>
+        <ul class="tp-footer__list">
+          {soluciones.map((s) => (
+            <li><a href={`${base}${s.href}`} class="tp-footer__link">{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="tp-footer__col">
+        <p class="tp-footer__heading">Empresa</p>
+        <ul class="tp-footer__list">
+          {empresa.map((e) => (
+            <li><a href={`${base}${e.href}`} class="tp-footer__link">{e.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="tp-footer__bottom">
+      <div class="tp-footer__copy">
+        <span>© 2026 Ticketplus. Todos los derechos reservados.</span>
+        <span class="tp-footer__country" aria-label="País">
+          <span aria-hidden="true">🇨🇱</span> Chile
+        </span>
+      </div>
+      <ul class="tp-footer__legal">
+        {legales.map((l) => (
+          <li><a href={`${base}${l.href}`} class="tp-footer__legal-link">{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .tp-footer {
+    background: #050505;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 80px 0 40px;
+    font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+  }
+  .tp-footer__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .tp-footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 56px;
+    margin-bottom: 64px;
+  }
+
+  .tp-footer__col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .tp-footer__col--brand {
+    gap: 20px;
+  }
+
+  .tp-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .tp-footer__logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .tp-footer__tagline {
+    font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 360px;
+  }
+
+  /* Newsletter */
+  .tp-footer__newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 380px;
+  }
+  .tp-footer__newsletter-label {
+    font-family: var(--font-heading, "Montserrat", system-ui, sans-serif);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .tp-footer__newsletter-row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .tp-footer__newsletter-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    padding: 10px 16px;
+    color: #fff;
+    font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    min-width: 0;
+  }
+  .tp-footer__newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  .tp-footer__newsletter-input:focus {
+    border-color: var(--color-secondary, #ffab24);
+    background: rgba(255, 255, 255, 0.09);
+  }
+  .tp-footer__newsletter-btn {
+    background: var(--gradient-brand, linear-gradient(135deg, #f79802, #ff1313));
+    color: #fff;
+    border: 0;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    font-family: var(--font-heading, "Montserrat", system-ui, sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .tp-footer__newsletter-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  /* Social */
+  .tp-footer__social {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .tp-footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .tp-footer__social-link:hover {
+    background: var(--color-secondary, #ffab24);
+    color: #000;
+    border-color: var(--color-secondary, #ffab24);
+    transform: translateY(-1px);
+  }
+
+  /* Columns */
+  .tp-footer__heading {
+    font-family: var(--font-heading, "Montserrat", system-ui, sans-serif);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-secondary, #ffab24);
+    margin: 0 0 18px;
+  }
+  .tp-footer__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tp-footer__link {
+    font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  }
+  .tp-footer__link:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Bottom bar */
+  .tp-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .tp-footer__copy {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  .tp-footer__country {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+  }
+  .tp-footer__legal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    justify-content: flex-end;
+  }
+  .tp-footer__legal-link {
+    font-family: var(--font-body, "Poppins", system-ui, sans-serif);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .tp-footer__legal-link:hover {
+    color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .tp-footer__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 40px;
+    }
+    .tp-footer__col--brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .tp-footer {
+      padding: 60px 0 32px;
+    }
+    .tp-footer__top {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .tp-footer__col--brand {
+      grid-column: auto;
+    }
+    .tp-footer__newsletter-row {
+      flex-direction: column;
+    }
+    .tp-footer__newsletter-btn {
+      padding: 12px 18px;
+    }
+    .tp-footer__bottom {
+      grid-template-columns: 1fr;
+      align-items: flex-start;
+    }
+    .tp-footer__legal {
+      justify-content: flex-start;
+    }
+  }
+</style>

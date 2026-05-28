@@ -2,314 +2,504 @@
 import Site from "../layouts/Site.astro";
 import PaymentsSection from "../components/PaymentsSection.astro";
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+// ─── Logos cloud (clientes WL en vivo y tech proof) ───
+const wlLogos = [
+  { name: "Livepass", flag: "🇦🇷", tech: false },
+  { name: "Autoentrada", flag: "🇦🇷", tech: false },
+  { name: "Ticketea", flag: "🇵🇾", tech: false },
+  { name: "La Maraka", flag: "🇲🇽", tech: false },
+  { name: "Startickets", flag: "🇲🇽", tech: false },
+  { name: "Pases Parques", flag: "🇨🇱", tech: false },
+  { name: "FIFA U-20", flag: "🇨🇱", tech: true },
+  { name: "AFA", flag: "🇦🇷", tech: true },
+];
 
-const pillars = [
+// ─── Platform capabilities (4 ejes consolidados) ───
+const capabilities = [
   {
-    n: "01",
-    tag: "MARCA",
-    title: "Tu marca, tu dominio, tu app.",
-    lead: "El cliente final nunca ve Ticketplus.",
-    features: [
-      {
-        n: "01",
-        title: "Dominio propio + checkout white-label end-to-end",
-        body: "Tu dominio (tumarca.com o tickets.tumarca.com), certificado SSL gestionado, emails transaccionales desde tu dominio (DKIM/SPF). Checkout, tickets PDF, confirmaciones y reminders 100% bajo tu identidad visual. El cliente final nunca ve la marca Ticketplus.",
-        badge: "Diferenciador clave vs Full Op",
-      },
-      {
-        n: "02",
-        title: "App iOS + Android publicada bajo tu cuenta",
-        body: "App nativa publicada en App Store y Google Play bajo tu cuenta de desarrollador. Branding completo: ícono, splash, paleta, tipografías. Push notifications desde tu marca, deep linking a eventos y wallet integrado (Apple Wallet + Google Wallet).",
-        badge: null,
-      },
-    ],
+    title: "Marca",
+    body: "Dominio propio, app con tu marca, checkout end-to-end. El cliente siempre ve tu marca.",
+    iconPath: "M12 2L3 7v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V7l-9-5z",
   },
   {
-    n: "02",
-    tag: "ECONOMÍA",
-    title: "El dinero pasa por tu cuenta. La data, también.",
-    lead: "A diferencia de Full Op, la recaudación va directa a tu cuenta — Ticketplus cobra una fee SaaS, no se queda con el float.",
+    title: "Economía",
+    body: "Recaudación directa a tu cuenta, SaaS predecible sin take-rate, data exportable.",
+    iconPath: "M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+  },
+  {
+    title: "Escala",
+    body: "Multi-país, multi-currency, compliance nativo en 4 jurisdicciones. 1K a 1M tickets/año mismo stack.",
+    iconPath: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20",
+  },
+  {
+    title: "API disponible",
+    body: "REST, webhooks y SDKs. Sandbox sin tarjeta. Headless si quieres construir tu propio frontend.",
+    iconPath: "M16 18l6-6-6-6M8 6l-6 6 6 6",
+  },
+];
+
+// ─── Deep dive narrative blocks ───
+const deepDive = [
+  {
+    eyebrow: "Marca",
+    title: "El cliente siempre ve tu marca.",
+    body: "Tu dominio (tumarca.com), tu identidad visual, tu checkout. Ticketplus opera la infraestructura debajo. Sin co-branding, sin \"powered by\".",
+    visual: "browser",
+    reverse: false,
     features: [
       {
         n: "01",
-        title: "Liquidación directa a tu cuenta",
-        body: "Stripe Connect con cuenta propia: el comprador paga y el dinero entra a tu cuenta bancaria, no a la de Ticketplus. Liquidación automática en 48-72h. Sin float retenido, sin cuentas escrow opacas.",
+        title: "Dominio propio y checkout white-label end-to-end",
+        body: "Tu dominio (tumarca.com o tickets.tumarca.com), certificado SSL gestionado, emails transaccionales desde tu dominio (DKIM/SPF). Checkout, tickets PDF, confirmaciones y reminders 100% bajo tu identidad visual. El cliente siempre ve tu marca.",
         badge: "Diferenciador clave vs Full Op",
       },
       {
         n: "02",
-        title: "Modelo SaaS predecible",
-        body: "Fee mensual SaaS + fee por ticket vendido (transparente, sin sorpresas), en lugar de % sobre revenue total. Operación previsible para tu CFO: presupuestas el costo de plataforma, no compartes ingreso del evento.",
+        title: "App iOS y Android publicada bajo tu cuenta",
+        body: "App nativa publicada en App Store y Google Play bajo tu cuenta de desarrollador. Branding completo: ícono, splash, paleta, tipografías. Push notifications desde tu marca, deep linking a eventos y wallet integrado (Apple Wallet y Google Wallet).",
         badge: null,
       },
       {
         n: "03",
         title: "Tu data es tuya — exportable cuando quieras",
-        body: "Acceso completo a la base de compradores con consentimiento, exportable en JSON o CSV vía API o panel. Sin contratos de permanencia. Si decides irte, te llevas tus eventos, tus compradores, tu histórico transaccional.",
+        body: "Acceso completo a la base de compradores con consentimiento, exportable en JSON o CSV vía API o panel. Sin contratos de permanencia. Si decides irte, te llevas tus eventos, tus compradores, tu histórico transaccional. La data no se queda secuestrada.",
         badge: "Cero permanencia obligatoria",
-      },
-      {
-        n: "04",
-        title: "Multi-currency real — CLP y USD como eventos separados",
-        body: "Vende en CLP en Chile y en USD para audiencia internacional, sin conversiones implícitas. Cada moneda se opera con su propia liquidación, su propia contabilidad y su propia conciliación bancaria. Sin spreads ocultos.",
-        badge: null,
       },
     ],
   },
   {
-    n: "03",
-    tag: "ESCALA",
-    title: "De 1K a 1M tickets/año en la misma plataforma.",
-    lead: "El stack no cambia cuando creces. La misma API que opera un teatro de 200 butacas operó FIFA U-20 con +320K tickets en un día.",
+    eyebrow: "Economía",
+    title: "El dinero va a tu cuenta, no a terceros.",
+    body: "Stripe Connect con cuenta propia. Comprador paga, dinero entra a tu cuenta bancaria — no a la de Ticketplus. Liquidación automática 48-72h. Sin float retenido, sin escrow opaco.",
+    visual: "warm",
+    reverse: true,
     features: [
       {
         n: "01",
-        title: "Compliance multi-país nativo",
-        body: "Facturación electrónica integrada por país, sin contratar contadores locales: SII en Chile, AFIP en Argentina vía Facturante + GoSocket, DIAN en Colombia vía Siigo, DNCP en Paraguay. Cada operación se factura en la jurisdicción correcta automáticamente.",
-        badge: "CL · AR · CO · PY",
-      },
-      {
-        n: "02",
-        title: "Hardware compatible — usa lo que ya tienes",
-        body: "Compatibilidad nativa con impresoras Zebra, Honeywell, Verifone, Bixolon y Boca. Si tu venue ya tiene infraestructura, la reutilizas. POS, tótems, lectores QR y validadores funcionan con tu plataforma WL.",
+        title: "Recaudación directa a tu cuenta",
+        body: "Stripe Connect con cuenta propia. Liquidación 48-72h post-evento. Sin float retenido, sin cuentas escrow opacas. El comprador paga, el dinero entra a tu cuenta bancaria.",
         badge: null,
       },
       {
+        n: "02",
+        title: "Modelo SaaS predecible",
+        body: "Fee mensual SaaS y fee por ticket vendido (transparente, sin sorpresas), en lugar de % sobre revenue total. Operación previsible para tu CFO: presupuestas el costo de plataforma, no compartes ingreso del evento.",
+        badge: "Sin take rate",
+      },
+      {
         n: "03",
-        title: "Misma arquitectura 1K a 1M tickets/año",
-        body: "El stack que opera un teatro de 200 butacas es el mismo que operó FIFA U-20 con +320K tickets en un día. No hay re-arquitectura cuando creces, no cambias de plan ni migras de base de datos.",
+        title: "11 países, 11 monedas locales integradas",
+        body: "Operamos en 11 países con sus medios de pago locales integrados, cada uno con su propia liquidación y compliance fiscal nativo.",
+        badge: null,
+        chips: [
+          { flag: "🇨🇱", country: "Chile", currency: "CLP" },
+          { flag: "🇦🇷", country: "Argentina", currency: "ARS" },
+          { flag: "🇺🇾", country: "Uruguay", currency: "UYU" },
+          { flag: "🇵🇾", country: "Paraguay", currency: "PYG" },
+          { flag: "🇧🇷", country: "Brasil", currency: "BRL" },
+          { flag: "🇨🇴", country: "Colombia", currency: "COP" },
+          { flag: "🇲🇽", country: "México", currency: "MXN" },
+          { flag: "🇵🇪", country: "Perú", currency: "PEN" },
+          { flag: "🇧🇴", country: "Bolivia", currency: "BOB" },
+          { flag: "🇪🇸", country: "España", currency: "EUR" },
+          { flag: "🇩🇴", country: "Rep. Dominicana", currency: "DOP" },
+        ],
+      },
+    ],
+  },
+  {
+    eyebrow: "Escala",
+    title: "Una plataforma internacional, lista para cada mercado.",
+    body: "Infraestructura diseñada para operar en múltiples países simultáneamente, con la fiscalidad, las monedas y los medios de pago locales resueltos por defecto. Lanzá en un mercado nuevo sin contadores locales, sin re-arquitectura, sin migración.",
+    visual: "flags",
+    reverse: false,
+    features: [
+      {
+        n: "01",
+        title: "Infraestructura de alta demanda",
+        body: "El stack que opera un teatro de 200 butacas es el mismo que operó FIFA U-20 con +320K tickets en un día. No hay re-arquitectura cuando creces, no cambias de plan ni migras de base de datos. La plataforma escala — tu equipo no se queda atrás.",
         badge: "99.9% uptime",
+      },
+    ],
+  },
+  {
+    eyebrow: "Hardware",
+    title: "Compatible con el hardware que ya tenés.",
+    body: "Si tu venue ya tiene infraestructura instalada, la reutilizamos. Si arrancás de cero, te damos la lista de hardware certificado por nivel de operación. Cero lock-in de proveedor.",
+    visual: "warm",
+    reverse: true,
+    features: [
+      {
+        n: "01",
+        title: "Hardware compatible — usa lo que ya tienes",
+        body: "Compatibilidad nativa con impresoras Zebra, Honeywell, Verifone, Bixolon y Boca. Si tu venue ya tiene infraestructura, la reutilizas. Si arrancas de cero, te damos la lista de hardware certificado por nivel de operación. POS, tótems, lectores QR y validadores funcionan con tu plataforma WL.",
+        badge: null,
       },
     ],
   },
 ];
 
-const whyCards = [
-  { n: "01", title: "Plataforma probada", body: "FIFA U-20, +320K tickets/día, 99.9% uptime. 12 años iterando sobre el mismo core. Cada caso límite ya lo vivimos." },
-  { n: "02", title: "Compliance multi-país", body: "SII Chile, AFIP Argentina, DIAN Colombia, DNCP Paraguay — facturación electrónica nativa. No contratas contadores locales." },
-  { n: "03", title: "Cero re-arquitectura", body: "Mismo stack para 1K o 1M tickets/año. No migras de base de datos cuando creces. Tu equipo de ingeniería sigue trabajando." },
-  { n: "04", title: "Migration in / out", body: "Onboarding acompañado en menos de 4 semanas. Si decides irte, te llevas tu data y tus compradores. Cero permanencia obligatoria." },
+// ─── Ecosistema clientes WL en vivo (6 plataformas) ───
+const wlClients = [
+  {
+    name: "Livepass",
+    flag: "🇦🇷",
+    desc: "Entre las ticketeras más grandes de Argentina.",
+    href: "https://livepass.com.ar",
+  },
+  {
+    name: "Autoentrada",
+    flag: "🇦🇷",
+    desc: "Entre las ticketeras más grandes de Argentina.",
+    href: "https://ventas.autoentrada.com",
+  },
+  {
+    name: "Ticketea",
+    flag: "🇵🇾",
+    desc: "La principal ticketera de Paraguay.",
+    href: "https://ticketea.com.py",
+  },
+  {
+    name: "La Maraka",
+    flag: "🇲🇽",
+    desc: "Líder en entretenimiento en México.",
+    href: "https://tickets.lamaraka.com.mx",
+  },
+  {
+    name: "Startickets",
+    flag: "🇲🇽",
+    desc: "Tecnología de venta de entradas en México.",
+    href: "https://startickets.com.mx",
+  },
+  {
+    name: "Pases Parques",
+    flag: "🇨🇱",
+    desc: "Todos los parques nacionales de Chile se venden aquí.",
+    href: "https://tickets.pasesparques.cl",
+  },
 ];
 
-const industries = [
+// ─── Why TP cards ───
+const whyCards = [
+  { icon: "🛡️", title: "Plataforma probada", body: "FIFA U-20, +320K tickets/día, 99.9% uptime, 12 años iterando." },
+  { icon: "🌎", title: "Compliance multi-país", body: "SII Chile, AFIP Argentina, DIAN Colombia, DNCP Paraguay nativos." },
+  { icon: "📐", title: "Cero re-arquitectura", body: "Mismo stack 1K a 1M tickets/año. No migras de base de datos cuando creces." },
+  { icon: "🔓", title: "Migration in / out", body: "Onboarding <4 semanas. Si decides irte, te llevas tu data. Cero permanencia." },
+];
+
+// ─── Para quién es WL (buyer-type segmentation) ───
+const audience = [
   { icon: "🎪", title: "Productoras grandes", body: "Vas a construir plataforma propia o cambiar de proveedor. Quieres tu marca front-end y operación probada atrás." },
   { icon: "🏟️", title: "Venues / Arenas", body: "Ya tienes ticketing in-house pero pesa mantenerlo. Quieres conservar tu marca y delegar la infraestructura." },
   { icon: "🌐", title: "Ticketeras regionales", body: "Operas en un país o ciudad con marca consolidada. Necesitas core SaaS sin perder identidad ni clientes." },
-  { icon: "⚽", title: "Equipos de fútbol", body: "Boletería propia, abonos socios, partido a partido, acreditación prensa — bajo tu marca de club." },
+  { icon: "⚽", title: "Equipos de fútbol", body: "Boletería propia, abonos socios, partido a partido, acreditación prensa, bajo tu marca de club." },
 ];
 
-const clients = [
-  { flag: "🇦🇷", name: "Livepass", desc: "Entre las ticketeras más grandes de Argentina.", url: "livepass.com.ar" },
-  { flag: "🇦🇷", name: "Autoentrada", desc: "Entre las ticketeras más grandes de Argentina.", url: "ventas.autoentrada.com" },
-  { flag: "🇵🇾", name: "Ticketea", desc: "La principal ticketera de Paraguay.", url: "ticketea.com.py" },
-  { flag: "🇲🇽", name: "La Maraka", desc: "Líder en entretenimiento en México.", url: "tickets.lamaraka.com.mx" },
-  { flag: "🇲🇽", name: "Startickets", desc: "Tecnología de venta de entradas en México.", url: "startickets.com.mx" },
-  { flag: "🇨🇱", name: "Pases Parques", desc: "Todos los parques nacionales de Chile se venden aquí.", url: "tickets.pasesparques.cl" },
+// ─── Cross-link comparativas ───
+const compareLinks = [
+  { label: "vs Palco4", href: "#" },
+  { label: "vs Vivenu", href: "#" },
+  { label: "vs Audience View", href: "#" },
+  { label: "vs Build in-house", href: "#" },
 ];
 
-const payments = [
-  { flag: "🇨🇱", country: "Chile", pills: ["Webpay", "MACH Pay", "GetnetWeb", "Compraqui", "Multicaja", "Fintoc", "Bamboo", "Dpago"] },
-  { flag: "🇦🇷", country: "Argentina", pills: ["MercadoPago", "Decidir"] },
-  { flag: "🇨🇴", country: "Colombia", pills: ["Wompi", "Nequi", "Payvalida", "Paymentez"] },
-  { flag: "🇲🇽", country: "México", pills: ["Nuvei", "Openpay"] },
-  { flag: "🇧🇷", country: "Brasil", pills: ["PagSeguro", "PicPay", "PayPal"] },
-  { flag: "🇵🇪", country: "Perú", pills: ["Izipay", "PagoEfectivo", "Niubiz"] },
-  { flag: "🇵🇾", country: "Paraguay", pills: ["Bancard", "Pagopar", "BancardQR"] },
-  { flag: "🇺🇾", country: "Uruguay", pills: ["MercadoPago"] },
-  { flag: "🌎", country: "Multi-país", pills: ["Dlocal", "MercadoPago", "PayPal", "Stripe", "PayRetailers"] },
-];
-
+// ─── FAQ reordenado por peso de objeción ───
 const faqs = [
-  { q: "¿Puedo migrar mi data desde otra plataforma WL?", a: "Sí. Tenemos pipelines de migración acompañada desde plataformas WL comunes (Palco4, Vivenu, Tessitura, Eventbrite Pro, sistemas propios). El proceso típico toma 2 a 4 semanas con ingeniería TP dedicada y un Account Manager asignado." },
-  { q: "¿Cuánto cuesta? ¿Es revenue share o SaaS fee?", a: "Es modelo SaaS — fee mensual fija de plataforma + fee transparente por ticket vendido. No tomamos % sobre el revenue total del evento, a diferencia del modelo Full Op. La fee se calcula según volumen anual esperado, módulos activados y tier de soporte. Cotización personalizada con TCO estimado a 5 años en menos de 24h." },
-  { q: "¿Hay sandbox antes de contratar?", a: "Sí. Tienes acceso sandbox completo sin tarjeta de crédito desde el día 1 de la conversación comercial. Puedes probar el API, simular ventas, integrar contra tu propio frontend, y validar el flujo end-to-end antes de firmar contrato." },
-  { q: "¿Qué pasa con mi facturación en cada país donde opero?", a: "Compliance multi-país nativo en los 4 mercados donde operamos hoy: SII Chile (boleta y factura electrónica), AFIP Argentina vía Facturante + GoSocket, DIAN Colombia vía Siigo, DNCP Paraguay. Cada operación se factura en la jurisdicción correcta automáticamente." },
-  { q: "¿Quién es dueño de los datos? ¿Qué pasa si me voy?", a: "Los datos son tuyos. Tienes acceso a exportar la base completa de compradores, histórico transaccional y reportes en JSON o CSV vía API o panel — en cualquier momento. Si decides cerrar el contrato, te asistimos en la migración. Cero permanencia obligatoria." },
-  { q: "¿En qué se diferencia de Full Operation de Ticketplus?", a: "En Full Operation, el comprador final ve la marca Ticketplus y la recaudación pasa por nuestra cuenta antes de liquidarse. En Whitelabel, el comprador final ve tu marca, el checkout vive en tu dominio, y la recaudación va directa a tu cuenta. Full Op es ideal para productoras que quieren foco en su evento; WL es para quienes quieren ser dueños de la plataforma." },
+  {
+    q: "¿Cuánto cuesta? ¿Es revenue share o SaaS fee?",
+    a: "<strong>SaaS fee mensual y fee por ticket vendido</strong> — transparente, sin sorpresas, sin take rate sobre revenue. Tu CFO presupuesta el costo de plataforma como cualquier otro SaaS B2B (Stripe, AWS, Datadog). Cotización personalizada en menos de 24 horas hábiles.",
+  },
+  {
+    q: "¿En qué se diferencia de Ticketplus Full Operation?",
+    a: "Marca, dominio y cuenta propia. En Full Op el checkout vive en ticketplus.cl y la recaudación pasa por TP. En WL, el checkout vive en tu dominio y la recaudación va directa a tu cuenta. Full Op es para productores que quieren delegar TODO; WL es para empresas que quieren control de plataforma manteniendo su marca y data. <em>Booster (motor de marketing gestionado) sólo está disponible en Full Operation.</em>",
+  },
+  {
+    q: "¿Quién es dueño de los datos? ¿Qué pasa si me voy?",
+    a: "Vos. Los datos son tuyos, exportables en JSON / CSV / API cuando quieras. Si decides migrar a otro proveedor, te ayudamos a salir limpio — sin penalidades, sin cláusulas escondidas, sin bloqueo de cuenta. Ticketplus opera por valor entregado, no por lock-in.",
+  },
+  {
+    q: "¿Hay sandbox antes de contratar?",
+    a: "Sí, <strong>sandbox sin tarjeta desde el día 1</strong>. Tu equipo técnico prueba la plataforma, configura un evento de prueba, simula transacciones. Sin compromiso, sin trámites previos.",
+  },
+  {
+    q: "¿Qué pasa con mi facturación en cada país?",
+    a: "Compliance nativo en 4 mercados (Chile, Argentina, Colombia, Paraguay). Cada operación se factura en la jurisdicción correcta automáticamente. Para mercados fuera de los 4, agendamos discovery técnico antes de firmar — no comprometemos lo que no podemos cumplir.",
+  },
+  {
+    q: "¿Puedo migrar mi data desde otra plataforma WL?",
+    a: "Sí. Pipelines de migración acompañados desde Palco4, Vivenu, Tessitura, Eventbrite Pro y plataformas propias. Importamos compradores, transacciones, configuración de mapas. Operamos en paralelo durante la migración para no interrumpir ventas.",
+  },
 ];
+
+// ─── Hero grid placeholders (12 UI cards) ───
+const heroGrid = Array.from({ length: 12 }, (_, i) => i);
 ---
-<Site title="Ticketplus Platform · Whitelabel SaaS para LATAM">
+<Site title="Ticketplus Whitelabel · El software de ticketing que pone tu marca al centro">
 
-  <!-- NAV -->
-  <nav class="topnav is-solid" id="topnav">
-    <div class="topnav__inner">
-      <a href="/" class="logo"><img src="/wordmark-white.png" alt="Ticketplus" height="24" /></a>
-      <ul class="topnav__links">
-        <li><a href="#pilares">Plataforma</a></li>
-        <li><a href="#por-que">Por qué WL</a></li>
-        <li><a href="#industrias">Para quién</a></li>
-      </ul>
-      <a href="#contacto" class="btn btn--primary">Solicitar demo</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="page-header" style="padding: 180px 0 120px; min-height: 60vh; display: flex; align-items: center;">
-    <div class="page-header__inner" style="max-width: 1280px;">
-      <p class="page-header__eyebrow">Whitelabel SaaS · Plataforma de ticketing</p>
-      <h1 class="page-header__title">Tu marca. Tu dominio.<br/><span class="accent">Tu data.</span></h1>
-      <div style="display:flex; gap:12px; margin-top:40px; flex-wrap:wrap;">
-        <a href="#contacto" class="btn btn--primary">Solicitar demo →</a>
-        <a href="#pilares" class="btn btn--ghost">Ver la plataforma</a>
+  <!-- ═══ 1. HERO ═══ -->
+  <header class="biz-hero">
+    <div class="container">
+      <div class="biz-hero__content">
+        <p class="biz-hero__eyebrow">Whitelabel SaaS · Plataforma de ticketing</p>
+        <h1 class="biz-hero__title">El software de ticketing que pone <span class="accent">tu marca al centro.</span></h1>
+        <p class="biz-hero__lead">La plataforma más flexible para ticketing en LATAM. Tu marca al centro — Ticketplus opera la infraestructura debajo. Control total sobre el front-end, la operación y la data.</p>
+        <div class="biz-hero__ctas">
+          <a href="#contacto" class="btn btn--primary">Solicitar demo y sandbox →</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- LOGOS CLOUD -->
+  <!-- ═══ 2. LOGOS CLOUD con auto-rotation ═══ -->
   <section class="logos-cloud">
     <div class="container">
-      <p class="logos-cloud__label">Operan con Ticketplus Whitelabel</p>
-      <div class="logos-cloud__grid">
-        {["Livepass 🇦🇷", "Autoentrada 🇦🇷", "Ticketea 🇵🇾", "La Maraka 🇲🇽", "Startickets 🇲🇽", "Pases Parques 🇨🇱", "Teatro UC 🇨🇱", "Audax Italiano 🇨🇱"].map(l => (
-          <div class="logo-tile-dark">{l}</div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- BRIDGE -->
-  <section style="background:#fff; padding: 96px 0 72px; text-align:center;">
-    <div class="container">
-      <p class="section__eyebrow" style="color:var(--color-primary);">SaaS B2B · 12 años iterando</p>
-      <h2 class="section__title" style="max-width: 900px; margin: 0 auto;">El SaaS de ticketing que escala con tu marca, no con la nuestra.</h2>
-    </div>
-  </section>
-
-  <!-- 3 PILARES OVERVIEW -->
-  <section style="background:#fff; padding: 0 0 120px;" id="pilares">
-    <div class="container">
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-        {pillars.map(p => (
-          <div style="border:1px solid var(--color-border); border-radius:var(--radius-card); padding:36px 28px; display:flex; flex-direction:column; gap:14px;">
-            <span style="display:inline-block; font-family:var(--font-heading); font-size:11px; font-weight:800; color:var(--color-primary); letter-spacing:0.15em; background:rgba(255,19,19,0.08); padding:4px 12px; border-radius:999px; align-self:flex-start;">{p.n} · {p.tag}</span>
-            <h3 style="font-family:var(--font-heading); font-size:1.4rem; font-weight:800; letter-spacing:-0.02em; margin:0;">{p.title}</h3>
-            <p style="font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:1.6; flex:1; margin:0;">{p.lead}</p>
-            <a href={`#pilar-${p.n}`} style="font-family:var(--font-heading); font-size:0.85rem; font-weight:700; color:var(--color-primary); text-decoration:none;">Ver detalle ↓</a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- DEEP DIVES: cada pilar con cards -->
-  {pillars.map((p, pi) => (
-    <section id={`pilar-${p.n}`} style={`padding: 120px 0; background: ${pi % 2 === 1 ? '#000000' : '#ffffff'}; color: ${pi % 2 === 1 ? '#fff' : 'inherit'};`}>
-      <div class="container">
-        <p class="section__eyebrow" style={`color: ${pi % 2 === 1 ? 'var(--color-secondary)' : 'var(--color-secondary)'};`}>{p.n} · {p.tag}</p>
-        <h2 class="section__title" style={pi % 2 === 1 ? 'color:#fff;' : ''}>{p.title}</h2>
-        <p class="section__lead" style={`max-width:640px; margin-bottom:56px; color: ${pi % 2 === 1 ? 'rgba(255,255,255,0.70)' : 'var(--color-text-muted)'};`}>{p.lead}</p>
-
-        <div style={`display:grid; grid-template-columns:repeat(${p.features.length <= 2 ? 2 : p.features.length <= 3 ? 3 : 2}, 1fr); gap:2px; background:${pi % 2 === 1 ? 'rgba(255,255,255,0.08)' : 'var(--color-border)'}; border-radius:var(--radius-card); overflow:hidden;`}>
-          {p.features.map(f => (
-            <div style={`background:${pi % 2 === 1 ? '#111111' : '#ffffff'}; padding:40px 36px; display:flex; flex-direction:column; gap:16px;`}>
-              <span style={`font-family:var(--font-heading); font-weight:900; font-size:56px; line-height:1; letter-spacing:-0.04em; background:var(--gradient-brand-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;`}>{f.n}</span>
-              <h3 style={`font-family:var(--font-heading); font-size:1.2rem; font-weight:700; letter-spacing:-0.02em; margin:0; color:${pi % 2 === 1 ? '#fff' : 'var(--color-text-primary)'};`}>{f.title}</h3>
-              <p style={`font-family:var(--font-body); font-size:0.9rem; line-height:1.65; margin:0; color:${pi % 2 === 1 ? 'rgba(255,255,255,0.62)' : 'var(--color-text-muted)'};`}>{f.body}</p>
-              {f.badge && (
-                <span style="display:inline-block; font-family:var(--font-heading); font-size:0.7rem; font-weight:700; color:var(--color-secondary); background:rgba(255,171,36,0.10); border:1px solid rgba(255,171,36,0.30); border-radius:4px; padding:3px 8px; letter-spacing:0.05em; text-transform:uppercase; align-self:flex-start;">{f.badge}</span>
-              )}
+      <p class="logos-cloud__label">Plataformas en vivo y proof tecnológico</p>
+      <div class="logos-marquee">
+        <div class="logos-marquee__track">
+          {[...wlLogos, ...wlLogos].map(l => (
+            <div class={`logo-tile-dark${l.tech ? ' logo-tile-dark--tech' : ''}`}>
+              <span class="logo-tile-dark__name">{l.name} {l.flag}</span>
+              {l.tech && <span class="logo-tile-dark__tag">operado con tecnología Ticketplus</span>}
             </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. PLATFORM CAPABILITIES — 4 ejes ═══ -->
+  <section class="capabilities" id="capabilities">
+    <div class="container">
+      <header class="capabilities__header">
+        <span class="capabilities__eyebrow">Platform capabilities</span>
+        <h2 class="capabilities__title">Tu negocio. En el centro.</h2>
+        <p class="capabilities__lead">Cuatro ejes que cubren la decisión de plataforma de extremo a extremo.</p>
+      </header>
+      <div class="capabilities__grid">
+        {capabilities.map(c => (
+          <article class="capability-card">
+            <span class="capability-card__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d={c.iconPath} />
+              </svg>
+            </span>
+            <h3 class="capability-card__title">{c.title}</h3>
+            <p class="capability-card__body">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 5. CAPAS · biz-scene style ═══ -->
+  {deepDive.map((b, ci) => (
+    <section class={`biz-scene ${ci % 2 === 0 ? 'biz-scene--light' : 'biz-scene--dark'}`} id={b.eyebrow.toLowerCase()}>
+      <div class="container">
+        <header class="biz-scene__header">
+          <span class="biz-scene__eyebrow">{`0${ci + 1}`} · {b.eyebrow.toUpperCase()}</span>
+          <h2 class="biz-scene__title">{b.title}</h2>
+          <p class="biz-scene__lead">{b.body}</p>
+        </header>
+        <div class="biz-scene__rows">
+          {b.features.map((f, fi) => (
+            <article class={`scene-row ${fi % 2 === 1 ? 'scene-row--reverse' : ''}`}>
+              <div class={`scene-row__stage scene-card__stage--p${ci}-${fi}`} aria-hidden="true">
+                <span class="scene-card__chip">{f.n}</span>
+              </div>
+              <div class="scene-row__body">
+                <h4 class="scene-row__title">{f.title}</h4>
+                <p class="scene-row__text">{f.body}</p>
+                {f.chips && (
+                  <ul class="scene-row__chips">
+                    {f.chips.map(c => (
+                      <li class="scene-row__chip">
+                        <span class="scene-row__chip-flag" aria-hidden="true">{c.flag}</span>
+                        <span class="scene-row__chip-country">{c.country}</span>
+                        <span class="scene-row__chip-sep" aria-hidden="true">·</span>
+                        <span class="scene-row__chip-currency">{c.currency}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {f.badge && <span class="biz-scene__badge">{f.badge}</span>}
+              </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   ))}
 
-  <!-- WHY TICKETPLUS -->
-  <section style="background:#000; color:#fff; padding:120px 0;" id="por-que">
+  <!-- ═══ 6. HEADLESS / API-FIRST DEDICADO ═══ -->
+  <section class="api-section">
     <div class="container">
-      <div style="text-align:center; max-width:680px; margin:0 auto 56px;">
-        <p class="section__eyebrow section__eyebrow--inv">Por qué Whitelabel Ticketplus</p>
-        <h2 class="section__title section__title--inv">Build vs buy ya no es la pregunta correcta.</h2>
-        <p style="font-family:var(--font-body); font-size:1.05rem; color:rgba(255,255,255,0.65); line-height:1.6;">La pregunta es: ¿cuánto cuesta mantener tu plataforma propia los próximos 5 años vs operar bajo una probada que escala contigo?</p>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
-        {whyCards.map(c => (
-          <div style="background:#141414; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:32px 26px;">
-            <span style="font-family:var(--font-heading); font-weight:900; font-size:48px; line-height:1; letter-spacing:-0.04em; background:var(--gradient-brand-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent; display:block; margin-bottom:16px;">{c.n}</span>
-            <h3 style="font-family:var(--font-heading); font-size:1.1rem; font-weight:700; color:#fff; margin:0 0 10px; letter-spacing:-0.01em;">{c.title}</h3>
-            <p style="font-family:var(--font-body); font-size:0.9rem; color:rgba(255,255,255,0.60); line-height:1.6; margin:0;">{c.body}</p>
+      <div class="api-section__grid">
+        <div class="api-section__content">
+          <span class="api-section__eyebrow">Para el equipo técnico</span>
+          <h2 class="api-section__title">API disponible, headless ticketing.</h2>
+          <p class="api-section__body">REST API documentada con OpenAPI 3.0. Webhooks en tiempo real. SDKs Node.js. Sandbox sin tarjeta desde el día 1. Construí tu propio frontend, integrá con tu stack, modificá el flujo de checkout — todo desde API.</p>
+          <div class="api-section__ctas">
+            <a href="#" class="btn btn--primary">Ver docs API →</a>
+            <a href="#contacto" class="btn btn--ghost">Sandbox sin tarjeta →</a>
           </div>
-        ))}
+        </div>
+        <div class="api-section__code-wrap" aria-hidden="true">
+          <div class="api-section__code-chrome">
+            <span class="api-section__code-dot"></span>
+            <span class="api-section__code-dot"></span>
+            <span class="api-section__code-dot"></span>
+            <span class="api-section__code-file">POST /v1/events</span>
+          </div>
+          <pre class="api-section__code"><code><span class="tok-cmd">curl</span> -X POST https://api.ticketplus.com/v1/events \
+  -H <span class="tok-str">"Authorization: Bearer $TOKEN"</span> \
+  -H <span class="tok-str">"Content-Type: application/json"</span> \
+  -d <span class="tok-str">'&#123;
+    "name": "Mi evento",
+    "venue_id": "venue_abc123",
+    "tickets": [
+      &#123; "tier": "vip", "price": 25000 &#125;
+    ]
+  &#125;'</span></code></pre>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- INDUSTRIES -->
-  <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="industrias">
+  <!-- ═══ 7. EQUIPO · CUENTA CON EL EQUIPO ═══ -->
+  <section class="equipo" id="equipo">
     <div class="container">
-      <div style="text-align:center; max-width:640px; margin:0 auto 56px;">
-        <p class="section__eyebrow" style="color:var(--color-primary);">Para quién es Whitelabel</p>
-        <h2 class="section__title">¿Esto es para ti?</h2>
-        <p class="section__lead" style="color:var(--color-text-muted); max-width:540px; margin:0 auto;">Whitelabel es una decisión de plataforma, no de evento. Estos perfiles ya tomaron esa decisión.</p>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
-        {industries.map(i => (
-          <a href="#contacto" style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:28px 24px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:10px; transition:transform .2s, box-shadow .2s;">
-            <span style="font-size:28px;">{i.icon}</span>
-            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; margin:0;">{i.title}</h4>
-            <p style="font-family:var(--font-body); font-size:0.87rem; color:var(--color-text-muted); line-height:1.5; margin:0;">{i.body}</p>
-          </a>
-        ))}
+      <header class="equipo__header">
+        <span class="equipo__eyebrow">05 · CUENTA CON EL EQUIPO</span>
+        <h2 class="equipo__title">Soporte técnico dedicado</h2>
+        <p class="equipo__lead">Buscas soporte 24/7. Si algo falla en el drop, hablas con quien hizo el código — no con un L1.</p>
+      </header>
+
+      <div class="equipo__hero">
+        <div class="equipo__stage" aria-hidden="true" />
+        <div class="equipo__caption">
+          <span class="equipo__caption-tag">01 · Soporte 24/7</span>
+          <h3 class="equipo__caption-title">Canal de comunicación directo</h3>
+          <p class="equipo__caption-body">Account manager dedicado por evento desde el primer día. WhatsApp directo pre-asignado 72h antes del drop. Soporte 24/7 con personas reales en español, cobertura fin de semana.</p>
+          <span class="equipo__badge">Único en el mercado</span>
+          <div class="equipo__cta">
+            <a class="equipo__wsp" href="https://wa.me/56000000000" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+              <svg class="equipo__wsp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span class="equipo__wsp-text">
+                <span class="equipo__wsp-label">Escríbenos por</span>
+                <span class="equipo__wsp-name">WhatsApp</span>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ECOSYSTEM / WL CLIENTS -->
-  <section style="background:#fff; padding:120px 0; border-top:1px solid var(--color-border);">
-    <div class="container">
-      <div style="text-align:center; max-width:760px; margin:0 auto 56px;">
-        <h2 class="section__title">Ecosistema de productores, venues y marcas que operan con nuestra <span class="accent">tecnología Whitelabel</span></h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-        {clients.map(c => (
-          <a href={`https://${c.url}`} target="_blank" rel="noopener" style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:24px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:10px;">
-            <span style="font-size:1.4rem;">{c.flag}</span>
-            <div style="height:100px; background:var(--color-gray-100); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--color-gray-500); font-size:12px; font-family:var(--font-mono);">{c.url}</div>
-            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; margin:0;">{c.name}</h4>
-            <p style="font-family:var(--font-body); font-size:0.87rem; color:var(--color-text-muted); margin:0;">{c.desc}</p>
-            <span style="font-family:var(--font-heading); font-size:0.8rem; font-weight:700; color:var(--color-primary);">{c.url} →</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PAGOS LATAM -->
-  <PaymentsSection id="pagos">
+  <!-- ═══ 8. PAGOS LATAM ═══ -->
+  <PaymentsSection title="Profundidad regional.<br/>Integraciones locales desde el día 0." id="pagos">
     <div class="tp-payments__value-card">
-      <h3 class="tp-payments__value-title">Recaudación directa</h3>
-      <p class="tp-payments__value-desc">El dinero va a tu cuenta bancaria. Sin pasar por Ticketplus, sin retenciones. Tú operas, tú cobras.</p>
+      <h3 class="tp-payments__value-title">Pasarelas locales</h3>
+      <p class="tp-payments__value-desc">Webpay, MercadoPago, Wompi, Bancard, Izipay y +40 más. Sin redirect, sin friction.</p>
     </div>
     <div class="tp-payments__value-card">
       <h3 class="tp-payments__value-title">Multi-país desde un panel</h3>
-      <p class="tp-payments__value-desc">Vende en Chile, Argentina, México o España sin crear cuentas separadas. Un solo backoffice, múltiples mercados.</p>
+      <p class="tp-payments__value-desc">CL, AR, BR, CO, MX, PE, PY, UY, BO, ES, RD — un solo backoffice multi-país.</p>
     </div>
     <div class="tp-payments__value-card">
-      <h3 class="tp-payments__value-title">Monedas y regulaciones locales</h3>
-      <p class="tp-payments__value-desc">Impuestos, monedas y regulaciones ya están configurados. Tú solo eliges los países donde quieres operar.</p>
+      <h3 class="tp-payments__value-title">Compliance regional</h3>
+      <p class="tp-payments__value-desc">Impuestos, monedas, refunds, todo configurado por país. Tú eliges dónde operar.</p>
     </div>
   </PaymentsSection>
 
-  <!-- FORM SECTION -->
+  <!-- ═══ 9. ECOSISTEMA DE CLIENTES WL ═══ -->
+  <section class="wl-clients" id="clientes-wl">
+    <div class="container">
+      <header class="wl-clients__header">
+        <span class="wl-clients__eyebrow">Plataforma probada en LATAM</span>
+        <h2 class="wl-clients__title">Un ecosistema de productores, venues y marcas líderes que apuestan por nuestra tecnología SaaS / White Label.</h2>
+      </header>
+      <div class="wl-clients__grid">
+        {wlClients.map(c => (
+          <a class="wl-client-card" href={c.href} target="_blank" rel="noopener noreferrer">
+            <div class="wl-client-card__head">
+              <span class="wl-client-card__flag" aria-hidden="true">{c.flag}</span>
+            </div>
+            <h3 class="wl-client-card__name">{c.name}</h3>
+            <p class="wl-client-card__desc">{c.desc}</p>
+            <span class="wl-client-card__link">Ver plataforma →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 10. POR QUÉ TICKETPLUS WL ═══ -->
+  <section class="why-tp">
+    <div class="container">
+      <header class="why-tp__header">
+        <span class="why-tp__eyebrow">Por qué Whitelabel Ticketplus</span>
+        <h2 class="why-tp__title">Build vs buy ya no es la pregunta correcta.</h2>
+        <p class="why-tp__lead">La pregunta es: ¿cuánto cuesta mantener tu plataforma propia los próximos 5 años vs operar bajo una probada que escala contigo?</p>
+      </header>
+      <div class="why-tp__grid">
+        {whyCards.map(c => (
+          <article class="why-tp__card">
+            <span class="why-tp__icon" aria-hidden="true">{c.icon}</span>
+            <h3 class="why-tp__card-title">{c.title}</h3>
+            <p class="why-tp__card-body">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 11. PARA QUIÉN ES WL ═══ -->
+  <section class="audience" id="para-quien">
+    <div class="container">
+      <header class="audience__header">
+        <span class="audience__eyebrow">Para quién es Whitelabel</span>
+        <h2 class="audience__title">¿Esto es para ti?</h2>
+        <p class="audience__lead">Whitelabel es una decisión de plataforma, no de evento. Estos perfiles ya tomaron esa decisión.</p>
+      </header>
+      <div class="audience__grid">
+        {audience.map(a => (
+          <article class="audience__card">
+            <span class="audience__icon" aria-hidden="true">{a.icon}</span>
+            <h3 class="audience__card-title">{a.title}</h3>
+            <p class="audience__card-body">{a.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 13. CONTACTO ═══ -->
   <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="contacto">
     <div class="container">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+      <div class="form-grid-tp">
         <div>
           <p class="section__eyebrow" style="color:var(--color-secondary);">Hablemos de tu plataforma</p>
-          <h2 class="section__title">Sandbox antes de firmar.<br/>Demo en 24 horas hábiles.</h2>
-          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Sin compromiso. Te enviamos acceso a sandbox + agenda de demo con product manager + propuesta SaaS para tu caso.</p>
+          <h2 class="section__title">Buscas ver la plataforma antes de firmar. Encuentras sandbox, demo y propuesta SaaS para tu caso.</h2>
+          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Demo y sandbox en menos de 24 horas hábiles. Sin compromiso.</p>
           <ul style="list-style:none; padding:0; font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:2.2;">
-            {["Sin contratos de permanencia", "Onboarding completo en menos de 4 semanas", "Sandbox sin tarjeta antes de firmar nada", "Soporte 24/7 con SLA contractual", "Migración acompañada desde tu plataforma actual", "Tu data sale en JSON o CSV cuando quieras"].map(item => (
+            {[
+              "Sin contratos de permanencia",
+              "Onboarding completo en menos de 4 semanas",
+              "Sandbox sin tarjeta antes de firmar nada",
+              "Soporte 24/7 con SLA contractual",
+              "Migración acompañada desde tu plataforma actual",
+              "Cero permanencia obligatoria: tu data sale en JSON / CSV cuando quieras",
+            ].map(item => (
               <li><span style="color:#1a8a3a; font-weight:700;">✓</span> {item}</li>
             ))}
           </ul>
         </div>
         <div style="background:#fff; border:1px solid var(--color-border); padding:40px; border-radius:var(--radius-card); box-shadow:var(--shadow-elevated);">
-          <h3 style="font-family:var(--font-heading); font-size:1.4rem; font-weight:700; margin:0 0 6px; letter-spacing:-0.02em;">Solicitar demo + sandbox</h3>
+          <h3 style="font-family:var(--font-heading); font-size:1.4rem; font-weight:700; margin:0 0 6px; letter-spacing:-0.02em;">Solicitar demo y sandbox</h3>
           <p style="font-family:var(--font-body); font-size:0.9rem; color:var(--color-text-muted); margin:0 0 28px;">Respondemos en menos de 24 horas hábiles.</p>
-          {[["Nombre","text","Tu nombre"],["Email corporativo","email","tu@empresa.com"],["Empresa","text","Nombre de tu empresa"]].map(([label, type, placeholder]) => (
+          {[["Nombre","text","Tu nombre"],["Email corporativo","email","tu@empresa.com"],["Empresa","text","Nombre de tu empresa"]].map(([label,type,placeholder]) => (
             <div style="margin-bottom:14px;">
               <label style="display:block; font-family:var(--font-heading); font-size:12px; font-weight:600; color:var(--color-text-muted); margin-bottom:6px;">{label}</label>
               <input type={type} placeholder={placeholder} style="width:100%; border:1px solid var(--color-border); background:#fff; color:var(--color-text-primary); padding:12px 14px; border-radius:8px; font-size:14px; font-family:inherit;" />
@@ -319,112 +509,1210 @@ const faqs = [
             <label style="display:block; font-family:var(--font-heading); font-size:12px; font-weight:600; color:var(--color-text-muted); margin-bottom:6px;">Tipo de operación</label>
             <select style="width:100%; border:1px solid var(--color-border); background:#fff; color:var(--color-text-primary); padding:12px 14px; border-radius:8px; font-size:14px; font-family:inherit;">
               <option>Productora grande</option>
-              <option>Venue / Arena / Recinto</option>
+              <option>Venue · Arena · Recinto</option>
               <option>Ticketera regional</option>
               <option>Equipo deportivo</option>
               <option>Otro</option>
             </select>
           </div>
-          <button style="width:100%; background:var(--gradient-brand); color:#fff; padding:14px; border:none; border-radius:var(--radius-button); font-family:var(--font-heading); font-weight:700; font-size:15px; cursor:pointer;">Solicitar demo →</button>
+          <button style="width:100%; background:var(--gradient-brand); color:#fff; padding:14px; border:none; border-radius:var(--radius-button); font-family:var(--font-heading); font-weight:700; font-size:15px; cursor:pointer;">Solicitar demo y sandbox →</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ═══ 14. FAQ reordenado ═══ -->
   <section style="background:#fff; padding:120px 0; border-top:1px solid var(--color-border);" id="faq">
     <div class="container" style="max-width:820px;">
       <div style="text-align:center; margin-bottom:56px;">
         <p class="section__eyebrow" style="color:var(--color-primary);">Preguntas frecuentes</p>
-        <h2 class="section__title">Lo que CTOs y CFOs nos preguntan antes de firmar</h2>
+        <h2 class="section__title">Preguntas frecuentes.</h2>
       </div>
-      <div>
-        {faqs.map((f, i) => (
-          <details class={`collapse${i === 0 ? ' is-open' : ''}`} style="border-bottom:1px solid var(--color-border);">
-            <button class="collapse__head" type="button" style="width:100%; background:none; border:none; padding:22px 0; text-align:left; font-family:var(--font-heading); font-size:1.05rem; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; letter-spacing:-0.01em;">
-              <span>{f.q}</span>
-              <span class="chev" aria-hidden="true">⌃</span>
-            </button>
-            <div class="collapse__body" style="padding-bottom:22px;">
-              <p style="font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:1.65; margin:0;" set:html={f.a.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}></p>
-            </div>
-          </details>
-        ))}
-      </div>
+      {faqs.map((f, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary class="faq-item__head">
+            <span>{f.q}</span><span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-item__body">
+            <p set:html={f.a} />
+          </div>
+        </details>
+      ))}
     </div>
   </section>
-
-  <!-- FINAL CTA -->
-  <section style="background:var(--gradient-brand); color:#fff; text-align:center; padding:120px 24px;">
-    <div class="container">
-      <h2 style="font-family:var(--font-heading); font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-0.03em; margin:0 0 14px; line-height:1.1;">Tu plataforma. Tu marca. Operación probada.</h2>
-      <p style="font-family:var(--font-body); font-size:1.1rem; opacity:0.92; margin:0 0 36px;">Demo + sandbox en menos de 24 horas hábiles. Sin compromiso.</p>
-      <a href="#contacto" style="display:inline-block; background:#fff; color:var(--color-text-primary); padding:16px 40px; border-radius:var(--radius-button); font-family:var(--font-heading); font-weight:700; font-size:1rem; text-decoration:none;">Solicitar demo →</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer style="background:#000; color:rgba(255,255,255,0.45); padding:40px 0; font-size:0.875rem; text-align:center; font-family:var(--font-body);">
-    <div class="container">
-      <img src="/wordmark-white.png" alt="Ticketplus" height="20" style="margin:0 auto 12px; display:block; opacity:0.6;" />
-      Plataforma de ticketing whitelabel para LATAM
-    </div>
-  </footer>
-
-  <script is:inline>
-    document.querySelectorAll('.collapse__head').forEach(function(h) {
-      h.addEventListener('click', function() {
-        h.parentElement.classList.toggle('is-open');
-      });
-    });
-  </script>
 
 </Site>
 
 <style>
-  /* Logos cloud override for platform */
-  .logos-cloud {
-    background: #0a0a0a;
-    padding: 60px 0;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .logos-cloud__label {
-    font-family: var(--font-heading);
-    font-size: 11px;
-    color: rgba(255,255,255,0.38);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .logos-cloud__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 16px;
-    align-items: center;
-  }
-  .logo-tile-dark {
-    aspect-ratio: 3/1.2;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.60);
-    font-size: 0.82rem;
-    font-weight: 700;
-    font-family: var(--font-heading);
+  /* Forzar header sólido sobre hero blanco */
+  :global(.mm-header) {
+    background: rgba(0, 0, 0, 0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
-  @media (max-width: 1024px) {
-    div[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+  /* ── Biz-scene (capas section pattern de business) ────── */
+  .biz-scene { padding: 120px 0; position: relative; overflow: hidden; }
+  .biz-scene--light { background: #fff; }
+  .biz-scene--dark { background: radial-gradient(ellipse at 30% 70%, #1a1209 0%, #050505 60%) #050505; color: #fff; }
+  .biz-scene__header { max-width: 760px; margin-bottom: 64px; }
+  .biz-scene__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 18px;
+  }
+  .biz-scene--light .biz-scene__eyebrow { color: var(--color-primary); }
+  .biz-scene__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    margin: 0 0 20px;
+  }
+  .biz-scene--dark .biz-scene__title { color: #fff; }
+  .biz-scene__lead {
+    font-family: var(--font-body);
+    font-size: 1.1rem; line-height: 1.6;
+    margin: 0; max-width: 620px;
+  }
+  .biz-scene--light .biz-scene__lead { color: var(--color-text-muted); }
+  .biz-scene--dark .biz-scene__lead { color: rgba(255,255,255,0.72); }
+
+  .biz-scene__badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.7rem; font-weight: 800;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.12);
+    border: 1px solid rgba(255,171,36,0.30);
+    border-radius: 4px;
+    padding: 4px 10px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .biz-scene--dark .biz-scene__badge { background: rgba(255,171,36,0.15); border-color: rgba(255,171,36,0.40); }
+
+  /* ── Scene rows (alternating, 1 column) ─────────────────── */
+  .biz-scene__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .scene-row {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .scene-row--reverse .scene-row__stage { order: 2; }
+  .scene-row--reverse .scene-row__body  { order: 1; }
+  .scene-row__stage {
+    aspect-ratio: 16/10;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(10,10,10,0.08);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+  }
+  .biz-scene--dark .scene-row__stage {
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  }
+  .scene-row__stage::before,
+  .scene-row__stage::after {
+    content: ''; position: absolute;
+    border-radius: 50%; filter: blur(28px); opacity: 0.5;
+  }
+  .scene-row__stage::before {
+    width: 55%; height: 75%; top: -8%; left: -8%;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  }
+  .scene-row__stage::after {
+    width: 45%; height: 55%; bottom: -8%; right: -8%;
+    background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  }
+  .scene-row__body { display: flex; flex-direction: column; gap: 14px; max-width: 520px; }
+  .scene-row--reverse .scene-row__body { margin-left: auto; }
+  .scene-row__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .biz-scene--dark .scene-row__title { color: #fff; }
+  .scene-row__text {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  .biz-scene--dark .scene-row__text { color: rgba(255,255,255,0.7); }
+  .scene-row__chips {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .scene-row__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(10,10,10,0.04);
+    border: 1px solid rgba(10,10,10,0.08);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    transition: background .15s, border-color .15s;
+  }
+  .scene-row__chip:hover { background: rgba(10,10,10,0.06); border-color: rgba(10,10,10,0.14); }
+  .biz-scene--dark .scene-row__chip {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.92);
+  }
+  .biz-scene--dark .scene-row__chip:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .scene-row__chip-flag { font-size: 1rem; line-height: 1; }
+  .scene-row__chip-country { font-weight: 600; letter-spacing: -0.005em; }
+  .scene-row__chip-sep { opacity: 0.45; }
+  .scene-row__chip-currency {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
   }
   @media (max-width: 768px) {
-    div[style*="grid-template-columns:repeat(3"] { grid-template-columns: repeat(1, 1fr) !important; }
-    div[style*="grid-template-columns:repeat(2"] { grid-template-columns: 1fr !important; }
-    div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-    div[style*="grid-template-columns:180px 1fr"] { grid-template-columns: 1fr !important; }
+    .scene-row {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .scene-row--reverse .scene-row__stage { order: initial; }
+    .scene-row--reverse .scene-row__body { order: initial; margin-left: 0; }
+  }
+
+  /* ── Scene-card grid (legacy, kept for fallback) ────────── */
+  .biz-scene__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .scene-card {
+    grid-column: span 2;
+    background: #fff;
+    border: 1px solid rgba(10,10,10,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .biz-scene--dark .scene-card { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08); }
+  .scene-card:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.08); border-color: rgba(10,10,10,0.18); }
+  .biz-scene--dark .scene-card:hover { border-color: rgba(255,255,255,0.18); box-shadow: 0 14px 36px rgba(0,0,0,0.5); }
+  .biz-scene__grid--2 .scene-card { grid-column: span 3; }
+  .biz-scene__grid--3 .scene-card { grid-column: span 2; }
+  .biz-scene__grid--4 .scene-card { grid-column: span 3; }
+
+  .scene-card__stage {
+    aspect-ratio: 16/9;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,19,19,0.10) 0%, rgba(255,171,36,0.10) 100%);
+    overflow: hidden;
+  }
+  .scene-card__stage::before,
+  .scene-card__stage::after {
+    content: ''; position: absolute;
+    border-radius: 50%; filter: blur(20px); opacity: 0.55;
+  }
+  .scene-card__stage::before {
+    width: 60%; height: 80%;
+    top: -10%; left: -10%;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  }
+  .scene-card__stage::after {
+    width: 50%; height: 60%;
+    bottom: -10%; right: -10%;
+    background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  }
+  .biz-scene--dark .scene-card__stage {
+    background: linear-gradient(135deg, rgba(255,19,19,0.18) 0%, rgba(255,171,36,0.18) 100%);
+  }
+  /* pilar-specific stage tints (capa-based) */
+  .scene-card__stage--p0-0 { background: linear-gradient(135deg, #fff1e0 0%, #ffe0d4 100%); }
+  .scene-card__stage--p0-1 { background: linear-gradient(135deg, #fde6e6 0%, #ffd7b8 100%); }
+  .scene-card__stage--p0-2 { background: linear-gradient(135deg, #fff5cc 0%, #ffd7b8 100%); }
+  .scene-card__stage--p1-0,
+  .scene-card__stage--p1-1,
+  .scene-card__stage--p1-2,
+  .scene-card__stage--p1-3 { background: #343434; }
+  .scene-card__stage--p2-0 { background: linear-gradient(135deg, #fff 0%, #fff3c4 100%); }
+  .scene-card__stage--p2-1 { background: linear-gradient(135deg, #fff0e8 0%, #fde6e6 100%); }
+  .scene-card__stage--p2-2 { background: linear-gradient(135deg, #ffeede 0%, #fff5cc 100%); }
+
+  .scene-card__chip {
+    position: absolute; z-index: 2;
+    top: 14px; left: 14px;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.08em;
+    background: #fff;
+    color: var(--color-text-primary);
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(10,10,10,0.08);
+  }
+  .biz-scene--dark .scene-card__chip { background: rgba(20,20,20,0.85); color: #fff; border-color: rgba(255,255,255,0.12); }
+
+  .scene-card__body { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 8px; }
+  .scene-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem; font-weight: 800;
+    letter-spacing: -0.02em; margin: 0; line-height: 1.25;
+  }
+  .biz-scene--dark .scene-card__title { color: #fff; }
+  .scene-card__text {
+    font-family: var(--font-body);
+    font-size: 0.9rem; line-height: 1.6;
+    margin: 0;
+  }
+  .biz-scene--light .scene-card__text { color: var(--color-text-muted); }
+  .biz-scene--dark .scene-card__text { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 1024px) {
+    .biz-scene__grid,
+    .biz-scene__grid--3,
+    .biz-scene__grid--4 { grid-template-columns: repeat(2, 1fr); }
+    .scene-card,
+    .biz-scene__grid--3 .scene-card,
+    .biz-scene__grid--4 .scene-card { grid-column: span 1; }
+  }
+  @media (max-width: 768px) {
+    .biz-scene { padding: 80px 0; }
+    .biz-scene__grid,
+    .biz-scene__grid--2,
+    .biz-scene__grid--3,
+    .biz-scene__grid--4 { grid-template-columns: 1fr; }
+    .biz-scene__grid--2 .scene-card { grid-column: span 1; }
+  }
+
+  /* ── Biz Hero (white + gradient accents) ──────────────── */
+  .biz-hero {
+    background:
+      radial-gradient(ellipse 800px 500px at 85% 0%, rgba(255,171,36,0.18), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 10% 100%, rgba(255,19,19,0.10), transparent 65%),
+      linear-gradient(180deg, #ffffff 0%, #fafaf7 100%);
+    color: var(--color-text-primary);
+    padding: 160px 0 120px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .biz-hero::before {
+    content: '';
+    position: absolute;
+    top: 80px; right: -120px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, rgba(255,171,36,0.18), rgba(255,19,19,0.12), rgba(255,171,36,0.10));
+    filter: blur(80px);
+    z-index: 0;
+  }
+  .biz-hero::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: 0;
+    transform: translateX(-50%);
+    width: min(900px, 90%);
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary) 30%, var(--color-primary) 60%, transparent);
+    opacity: 0.5;
+  }
+  .biz-hero .container { position: relative; z-index: 1; display: block; }
+  .biz-hero__content { max-width: 880px; }
+  .biz-hero__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    padding: 8px 16px;
+    background: rgba(255, 19, 19, 0.08);
+    border: 1px solid rgba(255, 19, 19, 0.20);
+    border-radius: 999px;
+    margin: 0 0 28px;
+  }
+  .biz-hero__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.6rem, 5.8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    color: var(--color-text-primary);
+    margin: 0 0 28px;
+    max-width: 880px;
+  }
+  .biz-hero__title .accent {
+    background: var(--gradient-brand-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .biz-hero__lead {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0 0 40px;
+  }
+  .biz-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .biz-hero__ctas .btn--primary {
+    box-shadow: 0 10px 30px rgba(255, 19, 19, 0.20);
+  }
+  .biz-hero__ctas .btn--primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 36px rgba(255, 19, 19, 0.28);
+  }
+  .biz-hero__chips {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 28px;
+  }
+  .biz-hero__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+  .biz-hero__chip svg { width: 14px; height: 14px; color: var(--color-secondary); }
+
+  /* ── Hero grid (12 UI placeholders) ───────────────────── */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+  }
+  .hero-grid__card {
+    aspect-ratio: 16/10;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 12px 32px rgba(0,0,0,0.32);
+  }
+  .hero-grid__card:nth-child(odd) {
+    background: linear-gradient(135deg, rgba(255,19,19,0.10), rgba(255,171,36,0.06));
+  }
+  .hero-grid__card:nth-child(even) {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  }
+  .hero-grid__card:nth-child(3n) {
+    background: linear-gradient(135deg, rgba(255,171,36,0.08), rgba(255,255,255,0.02));
+  }
+  .hero-grid__card:nth-child(5n) {
+    background: linear-gradient(135deg, rgba(80,140,255,0.06), rgba(255,255,255,0.02));
+  }
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .hero-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── Logos cloud y marquee (white) ────────────────────── */
+  .logos-cloud { background:#fff; padding:60px 0; border-top:1px solid var(--color-border); }
+  .logos-cloud__label { font-family:var(--font-heading); font-size:11px; color:var(--color-text-muted); letter-spacing:0.14em; text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:32px; }
+  .logos-marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .logos-marquee__track {
+    display: flex;
+    gap: 56px;
+    animation: scroll-x 30s linear infinite;
+    width: max-content;
+  }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .logo-tile-dark {
+    flex: 0 0 auto;
+    min-width: 200px;
+    height: 64px;
+    padding: 0 20px;
+    background:#fafafa;
+    border:1px solid var(--color-border);
+    border-radius:10px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    gap: 2px;
+    color:var(--color-text-primary);
+    font-family:var(--font-heading);
+  }
+  .logo-tile-dark__name {
+    font-size:0.92rem;
+    font-weight:700;
+    letter-spacing: -0.01em;
+  }
+  .logo-tile-dark__tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+  }
+  .logo-tile-dark--tech {
+    border-color: rgba(255,171,36,0.40);
+    background: rgba(255,171,36,0.06);
+  }
+
+  /* ── Bridge compacto ──────────────────────────────────── */
+  .biz-bridge { background: #fff; padding: 80px 0; text-align: center; }
+  .biz-bridge__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    max-width: 880px;
+    margin: 0 auto 20px;
+    color: #0a0a0a;
+  }
+  .biz-bridge__lead {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* ── Platform capabilities (4 ejes) ───────────────────── */
+  .capabilities { background: #fafafa; padding: 120px 0; border-top: 1px solid var(--color-border); }
+  .capabilities__header { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+  .capabilities__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 18px;
+  }
+  .capabilities__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    margin: 0 0 14px; color: #0a0a0a;
+  }
+  .capabilities__lead {
+    font-family: var(--font-body);
+    font-size: 1.05rem; line-height: 1.65;
+    color: var(--color-text-muted); margin: 0;
+  }
+  .capabilities__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .capability-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .capability-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,171,36,0.40);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  }
+  .capability-card__icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(255,171,36,0.10);
+    color: var(--color-secondary);
+  }
+  .capability-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem; font-weight: 800;
+    letter-spacing: -0.02em; margin: 0; color: #0a0a0a;
+  }
+  .capability-card__body {
+    font-family: var(--font-body);
+    font-size: 0.95rem; line-height: 1.6;
+    color: var(--color-text-muted); margin: 0;
+  }
+  @media (max-width: 1024px) { .capabilities__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .capabilities__grid { grid-template-columns: 1fr; } }
+
+  /* ── Deep dive narrative ──────────────────────────────── */
+  .deep-dive { background: #fff; padding: 60px 0 120px; }
+  .deep-dive__block {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 60px 0;
+  }
+  .deep-dive__block.is-reverse { grid-template-columns: 1fr 1.1fr; }
+  .deep-dive__block.is-reverse .deep-dive__visual { order: 2; }
+  .deep-dive__block.is-reverse .deep-dive__content { order: 1; }
+
+  .deep-dive__visual {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    border: 1px solid rgba(10,10,10,0.06);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.10);
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .deep-dive__visual--browser {
+    background: linear-gradient(180deg, #f8f7f5 0%, #ecebe7 100%);
+  }
+  .deep-dive__visual--browser::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 36px;
+    background: rgba(10,10,10,0.04);
+    border-bottom: 1px solid rgba(10,10,10,0.06);
+  }
+  .deep-dive__visual--browser::after {
+    content: '';
+    position: absolute; top: 13px; left: 16px;
+    width: 36px; height: 10px;
+    background-image: radial-gradient(circle at 5px 5px, #ff5f57 4px, transparent 4px),
+                      radial-gradient(circle at 17px 5px, #febc2e 4px, transparent 4px),
+                      radial-gradient(circle at 29px 5px, #28c840 4px, transparent 4px);
+  }
+  .deep-dive__visual--warm {
+    background: linear-gradient(160deg, #fff5e8 0%, #ffe0d4 60%, #ffd0bb 100%);
+  }
+  .deep-dive__visual--cool {
+    background: linear-gradient(160deg, #eef3ff 0%, #d8e2ff 60%, #c4d3ff 100%);
+  }
+  .deep-dive__visual--flags {
+    background: linear-gradient(160deg, #fafafa 0%, #f1f1f1 100%);
+  }
+  .deep-dive__flags {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 28px;
+  }
+  .deep-dive__flags span {
+    background: #fff;
+    border: 1px solid rgba(10,10,10,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 42px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  .deep-dive__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.10);
+    border: 1px solid rgba(255,171,36,0.28);
+    padding: 5px 12px; border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .deep-dive__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    font-weight: 800; letter-spacing: -0.025em; line-height: 1.12;
+    margin: 0 0 16px; color: #0a0a0a;
+  }
+  .deep-dive__body {
+    font-family: var(--font-body);
+    font-size: 1.02rem; line-height: 1.65;
+    color: var(--color-text-muted); margin: 0;
+  }
+  .deep-dive__features {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .deep-dive__feature {
+    padding: 24px 24px 26px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .deep-dive__feature:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,171,36,0.40);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.06);
+  }
+  .deep-dive__feature-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .deep-dive__feature-num {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.10);
+    border: 1px solid rgba(255,171,36,0.28);
+    padding: 4px 10px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .deep-dive__feature-title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+  .deep-dive__feature-body {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  .deep-dive__feature-badge {
+    align-self: flex-start;
+    margin-top: 6px;
+    padding: 4px 10px;
+    background: rgba(255,171,36,0.10);
+    border: 1px solid rgba(255,171,36,0.28);
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--color-secondary);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ── API section ──────────────────────────────────────── */
+  .api-section {
+    background: radial-gradient(ellipse at 80% 20%, #11161f 0%, #050505 65%) #050505;
+    color: #fff;
+    padding: 120px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .api-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .api-section__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.12);
+    border: 1px solid rgba(255,171,36,0.30);
+    padding: 5px 12px; border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .api-section__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.08;
+    margin: 0 0 20px; color: #fff;
+  }
+  .api-section__body {
+    font-family: var(--font-body);
+    font-size: 1.05rem; line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 32px;
+    max-width: 560px;
+  }
+  .api-section__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .api-section__code-wrap {
+    background: #0d1117;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  }
+  .api-section__code-chrome {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .api-section__code-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+  }
+  .api-section__code-dot:nth-child(1) { background: #ff5f57; }
+  .api-section__code-dot:nth-child(2) { background: #febc2e; }
+  .api-section__code-dot:nth-child(3) { background: #28c840; }
+  .api-section__code-file {
+    margin-left: 12px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+  }
+  .api-section__code {
+    margin: 0;
+    padding: 22px 24px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .api-section__code .tok-cmd { color: #ff9d4d; font-weight: 700; }
+  .api-section__code .tok-str { color: #a3e88b; }
+  .api-section__code .tok-key { color: #7dd3fc; }
+  .api-section__code .tok-num { color: #f0a868; }
+
+  @media (max-width: 1024px) {
+    .api-section__grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ── Support 360° (sobrio, reemplaza tp-promise) ──────── */
+  .equipo {
+    background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+    padding: 120px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .equipo__header { max-width: 760px; margin-bottom: 64px; }
+  .equipo__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 18px;
+  }
+  .equipo__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    color: var(--color-text-primary);
+    margin: 0 0 20px;
+  }
+  .equipo__lead {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 620px;
+    margin: 0;
+  }
+  .equipo__hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .equipo__stage {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,19,19,0.10) 0%, rgba(255,171,36,0.10) 100%);
+    border: 1px solid rgba(10,10,10,0.08);
+  }
+  .equipo__stage::before,
+  .equipo__stage::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.55;
+  }
+  .equipo__stage::before {
+    width: 60%; height: 80%;
+    top: -10%; left: -10%;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  }
+  .equipo__stage::after {
+    width: 50%; height: 60%;
+    bottom: -10%; right: -10%;
+    background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  }
+  .equipo__caption-tag {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.10);
+    border: 1px solid rgba(255,171,36,0.28);
+    padding: 5px 11px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .equipo__caption-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    margin: 0 0 14px;
+  }
+  .equipo__caption-body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin: 0 0 18px;
+  }
+  .equipo__badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.12);
+    border: 1px solid rgba(255,171,36,0.30);
+    border-radius: 4px;
+    padding: 4px 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .equipo__cta { margin-top: 20px; }
+  .equipo__wsp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #25D366;
+    color: #fff;
+    border: 1px solid #25D366;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .equipo__wsp:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.35); }
+  .equipo__wsp-icon { width: 22px; height: 22px; flex-shrink: 0; }
+  .equipo__wsp-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .equipo__wsp-label { font-family: var(--font-body); font-size: 9px; opacity: 0.85; letter-spacing: 0.04em; text-transform: uppercase; }
+  .equipo__wsp-name { font-family: var(--font-heading); font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+  @media (max-width: 1024px) {
+    .equipo__hero { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 768px) {
+    .equipo { padding: 80px 0; }
+  }
+
+  /* ── WL Clients ───────────────────────────────────────── */
+  .wl-clients {
+    background: #fafafa;
+    padding: 120px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .wl-clients__header { text-align: center; max-width: 820px; margin: 0 auto 56px; }
+  .wl-clients__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 18px;
+  }
+  .wl-clients__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    font-weight: 800; letter-spacing: -0.025em; line-height: 1.15;
+    margin: 0; color: #0a0a0a;
+  }
+  .wl-clients__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .wl-client-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .wl-client-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,171,36,0.40);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  }
+  .wl-client-card__head { display: flex; justify-content: space-between; align-items: center; }
+  .wl-client-card__flag { font-size: 22px; line-height: 1; }
+  .wl-client-card__name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem; font-weight: 800;
+    letter-spacing: -0.02em; margin: 0;
+    color: #0a0a0a;
+  }
+  .wl-client-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.92rem; line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0; flex: 1;
+  }
+  .wl-client-card__link {
+    font-family: var(--font-heading);
+    font-size: 0.85rem; font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 4px;
+  }
+  @media (max-width: 1024px) { .wl-clients__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .wl-clients__grid { grid-template-columns: 1fr; } }
+
+  /* ── Why TP ───────────────────────────────────────────── */
+  .why-tp { background: #fff; padding: 120px 0; border-top: 1px solid var(--color-border); }
+  .why-tp__header { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+  .why-tp__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-secondary); margin-bottom: 18px;
+  }
+  .why-tp__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-weight: 800; letter-spacing: -0.025em; line-height: 1.15;
+    margin: 0 0 14px; color: #0a0a0a;
+  }
+  .why-tp__lead {
+    font-family: var(--font-body);
+    font-size: 1.05rem; line-height: 1.6;
+    color: var(--color-text-muted); margin: 0;
+  }
+  .why-tp__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .why-tp__card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .why-tp__card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,171,36,0.40);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.06);
+  }
+  .why-tp__icon { font-size: 32px; line-height: 1; }
+  .why-tp__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.25;
+    margin: 0; color: #0a0a0a;
+  }
+  .why-tp__card-body {
+    font-family: var(--font-body);
+    font-size: 0.9rem; line-height: 1.6;
+    color: var(--color-text-muted); margin: 0;
+  }
+  @media (max-width: 1024px) { .why-tp__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .why-tp__grid { grid-template-columns: 1fr; } }
+
+  /* ── Audience (para quién) ────────────────────────────── */
+  .audience {
+    background: #fafafa;
+    padding: 120px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .audience__header { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+  .audience__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-primary); margin-bottom: 18px;
+  }
+  .audience__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+    font-weight: 800; letter-spacing: -0.025em; line-height: 1.15;
+    margin: 0 0 14px; color: #0a0a0a;
+  }
+  .audience__lead {
+    font-family: var(--font-body);
+    font-size: 1.05rem; line-height: 1.6;
+    color: var(--color-text-muted); margin: 0;
+  }
+  .audience__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .audience__card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .audience__card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,171,36,0.40);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  }
+  .audience__icon { font-size: 36px; line-height: 1; }
+  .audience__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.2;
+    margin: 0; color: #0a0a0a;
+  }
+  .audience__card-body {
+    font-family: var(--font-body);
+    font-size: 0.95rem; line-height: 1.6;
+    color: var(--color-text-muted); margin: 0;
+  }
+  @media (max-width: 768px) { .audience__grid { grid-template-columns: 1fr; } }
+
+  /* ── Compare cross-links (reemplaza tabla) ────────────── */
+  .compare-links {
+    background: #fafafa;
+    padding: 60px 0;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+  }
+  .compare-links__title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.2;
+    margin: 0 0 8px; color: #0a0a0a;
+  }
+  .compare-links__lead {
+    font-family: var(--font-body);
+    font-size: 0.95rem; line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0 0 24px;
+  }
+  .compare-links__chips {
+    display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  }
+  .compare-links__chip {
+    font-family: var(--font-heading);
+    font-size: 0.85rem; font-weight: 700;
+    color: var(--color-text-primary);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: border-color .2s, transform .2s, color .2s;
+  }
+  .compare-links__chip:hover {
+    border-color: rgba(255,171,36,0.40);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  /* ── Form y FAQ shared utilities ──────────────────────── */
+  .form-grid-tp { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+
+  .faq-item { border-bottom: 1px solid var(--color-border); padding: 22px 0; }
+  .faq-item__head {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem; font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+  }
+  .faq-item__head::-webkit-details-marker { display: none; }
+  .faq-item__head::marker { display: none; content: ''; }
+  .faq-item__head .chev {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    transition: transform .2s ease;
+    line-height: 1;
+  }
+  .faq-item[open] .faq-item__head .chev { transform: rotate(45deg); }
+  .faq-item__body { padding-top: 14px; }
+  .faq-item__body p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .faq-item__body p strong { color: var(--color-text-primary); font-weight: 700; }
+  .faq-item__body p em { color: var(--color-text-muted); font-style: italic; }
+
+  /* ── Responsive overrides ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .deep-dive__block,
+    .deep-dive__block.is-reverse {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .deep-dive__block.is-reverse .deep-dive__visual { order: initial; }
+    .deep-dive__block.is-reverse .deep-dive__content { order: initial; }
+    .form-grid-tp { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    .biz-hero { padding: 80px 0 60px; }
+    .deep-dive { padding: 40px 0 80px; }
+    .deep-dive__block { padding: 36px 0; }
+    .api-section { padding: 80px 0; }
+    .support-360 { padding: 80px 0; }
   }
 </style>

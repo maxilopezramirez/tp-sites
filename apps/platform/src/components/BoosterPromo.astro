@@ -1,0 +1,159 @@
+---
+interface Props {
+  variant?: "dark" | "light";
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+const {
+  variant = "dark",
+  eyebrow = "Booster · Agencia gestionada incluida",
+  title = "Booster — agencia de marketing performance gestionada",
+  body = "Nuestro equipo opera tus campañas paid en Meta, Google y TikTok con atribución end-to-end al ticket vendido. ROAS medido por evento, A/B testing continuo, optimización por canal en tiempo real. Sin honorarios de agencia — incluido en el cargo por servicio.",
+  ctaLabel = "Conocé Booster en detalle →",
+  ctaHref = "/booster",
+} = Astro.props;
+---
+
+<div class={`booster-promo booster-promo--${variant}`}>
+  <span class="booster-promo__eyebrow">{eyebrow}</span>
+  <h3 class="booster-promo__title">{title}</h3>
+  <p class="booster-promo__body">{body}</p>
+
+  <!-- Platform logos -->
+  <div class="booster-promo__platforms" aria-label="Plataformas">
+    <span class="booster-promo__platforms-label">Operamos en:</span>
+    <div class="booster-promo__logos">
+      <!-- Meta -->
+      <span class="booster-promo__platform" title="Meta (Facebook, Instagram)">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#0866FF" d="M48 24C48 10.745 37.255 0 24 0S0 10.745 0 24c0 11.979 8.776 21.908 20.25 23.708V30.937h-6.094V24h6.094v-5.288c0-6.014 3.583-9.337 9.064-9.337 2.626 0 5.373.469 5.373.469v5.906h-3.027c-2.981 0-3.91 1.85-3.91 3.749V24h6.656l-1.064 6.937H27.75v16.771C39.224 45.908 48 35.979 48 24z"/>
+        </svg>
+        <span>Meta</span>
+      </span>
+      <!-- Google -->
+      <span class="booster-promo__platform" title="Google Ads">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        <span>Google Ads</span>
+      </span>
+      <!-- TikTok -->
+      <span class="booster-promo__platform" title="TikTok Ads">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#000" d="M38.69 13.93c-3.07-2.01-5.27-5.16-5.93-8.83-.14-.79-.22-1.6-.22-2.42H24.7v32.97c0 4.06-3.3 7.35-7.35 7.35-4.06 0-7.35-3.3-7.35-7.35 0-4.06 3.3-7.35 7.35-7.35.76 0 1.49.12 2.18.33v-7.92a15.31 15.31 0 0 0-2.18-.16C7.61 20.55 0 28.16 0 37.5S7.61 54.45 17.36 54.45c9.75 0 17.36-7.61 17.36-15.85V21.16c3.42 2.36 7.49 3.76 11.88 3.76v-8.13c0 0-3.7.16-7.91-2.86z" transform="translate(-3, -3) scale(0.96)"/>
+          <path fill="#25F4EE" d="M40 5h-3v22c0 4.06-3.3 7.35-7.35 7.35-1.6 0-3.07-.52-4.27-1.39 1.4 1.95 3.67 3.22 6.27 3.22 4.06 0 7.35-3.3 7.35-7.35V7.18C39.42 6.5 39.69 5.78 40 5z"/>
+          <path fill="#FE2C55" d="M27 12v-7s-3.7.16-7.91-2.86c-.94-.61-1.79-1.34-2.55-2.14 1.34 2.85 3.61 5.14 6.46 6.45V12h4z" transform="translate(8, 0)"/>
+        </svg>
+        <span>TikTok</span>
+      </span>
+    </div>
+  </div>
+
+  <a href={ctaHref} class="booster-promo__cta">{ctaLabel}</a>
+</div>
+
+<style>
+  .booster-promo {
+    padding: 36px 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .booster-promo--dark {
+    background: linear-gradient(160deg, rgba(255,171,36,0.10) 0%, rgba(255,19,19,0.06) 100%);
+    border: 1px solid rgba(255,171,36,0.20);
+    color: #fff;
+  }
+  .booster-promo--light {
+    background: linear-gradient(160deg, #fff7ec 0%, #fff1e0 100%);
+    border: 1px solid rgba(255,171,36,0.32);
+    color: var(--color-text-primary);
+  }
+
+  .booster-promo__eyebrow {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-secondary);
+    padding: 5px 12px;
+    background: rgba(255,171,36,0.12);
+    border: 1px solid rgba(255,171,36,0.32);
+    border-radius: 999px;
+  }
+  .booster-promo--light .booster-promo__eyebrow { background: rgba(255,171,36,0.18); }
+
+  .booster-promo__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+    margin: 0;
+  }
+  .booster-promo--light .booster-promo__title { color: var(--color-text-primary); }
+
+  .booster-promo__body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .booster-promo--dark .booster-promo__body { color: rgba(255,255,255,0.78); }
+  .booster-promo--light .booster-promo__body { color: var(--color-text-muted); }
+
+  .booster-promo__platforms {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding-top: 10px;
+  }
+  .booster-promo__platforms-label {
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+  }
+  .booster-promo--dark .booster-promo__platforms-label { color: rgba(255,255,255,0.55); }
+  .booster-promo--light .booster-promo__platforms-label { color: var(--color-text-muted); }
+  .booster-promo__logos { display: flex; gap: 14px; flex-wrap: wrap; }
+  .booster-promo__platform {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    font-family: var(--font-heading);
+    font-size: 13px; font-weight: 700;
+  }
+  .booster-promo--light .booster-promo__platform { background: #fff; border-color: rgba(10,10,10,0.08); color: var(--color-text-primary); }
+  .booster-promo__platform svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .booster-promo__cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+    background: var(--gradient-brand);
+    border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(255, 19, 19, 0.28);
+    transition: transform .2s ease, box-shadow .2s ease, gap .15s ease;
+  }
+  .booster-promo__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(255, 19, 19, 0.40);
+    gap: 12px;
+  }
+</style>

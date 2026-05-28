@@ -1,0 +1,154 @@
+---
+// Overview "Servicios Ticketplus · 12 años iterando" — 3 cards (ANTES / DURANTE / DESPUÉS)
+// Mapa rápido de capacidades antes de entrar al recorrido por pilares.
+const phases = [
+  {
+    n: "01",
+    tag: "ANTES",
+    title: "Prepara y vende",
+    body: "Configura el evento, captura la demanda y vende — desde mapas interactivos y pre-inscripciones hasta Booster, email marketing y showpage con tu identidad.",
+    cta: "Ver capacidades antes del evento",
+    href: "#vende",
+  },
+  {
+    n: "02",
+    tag: "DURANTE",
+    title: "Opera el día del evento",
+    body: "Validación rápida con scanners o smartphone, POS y tótems en venue, acreditación B2B, monitoreo en vivo y war room con ingenieros asignados.",
+    cta: "Ver capacidades el día del evento",
+    href: "#onsite",
+  },
+  {
+    n: "03",
+    tag: "DESPUÉS",
+    title: "Analiza tus resultados",
+    body: "Reportes consolidados, atribución multi-canal, liquidación 48-72h, extended products (memberships, streaming, store) y loyalty para que el evento siga generando.",
+    cta: "Ver capacidades después del evento",
+    href: "#visualiza",
+  },
+];
+---
+<section class="services-overview" id="services-overview">
+  <div class="container">
+    <header class="services-overview__header">
+      <span class="services-overview__eyebrow">Servicios Ticketplus · 12 años iterando</span>
+      <h2 class="services-overview__title">Una plataforma profunda. Elige las capacidades que tu evento necesita.</h2>
+    </header>
+    <div class="services-overview__grid">
+      {phases.map((p) => (
+        <article class="services-overview__card">
+          <span class="services-overview__card-tag">{p.n} · {p.tag}</span>
+          <h3 class="services-overview__card-title">{p.title}</h3>
+          <p class="services-overview__card-body">{p.body}</p>
+          <a class="services-overview__card-link" href={p.href}>
+            {p.cta}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-overview {
+    background: #fff;
+    padding: 120px 0 40px;
+    border-top: 1px solid var(--color-border);
+  }
+  .services-overview__header {
+    max-width: 880px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  .services-overview__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 18px;
+  }
+  .services-overview__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.875rem, 4vw, 2.75rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+    color: var(--color-text-primary);
+    margin: 0;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .services-overview__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .services-overview__card {
+    background: #fafafa;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 36px 30px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .services-overview__card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 171, 36, 0.45);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+  }
+  .services-overview__card-tag {
+    align-self: flex-start;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(255, 171, 36, 0.10);
+    border: 1px solid rgba(255, 171, 36, 0.30);
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .services-overview__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+  .services-overview__card-body {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .services-overview__card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-top: auto;
+  }
+  .services-overview__card-link:hover { color: var(--color-secondary); }
+  .services-overview__card-link svg { transition: transform .2s ease; }
+  .services-overview__card-link:hover svg { transform: translateX(3px); }
+
+  @media (max-width: 1024px) {
+    .services-overview__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .services-overview { padding: 80px 0 30px; }
+    .services-overview__card { padding: 28px 24px; }
+  }
+</style>

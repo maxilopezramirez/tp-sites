@@ -1,0 +1,167 @@
+---
+// Recorrido editorial por los 5 pilares: Vende / On-site / Visualiza / Amplifica / Equipo.
+// Cada pilar tiene heroCount, features y se renderiza con hero composition + grid.
+import AmplificaSection from "../AmplificaSection.astro";
+import AppManagerHero from "../AppManagerHero.astro";
+import EquipoSection from "../EquipoSection.astro";
+
+const pillars = [
+  {
+    n: "01", tag: "VENDE", dark: false, id: "vende",
+    title: "Solución ticketing.",
+    lead: "Vendes sin caerte en los picos de demanda y configuras cualquier promo sin tocar código.",
+    heroCount: 0,
+    features: [
+      { n: "01", title: "Cortesías masivas", body: "Invitaciones bulk con tracking de aperturas, conversión y comportamiento por lista.", badge: null },
+      { n: "02", title: "Software boletería", body: "Vende tickets y productos en puntos físicos. Atención personalizada para quienes prefieren la compra presencial. Integra con la venta online y comparte stock — multiplicas alcance sin duplicar inventario.", badge: null },
+      { n: "03", title: "Formularios personalizados en tickets y/o ventas", body: "Captura datos específicos en checkout — talle, alergias, datos legales — sin escalar fricción.", badge: null },
+      { n: "04", title: "Mapas interactivos del venue", body: "Butaca asignada con vista escenario, reutilizables entre eventos. Configuras cualquier sala — desde un teatro de 200 butacas hasta un estadio de 100K — sin tocar código.", badge: null },
+      { n: "05", title: "Cola alta demanda", body: "Para drops masivos: Lista de Espera con aprobación individual o Preventa Exclusiva con aprobación masiva — solo aprobados compran. Venta abierta con virtual queue y posición visible para el comprador.", badge: null },
+      { n: "06", title: "Multi-currency y multi-language", body: "CLP + USD en la misma transacción y la misma URL. El buyer elige moneda y se procesa en el gateway correcto sin redirect — Webpay (CL) + Stripe (internacional) en paralelo con auto-detección por país de tarjeta. Soporte para ARS, MXN, COP, BRL, PYG, PEN, EUR y más, con settlement en la moneda preferida del cliente.", badge: null },
+      { n: "07", title: "Loyalty Management · Smart Promotions + Email Automation", body: "Smart Promotions con reglas de negocio propias armadas en diagrama, Smart Showcase como vitrina inteligente de cross-sell, Smart Email Marketing como pilar loyalty y Email Automation con secuencias pre/post evento. Mecánicas concretas: exclusive discounts para members, promos 2x1, loyalty clubs redimibles y referral link con descuento para buyer y referido.", badge: null },
+    ],
+  },
+  {
+    n: "02", tag: "ON-SITE", dark: true, id: "onsite",
+    title: "Buscas operar el evento en el venue.",
+    lead: "Validas miles de QRs sin caídas y vendes en boletería con el mismo stock del online.",
+    heroCount: 2,
+    features: [
+      { n: "01", title: "App Validación QR", body: "App iOS + Android con validación QR <200ms incluso con miles de asistentes. Modo offline con auto-sync y detección instantánea de duplicados.", badge: "+320K asistentes sin caídas", captionTag: "Validación QR" },
+      { n: "02", title: "POS + Tótems con stock unificado", body: "POS para boletería, barras y food courts con inventario real-time. Tótems self-service con cashless NFC. Stock compartido entre canales — cero desincronización online/venue.", badge: null, captionTag: "Stock unificado" },
+    ],
+  },
+  {
+    n: "03", tag: "VISUALIZA", dark: false, id: "visualiza",
+    title: "Buscas saber cuánto vendiste.",
+    lead: "Decides el próximo media buy con la data del drop actual.",
+    heroCount: 0,
+    features: [
+      { n: "01", title: "Dashboards en vivo con atribución por canal", body: "Revenue total, por tipo de ticket y por canal. Sales curve cross-event, live checkout conversion rate, per-minute sales durante drops. Atribución end-to-end desde click hasta ticket vendido.", badge: null, captionTag: "Analytics en vivo" },
+      { n: "02", title: "Desarrollo a medida de paneles BI", body: "Plug a Looker, Tableau o Power BI. Data export para CRM y ERP. Si tu equipo no tiene BI, desarrollamos paneles a medida según los KPIs que necesitas leer. La capa de business intelligence es tuya.", badge: null, captionTag: "Business intelligence" },
+    ],
+  },
+  {
+    n: "04", tag: "AMPLIFICA", dark: true, id: "amplifica",
+    title: "Buscas más audiencia.",
+    lead: "Mides cada peso de marketing y tu evento aparece en la app de los compradores.",
+    heroCount: 2,
+    features: [
+      { n: "01", title: "Marketing analytics con integraciones nativas", body: "Ticketplus proporciona datos valiosos sobre la venta de entradas, el interés del público y el rendimiento de tus campañas de marketing con sus integraciones. Eso te permite realizar ajustes y mejoras continuas para maximizar los resultados.", badge: null, captionTag: "Marketing analytics" },
+      { n: "02", title: "Tu evento en la App Ticketplus", body: "Listing automático en la App Ticketplus (iOS y Android) y en ticketplus.com. Base propia de compradores con notificaciones, búsqueda por ciudad y descubrimiento contextual — más visitas a tu evento sin desviar tráfico de tu canal.", badge: null, captionTag: "Discovery", storeButtons: true },
+    ],
+  },
+  {
+    n: "05", tag: "CUENTA CON EL EQUIPO", dark: false, id: "equipo",
+    title: "Buscas soporte 24/7.",
+    lead: "Si algo falla en el drop, hablas con quien hizo el código — no con un L1.",
+    features: [
+      { n: "01", title: "Account manager con WhatsApp directo", body: "Account manager dedicado por evento desde el primer día. WhatsApp directo pre-asignado 72h antes del drop. Soporte 24/7 con personas reales en español, cobertura fin de semana.", badge: "Único en el mercado", captionTag: "Soporte 24/7", whatsappButton: true },
+    ],
+  },
+];
+---
+{pillars.map((p, pi) => {
+  const stageVariants = ["showpage", "scanner", "venue", "analytics", "loyalty", "code"];
+  const stageKind = stageVariants[pi];
+  const heroCount = p.heroCount ?? 1;
+  const heroTailCount = p.heroTailCount ?? 0;
+  const isHero = (fi) => fi < heroCount || fi >= p.features.length - heroTailCount || p.features[fi].kind === "hero";
+
+  const groups = [];
+  let currentGrid = [];
+  let heroIdx = 0;
+  p.features.forEach((f, fi) => {
+    if (isHero(fi)) {
+      if (currentGrid.length) { groups.push({ type: "grid", features: currentGrid }); currentGrid = []; }
+      groups.push({ type: "hero", feature: f, heroIdx });
+      heroIdx++;
+    } else if (f.newGroup && currentGrid.length) {
+      groups.push({ type: "grid", features: currentGrid });
+      currentGrid = [f];
+    } else {
+      currentGrid.push(f);
+    }
+  });
+  if (currentGrid.length) groups.push({ type: "grid", features: currentGrid });
+
+  if (p.id === "amplifica") {
+    return <AmplificaSection />;
+  }
+  // equipo se renderiza como componente separado (HomeEquipoBlock) en /components
+  if (p.id === "equipo") {
+    return null;
+  }
+
+  let gridSeen = 0;
+  return (
+    <section class={`biz-scene biz-scene--${p.dark ? "dark" : "light"} biz-scene--p${pi}`} id={p.id}>
+      <div class="container">
+        {p.title && (
+          <header class="biz-scene__header">
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
+            <h2 class="biz-scene__title">{p.title}</h2>
+            {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
+          </header>
+        )}
+
+        {p.id === "visualiza" && <AppManagerHero />}
+
+        {groups.map((g) => {
+          if (g.type === "hero") {
+            const isReverse = ((pi % 2) + g.heroIdx) % 2 === 1;
+            return (
+              <div class={`biz-scene__hero ${isReverse ? "is-reverse" : ""}`}>
+                <div class={`scene-stage scene-stage--${stageKind}`} aria-hidden="true" />
+                <div class="biz-scene__caption">
+                  <span class="biz-scene__caption-tag">{g.feature.n} · {g.feature.captionTag || "Capacidad destacada"}</span>
+                  <h3 class="biz-scene__caption-title">{g.feature.title}</h3>
+                  <p class="biz-scene__caption-body">{g.feature.body}</p>
+                  {g.feature.badge && <span class="biz-scene__badge">{g.feature.badge}</span>}
+                  {g.feature.whatsappButton && (
+                    <div class="biz-scene__stores">
+                      <a class="store-btn store-btn--wsp" href="https://wa.me/56000000000" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+                        <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        <span class="store-text"><span class="store-label">Escríbenos por</span><span class="store-name">WhatsApp</span></span>
+                      </a>
+                    </div>
+                  )}
+                  {g.feature.storeButtons && (
+                    <div class="biz-scene__stores">
+                      <a class="store-btn" href="https://apps.apple.com/us/app/ticketplus/id1618113622" target="_blank" rel="noopener noreferrer" aria-label="Descargar en App Store">
+                        <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span class="store-text"><span class="store-label">Descárgala en</span><span class="store-name">App Store</span></span>
+                      </a>
+                      <a class="store-btn" href="https://play.google.com/store/apps/details?hl=en&id=cl.ticketplus.all_in_one" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play">
+                        <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                        <span class="store-text"><span class="store-label">Descárgala en</span><span class="store-name">Google Play</span></span>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          }
+          const gIdx = gridSeen;
+          gridSeen++;
+          return (
+            <div class={`biz-scene__grid biz-scene__grid--${g.features.length}`}>
+              {g.features.map((f, fi) => (
+                <article class="scene-card">
+                  <div class={`scene-card__stage scene-card__stage--p${pi}-${fi + gIdx * 10}`} aria-hidden="true">
+                    <span class="scene-card__chip">{f.n}</span>
+                  </div>
+                  <div class="scene-card__body">
+                    <h4 class="scene-card__title">{f.title}</h4>
+                    <p class="scene-card__text">{f.body}</p>
+                    {f.badge && <span class="biz-scene__badge">{f.badge}</span>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+})}

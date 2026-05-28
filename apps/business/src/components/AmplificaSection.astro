@@ -1,0 +1,183 @@
+---
+/*
+  AmplificaSection — componente reutilizable.
+  Sección dark con dos heroes alternados:
+    1. Marketing analytics con integraciones nativas
+    2. Tu evento en la App Ticketplus (con store buttons)
+  Patrón "Buscas X. Encuentras Y." aplicado al pillar AMPLIFICA del canon Full Op.
+*/
+import BoosterPromo from "./BoosterPromo.astro";
+---
+
+<section class="amplifica biz-scene biz-scene--dark" id="amplifica">
+  <div class="container">
+    <header class="amp__header">
+      <span class="amp__eyebrow">04 · AMPLIFICA</span>
+      <h2 class="amp__title">Buscas más audiencia.</h2>
+      <p class="amp__lead">Mides cada peso de marketing y tu evento aparece en la app de los compradores.</p>
+    </header>
+
+    <div class="amp__hero is-reverse">
+      <div class="scene-stage scene-stage--analytics" aria-hidden="true" />
+      <div class="amp__caption">
+        <BoosterPromo variant="dark" bare />
+      </div>
+    </div>
+
+    <div class="amp__hero">
+      <div class="scene-stage scene-stage--showpage" aria-hidden="true" />
+      <div class="amp__caption">
+        <span class="amp__caption-tag">02 · Discovery</span>
+        <h3 class="amp__caption-title">Tu evento en la App Ticketplus</h3>
+        <p class="amp__caption-body">Listing automático en la App Ticketplus (iOS y Android) y en ticketplus.com. Base propia de compradores con notificaciones, búsqueda por ciudad y descubrimiento contextual — más visitas a tu evento sin desviar tráfico de tu canal.</p>
+        <div class="amp__stores">
+          <a class="store-btn" href="https://apps.apple.com/us/app/ticketplus/id1618113622" target="_blank" rel="noopener noreferrer" aria-label="Descargar en App Store">
+            <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span class="store-text">
+              <span class="store-label">Descárgala en</span>
+              <span class="store-name">App Store</span>
+            </span>
+          </a>
+          <a class="store-btn" href="https://play.google.com/store/apps/details?hl=en&id=cl.ticketplus.all_in_one" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play">
+            <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+            <span class="store-text">
+              <span class="store-label">Descárgala en</span>
+              <span class="store-name">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .amplifica {
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 30% 70%, #1a1209 0%, #050505 60%) #050505;
+    color: #fff;
+  }
+  .amplifica .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+  .amp__header { max-width: 760px; margin-bottom: 64px; }
+  .amp__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 18px;
+  }
+  .amp__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    color: #fff;
+    margin: 0 0 20px;
+  }
+  .amp__lead {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.72);
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .amp__hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .amp__hero + .amp__hero { margin-top: 88px; }
+  .amp__hero.is-reverse { grid-template-columns: 0.85fr 1.15fr; }
+  .amp__hero.is-reverse .scene-stage { order: 2; }
+  .amp__hero.is-reverse .amp__caption { order: 1; }
+
+  .scene-stage {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,19,19,0.18) 0%, rgba(255,171,36,0.14) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .scene-stage::before,
+  .scene-stage::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.55;
+  }
+  .scene-stage::before {
+    width: 60%; height: 80%;
+    top: -10%; left: -10%;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  }
+  .scene-stage::after {
+    width: 50%; height: 60%;
+    bottom: -10%; right: -10%;
+    background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  }
+
+  .amp__caption-tag {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 14px;
+  }
+  .amp__caption-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    color: #fff;
+    margin: 0 0 16px;
+  }
+  .amp__caption-body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 16px;
+  }
+
+  .amp__stores { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  .amp__stores .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: #000;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .amp__stores .store-btn:hover { transform: translateY(-1px); border-color: var(--color-secondary); }
+  .amp__stores .store-icon { width: 22px; height: 22px; flex-shrink: 0; }
+  .amp__stores .store-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .amp__stores .store-label { font-family: var(--font-body); font-size: 9px; opacity: 0.75; letter-spacing: 0.04em; text-transform: uppercase; }
+  .amp__stores .store-name { font-family: var(--font-heading); font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+
+  @media (max-width: 768px) {
+    .amplifica { padding: 80px 0; }
+    .amp__hero, .amp__hero.is-reverse { grid-template-columns: 1fr; gap: 32px; }
+    .amp__hero.is-reverse .scene-stage { order: initial; }
+    .amp__hero.is-reverse .amp__caption { order: initial; }
+  }
+</style>

@@ -115,19 +115,25 @@ const segments = [
     </div>
   </header>
 
-  <!-- VIDEO PLACEHOLDER -->
   <section class="video-section" id="story">
     <div class="container">
       <span class="ecosystem__bar" aria-hidden="true"></span>
       <h2 class="ecosystem__title">Ticketing companies sell tickets.<br/>Ticketplus <span class="accent">runs the event.</span></h2>
       <p class="video-section__context">Latin America. $40B. 670 million people. A live entertainment market growing at four times the global rate — still running on fragmented, inadequate infrastructure.</p>
-      <div class="video-placeholder">
-        <svg class="video-placeholder__play" viewBox="0 0 96 96" width="64" height="64" aria-hidden="true">
-          <circle cx="48" cy="48" r="46" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
-          <path d="M40 32 L68 48 L40 64 Z" fill="rgba(255,255,255,0.75)"/>
-        </svg>
-        <span class="video-placeholder__label">VIDEO PLACEHOLDER · 16:9</span>
-      </div>
+      <video
+        class="hero-video"
+        controls
+        playsinline
+        preload="metadata"
+        poster="https://ticketplus-assets.s3.sa-east-1.amazonaws.com/sites/investors/hero-poster.jpg"
+        width="1920"
+        height="1080"
+        controlslist="nodownload"
+      >
+        <source src="https://ticketplus-assets.s3.sa-east-1.amazonaws.com/sites/investors/hero-1080p.webm" type="video/webm" />
+        <source src="https://ticketplus-assets.s3.sa-east-1.amazonaws.com/sites/investors/hero-1080p.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
     </div>
   </section>
 
@@ -435,29 +441,16 @@ const segments = [
   @media (max-width: 720px) {
     .video-section { padding: 48px 0; }
   }
-  .video-placeholder {
+  .hero-video {
     margin-top: 40px;
     width: 100%;
+    height: auto;
     aspect-ratio: 16/9;
     background: #111;
     border-radius: var(--radius-hero);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    position: relative;
-    overflow: hidden;
     box-shadow: var(--shadow-elevated);
-  }
-  .video-placeholder__label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.35);
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 24px;
+    display: block;
+    object-fit: cover;
   }
 
   /* Hero story card */

@@ -1,0 +1,200 @@
+---
+/*
+  EquipoSection — pilar EQUIPO reutilizable (canon Full Op pillar 05).
+  Section light con header + 1 hero feature: Account manager + WhatsApp directo.
+*/
+
+interface Props {
+  n?: string;
+  tag?: string;
+  title?: string;
+  lead?: string;
+  featureTag?: string;
+  featureTitle?: string;
+  featureBody?: string;
+  featureBadge?: string;
+  whatsappHref?: string;
+}
+
+const {
+  n = "05",
+  tag = "CUENTA CON EL EQUIPO",
+  title = "Buscas soporte 24/7.",
+  lead = "Si algo falla en el drop, hablas con quien hizo el código — no con un L1.",
+  featureTag = "01 · Soporte 24/7",
+  featureTitle = "Account manager con WhatsApp directo",
+  featureBody = "Account manager dedicado por evento desde el primer día. WhatsApp directo pre-asignado 72h antes del drop. Soporte 24/7 con personas reales en español, cobertura fin de semana.",
+  featureBadge = "Único en el mercado",
+  whatsappHref = "https://wa.me/56000000000",
+} = Astro.props;
+---
+
+<section class="equipo" id="equipo">
+  <div class="container">
+    <header class="equipo__header">
+      <span class="equipo__eyebrow">{n} · {tag}</span>
+      <h2 class="equipo__title">{title}</h2>
+      <p class="equipo__lead">{lead}</p>
+    </header>
+
+    <div class="equipo__hero">
+      <div class="equipo__stage" aria-hidden="true" />
+      <div class="equipo__caption">
+        <span class="equipo__caption-tag">{featureTag}</span>
+        <h3 class="equipo__caption-title">{featureTitle}</h3>
+        <p class="equipo__caption-body">{featureBody}</p>
+        {featureBadge && <span class="equipo__badge">{featureBadge}</span>}
+        <div class="equipo__cta">
+          <a class="equipo__wsp" href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+            <svg class="equipo__wsp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span class="equipo__wsp-text">
+              <span class="equipo__wsp-label">Escríbenos por</span>
+              <span class="equipo__wsp-name">WhatsApp</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .equipo {
+    background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+    padding: 120px 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .equipo .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  .equipo__header { max-width: 760px; margin-bottom: 64px; }
+  .equipo__eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 18px;
+  }
+  .equipo__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    color: var(--color-text-primary);
+    margin: 0 0 20px;
+  }
+  .equipo__lead {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .equipo__hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .equipo__stage {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,19,19,0.10) 0%, rgba(255,171,36,0.10) 100%);
+    border: 1px solid rgba(10,10,10,0.08);
+  }
+  .equipo__stage::before,
+  .equipo__stage::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.55;
+  }
+  .equipo__stage::before {
+    width: 60%; height: 80%;
+    top: -10%; left: -10%;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  }
+  .equipo__stage::after {
+    width: 50%; height: 60%;
+    bottom: -10%; right: -10%;
+    background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  }
+
+  .equipo__caption-tag {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.10);
+    border: 1px solid rgba(255,171,36,0.28);
+    padding: 5px 11px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .equipo__caption-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    margin: 0 0 14px;
+  }
+  .equipo__caption-body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    margin: 0 0 18px;
+  }
+  .equipo__badge {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    background: rgba(255,171,36,0.12);
+    border: 1px solid rgba(255,171,36,0.30);
+    border-radius: 4px;
+    padding: 4px 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .equipo__cta { margin-top: 20px; }
+  .equipo__wsp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #25D366;
+    color: #fff;
+    border: 1px solid #25D366;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .equipo__wsp:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.35); }
+  .equipo__wsp-icon { width: 22px; height: 22px; flex-shrink: 0; }
+  .equipo__wsp-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .equipo__wsp-label { font-family: var(--font-body); font-size: 9px; opacity: 0.85; letter-spacing: 0.04em; text-transform: uppercase; }
+  .equipo__wsp-name { font-family: var(--font-heading); font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+
+  @media (max-width: 1024px) {
+    .equipo__hero { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 768px) {
+    .equipo { padding: 80px 0; }
+  }
+</style>

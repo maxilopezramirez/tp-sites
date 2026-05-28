@@ -1,0 +1,14 @@
+---
+// Logos cloud — fila de tiles oscuros con productoras destacadas.
+const logos = ["FIFA U-20 🇨🇱","AFA 🇦🇷","Movistar Arena 🇨🇱","CONAF 🇨🇱","Teatro UC 🇨🇱","Teatro CA660 🇨🇱","Caupolicán 🇨🇱"];
+---
+<section class="logos-cloud">
+  <div class="container">
+    <p class="logos-cloud__label">Vinieron buscando una ticketera. Operan con Full Operation.</p>
+    <div class="logos-cloud__grid">
+      {logos.map(l => (
+        <div class="logo-tile-dark">{l}</div>
+      ))}
+    </div>
+  </div>
+</section>

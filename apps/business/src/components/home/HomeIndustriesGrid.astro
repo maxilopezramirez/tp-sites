@@ -1,0 +1,28 @@
+---
+// Grid de industrias con links directos a cada vertical.
+const industries = [
+  { title: "Festivales", href: "/servicios/festivales" },
+  { title: "Teatros", href: "/servicios/teatros" },
+  { title: "Deportes", href: "/servicios/deportes" },
+  { title: "Conferencias", href: "/servicios/conferencias" },
+  { title: "Familiar", href: "/servicios/familiar" },
+  { title: "Fiestas", href: "/servicios/fiestas" },
+  { title: "Espectáculo", href: "/servicios/espectaculo" },
+  { title: "Ferias", href: "/servicios/ferias" },
+];
+---
+<section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="industrias">
+  <div class="container">
+    <div class="biz-scene--light" style="text-align:center; max-width:760px; margin:0 auto 56px;">
+      <span class="biz-scene__eyebrow">Industrias</span>
+      <h2 class="biz-scene__title" style="margin-left:auto; margin-right:auto;">Una solución por industria.</h2>
+    </div>
+    <div class="tp-grid-4">
+      {industries.map(i => (
+        <a href={i.href} style="background:#fff; border:1px solid var(--color-border); border-radius:12px; padding:18px 24px; text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:center; min-height:64px;">
+          <h4 style="font-family:var(--font-heading); font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin:0;">{i.title}</h4>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
