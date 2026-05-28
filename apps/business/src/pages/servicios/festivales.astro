@@ -56,13 +56,6 @@ const overview = [
   { tag: "04 · El día después", title: "Atribución multi-canal + liquidación 48-72h + reporte para el próximo evento.", href: "#dia-despues" },
 ];
 
-const proofPoints = [
-  { value: "+600K", label: "asistentes en un solo evento" },
-  { value: "+320K", label: "tickets vendidos en un día" },
-  { value: "0", label: "caídas en lanzamientos 2023-2025" },
-  { value: "11", label: "países LATAM · +12 años" },
-];
-
 const fifaStats = [
   { value: "+600K", label: "asistentes", sub: "movidos en el torneo" },
   { value: "+320K", label: "tickets", sub: "vendidos en el día peak" },
@@ -124,15 +117,6 @@ const faqs = [
         <h1 class="biz-hero__title">La tecnología que opera tu festival o feria, del lanzamiento al cierre.</h1>
         <p class="biz-hero__lead">Cola virtual con war room para el lanzamiento, validación offline multi-puerta, POS y tótem en barras, exhibitor management con panel propio por stand y reportes ROI por sponsor. La infraestructura para festivales masivos y ferias B2B/gastronómicas/cerveza en una sola plataforma.</p>
 
-        <div class="hero-proof">
-          {proofPoints.map((p) => (
-            <div class="hero-proof__chip">
-              <span class="hero-proof__value">{p.value}</span>
-              <span class="hero-proof__label">{p.label}</span>
-            </div>
-          ))}
-        </div>
-
         <div class="biz-hero__ctas">
           <a href="#contacto" class="btn btn--primary">Cotizar mi festival en 24h →</a>
           <a href="#caso-fifa" class="hero-cta-ghost">Ver caso de escala ↓</a>
@@ -187,29 +171,6 @@ const faqs = [
       </section>
     );
   })()}
-
-  <!-- SPOTLIGHT #1 · Alta demanda con war room -->
-  <section class="spotlight spotlight--brand" id="war-room">
-    <div class="container">
-      <span class="spotlight__eyebrow">Único LATAM · Probado 320K tickets/día</span>
-      <h2 class="spotlight__title">Buscas no ser titular el lunes después del lanzamiento. Encuentras war room con ingenieros Ticketplus dedicados durante el drop.</h2>
-      <p class="spotlight__body">Cola de espera virtual con posición visible y tiempo estimado. Anti-bot adaptativo. Infraestructura dedicada por evento. Simulación de carga 72h antes con la productora y el venue en línea. SLA garantizado con penalidades económicas — no soporte L1 genérico. Probado con +320K tickets vendidos en un día, cero caídas.</p>
-      <div class="spotlight__cards">
-        <article class="spotlight-card">
-          <h4 class="spotlight-card__title">Cola virtual + anti-bot adaptativo</h4>
-          <p class="spotlight-card__text">Posición visible en cola con tiempo estimado. Anti-bot que distingue fan real de scalper automatizado.</p>
-        </article>
-        <article class="spotlight-card">
-          <h4 class="spotlight-card__title">Simulación 72h pre-lanzamiento</h4>
-          <p class="spotlight-card__text">Stress test del flujo completo con volúmenes simulados 72h antes del drop. Productora y venue en línea.</p>
-        </article>
-        <article class="spotlight-card">
-          <h4 class="spotlight-card__title">SLA con penalidades económicas</h4>
-          <p class="spotlight-card__text">Es contrato, no promesa. Penalidad económica si el SLA no se cumple — no soporte L1 genérico.</p>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <!-- MOMENTO 02 · LA OPERACIÓN -->
   {(() => {
