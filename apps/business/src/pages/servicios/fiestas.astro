@@ -16,16 +16,16 @@ const moments = [
       { n: "02", title: "Pre-inscripciones", body: "Lista de espera con aprobación individual o preventa exclusiva con aprobación masiva. Solo los aprobados compran.", badge: null, newGroup: true },
       { n: "03", title: "Creación de vendedores y referidos", body: "Las ventas de cada referido o embajador queda separada y disponible en tiempo real, así puedes potenciar las ventas de tu evento de manera ordenada y efectiva.", badge: null },
       { n: "04", title: "Tipos de ticket y combos", body: "Early bird, general, VIP, mesas — el flujo que tu fiesta necesite. Bundles con consumo y cortesías masivas.", badge: null },
-      { n: "05", title: "Carta de consumibles", body: "Vende alimentos y bebidas integrados al checkout. Ventas complementarias que aumentan el ticket promedio y la rentabilidad de la fiesta.", badge: null },
+      { n: "05", title: "Venta de barra y comida", body: "Vende alimentos y bebidas integrados al checkout. Ventas complementarias que aumentan el ticket promedio y la rentabilidad de la fiesta.", badge: null },
     ],
   },
   {
     n: "02", tag: "LA NOCHE", dark: true, id: "noche",
-    title: "Buscas que la fila avance y la barra no colapse.",
+    title: "Validación rápida + POS y tótems de autoatención en la barra.",
     lead: "Encuentras el venue operado entero. Tenemos todo bajo control mientras tú estás ocupándote del evento.",
     heroCount: 2,
     features: [
-      { n: "01", title: "Validación offline en puerta", body: "App iOS + Android con validación QR <2s incluso bajo tierra. Modo offline con auto-sync y detección instantánea de duplicados.", badge: "Único — funciona bajo tierra", captionTag: "Validación QR" },
+      { n: "01", title: "Validación online y offline en puerta", body: "App iOS + Android con validación QR <2s incluso bajo tierra. Modo offline con auto-sync y detección instantánea de duplicados.", badge: "Único — funciona bajo tierra", captionTag: "Validación QR" },
       { n: "02", title: "POS y tótems de autoatención", body: "POS para barras y mesas, tótems self-service con cashless NFC. Stock unificado con tu venta online — cero desincronización.", badge: null, captionTag: "Stock unificado" },
       { n: "03", title: "Blacklists y control de aforo en vivo", body: "Lista negra de fans problemáticos por sector. Aforo en vivo desde dashboard — sabes el ocupancy real en cada minuto.", badge: null, newGroup: true },
       { n: "04", title: "Dashboard en vivo desde el celular", body: "Revenue, validaciones, entrada por puerta y stock de barra en tu celular. Sin abrir el laptop.", badge: null },
@@ -72,7 +72,7 @@ const checklist = [
 const faqs = [
   { q: "¿Aguanta el last-minute (40-60% en últimas 48h)?", a: "Sí. Infraestructura auto-escalable probada en drops de 320K tickets/día. La capacidad del servidor no es el cuello de botella; sí lo son los medios de pago, por eso integramos múltiples gateways." },
   { q: "¿Cómo evito tickets falsos o duplicados?", a: "QR único por ticket, detección instantánea de duplicados en la app de validación, blacklist por fan. Si alguien intenta entrar con un QR ya validado, la app lo marca al instante." },
-  { q: "¿Sirven tótems para aforo chico?", a: "Honestamente, en fiestas con menos de 500 personas suele no compensar el costo. Recomendamos POS móvil + QR. Tótems brillan cuando el flujo en barras supera 50 ventas/hora simultáneas." },
+  { q: "¿Sirven tótems para aforo chico?", a: "Sí. Ofrecemos tótems para fiestas de cualquier tamaño, incluso con menos de 500 personas. El impacto en filas y ticket promedio aplica cuando hay barras o consumo cruzado — y crece a medida que aumenta el flujo simultáneo." },
   { q: "¿Puedo lanzar preventa solo para mi WhatsApp?", a: "Sí. Promo codes únicos o preventa exclusiva con aprobación masiva. Solo quienes tienen el código compran en esa ventana — el resto espera la apertura general." },
 ];
 ---
@@ -84,7 +84,7 @@ const faqs = [
       <div class="biz-hero__content">
         <p class="biz-hero__eyebrow">Servicios Ticketplus · Fiestas</p>
         <h1 class="biz-hero__title">La plataforma de venta para tu próxima fiesta.</h1>
-        <p class="biz-hero__lead">Validación en puerta en 2 segundos, POS y tótems de autoatención, promo codes flash y staff Ticketplus en sala.</p>
+        <p class="biz-hero__lead">Validación en puerta en 2 segundos, POS y tótems de autoatención y promo codes flash.</p>
         <div class="biz-hero__ctas">
           <a href="#contacto" class="btn btn--primary">Cotizar mi fiesta →</a>
           <a href="#preventa" class="btn btn--ghost">Ver capacidades</a>
@@ -112,7 +112,7 @@ const faqs = [
   <section class="fiesta-overview">
     <div class="container">
       <header class="fiesta-overview__header">
-        <h2 class="fiesta-overview__title">Una plataforma. Toda la noche.</h2>
+        <h2 class="fiesta-overview__title">Una plataforma. Todo el evento.</h2>
         <p class="fiesta-overview__lead">Tu fiesta vive tres momentos: la preventa, la noche y el día siguiente.</p>
       </header>
       <div class="fiesta-overview__grid">
@@ -221,15 +221,6 @@ const faqs = [
   })()}
 
   <AmplificaSection />
-
-  <!-- CTA bridge (entre Preventa y La noche) -->
-  <section class="spotlight spotlight--brand" id="cta-mid">
-    <div class="container">
-      <h2 class="spotlight__title">Tu fiesta. Tu noche. Operación probada.</h2>
-      <p class="spotlight__body">Cotización en menos de 24 horas hábiles. Sin compromiso.</p>
-      <a href="#contacto" class="cta-bridge-btn">Cotizar mi fiesta →</a>
-    </div>
-  </section>
 
   <!-- MOMENTO 02 · LA NOCHE -->
   {(() => {
