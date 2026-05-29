@@ -2,44 +2,66 @@
 import Site from "../../layouts/Site.astro";
 import PromesaTicketplus from "../../components/PromesaTicketplus.astro";
 
-// 3 caras del Trust: Compromisos / Operación / Salida limpia
+// 5 pilares del Trust: Innovación / Soporte y monitoreo / Integraciones / Comunicación directa / Uptime
 const caras = [
   {
-    n: "01", tag: "CARA 01 · COMPROMISOS", dark: false, id: "compromisos",
-    title: "Buscas garantías firmadas, no slides.",
-    lead: "Encuentras SLA con penalidades + alta disponibilidad + innovación sin saltos de precio. Lo que está en el contrato, no en la página de \"cómo trabajamos\". Penalidades reales si fallamos.",
+    n: "01", tag: "PILAR 01 · INNOVACIÓN CONTINUA", dark: false, id: "innovacion",
+    title: "Innovación continua.",
+    lead: "Nuevas capacidades activas en tu plan sin saltos de precio. Roadmap público trimestral con prioridades compartidas con clientes y +12 años evolucionando la plataforma sin pivots.",
     features: [
-      { n: "01", title: "Infraestructura de alta disponibilidad", body: "Multi-zona, replicación en caliente, auto-scaling probado en drops de +320K tickets.", badge: null },
-      { n: "02", title: "Innovación continua, sin saltos de precio", body: "Nuevos features en tu plan, sin \"tarifa nueva\", roadmap público trimestral.", badge: null },
-      { n: "03", title: "Compromiso de continuidad", body: "+12 años operando, 11 países, sin pivots, sin \"rebrand a partir de junio\".", badge: "+12 años · 11 países" },
+      { n: "01", title: "Nuevos features sin tarifa nueva", body: "Lo que liberamos entra a tu plan actual. Sin upsells forzados ni renegociaciones por cada release.", badge: null },
+      { n: "02", title: "Roadmap público trimestral", body: "Sabes qué viene en los próximos 3 meses. Las prioridades se discuten con clientes activos, no se imponen.", badge: null },
+      { n: "03", title: "+12 años evolucionando", body: "11 países, ciclos económicos completos, sin pivots ni rebrandeos. La plataforma de hoy es la que estará el próximo año.", badge: "+12 años · 11 países" },
     ],
   },
   {
-    n: "02", tag: "CARA 02 · OPERACIÓN", dark: true, id: "operacion",
-    title: "Buscas que cuando llamás atienda una persona.",
-    lead: "Encuentras AM dedicado por nombre + soporte 24/7 humano + staff en sala. Sin \"tu ticket es importante para nosotros, será atendido en 48 a 72h\".",
+    n: "02", tag: "PILAR 02 · SOPORTE Y MONITOREO CONTINUO", dark: true, id: "soporte",
+    title: "Soporte y monitoreo continuo.",
+    lead: "Equipo humano 24/7 con monitoreo activo de la plataforma y de tus eventos. Detectamos problemas antes que tu equipo y respondemos sin tickets que se enfríen.",
     features: [
-      { n: "01", title: "Soporte 24/7 con humanos", body: "WhatsApp, email, teléfono, escalamiento directo a ingeniería.", badge: "vs Eventbrite chatbot" },
-      { n: "02", title: "Account manager dedicado por cliente", body: "Persona con nombre, response time <2h, briefings pre-evento, conoce tu calendario.", badge: null },
-      { n: "03", title: "Staff Ticketplus en terreno el día del evento", body: "Validación, POS, acreditación, monitoreo, briefing 30min antes, reporte post-evento 24h.", badge: null },
+      { n: "01", title: "Soporte 24/7 con humanos", body: "WhatsApp, email y teléfono. Escalamiento directo a ingeniería si el caso lo requiere — sin chatbots ni respuestas automáticas.", badge: "vs chatbots genéricos" },
+      { n: "02", title: "Monitoreo proactivo de la plataforma", body: "Dashboards internos 24/7 con alertas de latencia, errores y picos de tráfico. Detectamos incidentes antes que tu equipo los note.", badge: null },
+      { n: "03", title: "Staff Ticketplus en terreno el día del evento", body: "Validación, POS, acreditación y monitoreo en sala. Briefing 30min antes y reporte post-evento 24h.", badge: null },
     ],
   },
   {
-    n: "03", tag: "CARA 03 · SALIDA LIMPIA", dark: false, id: "salida",
-    title: "Buscas no quedar atado al proveedor.",
-    lead: "Encuentras data portable + migración limpia hacia afuera + cero permanencia. Si algún día decides migrar a otro proveedor, nosotros mismos te ayudamos a salir.",
+    n: "03", tag: "PILAR 03 · INTEGRACIONES CON TERCEROS", dark: false, id: "integraciones",
+    title: "Integraciones con terceros.",
+    lead: "APIs abiertas y conectores listos para BI, CRM, ERP, marketing y hardware. Tu data no queda atrapada — fluye hacia las herramientas que ya usas.",
     features: [
-      { n: "01", title: "Portabilidad total de tu data", body: "JSON, CSV, SQL dump, API con OAuth. Compradores + transacciones + asistentes + configuración.", badge: null },
-      { n: "02", title: "Migration support — entrada", body: "Te llevamos desde Welcu, Passline, Eventbrite, Excel o sistema propio en 2-4 semanas.", badge: null },
-      { n: "03", title: "Sin contrato de permanencia", body: "Cobramos por venta, si dejas de vender no pagas. Sin mínimos mensuales, sin licencias anuales.", badge: "Sin permanencia obligatoria" },
+      { n: "01", title: "API pública con OAuth", body: "Endpoints documentados para compradores, transacciones, eventos y validaciones. Webhooks en tiempo real para conectar lo que necesites.", badge: null },
+      { n: "02", title: "Conectores nativos con BI, CRM y ERP", body: "Looker, Tableau, Power BI, HubSpot, Salesforce, SAP y otros — sin desarrollos custom por tu lado.", badge: null },
+      { n: "03", title: "Portabilidad total de tu data", body: "JSON, CSV o SQL dump cuando lo pidas. Compradores, transacciones, asistentes y configuración — tu data es tuya.", badge: "Data portable" },
+    ],
+  },
+  {
+    n: "04", tag: "PILAR 04 · COMUNICACIÓN DIRECTA", dark: true, id: "comunicacion",
+    title: "Canales de comunicación directos con nuestro equipo.",
+    lead: "Account manager dedicado por nombre con tu WhatsApp y escalamiento directo a ingeniería. Hablas con quien construyó tu integración, no con un L1 genérico.",
+    features: [
+      { n: "01", title: "Account manager dedicado", body: "Persona con nombre asignada a tu cuenta. Response time <2h, briefings pre-evento, conoce tu calendario, equipo e historial.", badge: null },
+      { n: "02", title: "WhatsApp directo pre-asignado", body: "Línea directa al AM 72h antes del drop. Sin pasar por bandejas compartidas ni transferencias.", badge: null },
+      { n: "03", title: "Escalamiento directo a ingeniería", body: "Si algo cae, hablas con quien construyó tu integración. Sin niveles intermedios ni 'te paso con el siguiente'.", badge: "Único en el mercado" },
+    ],
+  },
+  {
+    n: "05", tag: "PILAR 05 · UPTIME DE LA PLATAFORMA", dark: false, id: "uptime",
+    title: "Uptime de la plataforma.",
+    lead: "99.95% en horarios críticos con SLA firmado y penalidades económicas reales. Infraestructura multi-zona probada en drops de +320K tickets sin caídas.",
+    features: [
+      { n: "01", title: "SLA con penalidades económicas", body: "Si bajamos del 99.95% en horarios críticos, crédito o devolución automática del cargo del mes. Medido por monitor externo, no auto-reportado.", badge: "Penalidad por contrato" },
+      { n: "02", title: "Infraestructura multi-zona", body: "Replicación en caliente, auto-scaling y failover automático. Probado en drops de +320K tickets en un día sin caídas.", badge: null },
+      { n: "03", title: "Simulación de carga pre-drop", body: "Stress test 72h antes del lanzamiento con volúmenes simulados. Productora y venue en línea con el war room.", badge: null },
     ],
   },
 ];
 
 const overview = [
-  { tag: "01 · Compromisos", title: "Garantías firmadas, no marketing. SLA con penalidades económicas reales.", href: "#compromisos" },
-  { tag: "02 · Operación", title: "Personas reales, no chatbots. AM con tu WhatsApp + soporte 24/7 humano.", href: "#operacion" },
-  { tag: "03 · Salida limpia", title: "Sin permanencia obligatoria. Tu data es tuya, migración hacia adentro y hacia afuera.", href: "#salida" },
+  { tag: "01 · Innovación continua", title: "Nuevos features en tu plan, sin saltos de precio. Roadmap público trimestral.", href: "#innovacion" },
+  { tag: "02 · Soporte y monitoreo continuo", title: "Equipo humano 24/7 + monitoreo activo. Detectamos incidentes antes que tu equipo.", href: "#soporte" },
+  { tag: "03 · Integraciones con terceros", title: "APIs abiertas + conectores BI, CRM, ERP. Tu data fluye a las herramientas que usas.", href: "#integraciones" },
+  { tag: "04 · Comunicación directa", title: "AM dedicado con WhatsApp directo + escalamiento a ingeniería sin niveles intermedios.", href: "#comunicacion" },
+  { tag: "05 · Uptime de la plataforma", title: "SLA 99.95% con penalidades reales. Infraestructura multi-zona probada en +320K tickets.", href: "#uptime" },
 ];
 
 const slaOptions = [
