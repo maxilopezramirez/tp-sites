@@ -22,8 +22,8 @@ const moments = [
     features: [
       { n: "01", title: "Validación offline confirmada", body: "App QR con modo offline real (no \"degradado\"). Sync automática al reconectar, detección instantánea de duplicados.", badge: "vs Welcu/Passline/TicketSpice" },
       { n: "02", title: "POS y tótem autoatención", body: "Barras, food courts, merch stands con modo offline, sync automática, inventario en tiempo real entre canales.", badge: null },
-      { n: "03", title: "Acreditación pro con credenciales en segundos", body: "Impresora térmica integrada — credencial con foto + nombre + empresa + cargo + categoría en menos de 5 segundos. Cordón por color según categoría (prensa, artista, sponsor, expositor). Cero fila el día uno.", badge: "vs Eventbrite check-in básico" },
-      { n: "04", title: "Anillos de validación multi-puerta", body: "Hasta 8 puertas operando en paralelo con sync en tiempo real entre anillos de validación. Anti-doble ingreso, modo offline con auto-sync al reconectar — cada puerta sabe instantáneamente qué QR ya entró por otra.", badge: "Anillos multi-puerta sincronizados" },
+      { n: "03", title: "Acreditación pro con credenciales en segundos", body: "Impresora térmica integrada: credencial con foto + nombre + empresa + cargo + categoría en menos de 5 segundos. Cordón por color según categoría (prensa, artista, sponsor, expositor). Cero fila el día uno.", badge: "vs Eventbrite check-in básico" },
+      { n: "04", title: "Anillos de validación multi-puerta", body: "Hasta 8 puertas operando en paralelo con sync en tiempo real entre anillos de validación. Anti-doble ingreso, modo offline con auto-sync al reconectar: cada puerta sabe instantáneamente qué QR ya entró por otra.", badge: "Anillos multi-puerta sincronizados" },
     ],
   },
   {
@@ -31,9 +31,9 @@ const moments = [
     title: "Buscas que cada stand opere como negocio propio.",
     lead: "Encuentras exhibitor management con login propio por stand, lead capture y reportes de tráfico que justifican la renovación del sponsor para la próxima edición.",
     features: [
-      { n: "01", title: "Exhibitor management — panel propio por stand", body: "Cada expositor tiene login propio: configura su stock, asigna a sus promotores, ve sus propias ventas separadas. Multiple team types (press, stand staff, setup) con stock per-type y permisos delegados. Pre-acreditación independiente — sin Excel al organizador.", badge: "Único por stand" },
+      { n: "01", title: "Exhibitor management · panel propio por stand", body: "Cada expositor tiene login propio: configura su stock, asigna a sus promotores, ve sus propias ventas separadas. Multiple team types (press, stand staff, setup) con stock per-type y permisos delegados. Pre-acreditación independiente, sin Excel al organizador.", badge: "Único por stand" },
       { n: "02", title: "Lead capture por expositor", body: "Escaneo de credencial del visitante → nombre + empresa + email + intereses → CRM del expositor. Cada conversación queda registrada como lead calificado para follow-up post-evento.", badge: null },
-      { n: "03", title: "Reportes de tráfico por stand para sponsors", body: "Visitantes únicos, tiempo en stand, leads capturados, perfil demográfico del tráfico. ROI medible por stand — el sponsor recibe el documento que justifica renovar el próximo año a mayor precio.", badge: "ROI medible por stand" },
+      { n: "03", title: "Reportes de tráfico por stand para sponsors", body: "Visitantes únicos, tiempo en stand, leads capturados, perfil demográfico del tráfico. ROI medible por stand: el sponsor recibe el documento que justifica renovar el próximo año a mayor precio.", badge: "ROI medible por stand" },
     ],
   },
   {
@@ -98,16 +98,16 @@ const checklist = [
 ];
 
 const faqs = [
-  { q: "¿Y si el sitio se cae el día del lanzamiento?", a: "No se cae. Probado en +320K tickets vendidos en un día con cero caídas. La razón: infraestructura dedicada por evento, war room con ingenieros TP durante el drop, simulación de carga 72h antes. Y si algo pasara, hay SLA contractual con penalidades económicas — no soporte L1 genérico. Es contrato, no promesa." },
-  { q: "¿La validación realmente funciona sin WiFi en el predio?", a: "Sí, offline real — no \"modo degradado\". Cada PDA tiene la base de tickets sincronizada al día del evento; valida localmente y syncea cuando recupera red. La fila avanza igual." },
+  { q: "¿Y si el sitio se cae el día del lanzamiento?", a: "No se cae. Probado en +320K tickets vendidos en un día con cero caídas. La razón: infraestructura dedicada por evento, war room con ingenieros TP durante el drop, simulación de carga 72h antes. Y si algo pasara, hay SLA contractual con penalidades económicas, no soporte L1 genérico. Es contrato, no promesa." },
+  { q: "¿La validación realmente funciona sin WiFi en el predio?", a: "Sí, offline real, no \"modo degradado\". Cada PDA tiene la base de tickets sincronizada al día del evento; valida localmente y syncea cuando recupera red. La fila avanza igual." },
   { q: "¿Cómo manejan multi-stage y multi-día con un solo carrito?", a: "Carrito persistente entre sesiones. El asistente puede agregar abono full pass + day pass + add-ons + merch + bundles de sponsor y cerrar todo en un solo checkout. Rotación de staff TP coordinada para no fundir al equipo al día 3." },
-  { q: "¿Vale la pena POS + tótem en barras y food?", a: "Adopción típica medida en festivales operando con Ticketplus: 70%+ de las transacciones en barras pasan por tótem al día 2. Reduce fila 60-70% y aumenta ticket promedio 18-25% por upselling automático. Para festivales <5K personas el costo no compensa — recomendamos POS móvil." },
-  { q: "¿Tienen equipo presencial el día del festival?", a: "Sí. Staff Ticketplus capacitado en puerta, en POS, monitoreando dashboard. Briefing pre-evento con tu producción 24h antes. Líder de operación en sala con autoridad para resolver — no \"te paso con el siguiente nivel\". Cantidad de staff según aforo, número de puertas y duración." },
+  { q: "¿Vale la pena POS + tótem en barras y food?", a: "Adopción típica medida en festivales operando con Ticketplus: 70%+ de las transacciones en barras pasan por tótem al día 2. Reduce fila 60-70% y aumenta ticket promedio 18-25% por upselling automático. Para festivales <5K personas el costo no compensa: recomendamos POS móvil." },
+  { q: "¿Tienen equipo presencial el día del festival?", a: "Sí. Staff Ticketplus capacitado en puerta, en POS, monitoreando dashboard. Briefing pre-evento con tu producción 24h antes. Líder de operación en sala con autoridad para resolver, no \"te paso con el siguiente nivel\". Cantidad de staff según aforo, número de puertas y duración." },
   { q: "¿Cuánto cuesta? ¿Tienen licencias o mínimos?", a: "Cargo por servicio sobre cada ticket vendido. Sin licencia, sin mínimos, sin contratos de permanencia. El porcentaje se define según volumen, tipo de festival y módulos activados (POS, tótem, multi-país, Booster). Cotización personalizada en menos de 24h hábiles." },
-  { q: "¿Puedo lanzar en 8 semanas si recién contrato ahora?", a: "Sí — onboarding acelerado para lanzamientos en menos de 60 días. War room contigo desde el día 1 de la contratación, migración paralela si vienes de otra plataforma. La condición: tu equipo de marketing y producción tiene que estar disponible para reuniones semanales durante el sprint." },
+  { q: "¿Puedo lanzar en 8 semanas si recién contrato ahora?", a: "Sí. Onboarding acelerado para lanzamientos en menos de 60 días. War room contigo desde el día 1 de la contratación, migración paralela si vienes de otra plataforma. La condición: tu equipo de marketing y producción tiene que estar disponible para reuniones semanales durante el sprint." },
 ];
 ---
-<Site title="Servicios Ticketplus · Festivales y Ferias — Lanzamientos, operación multi-día y exhibitor management">
+<Site title="Servicios Ticketplus · Festivales y Ferias · Lanzamientos, operación multi-día y exhibitor management">
 
   <!-- HERO con proof points -->
   <header class="biz-hero">
@@ -327,7 +327,7 @@ const faqs = [
         <div>
           <p class="section__eyebrow" style="color:var(--color-secondary);">Hablemos de tu festival</p>
           <h2 class="section__title">Buscas cotizar. Encuentras un plan específico para tu formato, volumen esperado y fecha de lanzamiento.</h2>
-          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Si tu lanzamiento es en menos de 60 días, márcalo en el formulario — entramos al war room contigo desde el día 1.</p>
+          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Si tu lanzamiento es en menos de 60 días, márcalo en el formulario: entramos al war room contigo desde el día 1.</p>
           <ul style="list-style:none; padding:0; font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:2.2;">
             {checklist.map(item => (
               <li><span style="color:#1a8a3a; font-weight:700;">✓</span> {item}</li>

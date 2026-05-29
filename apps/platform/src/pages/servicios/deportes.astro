@@ -11,7 +11,7 @@ const moments = [
     features: [
       { n: "01", title: "Cobro automático con tarjeta guardada", body: "OneClick + tokenización. La cuota se cobra sola, el socio paga una sola vez al inscribirse.", badge: "OneClick recurrente" },
       { n: "02", title: "Período de gracia y condonación manual auditada", body: "Tarjeta rechazada → período de gracia configurable + reintento automático. Condonación manual si el caso lo amerita, con log auditable.", badge: null },
-      { n: "03", title: "Frecuencias adaptables", body: "Mensual, trimestral, semestral o anual. Cada socio elige el ciclo que prefiere — y queda guardado.", badge: null },
+      { n: "03", title: "Frecuencias adaptables", body: "Mensual, trimestral, semestral o anual. Cada socio elige el ciclo que prefiere, y queda guardado.", badge: null },
       { n: "04", title: "Categorías de socio configurables", body: "Activo, adherente, infantil, empresa. Cada categoría con su cuota, beneficios y reglas de acceso.", badge: null },
     ],
   },
@@ -47,7 +47,7 @@ const moments = [
       { n: "01", title: "Validación rápida con PDAs / staff / torniquetes existentes", body: "Boon Edam, Gunnebo, scanners Bluetooth. App móvil para staff. Funciona con el hardware del estadio.", badge: null },
       { n: "02", title: "Cashless en consumos durante el partido", body: "Pulsera o credencial con saldo prepagado. Cero efectivo en gradas, cero filas en kioscos.", badge: null },
       { n: "03", title: "Cortesías masivas con tracking", body: "Prensa, sponsors, autoridades. Lista nominativa con QR único, tracking de quién accedió y cuándo.", badge: null },
-      { n: "04", title: "Aforo en vivo por sector + cross-sell tickets/merch en checkout", body: "Sabes ocupación de cada sector en tiempo real. En el carrito de tickets podés agregar merch oficial — un solo flujo.", badge: null },
+      { n: "04", title: "Aforo en vivo por sector + cross-sell tickets/merch en checkout", body: "Sabes ocupación de cada sector en tiempo real. En el carrito de tickets puedes agregar merch oficial: un solo flujo.", badge: null },
     ],
   },
 ];
@@ -85,13 +85,13 @@ const faqs = [
   { q: "¿Puedo operar varias disciplinas en distintos recintos con la misma plataforma?", a: "Sí. Configurás múltiples recintos (canchas, gimnasios, courts) y disciplinas (fútbol, básquet, tenis, padel) bajo un único panel. Cada uno con su mapa, su pricing y su staff." },
   { q: "¿Qué frecuencias de cobro de cuotas soporta?", a: "Mensual, trimestral, semestral y anual. Cada socio elige al inscribirse; podés mezclar dentro del mismo club (ej. socio activo mensual + socio empresa anual)." },
   { q: "¿Tengo que pagar extra para modelar mi recinto?", a: "No. El modelado del recinto (mapa interactivo con sectores, butacas, palcos) está incluido en el onboarding. Reutilizable partido a partido sin costo adicional." },
-  { q: "¿Es compatible con los torniquetes y PDAs que ya tengo?", a: "Sí. Trabajamos con Boon Edam, Gunnebo, scanners Bluetooth y la mayoría de hardware del mercado. Antes del onboarding hacemos un audit de tu infra existente — no tirás nada." },
+  { q: "¿Es compatible con los torniquetes y PDAs que ya tengo?", a: "Sí. Trabajamos con Boon Edam, Gunnebo, scanners Bluetooth y la mayoría de hardware del mercado. Antes del onboarding hacemos un audit de tu infra existente. No tiras nada." },
   { q: "¿Cómo migran la base histórica de socios y abonados?", a: "Migración asistida. Importamos socios, histórico de pagos, abonos vigentes y butacas asignadas desde tu sistema actual. Operamos en paralelo durante la transición para no interrumpir cobros." },
   { q: "¿Cómo acompañan en eventos grandes tipo clásico o final?", a: "Account manager + war room remoto durante el drop. WhatsApp directo con respuesta menor a 2h. En clásicos premium podemos enviar staff Ticketplus on-site al estadio." },
   { q: "¿Qué pasa si un partido se suspende por lluvia o seguridad?", a: "Reprogramación automática con notificación a todos los compradores. Si quieren reembolso, lo solicitan desde un link. Si se reprograma, el ticket original es válido para la nueva fecha. Cero atención manual." },
 ];
 ---
-<Site title="Servicios Ticketplus · Clubes y federaciones deportivas — Operación 365 días al año">
+<Site title="Servicios Ticketplus · Clubes y federaciones deportivas · Operación 365 días al año">
 
   <!-- HERO -->
   <header class="biz-hero">

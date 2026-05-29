@@ -29,7 +29,7 @@ const modes = [
   {
     n: "03", tag: "CASHLESS · APP CON ONECLICK", dark: false, id: "cashless",
     title: "Buscas que el fan pague en cualquier barra sin volver a digitar.",
-    lead: "Encuentras app Cashless con OneClick + tracking por asistente. El fan paga con un click — el dato vuelve a ti.",
+    lead: "Encuentras app Cashless con OneClick + tracking por asistente. El fan paga con un click: el dato vuelve a ti.",
     heroCount: 0,
     features: [
       { n: "01", title: "Datos de consumo por asistente", body: "La data alimenta próxima preventa + retargeting de Booster + reportes por sector.", badge: null },
@@ -63,7 +63,7 @@ const industries = [
 
 const checklist = [
   "Compatible con tu hardware existente",
-  "Modo offline real — el cajero no se detiene",
+  "Modo offline real: el cajero no se detiene",
   "Stock unificado online + box office",
   "Branding completo (colores, logos, flujos)",
   "Activación modular (solo POS / solo tótem / solo cashless o combinados)",
@@ -71,14 +71,14 @@ const checklist = [
 ];
 
 const faqs = [
-  { q: "¿El POS funciona sin internet?", a: "Sí, offline real. La venta sigue cobrando si se cae el WiFi del venue. Auto-sync al reconectar — sin pérdida de transacciones, inventario reconciliado automáticamente. <strong>Diferenciador clave vs ticketeras con \"modo degradado\".</strong>" },
-  { q: "¿Tengo que comprar hardware Ticketplus o sirve el que ya tengo?", a: "El que ya tienes. Compatible con Verifone, Transbank POS, tablets existentes (iPad, Android). Hacemos audit de tu hardware antes del onboarding — no tirás nada." },
-  { q: "¿El Cashless con OneClick funciona si se cae internet?", a: "El cobro funciona offline — la transacción queda guardada y se procesa al reconectar. La recarga inicial o el enrolamiento de tarjeta sí requieren conexión (es un paso único). En la práctica, el fan enrola desde su casa o conectando al WiFi del venue al llegar; después usa Cashless toda la noche sin necesidad de internet en cada compra." },
-  { q: "¿Puedo activar solo POS, solo tótem o solo cashless?", a: "Sí — activación modular. Eliges los modos que tu venue necesita y se combinan según convenga (por ejemplo: POS en barras principales + tótem en barras secundarias + cashless para socios VIP). Cada modo se factura por uso, sin licencia mínima." },
+  { q: "¿El POS funciona sin internet?", a: "Sí, offline real. La venta sigue cobrando si se cae el WiFi del venue. Auto-sync al reconectar: sin pérdida de transacciones, inventario reconciliado automáticamente. <strong>Diferenciador clave vs ticketeras con \"modo degradado\".</strong>" },
+  { q: "¿Tengo que comprar hardware Ticketplus o sirve el que ya tengo?", a: "El que ya tienes. Compatible con Verifone, Transbank POS, tablets existentes (iPad, Android). Hacemos audit de tu hardware antes del onboarding. No tiras nada." },
+  { q: "¿El Cashless con OneClick funciona si se cae internet?", a: "El cobro funciona offline: la transacción queda guardada y se procesa al reconectar. La recarga inicial o el enrolamiento de tarjeta sí requieren conexión (es un paso único). En la práctica, el fan enrola desde su casa o conectando al WiFi del venue al llegar; después usa Cashless toda la noche sin necesidad de internet en cada compra." },
+  { q: "¿Puedo activar solo POS, solo tótem o solo cashless?", a: "Sí. Activación modular. Eliges los modos que tu venue necesita y se combinan según convenga (por ejemplo: POS en barras principales + tótem en barras secundarias + cashless para socios VIP). Cada modo se factura por uso, sin licencia mínima." },
   { q: "¿Cómo se reconcilia el cierre de caja cuando combino los 3 modos?", a: "Cierre automático al final del evento. Todas las transacciones (POS, tótem, cashless, offline pendientes de sync) consolidadas en un solo reporte. Reconciliación con stock real, alertas de discrepancias, exportable a Excel/CSV/SII." },
 ];
 ---
-<Site title="Servicios Ticketplus · POS y Tótem — Venta en venue con modo offline real y OneClick">
+<Site title="Servicios Ticketplus · POS y Tótem · Venta en venue con modo offline real y OneClick">
 
   <!-- HERO -->
   <header class="biz-hero">
@@ -116,7 +116,7 @@ const faqs = [
     <div class="container">
       <div style="text-align:center; max-width:760px; margin:0 auto 56px;">
         <h2 class="section__title">Tres maneras de cobrar en tu venue.</h2>
-        <p class="section__lead" style="color:var(--color-text-muted);">Eliges las que tu operación necesita — pueden combinarse.</p>
+        <p class="section__lead" style="color:var(--color-text-muted);">Eliges las que tu operación necesita, pueden combinarse.</p>
       </div>
       <div class="biz-promises__grid">
         {overview.map((o) => (
@@ -175,7 +175,7 @@ const faqs = [
     <div class="container">
       <span class="spotlight__eyebrow">Diferenciador clave</span>
       <h2 class="spotlight__title">Buscas que el cajero no se detenga porque el WiFi del venue es malo. Encuentras modo offline real con auto-sync.</h2>
-      <p class="spotlight__body">Si se cae internet en una barra, la venta sigue. Auto-sync al reconectar — sin pérdida de transacciones. Inventario reconciliado automáticamente. El cajero no se detiene porque el WiFi del venue es malo.</p>
+      <p class="spotlight__body">Si se cae internet en una barra, la venta sigue. Auto-sync al reconectar: sin pérdida de transacciones. Inventario reconciliado automáticamente. El cajero no se detiene porque el WiFi del venue es malo.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Venta sigue sin internet</h4>
@@ -277,8 +277,8 @@ const faqs = [
   <section class="spotlight spotlight--dark" id="oneclick">
     <div class="container">
       <span class="spotlight__eyebrow">Único en CL · Sin saldos prepago</span>
-      <h2 class="spotlight__title">Buscas que el fan no haga fila para recargar saldo. Encuentras OneClick — enrola la tarjeta una vez, paga en todo el venue.</h2>
-      <p class="spotlight__body">El fan descarga la app, enrola su tarjeta una vez (OneClick Webpay, MercadoPago o equivalente) y queda listo para pagar en cualquier barra, food court o tótem del venue sin volver a digitar. Sin manejo de saldos prepago, sin devoluciones a procesar al final del festival. Cada compra queda atada al perfil del fan — data lista para loyalty + Booster del próximo evento.</p>
+      <h2 class="spotlight__title">Buscas que el fan no haga fila para recargar saldo. Encuentras OneClick: enrola la tarjeta una vez, paga en todo el venue.</h2>
+      <p class="spotlight__body">El fan descarga la app, enrola su tarjeta una vez (OneClick Webpay, MercadoPago o equivalente) y queda listo para pagar en cualquier barra, food court o tótem del venue sin volver a digitar. Sin manejo de saldos prepago, sin devoluciones a procesar al final del festival. Cada compra queda atada al perfil del fan: data lista para loyalty + Booster del próximo evento.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Enrolamiento OneClick único</h4>
@@ -286,7 +286,7 @@ const faqs = [
         </article>
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Sin saldos prepago</h4>
-          <p class="spotlight-card__text">No hay recargas, no hay devoluciones a procesar post-evento. El fan paga lo que consume — ni un peso más, ni un peso atrapado en saldo no usado.</p>
+          <p class="spotlight-card__text">No hay recargas, no hay devoluciones a procesar post-evento. El fan paga lo que consume. Ni un peso más, ni un peso atrapado en saldo no usado.</p>
         </article>
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Tracking per-attendee</h4>

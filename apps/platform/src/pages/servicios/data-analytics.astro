@@ -8,7 +8,7 @@ const fases = [
     title: "Buscas ver lo que pasa mientras pasa.",
     lead: "Encuentras dashboard mobile-first + ventas por minuto + ocupación al segundo. Real-time real, no \"actualizado cada 15 minutos\". El productor mira el dashboard desde el celular durante el drop.",
     features: [
-      { n: "01", title: "Modern dashboard mobile-first", body: "Diseño 2025, customizable por rol — CEO ve revenue, jefe ops ve ocupación, KAM ve ROAS.", badge: "Mobile-first 2025" },
+      { n: "01", title: "Modern dashboard mobile-first", body: "Diseño 2025, customizable por rol: CEO ve revenue, jefe ops ve ocupación, KAM ve ROAS.", badge: "Mobile-first 2025" },
       { n: "02", title: "Ventas en tiempo real durante el drop", body: "Latencia <5s, alertas configurables, sector más vendido, ticket promedio.", badge: "<5s latencia" },
       { n: "03", title: "Ocupación y aforo por zona en vivo", body: "Velocidad de ingreso por puerta, picos de flujo, alertas de aforo crítico.", badge: null },
     ],
@@ -29,8 +29,8 @@ const fases = [
     lead: "Encuentras export multi-formato + reportes específicos por vertical. El reporte que nadie usa es ruido. Exportable, integrable y específico por línea de negocio.",
     features: [
       { n: "01", title: "Reportes de membresía y socios", body: "ARPU, LTV, churn, edad promedio, motivo de baja por tier.", badge: null },
-      { n: "02", title: "Stock unificado y reportería multicanal", body: "Boletería física + POS venue + web + app sobre un solo conteo.", badge: "Único — un solo conteo" },
-      { n: "03", title: "Export multi-formato — CSV / XLSX / API", body: "Conector nativo a BigQuery + Snowflake, API pública con OAuth.", badge: null },
+      { n: "02", title: "Stock unificado y reportería multicanal", body: "Boletería física + POS venue + web + app sobre un solo conteo.", badge: "Único · un solo conteo" },
+      { n: "03", title: "Export multi-formato · CSV / XLSX / API", body: "Conector nativo a BigQuery + Snowflake, API pública con OAuth.", badge: null },
       { n: "04", title: "Reportes post-evento en 24h customizados por vertical", body: "Festivales por stage, teatros por función, clubes por categoría socio.", badge: "Customizado por vertical" },
     ],
   },
@@ -68,23 +68,23 @@ const industries = [
 ];
 
 const checklist = [
-  "Demo con un evento de tu industria — no demo genérica",
+  "Demo con un evento de tu industria, no demo genérica",
   "Acceso a sandbox para tu equipo durante 7 días",
   "Export y conector a tu BI / data warehouse",
-  "API documentada con OAuth — cero permanencia obligatoria",
+  "API documentada con OAuth: cero permanencia obligatoria",
   "Reportes post-evento customizados por vertical",
   "Atribución multi-canal nativa GA4 + SEMrush",
 ];
 
 const faqs = [
-  { q: "¿Qué tan real-time es \"real-time\"?", a: "Latencia <5s para ventas y <30s para validaciones de ingreso. Sin \"actualizado cada 15 minutos\" — ventas por minuto incluso durante drops de 50K tickets/hora." },
-  { q: "¿Tienen conector a mi BI (Looker / PowerBI / Metabase / Tableau)?", a: "Sí. Conectores nativos a BigQuery, Snowflake, Looker, PowerBI, Metabase y Tableau. API pública con OAuth para integraciones custom. <strong>Cero lock-in</strong> — la data es tuya." },
+  { q: "¿Qué tan real-time es \"real-time\"?", a: "Latencia <5s para ventas y <30s para validaciones de ingreso. Sin \"actualizado cada 15 minutos\": ventas por minuto incluso durante drops de 50K tickets/hora." },
+  { q: "¿Tienen conector a mi BI (Looker / PowerBI / Metabase / Tableau)?", a: "Sí. Conectores nativos a BigQuery, Snowflake, Looker, PowerBI, Metabase y Tableau. API pública con OAuth para integraciones custom. <strong>Cero lock-in</strong>: la data es tuya." },
   { q: "¿En qué se diferencia su atribución vs GA4 puro?", a: "GA4 te dice qué sesión convirtió, pero no qué transacción. Nuestro pixel propio enriquece GA4 con datos de pasarela (revenue real, refunds, no-show). Resultado: atribución end-to-end con menor pérdida vs ITP / cookies bloqueadas. Sin doble disparo, sin UTMs rotos." },
   { q: "¿Qué pasa con la data histórica si migro de otra plataforma?", a: "Migración asistida. Importamos tu base histórica de ventas, compradores y abonados con etiquetado para series temporales. Operás con histórico desde el día 1, no desde cero." },
   { q: "¿Los reportes post-evento son customizados por tipo de evento?", a: "Sí. Plantillas pre-armadas por vertical: festivales por stage / día, teatros por función / obra, clubes por categoría de socio, congresos por sesión / sponsor. Customizables según necesidad." },
 ];
 ---
-<Site title="Servicios Ticketplus · Data Analytics — Reportería real-time desde el celular">
+<Site title="Servicios Ticketplus · Data Analytics · Reportería real-time desde el celular">
 
   <!-- HERO -->
   <header class="biz-hero">
@@ -242,7 +242,7 @@ const faqs = [
     <div class="container">
       <span class="spotlight__eyebrow">Único · Feature diferenciador puro</span>
       <h2 class="spotlight__title">Buscas saber el no-show mientras pasa, no después. Encuentras live entry rate: tickets validados vs vendidos en tiempo real.</h2>
-      <p class="spotlight__body">No-show rate en vivo. Sirve para liberar entradas de cortesía no usadas durante el evento, ajustar staff en puertas y prevenir cuellos de botella. Welcu y Passline solo muestran no-show post-evento — Ticketplus lo muestra mientras pasa.</p>
+      <p class="spotlight__body">No-show rate en vivo. Sirve para liberar entradas de cortesía no usadas durante el evento, ajustar staff en puertas y prevenir cuellos de botella. Welcu y Passline solo muestran no-show post-evento. Ticketplus lo muestra mientras pasa.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">No-show en vivo</h4>
@@ -304,7 +304,7 @@ const faqs = [
   <section class="spotlight spotlight--dark" id="atribucion-nativa">
     <div class="container">
       <span class="spotlight__eyebrow">End-to-end nativo · vs Eventbrite / Welcu</span>
-      <h2 class="spotlight__title">Buscas saber de qué canal vino cada ticket — no cada sesión. Encuentras pixel propio que enriquece GA4 con datos de pasarela.</h2>
+      <h2 class="spotlight__title">Buscas saber de qué canal vino cada ticket, no cada sesión. Encuentras pixel propio que enriquece GA4 con datos de pasarela.</h2>
       <p class="spotlight__body">GA4 te dice qué sesión convirtió, no qué transacción. El pixel propio de Ticketplus enriquece GA4 con datos de pasarela (revenue real, refunds, no-show). Reportes cruzados con menor pérdida vs ITP / cookies bloqueadas. Sin doble disparo, sin UTMs rotos, sin "el pixel está caído otra vez". Modelos last-click, first-click o data-driven configurables.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
@@ -313,7 +313,7 @@ const faqs = [
         </article>
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Revenue real + refunds + no-show</h4>
-          <p class="spotlight-card__text">Datos de pasarela en la atribución: revenue confirmado, refunds, no-show. Sabés qué canal trae compradores reales — no solo sesiones.</p>
+          <p class="spotlight-card__text">Datos de pasarela en la atribución: revenue confirmado, refunds, no-show. Sabes qué canal trae compradores reales, no solo sesiones.</p>
         </article>
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">vs ITP / cookies bloqueadas</h4>

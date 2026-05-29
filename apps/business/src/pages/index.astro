@@ -5,6 +5,7 @@ import AmplificaSection from "../components/AmplificaSection.astro";
 import AppManagerHero from "../components/AppManagerHero.astro";
 import EquipoSection from "../components/EquipoSection.astro";
 import HomeServicesOverview from "../components/home/HomeServicesOverview.astro";
+import HomeLogosCloud from "../components/home/HomeLogosCloud.astro";
 
 const pillars = [
   {
@@ -14,11 +15,11 @@ const pillars = [
     heroCount: 0,
     features: [
       { n: "01", title: "Cortesías masivas", body: "Invitaciones bulk con tracking de aperturas, conversión y comportamiento por lista.", badge: null },
-      { n: "02", title: "Software boletería", body: "Vende tickets y productos en puntos físicos con stock compartido con online — multiplicas alcance sin duplicar inventario.", badge: null },
-      { n: "03", title: "Formularios personalizados en tickets y/o ventas", body: "Captura datos específicos en checkout — talle, alergias, datos legales — sin escalar fricción.", badge: null },
+      { n: "02", title: "Software boletería", body: "Vende tickets y productos en puntos físicos con stock compartido con online. Multiplicas alcance sin duplicar inventario.", badge: null },
+      { n: "03", title: "Formularios personalizados en tickets y/o ventas", body: "Captura datos específicos en checkout (talle, alergias, datos legales) sin escalar fricción.", badge: null },
       { n: "04", title: "Mapas interactivos del venue", body: "Butaca asignada con vista escenario, reutilizable entre eventos. Configura desde teatros de 200 hasta estadios de 100K sin tocar código.", badge: null },
       { n: "05", title: "Cola alta demanda", body: "Lista de Espera o Preventa Exclusiva (solo aprobados compran) y virtual queue con posición visible en venta abierta.", badge: null },
-      { n: "06", title: "Multi-currency y multi-language", body: "CLP, USD y 8+ monedas en una sola URL — Webpay + Stripe en paralelo con auto-detección por país. Settlement en la moneda que prefieras.", badge: null },
+      { n: "06", title: "Multi-currency y multi-language", body: "CLP, USD y 8+ monedas en una sola URL: Webpay + Stripe en paralelo con auto-detección por país. Settlement en la moneda que prefieras.", badge: null },
       { n: "07", title: "Loyalty Management · Smart Promotions + Email Automation", body: "Reglas de loyalty en diagrama, cross-sell inteligente y emails pre/post evento. Soporta 2x1, loyalty clubs y referrals con descuento para buyer y referido.", badge: null },
     ],
   },
@@ -29,7 +30,7 @@ const pillars = [
     heroCount: 2,
     features: [
       { n: "01", title: "App Validación QR", body: "App iOS + Android con validación QR <200ms incluso con miles de asistentes. Modo offline con auto-sync y detección instantánea de duplicados.", badge: "+320K asistentes sin caídas", captionTag: "Validación QR" },
-      { n: "02", title: "POS + Tótems con stock unificado", body: "POS para boletería, barras y food courts con inventario real-time. Tótems self-service con cashless NFC. Stock compartido entre canales — cero desincronización online/venue.", badge: null, captionTag: "Stock unificado" },
+      { n: "02", title: "POS + Tótems con stock unificado", body: "POS para boletería, barras y food courts con inventario real-time. Tótems self-service con cashless NFC. Stock compartido entre canales: cero desincronización online/venue.", badge: null, captionTag: "Stock unificado" },
     ],
   },
   {
@@ -49,7 +50,7 @@ const pillars = [
     heroCount: 2,
     features: [
       { n: "01", title: "Marketing analytics con integraciones nativas", body: "Ticketplus proporciona datos valiosos sobre la venta de entradas, el interés del público y el rendimiento de tus campañas de marketing con sus integraciones. Eso te permite realizar ajustes y mejoras continuas para maximizar los resultados.", badge: null, captionTag: "Marketing analytics" },
-      { n: "02", title: "Tu evento en la App Ticketplus", body: "Listing automático en la App Ticketplus (iOS y Android) y en ticketplus.com. Base propia de compradores con notificaciones, búsqueda por ciudad y descubrimiento contextual — más visitas a tu evento sin desviar tráfico de tu canal.", badge: null, captionTag: "Discovery", storeButtons: true },
+      { n: "02", title: "Tu evento en la App Ticketplus", body: "Listing automático en la App Ticketplus (iOS y Android) y en ticketplus.com. Base propia de compradores con notificaciones, búsqueda por ciudad y descubrimiento contextual: más visitas a tu evento sin desviar tráfico de tu canal.", badge: null, captionTag: "Discovery", storeButtons: true },
     ],
   },
   {
@@ -86,17 +87,17 @@ const payments = [
 ];
 
 const faqs = [
-  { q: "¿Cuánto cobra Ticketplus? ¿Cómo es el modelo de precios?", a: "Cobramos un cargo por servicio sobre cada ticket vendido. <strong>Sin licencia, sin mínimos, sin contrato de permanencia.</strong> El porcentaje se define según volumen estimado, tipo de evento y módulos activados (POS, app, multi-país, Booster). Recibes una cotización personalizada con tu evento específico — no un precio genérico de tabla." },
+  { q: "¿Cuánto cobra Ticketplus? ¿Cómo es el modelo de precios?", a: "Cobramos un cargo por servicio sobre cada ticket vendido. <strong>Sin licencia, sin mínimos, sin contrato de permanencia.</strong> El porcentaje se define según volumen estimado, tipo de evento y módulos activados (POS, app, multi-país, Booster). Recibes una cotización personalizada con tu evento específico, no un precio genérico de tabla." },
   { q: "¿Tengo que usar todos los servicios o puedo elegir?", a: "Eliges. La página repasa todas las capacidades disponibles para que actives solo las que tu evento necesita. Por ejemplo, un teatro en cartelera puede activar ticketing + on site + analytics sin necesitar POS/tótem o accreditation B2B. Un festival masivo probablemente active prácticamente todo. El plan se arma contigo según el tipo de evento." },
   { q: "¿Cómo es la migración desde otra ticketera?", a: "Migración acompañada, no self-service. Llevamos tu base de datos de clientes, plantillas de eventos, mapas y configuraciones. Onboarding completo en pocas semanas con capacitación al equipo. Si tienes eventos en curso en tu plataforma actual, podemos correr en paralelo durante la transición para que no pierdas ventas." },
-  { q: "¿Qué diferencia hay entre Full Operation y White Label?", a: "En <strong>Full Operation</strong>, el comprador final ve la marca Ticketplus, el checkout vive en ticketplus.cl, y nosotros operamos marketplace, marketing y terreno. En <strong>White Label</strong>, el comprador ve tu marca, el checkout vive en tu dominio, y la recaudación va directa a tu cuenta — tú operas la relación con el cliente. Full Op es ideal para productores que quieren foco en su evento; WL es para quienes quieren ser dueños de la plataforma. <a href=\"/whitelabel\" style=\"color:var(--color-secondary); font-weight:700;\">Ver Whitelabel →</a>" },
+  { q: "¿Qué diferencia hay entre Full Operation y White Label?", a: "En <strong>Full Operation</strong>, el comprador final ve la marca Ticketplus, el checkout vive en ticketplus.cl, y nosotros operamos marketplace, marketing y terreno. En <strong>White Label</strong>, el comprador ve tu marca, el checkout vive en tu dominio, y la recaudación va directa a tu cuenta: tú operas la relación con el cliente. Full Op es ideal para productores que quieren foco en su evento; WL es para quienes quieren ser dueños de la plataforma. <a href=\"/whitelabel\" style=\"color:var(--color-secondary); font-weight:700;\">Ver Whitelabel →</a>" },
   { q: "¿Cuándo recibo el dinero de las ventas?", a: "Liquidación automática <strong>48-72h post-evento</strong>. Split de comisiones, facturación electrónica SII Chile (donde aplica) y pago en CLP, USD u otra moneda local según corresponda. Reembolsos parciales en 1 clic con auditoría completa. Para drops grandes con anticipación, podemos liquidar parciales antes del evento." },
-  { q: "¿Qué es Booster y por qué viene incluido?", a: "Booster es el motor de marketing gestionado de Ticketplus. El equipo opera tus campañas en <strong>Meta, Google y TikTok</strong> con atribución end-to-end al ticket vendido. Viene incluido en Full Op porque nuestra alineación de revenue depende de que tu evento se venda — no podemos quedarnos sentados esperando que el algoritmo decida. Solo disponible en Full Operation." },
+  { q: "¿Qué es Booster y por qué viene incluido?", a: "Booster es el motor de marketing gestionado de Ticketplus. El equipo opera tus campañas en <strong>Meta, Google y TikTok</strong> con atribución end-to-end al ticket vendido. Viene incluido en Full Op porque nuestra alineación de revenue depende de que tu evento se venda. No podemos quedarnos sentados esperando que el algoritmo decida. Solo disponible en Full Operation." },
   { q: "¿Qué tipo de soporte recibo y en qué horario?", a: "Soporte 24/7 con personas reales. Account manager asignado pre-evento, WhatsApp directo activado 72h antes del drop, escalamiento directo a ingeniería cuando hace falta. Para enterprise drops armamos war room con ingenieros asignados (no L1). Para eventos de alta complejidad, operador Ticketplus on-site el día del show." },
-  { q: "¿Hay contrato de permanencia? ¿Y si quiero irme?", a: "Sin permanencia obligatoria ni penalidades de salida. Si dejas de vender con Ticketplus, no pagas nada. Tu data sigue siendo tuya — exportable en JSON o CSV cuando quieras, incluyendo histórico de ventas y base de clientes. Cero permanencia obligatoria." },
+  { q: "¿Hay contrato de permanencia? ¿Y si quiero irme?", a: "Sin permanencia obligatoria ni penalidades de salida. Si dejas de vender con Ticketplus, no pagas nada. Tu data sigue siendo tuya: exportable en JSON o CSV cuando quieras, incluyendo histórico de ventas y base de clientes. Cero permanencia obligatoria." },
 ];
 ---
-<Site title="Ticketplus · Full Operation — Operación completa para tu evento">
+<Site title="Ticketplus · Full Operation · Operación completa para tu evento">
 
   <!-- HERO — Ticketmaster Business style -->
   <header class="biz-hero">
@@ -104,7 +105,7 @@ const faqs = [
       <div class="biz-hero__content">
         <p class="biz-hero__eyebrow">Full Operation · Servicios para productores</p>
         <h1 class="biz-hero__title">La operación completa de tu evento, en una sola plataforma.</h1>
-        <p class="biz-hero__lead">Vende, valida, mide y fideliza desde un solo sistema — sin sumar herramientas a medida que tu evento crece.</p>
+        <p class="biz-hero__lead">Vende, valida, mide y fideliza desde un solo sistema, sin sumar herramientas a medida que tu evento crece.</p>
         <div class="biz-hero__ctas">
           <a href="#contacto" class="btn btn--primary">Agendar demo →</a>
           <a href="#vende" class="btn btn--ghost">Ver capacidades</a>
@@ -116,16 +117,7 @@ const faqs = [
     </div>
   </header>
 
-  <section class="logos-cloud">
-    <div class="container">
-      <p class="logos-cloud__label">Vinieron buscando una ticketera. Operan con Full Operation.</p>
-      <div class="logos-cloud__grid">
-        {["FIFA U-20 🇨🇱","AFA 🇦🇷","Movistar Arena 🇨🇱","CONAF 🇨🇱","Teatro UC 🇨🇱","Teatro CA660 🇨🇱","Caupolicán 🇨🇱"].map(l => (
-          <div class="logo-tile-dark">{l}</div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <HomeLogosCloud />
 
   <!-- SERVICIOS OVERVIEW — antes / durante / después -->
   <HomeServicesOverview />
@@ -318,7 +310,7 @@ const faqs = [
             <path d="M9.5 12.5a2.5 2.5 0 005 0"/>
           </svg>
           <h4 class="spotlight-card__title">Tienda / E-commerce</h4>
-          <p class="spotlight-card__text">Merchandising, productos digitales y bundles con tickets — checkout único e inventario sincronizado con POS.</p>
+          <p class="spotlight-card__text">Merchandising, productos digitales y bundles con tickets: checkout único e inventario sincronizado con POS.</p>
         </article>
         <article class="spotlight-card">
           <svg class="spotlight-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -328,7 +320,7 @@ const faqs = [
             <path d="M9 11.5h6"/>
           </svg>
           <h4 class="spotlight-card__title">Expositores / Gestión de expos</h4>
-          <p class="spotlight-card__text">Cada expositor con su propio stock, su credencial y su tráfico — sin Excel ni doble entrada.</p>
+          <p class="spotlight-card__text">Cada expositor con su propio stock, su credencial y su tráfico, sin Excel ni doble entrada.</p>
         </article>
         <article class="spotlight-card">
           <svg class="spotlight-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

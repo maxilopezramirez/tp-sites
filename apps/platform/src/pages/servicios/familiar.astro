@@ -22,7 +22,7 @@ const moments = [
     heroCount: 1,
     features: [
       { n: "01", title: "Cupos por horario que se cierran solos", body: "Configurás capacidad por horario; cuando se llena, se bloquea automáticamente. Cero overbooking.", badge: "Único en CL", captionTag: "Cupos auto-cierre" },
-      { n: "02", title: "Aforo en tiempo real por sector", body: "Inflables, show, área de comida — aforo independiente por zona. Dashboard en vivo.", badge: null, newGroup: true },
+      { n: "02", title: "Aforo en tiempo real por sector", body: "Inflables, show, área de comida: aforo independiente por zona. Dashboard en vivo.", badge: null, newGroup: true },
       { n: "03", title: "Validación rápida y multi-acceso", body: "App QR <2s con detección de re-entrada y anti-doble ingreso entre horarios.", badge: null },
       { n: "04", title: "Reprogramación de horarios sin caos", body: "Lluvia, técnico, artista enfermo → migración automática de tickets al próximo horario disponible con notificación al cliente.", badge: null },
     ],
@@ -35,7 +35,7 @@ const moments = [
     features: [
       { n: "01", title: "POS para boletería con inventario unificado", body: "POS web/Android para boletería física. Mismo stock que sitio web y tótem en tiempo real.", badge: null },
       { n: "02", title: "Store / e-commerce con bundles y envío a domicilio", body: "Productos físicos y bundles ticket+merch. Couriers integrados, retiro en venue como opción.", badge: null },
-      { n: "03", title: "Dashboard unificado por canal", body: "Web, boletería, tótem, e-commerce — ventas y stock por canal en una sola vista en vivo.", badge: null },
+      { n: "03", title: "Dashboard unificado por canal", body: "Web, boletería, tótem, e-commerce: ventas y stock por canal en una sola vista en vivo.", badge: null },
     ],
   },
   {
@@ -85,13 +85,13 @@ const checklist = [
 
 const faqs = [
   { q: "¿Cómo evito sobreventa con 4-5 funciones al día?", a: "Cupos por horario con auto-cierre. Cada horario tiene capacidad propia; cuando se llena, se bloquea automáticamente en todos los canales (web, POS, tótem). Cero overbooking entre funciones." },
-  { q: "¿Puedo cobrar el pase anual sin tener que pasar la tarjeta cada mes?", a: "Sí — OneClick recurrente. Cliente paga una vez, la tarjeta queda guardada, las siguientes cuotas se cobran solas. Con período de gracia + perdonazo manual si una tarjeta falla." },
+  { q: "¿Puedo cobrar el pase anual sin tener que pasar la tarjeta cada mes?", a: "Sí. OneClick recurrente. Cliente paga una vez, la tarjeta queda guardada, las siguientes cuotas se cobran solas. Con período de gracia + perdonazo manual si una tarjeta falla." },
   { q: "¿El tótem realmente reduce filas o es solo marketing?", a: "Reduce fila 60-70% según data de centros operando con Ticketplus. La razón: cada tótem opera 4-6 transacciones por minuto con pago de tarjeta integrado. Un cajero promedio hace 2-3. El upsell automático (combo helado, parking) aumenta el ticket promedio entre 18-25%." },
   { q: "¿Cómo manejo cancelación masiva por lluvia sin colapsar?", a: "Migración automática: con un click reprogramás el horario y todos los compradores reciben notificación con su nuevo ticket. Si quieren reembolso, lo solicitan desde un link. Cero atención manual." },
   { q: "¿Puedo reservar cumpleaños y eventos privados desde la misma plataforma?", a: "Sí. Configurás paquetes (animador, decoración, comida, salón) con disponibilidad por día y hora. La familia elige y paga online, queda confirmado al instante en tu calendario interno." },
 ];
 ---
-<Site title="Servicios Ticketplus · Centros familiares — Operación continua para tu parque, circo o show">
+<Site title="Servicios Ticketplus · Centros familiares · Operación continua para tu parque, circo o show">
 
   <!-- HERO -->
   <header class="biz-hero">
@@ -395,7 +395,7 @@ const faqs = [
     <div class="container">
       <span class="spotlight__eyebrow">Único en Ticketplus</span>
       <h2 class="spotlight__title">Buscas cobrar el pase anual. Encuentras cobro recurrente automático sin que el cliente vuelva a pagar.</h2>
-      <p class="spotlight__body">Socio paga una vez, queda la tarjeta guardada, la próxima cuota se cobra sola. Período de gracia + perdonazo manual si la tarjeta se rechaza. La familia escanea su credencial QR en puerta y entra — sin pasar por checkout.</p>
+      <p class="spotlight__body">Socio paga una vez, queda la tarjeta guardada, la próxima cuota se cobra sola. Período de gracia + perdonazo manual si la tarjeta se rechaza. La familia escanea su credencial QR en puerta y entra, sin pasar por checkout.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">OneClick recurrente</h4>

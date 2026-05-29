@@ -18,7 +18,7 @@ const moments = [
     title: "Buscas que la fila avance sin WiFi y la barra no colapse.",
     lead: "Encuentras el festival operado en terreno. Multi-puerta, multi-día, conectividad de mierda y 30K personas queriendo entrar al mismo tiempo.",
     features: [
-      { n: "01", title: "Validación offline confirmada — la fila avanza sin WiFi", body: "App QR con modo offline real (no \"degradado\"). Sync automática al reconectar, detección instantánea de duplicados.", badge: "vs Welcu/Passline/TicketSpice" },
+      { n: "01", title: "Validación offline confirmada · la fila avanza sin WiFi", body: "App QR con modo offline real (no \"degradado\"). Sync automática al reconectar, detección instantánea de duplicados.", badge: "vs Welcu/Passline/TicketSpice" },
       { n: "02", title: "POS y tótem autoatención", body: "Barras, food courts, merch stands con modo offline, sync automática, inventario en tiempo real entre canales.", badge: null },
       { n: "03", title: "Acreditación profesional", body: "Prensa, artistas, sponsors con QR + foto + permisos diferenciados por color de cordón.", badge: null },
     ],
@@ -91,16 +91,16 @@ const checklist = [
 ];
 
 const faqs = [
-  { q: "¿Y si el sitio se cae el día del lanzamiento?", a: "No se cae. Probado en +320K tickets vendidos en un día (AFA Eliminatorias) con cero caídas. La razón: infraestructura dedicada por evento, war room con ingenieros TP durante el drop, simulación de carga 72h antes. Y si algo pasara, hay SLA contractual con penalidades económicas — no soporte L1 genérico. Es contrato, no promesa." },
-  { q: "¿La validación realmente funciona sin WiFi en el predio?", a: "Sí, offline real — no \"modo degradado\". Cada PDA tiene la base de tickets sincronizada al día del evento; valida localmente y syncea cuando recupera red. La fila avanza igual." },
+  { q: "¿Y si el sitio se cae el día del lanzamiento?", a: "No se cae. Probado en +320K tickets vendidos en un día (AFA Eliminatorias) con cero caídas. La razón: infraestructura dedicada por evento, war room con ingenieros TP durante el drop, simulación de carga 72h antes. Y si algo pasara, hay SLA contractual con penalidades económicas, no soporte L1 genérico. Es contrato, no promesa." },
+  { q: "¿La validación realmente funciona sin WiFi en el predio?", a: "Sí, offline real, no \"modo degradado\". Cada PDA tiene la base de tickets sincronizada al día del evento; valida localmente y syncea cuando recupera red. La fila avanza igual." },
   { q: "¿Cómo manejan multi-stage y multi-día con un solo carrito?", a: "Carrito persistente entre sesiones. El asistente puede agregar abono full pass + day pass + add-ons + merch + bundles de sponsor y cerrar todo en un solo checkout. Rotación de staff TP coordinada para no fundir al equipo al día 3." },
-  { q: "¿Vale la pena POS + tótem en barras y food?", a: "Adopción típica medida en festivales operando con Ticketplus: 70%+ de las transacciones en barras pasan por tótem al día 2. Reduce fila 60-70% y aumenta ticket promedio 18-25% por upselling automático. Para festivales <5K personas el costo no compensa — recomendamos POS móvil." },
-  { q: "¿Tienen equipo presencial el día del festival?", a: "Sí. Staff Ticketplus capacitado en puerta, en POS, monitoreando dashboard. Briefing pre-evento con tu producción 24h antes. Líder de operación en sala con autoridad para resolver — no \"te paso con el siguiente nivel\". Cantidad de staff según aforo, número de puertas y duración." },
+  { q: "¿Vale la pena POS + tótem en barras y food?", a: "Adopción típica medida en festivales operando con Ticketplus: 70%+ de las transacciones en barras pasan por tótem al día 2. Reduce fila 60-70% y aumenta ticket promedio 18-25% por upselling automático. Para festivales <5K personas el costo no compensa: recomendamos POS móvil." },
+  { q: "¿Tienen equipo presencial el día del festival?", a: "Sí. Staff Ticketplus capacitado en puerta, en POS, monitoreando dashboard. Briefing pre-evento con tu producción 24h antes. Líder de operación en sala con autoridad para resolver, no \"te paso con el siguiente nivel\". Cantidad de staff según aforo, número de puertas y duración." },
   { q: "¿Cuánto cuesta? ¿Tienen licencias o mínimos?", a: "Cargo por servicio sobre cada ticket vendido. Sin licencia, sin mínimos, sin contratos de permanencia. El porcentaje se define según volumen, tipo de festival y módulos activados (POS, tótem, multi-país, Booster). Cotización personalizada en menos de 24h hábiles." },
-  { q: "¿Puedo lanzar en 8 semanas si recién contrato ahora?", a: "Sí — onboarding acelerado para lanzamientos en menos de 60 días. War room contigo desde el día 1 de la contratación, migración paralela si vienes de otra plataforma. La condición: tu equipo de marketing y producción tiene que estar disponible para reuniones semanales durante el sprint." },
+  { q: "¿Puedo lanzar en 8 semanas si recién contrato ahora?", a: "Sí. Onboarding acelerado para lanzamientos en menos de 60 días. War room contigo desde el día 1 de la contratación, migración paralela si vienes de otra plataforma. La condición: tu equipo de marketing y producción tiene que estar disponible para reuniones semanales durante el sprint." },
 ];
 ---
-<Site title="Servicios Ticketplus · Festivales masivos — Lanzamientos sin caídas, operación en terreno multi-día">
+<Site title="Servicios Ticketplus · Festivales masivos · Lanzamientos sin caídas, operación en terreno multi-día">
 
   <!-- HERO con proof points -->
   <header class="biz-hero">
@@ -198,7 +198,7 @@ const faqs = [
     <div class="container">
       <span class="spotlight__eyebrow">Único LATAM · Probado 320K tickets/día</span>
       <h2 class="spotlight__title">Buscas no ser titular el lunes después del lanzamiento. Encuentras war room con ingenieros Ticketplus dedicados durante el drop.</h2>
-      <p class="spotlight__body">Cola de espera virtual con posición visible y tiempo estimado. Anti-bot adaptativo. Infraestructura dedicada por evento. Simulación de carga 72h antes con la productora y el venue en línea. SLA garantizado con penalidades económicas — no soporte L1 genérico. Probado en eliminatorias AFA con +320K tickets en un día, cero caídas.</p>
+      <p class="spotlight__body">Cola de espera virtual con posición visible y tiempo estimado. Anti-bot adaptativo. Infraestructura dedicada por evento. Simulación de carga 72h antes con la productora y el venue en línea. SLA garantizado con penalidades económicas, no soporte L1 genérico. Probado en eliminatorias AFA con +320K tickets en un día, cero caídas.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Cola virtual + anti-bot adaptativo</h4>
@@ -210,7 +210,7 @@ const faqs = [
         </article>
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">SLA con penalidades económicas</h4>
-          <p class="spotlight-card__text">Es contrato, no promesa. Penalidad económica si el SLA no se cumple — no soporte L1 genérico.</p>
+          <p class="spotlight-card__text">Es contrato, no promesa. Penalidad económica si el SLA no se cumple, no soporte L1 genérico.</p>
         </article>
       </div>
     </div>
@@ -252,8 +252,8 @@ const faqs = [
   <section class="spotlight spotlight--dark" id="staff-terreno">
     <div class="container">
       <span class="spotlight__eyebrow">Único LATAM</span>
-      <h2 class="spotlight__title">Buscas que alguien resuelva en sala cuando algo falla. Encuentras personal Ticketplus operando contigo en el festival — no solo soporte remoto.</h2>
-      <p class="spotlight__body">Personal capacitado en puerta, en POS y monitoreando dashboard. Briefing pre-evento con producción 24h antes. Rotación coordinada multi-día — no terminás con un equipo fundido al día 3. Líder de operación en sala con autoridad para resolver, no "te paso con el siguiente nivel". Cuando algo falla, tienen a quién llamar y autoridad para resolver.</p>
+      <h2 class="spotlight__title">Buscas que alguien resuelva en sala cuando algo falla. Encuentras personal Ticketplus operando contigo en el festival, no solo soporte remoto.</h2>
+      <p class="spotlight__body">Personal capacitado en puerta, en POS y monitoreando dashboard. Briefing pre-evento con producción 24h antes. Rotación coordinada multi-día: no terminas con un equipo fundido al día 3. Líder de operación en sala con autoridad para resolver, no "te paso con el siguiente nivel". Cuando algo falla, tienen a quién llamar y autoridad para resolver.</p>
       <div class="spotlight__cards">
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Briefing pre-evento 24h antes</h4>
@@ -265,7 +265,7 @@ const faqs = [
         </article>
         <article class="spotlight-card">
           <h4 class="spotlight-card__title">Líder en sala con autoridad</h4>
-          <p class="spotlight-card__text">Una persona en terreno con autoridad para resolver — no "te paso con el siguiente nivel". Decisiones en minutos.</p>
+          <p class="spotlight-card__text">Una persona en terreno con autoridad para resolver, no "te paso con el siguiente nivel". Decisiones en minutos.</p>
         </article>
       </div>
     </div>
@@ -321,8 +321,8 @@ const faqs = [
         ))}
       </div>
       <blockquote class="fifa-quote">
-        <p>"El lanzamiento fue brutal. Esperábamos que se cayera en algún momento — Ticketplus lo aguantó y nosotros pudimos ocuparnos del torneo, no de apagar incendios."</p>
-        <cite>— Nombre · Cargo · AFA · pendiente consent</cite>
+        <p>"El lanzamiento fue brutal. Esperábamos que se cayera en algún momento. Ticketplus lo aguantó y nosotros pudimos ocuparnos del torneo, no de apagar incendios."</p>
+        <cite>· Nombre · Cargo · AFA · pendiente consent</cite>
       </blockquote>
     </div>
   </section>
@@ -416,7 +416,7 @@ const faqs = [
         <div>
           <p class="section__eyebrow" style="color:var(--color-secondary);">Hablemos de tu festival</p>
           <h2 class="section__title">Buscas cotizar. Encuentras un plan específico para tu formato, volumen esperado y fecha de lanzamiento.</h2>
-          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Si tu lanzamiento es en menos de 60 días, márcalo en el formulario — entramos al war room contigo desde el día 1.</p>
+          <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Si tu lanzamiento es en menos de 60 días, márcalo en el formulario: entramos al war room contigo desde el día 1.</p>
           <ul style="list-style:none; padding:0; font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:2.2;">
             {checklist.map(item => (
               <li><span style="color:#1a8a3a; font-weight:700;">✓</span> {item}</li>

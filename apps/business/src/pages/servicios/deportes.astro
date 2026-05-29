@@ -13,7 +13,7 @@ const moments = [
     features: [
       { n: "01", title: "Mapa interactivo del estadio", body: "Sectores, bloqueos visitante, palcos VIP, sector pacífico. Configurable partido a partido sin tocar código.", badge: "Reutilizable partido a partido" },
       { n: "02", title: "Alta demanda controlada para clásicos, finales e internacionales", body: "Virtual queue + anti-bot + ventana por segmento (socio → abonado → general). Probado en eventos masivos de +320K tickets/día.", badge: null },
-      { n: "03", title: "Abonos de temporada con renovación prioritaria", body: "Pasaporte digital para todos los partidos del año. Mismo asiento o butaca libre según política del club. Renovación anticipada para el abonado actual antes de la venta general — cero pérdida de fans históricos.", badge: "Ingreso recurrente" },
+      { n: "03", title: "Abonos de temporada con renovación prioritaria", body: "Pasaporte digital para todos los partidos del año. Mismo asiento o butaca libre según política del club. Renovación anticipada para el abonado actual antes de la venta general: cero pérdida de fans históricos.", badge: "Ingreso recurrente" },
       { n: "04", title: "e-commerce + merchandising oficial del club", body: "Tienda oficial integrada al ticketing: camisetas, merch, productos del club con stock unificado. Cross-sell automático ticket + merch en el mismo checkout, retiro en estadio o despacho a domicilio.", badge: "Stock + checkout unificado" },
     ],
   },
@@ -25,7 +25,7 @@ const moments = [
     features: [
       { n: "01", title: "App Validación QR online y offline", body: "App iOS + Android con validación QR <200ms incluso con miles de asistentes. Modo offline con auto-sync y detección instantánea de duplicados.", badge: "+320K asistentes sin caídas", captionTag: "Validación QR" },
       { n: "02", title: "Validación por carnet de identidad", body: "Lectura de cédula en puerta cruzada con el ticket comprado. Asocia identidad al asiento, evita reventa fraudulenta y cumple normativa de eventos deportivos.", badge: null },
-      { n: "03", title: "Listas blancas y negras por sector", body: "Whitelist de socios con prioridad de acceso, blacklist de hinchas problemáticos por sector. Reglas por partido o por temporada — validación en tiempo real al escanear.", badge: null },
+      { n: "03", title: "Listas blancas y negras por sector", body: "Whitelist de socios con prioridad de acceso, blacklist de hinchas problemáticos por sector. Reglas por partido o por temporada: validación en tiempo real al escanear.", badge: null },
       { n: "04", title: "QR dinámico en app móvil", body: "El ticket vive dentro de la app del hincha con QR que rota cada pocos segundos. Imposible de screenshotear, imposible de reenviar por WhatsApp. Cero reventa por captura, cero fraude por duplicado.", badge: "Anti-screenshot · Anti-share", captionTag: "QR dinámico" },
     ],
   },
@@ -38,7 +38,7 @@ const moments = [
       { n: "01", title: "Abono temporada con butaca asignada", body: "Pasaporte digital para todos los partidos. Mismo asiento todo el año o butaca libre según política del club.", badge: "Pasaporte digital" },
       { n: "02", title: "Renovación anticipada con prioridad para abonado actual", body: "Ventana exclusiva para que el abonado renueve su butaca antes de que abra la venta general. Cero pérdida de fans históricos.", badge: null },
       { n: "03", title: "Bundle socio + abono con descuento", body: "Reconoce estado de socio automáticamente. El socio activo paga su cuota + abono al precio combinado, sin doble checkout.", badge: null },
-      { n: "04", title: "Credenciales digitales e impresas para socios", body: "Credencial digital con QR en Apple Wallet + Google Wallet y credencial física impresa con foto del socio. Mismo ID vinculado al estado de cuenta — validación en puerta en tiempo real.", badge: "Wallet + impresa" },
+      { n: "04", title: "Credenciales digitales e impresas para socios", body: "Credencial digital con QR en Apple Wallet + Google Wallet y credencial física impresa con foto del socio. Mismo ID vinculado al estado de cuenta: validación en puerta en tiempo real.", badge: "Wallet + impresa" },
     ],
   },
   {
@@ -98,13 +98,13 @@ const faqs = [
   { q: "¿Puedo operar varias disciplinas en distintos recintos con la misma plataforma?", a: "Sí. Configurás múltiples recintos (canchas, gimnasios, courts) y disciplinas (fútbol, básquet, tenis, padel) bajo un único panel. Cada uno con su mapa, su pricing y su staff." },
   { q: "¿Qué frecuencias de cobro de cuotas soporta?", a: "Mensual, trimestral, semestral y anual. Cada socio elige al inscribirse; podés mezclar dentro del mismo club (ej. socio activo mensual + socio empresa anual)." },
   { q: "¿Tengo que pagar extra para modelar mi recinto?", a: "No. El modelado del recinto (mapa interactivo con sectores, butacas, palcos) está incluido en el onboarding. Reutilizable partido a partido sin costo adicional." },
-  { q: "¿Es compatible con los torniquetes y PDAs que ya tengo?", a: "Sí. Trabajamos con Boon Edam, Gunnebo, scanners Bluetooth y la mayoría de hardware del mercado. Antes del onboarding hacemos un audit de tu infra existente — no tirás nada." },
+  { q: "¿Es compatible con los torniquetes y PDAs que ya tengo?", a: "Sí. Trabajamos con Boon Edam, Gunnebo, scanners Bluetooth y la mayoría de hardware del mercado. Antes del onboarding hacemos un audit de tu infra existente. No tiras nada." },
   { q: "¿Cómo migran la base histórica de socios y abonados?", a: "Migración asistida. Importamos socios, histórico de pagos, abonos vigentes y butacas asignadas desde tu sistema actual. Operamos en paralelo durante la transición para no interrumpir cobros." },
   { q: "¿Cómo acompañan en eventos grandes tipo clásico o final?", a: "Account manager + war room remoto durante el drop. WhatsApp directo con respuesta menor a 2h. En clásicos premium podemos enviar staff Ticketplus on-site al estadio." },
   { q: "¿Qué pasa si un partido se suspende por lluvia o seguridad?", a: "Reprogramación automática con notificación a todos los compradores. Si quieren reembolso, lo solicitan desde un link. Si se reprograma, el ticket original es válido para la nueva fecha. Cero atención manual." },
 ];
 ---
-<Site title="Servicios Ticketplus · Clubes y federaciones deportivas — Operación 365 días al año">
+<Site title="Servicios Ticketplus · Clubes y federaciones deportivas · Operación 365 días al año">
 
   <!-- HERO -->
   <header class="biz-hero">

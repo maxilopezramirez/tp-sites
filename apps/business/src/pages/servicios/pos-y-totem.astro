@@ -7,13 +7,13 @@ const modes = [
   {
     n: "01", tag: "TÓTEM AUTOSERVICIO", dark: false, id: "totem",
     title: "Buscas reducir filas y liberar staff.",
-    lead: "Tótems con mapa interactivo para venta de tickets, catálogo cashless para compra de menú y QR impreso en el momento — sin cajero, sin papel.",
+    lead: "Tótems con mapa interactivo para venta de tickets, catálogo cashless para compra de menú y QR impreso en el momento, sin cajero, sin papel.",
     heroCount: 0,
     features: [
       { n: "01", title: "Tótem compra con mapa interactivo", body: "Compra de tickets directo desde el tótem con el mapa interactivo del venue. Selecciona butaca, función y sector. Mismo flujo que online, sin cajero.", badge: null },
       { n: "02", title: "Tótem cashless con catálogo", body: "Carga de saldo cashless y compra de menú directo en pantalla. Pago integrado con tarjeta de crédito, débito o GetNet sin pasar por barra.", badge: null },
       { n: "03", title: "Impresión de QR para validación de entrada", body: "Tras la compra, el tótem imprime el QR físico. Validable con la app Ticketplus en puerta en menos de 200 ms.", badge: null },
-      { n: "04", title: "Impresión de QR para cashless", body: "Mismo QR sirve para cobrar consumos en barras y food courts. Anclado al saldo del comprador — un solo medio para entrada y consumo.", badge: "1 QR · entrada + cashless" },
+      { n: "04", title: "Impresión de QR para cashless", body: "Mismo QR sirve para cobrar consumos en barras y food courts. Anclado al saldo del comprador: un solo medio para entrada y consumo.", badge: "1 QR · entrada + cashless" },
     ],
   },
   {
@@ -34,8 +34,8 @@ const modes = [
     lead: "Inventario unificado entre tótem, POS, web y app cashless. Catálogo de F&B, tickets y productos en un solo panel. Boleta o factura electrónica al SII al cerrar la venta.",
     heroCount: 0,
     features: [
-      { n: "01", title: "Inventario unificado cashless + carta + ticketing", body: "Catálogo de F&B, tickets de evento y stock de productos sobre la misma base. Cero descalce entre canales — venta en tótem, POS, web o app del comprador descontando del mismo stock.", badge: "Stock real-time multi-canal" },
-      { n: "02", title: "Control de catálogo y stock", body: "Edita productos, ajusta precios y vigencias desde un solo panel. Cambios en vivo en tótems, POS y app del comprador — sin re-deploy ni re-carga.", badge: null },
+      { n: "01", title: "Inventario unificado cashless + carta + ticketing", body: "Catálogo de F&B, tickets de evento y stock de productos sobre la misma base. Cero descalce entre canales: venta en tótem, POS, web o app del comprador descontando del mismo stock.", badge: "Stock real-time multi-canal" },
+      { n: "02", title: "Control de catálogo y stock", body: "Edita productos, ajusta precios y vigencias desde un solo panel. Cambios en vivo en tótems, POS y app del comprador, sin re-deploy ni re-carga.", badge: null },
       { n: "03", title: "Clubes de fidelización con descuentos automáticos", body: "El POS y el tótem reconocen socios y abonados al checkout. Aplican el descuento automático sin intervención manual del cajero ni código manual del comprador.", badge: null },
       { n: "04", title: "Boleta electrónica", body: "Emite boletas, facturas y otros documentos electrónicos directo desde tu POS y tótem o desde tu portal de cliente. Sincronizados automáticamente con el SII.", badge: "SII integrado" },
     ],
@@ -52,7 +52,7 @@ const whyCards = [
   { icon: "🎟️", title: "Tickets + cashless en un QR", body: "El mismo QR sirve para validar entrada y cobrar consumo en barra." },
   { icon: "📊", title: "Stock unificado", body: "Tótem, POS, web y app cashless sobre el mismo inventario." },
   { icon: "💳", title: "Cobro integrado", body: "Tarjeta de crédito, débito, GetNet y propina configurable." },
-  { icon: "🧾", title: "Boleta electrónica SII", body: "DTE automático al cerrar la venta — sin sistema externo." },
+  { icon: "🧾", title: "Boleta electrónica SII", body: "DTE automático al cerrar la venta, sin sistema externo." },
 ];
 
 const industries = [
@@ -74,14 +74,14 @@ const checklist = [
 ];
 
 const faqs = [
-  { q: "¿El mismo QR sirve para entrada y para cashless?", a: "Sí. Cuando el comprador imprime el ticket desde el tótem o lo recibe en su app, el mismo QR queda anclado a su saldo de cashless. Lo usa para entrar al evento y para pagar consumos en barras y food courts — sin pulsera adicional, sin recargas presenciales." },
+  { q: "¿El mismo QR sirve para entrada y para cashless?", a: "Sí. Cuando el comprador imprime el ticket desde el tótem o lo recibe en su app, el mismo QR queda anclado a su saldo de cashless. Lo usa para entrar al evento y para pagar consumos en barras y food courts, sin pulsera adicional, sin recargas presenciales." },
   { q: "¿Qué medios de pago aceptan el POS y el tótem?", a: "Tarjeta de crédito, débito, GetNet integrado, contactless y propina configurable. Cobro presencial sin abrir otro sistema ni redirect. Compatible con Verifone, Transbank POS y tablets existentes." },
   { q: "¿Cómo funciona el stock unificado?", a: "Catálogo de F&B, tickets y productos sobre la misma base. Tótem, POS, web y app cashless descuentan del mismo stock en tiempo real. Cambios de precio o vigencia hechos desde el panel se reflejan en vivo en todos los canales." },
   { q: "¿La boleta electrónica se emite automáticamente?", a: "Sí. Al cerrar la venta en el POS o el tótem se emite el DTE (boleta o factura) y se sincroniza con el SII automáticamente. También podés emitir documentos desde tu portal de cliente. Sin sistema externo, sin reconciliación manual." },
   { q: "¿Cómo reconozco a un socio del club al checkout?", a: "El POS y el tótem identifican al socio por su QR, email o cédula al checkout. Si tiene un descuento de club o un beneficio activo, se aplica automáticamente. Cero código manual, cero intervención del cajero." },
 ];
 ---
-<Site title="Servicios Ticketplus · POS y Tótem — Mapa interactivo, cashless, ticketing y boleta electrónica">
+<Site title="Servicios Ticketplus · POS y Tótem · Mapa interactivo, cashless, ticketing y boleta electrónica">
 
   <!-- HERO -->
   <header class="biz-hero">
