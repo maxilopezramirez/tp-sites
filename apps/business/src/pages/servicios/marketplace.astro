@@ -17,7 +17,7 @@ const palancas = [
   },
   {
     n: "02", tag: "PALANCA 02 · CONVERTIR EL CARRITO", dark: true, id: "convertir",
-    title: "Buscas que el fan que llega al sitio cierre.",
+    title: "Convertimos visitas en ventas.",
     lead: "Encuentras recommendation engine + email nativo + checkout >78%. El fan llega al sitio. Ahora hay que cerrar.",
     heroCount: 0,
     features: [
@@ -288,7 +288,7 @@ const faqs = [
     <div class="container">
       <div class="why-tp__header">
         <span class="why-tp__eyebrow">Por qué Ticketplus Marketplace</span>
-        <h2 class="why-tp__title">Lo que recibe tu venta al elegir Ticketplus.</h2>
+        <h2 class="why-tp__title">Lo que recibe tu evento al elegir Ticketplus.</h2>
         <p class="why-tp__lead">Booster + Discovery + Email + Checkout + Loyalty en una sola plataforma. Un solo responsable.</p>
       </div>
       <div class="why-tp__grid">
@@ -306,36 +306,13 @@ const faqs = [
     </div>
   </section>
 
-  <!-- CASOS POR INDUSTRIA (cross-link inverso a verticales) -->
-  <section class="verticals">
-    <div class="container">
-      <div class="verticals__header">
-        <span class="verticals__eyebrow">Casos por industria</span>
-        <h2 class="verticals__title">Marketplace + Booster por tipo de evento.</h2>
-        <p class="why-tp__lead">La capability comercial se aplica a cada vertical con sus particularidades.</p>
-      </div>
-      <div class="verticals__grid verticals__grid--rich">
-        {industries.map((v) => (
-          <a class="verticals__card verticals__card--link" href={v.href}>
-            <div class="verticals__icon">{v.icon}</div>
-            <div class="verticals__text">
-              <h3 class="verticals__label">{v.label}</h3>
-              <p class="verticals__body">{v.body}</p>
-            </div>
-            <span class="verticals__arrow" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACTO -->
   <section style="background:#fafafa; padding:120px 0; border-top:1px solid var(--color-border);" id="contacto">
     <div class="container">
       <div class="form-grid-tp">
         <div>
           <p class="section__eyebrow" style="color:var(--color-secondary);">Hablemos de cómo vendes más</p>
-          <h2 class="section__title">Buscas cotizar Marketplace + Booster + Loyalty. Encuentras un plan según volumen, tipo de evento y mix de canales.</h2>
+          <h2 class="section__title">Cotiza tu plan según volumen y mix de canales.</h2>
           <p class="section__lead" style="color:var(--color-text-muted); margin-bottom:28px;">Cotización en menos de 24 horas hábiles.</p>
           <ul style="list-style:none; padding:0; font-family:var(--font-body); font-size:0.95rem; color:var(--color-text-muted); line-height:2.2;">
             {checklist.map(item => (
