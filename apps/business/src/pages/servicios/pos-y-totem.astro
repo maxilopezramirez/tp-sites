@@ -2,54 +2,57 @@
 import Site from "../../layouts/Site.astro";
 import PromesaTicketplus from "../../components/PromesaTicketplus.astro";
 
-// 3 MODOS paralelos de venta en venue (POS / Tótem / Cashless) — NO son secuenciales, se combinan
+// 3 bloques paralelos del sistema POS y Tótem (Tótem / POS / Stock & Compliance)
 const modes = [
   {
-    n: "01", tag: "POS · CAJERO ATENDIDO", dark: false, id: "pos",
-    title: "Buscas cobrar en tus barras sin caer cuando se cae internet.",
-    lead: "Encuentras software de cajeros + modo offline + stock unificado. Software de cajeros para barras, food courts y boletería. Múltiples ubicaciones desde un panel central.",
-    heroCount: 0,
-    features: [
-      { n: "01", title: "Software de cajeros + tablet cashier", body: "Efectivo, cheque, tarjeta, Transbank POS, Integrated POS, contactless + QR. Múltiples métodos en el mismo flujo.", badge: null },
-      { n: "02", title: "Multi-ubicación desde panel central", body: "Inventario en tiempo real, alertas de restock, cierre automático, reportes por ubicación.", badge: null },
-      { n: "03", title: "Stock unificado online + box office", body: "Sin sobreventa, F&B menu integrado, per-attendee consumption.", badge: "Mismo inventario online + venue" },
-    ],
-  },
-  {
-    n: "02", tag: "TÓTEM · AUTOSERVICIO", dark: true, id: "totem",
+    n: "01", tag: "TÓTEM AUTOSERVICIO", dark: false, id: "totem",
     title: "Buscas reducir filas y liberar staff.",
-    lead: "Encuentras tótems self-service con upselling automático. Tótem 360º con compra táctil, pickup por QR, pagos integrados y branding completo. Sumas capacidad sin sumar staff.",
+    lead: "Tótems con mapa interactivo para venta de tickets, catálogo cashless para compra de menú y QR impreso en el momento — sin cajero, sin papel.",
     heroCount: 0,
     features: [
-      { n: "01", title: "Compra táctil sin box-office humano", body: "Touch-screen, pickup por QR o código, control 360º de consumibles.", badge: null },
-      { n: "02", title: "Pagos integrados en pantalla", body: "Crédito, débito, digital, Apple Pay + Google Pay express, sin redirect.", badge: null },
-      { n: "03", title: "Upselling en pantalla", body: "Smart Showcase, cross-sell automático ticket + bebida, merch + experiencia.", badge: "+18-25% ticket promedio" },
+      { n: "01", title: "Tótem compra con mapa interactivo", body: "Compra de tickets directo desde el tótem con el mapa interactivo del venue. Selecciona butaca, función y sector. Mismo flujo que online, sin cajero.", badge: null },
+      { n: "02", title: "Tótem cashless con catálogo", body: "Carga de saldo cashless y compra de menú directo en pantalla. Pago integrado con tarjeta de crédito, débito o GetNet sin pasar por barra.", badge: null },
+      { n: "03", title: "Impresión de QR para validación de entrada", body: "Tras la compra, el tótem imprime el QR físico. Validable con la app Ticketplus en puerta en menos de 200 ms.", badge: null },
+      { n: "04", title: "Impresión de QR para cashless", body: "Mismo QR sirve para cobrar consumos en barras y food courts. Anclado al saldo del comprador — un solo medio para entrada y consumo.", badge: "1 QR · entrada + cashless" },
     ],
   },
   {
-    n: "03", tag: "CASHLESS · APP CON ONECLICK", dark: false, id: "cashless",
-    title: "Buscas que el fan pague en cualquier barra sin volver a digitar.",
-    lead: "Encuentras app Cashless con OneClick + tracking por asistente. El fan paga con un click — el dato vuelve a ti.",
+    n: "02", tag: "POS ATENDIDO", dark: true, id: "pos",
+    title: "POS con todas las capacidades del sistema.",
+    lead: "Software de cajero y boletería con mapa interactivo, funciones de ticketing, descuentos de clubes de fidelización y cobro con tarjeta + propina. Mismo stock que el tótem y el online.",
     heroCount: 0,
     features: [
-      { n: "01", title: "Datos de consumo por asistente", body: "La data alimenta próxima preventa + retargeting de Booster + reportes por sector.", badge: null },
-      { n: "02", title: "Control de consumo por asistente", body: "Per-attendee consumption control, cross-benefits con store y ticketing.", badge: null },
-      { n: "03", title: "Cross-benefits con store y ticketing", body: "Abonado/socio con descuento automático en barras, puntos Wallet acumulables, Smart Promotions.", badge: null },
+      { n: "01", title: "POS compra con mapa interactivo", body: "El cajero opera con el mapa del venue igual que el web. Selecciona butaca, función, sector. Reasigna y reimprime entradas en segundos.", badge: null },
+      { n: "02", title: "Funciones de ticketing y descuentos", body: "Cortesías, reasignación, promo codes, cross-sell y descuentos de clubes de fidelización aplicados al checkout desde el POS.", badge: null },
+      { n: "03", title: "Medios de pago integrados", body: "Tarjeta de crédito, débito, GetNet, propina configurable. Cobro presencial integrado sin abrir otro sistema ni redirect.", badge: null },
+      { n: "04", title: "Cashless y ticketing en el mismo POS", body: "Carga de saldo cashless o venta de tickets desde la misma pantalla. Un solo flujo, un solo inventario, un solo cierre de caja.", badge: "Cashless + ticketing unificado" },
+    ],
+  },
+  {
+    n: "03", tag: "STOCK UNIFICADO Y COMPLIANCE", dark: false, id: "stock",
+    title: "Un inventario, todos los canales, boleta electrónica.",
+    lead: "Inventario unificado entre tótem, POS, web y app cashless. Catálogo de F&B, tickets y productos en un solo panel. Boleta o factura electrónica al SII al cerrar la venta.",
+    heroCount: 0,
+    features: [
+      { n: "01", title: "Inventario unificado cashless + carta + ticketing", body: "Catálogo de F&B, tickets de evento y stock de productos sobre la misma base. Cero descalce entre canales — venta en tótem, POS, web o app del comprador descontando del mismo stock.", badge: "Stock real-time multi-canal" },
+      { n: "02", title: "Control de catálogo y stock", body: "Edita productos, ajusta precios y vigencias desde un solo panel. Cambios en vivo en tótems, POS y app del comprador — sin re-deploy ni re-carga.", badge: null },
+      { n: "03", title: "Clubes de fidelización con descuentos automáticos", body: "El POS y el tótem reconocen socios y abonados al checkout. Aplican el descuento automático sin intervención manual del cajero ni código manual del comprador.", badge: null },
+      { n: "04", title: "Boleta electrónica", body: "Emite boletas, facturas y otros documentos electrónicos directo desde tu POS y tótem o desde tu portal de cliente. Sincronizados automáticamente con el SII.", badge: "SII integrado" },
     ],
   },
 ];
 
 const overview = [
-  { tag: "01 · POS", title: "Cajero atendido en barras, food courts y boletería.", href: "#pos" },
-  { tag: "02 · Tótem", title: "Self-service que reduce filas y libera staff.", href: "#totem" },
-  { tag: "03 · Cashless", title: "App con tarjeta OneClick. El fan enrola una vez, paga en todo el venue.", href: "#cashless" },
+  { tag: "01 · Tótem", title: "Compra autoservicio de tickets y cashless con QR en el momento.", href: "#totem" },
+  { tag: "02 · POS", title: "Cajero atendido con mapa, descuentos y cobro integrado.", href: "#pos" },
+  { tag: "03 · Stock y compliance", title: "Inventario unificado entre canales + boleta electrónica SII.", href: "#stock" },
 ];
 
 const whyCards = [
-  { icon: "⚡", title: "Modo offline real", body: "El cajero no se detiene porque el WiFi del venue es malo." },
-  { icon: "💳", title: "OneClick en Cashless", body: "El fan paga sin recargar, sin saldos, sin devoluciones." },
-  { icon: "🔌", title: "Hardware compatible", body: "Verifone, Transbank POS, tablets existentes." },
-  { icon: "📊", title: "Stock unificado", body: "Online + box office sobre el mismo inventario. Cierre automático." },
+  { icon: "🎟️", title: "Tickets + cashless en un QR", body: "El mismo QR sirve para validar entrada y cobrar consumo en barra." },
+  { icon: "📊", title: "Stock unificado", body: "Tótem, POS, web y app cashless sobre el mismo inventario." },
+  { icon: "💳", title: "Cobro integrado", body: "Tarjeta de crédito, débito, GetNet y propina configurable." },
+  { icon: "🧾", title: "Boleta electrónica SII", body: "DTE automático al cerrar la venta — sin sistema externo." },
 ];
 
 const industries = [
@@ -62,31 +65,31 @@ const industries = [
 ];
 
 const checklist = [
-  "Compatible con tu hardware existente",
-  "Modo offline real — el cajero no se detiene",
-  "Stock unificado online + box office",
-  "Branding completo (colores, logos, flujos)",
-  "Activación modular (solo POS / solo tótem / solo cashless o combinados)",
-  "Cierre de caja automático al fin del evento",
+  "Tótem y POS con mapa interactivo del venue",
+  "Inventario unificado cashless + carta + ticketing",
+  "Medios de pago: crédito, débito, GetNet, propina",
+  "Clubes de fidelización con descuentos automáticos",
+  "Impresión de QR para entrada + cashless con un mismo medio",
+  "Boleta electrónica integrada con el SII",
 ];
 
 const faqs = [
-  { q: "¿El POS funciona sin internet?", a: "Sí, offline real. La venta sigue cobrando si se cae el WiFi del venue. Auto-sync al reconectar — sin pérdida de transacciones, inventario reconciliado automáticamente. <strong>Diferenciador clave vs ticketeras con \"modo degradado\".</strong>" },
-  { q: "¿Tengo que comprar hardware Ticketplus o sirve el que ya tengo?", a: "El que ya tienes. Compatible con Verifone, Transbank POS, tablets existentes (iPad, Android). Hacemos audit de tu hardware antes del onboarding — no tirás nada." },
-  { q: "¿El Cashless con OneClick funciona si se cae internet?", a: "El cobro funciona offline — la transacción queda guardada y se procesa al reconectar. La recarga inicial o el enrolamiento de tarjeta sí requieren conexión (es un paso único). En la práctica, el fan enrola desde su casa o conectando al WiFi del venue al llegar; después usa Cashless toda la noche sin necesidad de internet en cada compra." },
-  { q: "¿Puedo activar solo POS, solo tótem o solo cashless?", a: "Sí — activación modular. Eliges los modos que tu venue necesita y se combinan según convenga (por ejemplo: POS en barras principales + tótem en barras secundarias + cashless para socios VIP). Cada modo se factura por uso, sin licencia mínima." },
-  { q: "¿Cómo se reconcilia el cierre de caja cuando combino los 3 modos?", a: "Cierre automático al final del evento. Todas las transacciones (POS, tótem, cashless, offline pendientes de sync) consolidadas en un solo reporte. Reconciliación con stock real, alertas de discrepancias, exportable a Excel/CSV/SII." },
+  { q: "¿El mismo QR sirve para entrada y para cashless?", a: "Sí. Cuando el comprador imprime el ticket desde el tótem o lo recibe en su app, el mismo QR queda anclado a su saldo de cashless. Lo usa para entrar al evento y para pagar consumos en barras y food courts — sin pulsera adicional, sin recargas presenciales." },
+  { q: "¿Qué medios de pago aceptan el POS y el tótem?", a: "Tarjeta de crédito, débito, GetNet integrado, contactless y propina configurable. Cobro presencial sin abrir otro sistema ni redirect. Compatible con Verifone, Transbank POS y tablets existentes." },
+  { q: "¿Cómo funciona el stock unificado?", a: "Catálogo de F&B, tickets y productos sobre la misma base. Tótem, POS, web y app cashless descuentan del mismo stock en tiempo real. Cambios de precio o vigencia hechos desde el panel se reflejan en vivo en todos los canales." },
+  { q: "¿La boleta electrónica se emite automáticamente?", a: "Sí. Al cerrar la venta en el POS o el tótem se emite el DTE (boleta o factura) y se sincroniza con el SII automáticamente. También podés emitir documentos desde tu portal de cliente. Sin sistema externo, sin reconciliación manual." },
+  { q: "¿Cómo reconozco a un socio del club al checkout?", a: "El POS y el tótem identifican al socio por su QR, email o cédula al checkout. Si tiene un descuento de club o un beneficio activo, se aplica automáticamente. Cero código manual, cero intervención del cajero." },
 ];
 ---
-<Site title="Servicios Ticketplus · POS y Tótem — Venta en venue con modo offline real y OneClick">
+<Site title="Servicios Ticketplus · POS y Tótem — Mapa interactivo, cashless, ticketing y boleta electrónica">
 
   <!-- HERO -->
   <header class="biz-hero">
     <div class="container">
       <div class="biz-hero__content">
-        <p class="biz-hero__eyebrow">POS y Tótem · Venta en venue</p>
-        <h1 class="biz-hero__title">Punto de venta y tótem de autoservicio — para optimizar la venta en tu evento.</h1>
-        <p class="biz-hero__lead">Optimiza la venta de tickets y productos en tu evento con nuestro sistema POS y tótems de autoservicio. Reduce filas, agiliza transacciones y mejora la experiencia del usuario. App Cashless con enrolamiento de tarjeta OneClick, modo offline real e inventario centralizado.</p>
+        <p class="biz-hero__eyebrow">Servicios Ticketplus · POS y Tótem</p>
+        <h1 class="biz-hero__title">POS y tótem con cashless, ticketing y boleta electrónica en una sola plataforma.</h1>
+        <p class="biz-hero__lead">Tótems con mapa interactivo para venta autoservicio, POS atendido con descuentos de club y medios de pago integrados, inventario unificado entre cashless, carta y ticketing, y boleta electrónica al SII en cada venta.</p>
         <div class="biz-hero__ctas">
           <a href="#contacto" class="btn btn--primary">Cotizar POS y Tótem →</a>
         </div>
@@ -115,8 +118,8 @@ const faqs = [
   <section class="biz-promises">
     <div class="container">
       <div style="text-align:center; max-width:760px; margin:0 auto 56px;">
-        <h2 class="section__title">Tres maneras de vender en tu evento.</h2>
-        <p class="section__lead" style="color:var(--color-text-muted);">Eliges las que tu operación necesita — pueden combinarse.</p>
+        <h2 class="section__title">El sistema POS y Tótem completo.</h2>
+        <p class="section__lead" style="color:var(--color-text-muted);">Tres bloques de capacidades que se activan juntos o por separado.</p>
       </div>
       <div class="biz-promises__grid">
         {overview.map((o) => (
@@ -140,7 +143,7 @@ const faqs = [
       <section class={`biz-scene biz-scene--light biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
-            <span class="biz-scene__eyebrow">MODO {p.n} · {p.tag}</span>
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
             <h2 class="biz-scene__title">{p.title}</h2>
             {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
           </header>
@@ -180,7 +183,7 @@ const faqs = [
       <section class={`biz-scene biz-scene--dark biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
-            <span class="biz-scene__eyebrow">MODO {p.n} · {p.tag}</span>
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
             <h2 class="biz-scene__title">{p.title}</h2>
             {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
           </header>
@@ -220,7 +223,7 @@ const faqs = [
       <section class={`biz-scene biz-scene--light biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
-            <span class="biz-scene__eyebrow">MODO {p.n} · {p.tag}</span>
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
             <h2 class="biz-scene__title">{p.title}</h2>
             {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
           </header>
@@ -250,35 +253,6 @@ const faqs = [
     );
   })()}
 
-  <!-- SPOTLIGHT #2 · App Cashless con tarjeta OneClick -->
-  <section class="spotlight spotlight--dark" id="oneclick">
-    <div class="container">
-      <span class="spotlight__eyebrow">Único en CL · Sin saldos prepago</span>
-      <h2 class="spotlight__title">Buscas que el fan no haga fila para recargar saldo. Encuentras OneClick — enrola la tarjeta una vez, paga en todo el venue.</h2>
-      <p class="spotlight__body">El fan descarga la app, enrola su tarjeta una vez (OneClick Webpay, MercadoPago o equivalente) y queda listo para pagar en cualquier barra, food court o tótem del venue sin volver a digitar. Sin manejo de saldos prepago, sin devoluciones a procesar al final del festival. Cada compra queda atada al perfil del fan — data lista para loyalty + Booster del próximo evento.</p>
-      <div class="spotlight__cards">
-        <article class="spotlight-card">
-          <h4 class="spotlight-card__title">Enrolamiento OneClick único</h4>
-          <p class="spotlight-card__text">El fan enrola su tarjeta una vez con OneClick Webpay, MercadoPago o equivalente. Después paga con un tap en cualquier punto del venue, sin volver a digitar.</p>
-        </article>
-        <article class="spotlight-card">
-          <h4 class="spotlight-card__title">Sin saldos prepago</h4>
-          <p class="spotlight-card__text">No hay recargas, no hay devoluciones a procesar post-evento. El fan paga lo que consume — ni un peso más, ni un peso atrapado en saldo no usado.</p>
-        </article>
-        <article class="spotlight-card">
-          <h4 class="spotlight-card__title">Tracking per-attendee</h4>
-          <p class="spotlight-card__text">Cada compra queda atada al perfil del fan. Data lista para loyalty, retargeting de Booster en próximo evento, y reportes de consumo por sector.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <!-- PROMESA TICKETPLUS -->
-  <PromesaTicketplus
-    title="La barra no se detiene."
-    body="Festival sábado 23h, 5.000 personas en barra principal, internet del venue cayó. El POS sigue cobrando offline. El tótem sigue vendiendo. El cashless sigue procesando. Al reconectar, todo se reconcilia automáticamente. <strong>Eso es Ticketplus.</strong>"
-    ctaLabel="Conocer Trust & service →"
-    ctaHref="/servicios/trust-service"
-  />
 
   <!-- POR QUÉ TICKETPLUS -->
   <section class="why-tp">
