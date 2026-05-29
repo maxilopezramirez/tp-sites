@@ -3,55 +3,57 @@ import Site from "../../layouts/Site.astro";
 import PromesaTicketplus from "../../components/PromesaTicketplus.astro";
 import BoosterPromo from "../../components/BoosterPromo.astro";
 
-// 3 PALANCAS funcionales del funnel comercial: Captar / Convertir / Distribuir
+// 3 palancas del funnel comercial: Captar / Convertir / Distribuir
 const palancas = [
   {
-    n: "01", tag: "PALANCA 01 · CAPTAR DEMANDA", dark: false, id: "captar",
+    n: "01", tag: "CAPTAR", dark: false, id: "captar",
     title: "Te ayudamos a generar y capturar demanda para tu evento.",
-    lead: "Encuentras Discovery app + Booster + atribución del click al ticket. El fan no te busca a ti — te encuentras con él.",
+    lead: "Tu evento visible en el marketplace Ticketplus con +34M de visitas anuales, campañas pagadas en Meta, Google y TikTok gestionadas por nuestro equipo, y atribución end-to-end de cada peso de medios al ticket vendido.",
     heroCount: 0,
     features: [
-      { n: "01", title: "Atribución end-to-end del click al ticket", body: "GA4 + SEMrush + Meta Pixel + TikTok Pixel + GTM nativos. Cada peso de medios trackeado hasta el ticket vendido.", badge: "End-to-end attribution" },
-      { n: "02", title: "Audience analytics propias del productor", body: "Demografía, intereses, lookalikes. La data vuelve al productor, no se queda en el silo de la agencia. Cero permanencia, exportable cuando quieras.", badge: null },
+      { n: "01", title: "Discovery en marketplace Ticketplus", body: "Tu evento listado en ticketplus.com y en la App Ticketplus (iOS + Android). Base propia con +34M de visitas anuales, búsqueda por ciudad, notificaciones push y descubrimiento contextual — más visitas a tu evento sin desviar tráfico de tu canal.", badge: "+34M visitas/año" },
+      { n: "02", title: "Booster gestionado en Meta, Google y TikTok", body: "Nuestro equipo opera tus campañas paid con atribución end-to-end al ticket vendido. ROAS por evento, A/B testing continuo, optimización en tiempo real. Sin honorarios de agencia — incluido en el cargo por servicio.", badge: "Sin fee de agencia" },
+      { n: "03", title: "Atribución end-to-end del click al ticket", body: "GA4, Meta Pixel, TikTok Pixel y GTM nativos. UTM automáticos en cada link generado. Cada peso de medios trackeado hasta el ticket vendido, con dashboard de ROAS por canal en tiempo real.", badge: null },
+      { n: "04", title: "Audience analytics propias del productor", body: "Demografía, intereses, lookalikes, ciudad, comportamiento de compra. La data vuelve al productor — exportable cuando quieras, sin permanencia, sin lock-in en silos de agencia.", badge: null },
     ],
   },
   {
-    n: "02", tag: "PALANCA 02 · CONVERTIR EL CARRITO", dark: true, id: "convertir",
+    n: "02", tag: "CONVERTIR", dark: true, id: "convertir",
     title: "Convertimos visitas en ventas.",
-    lead: "Encuentras recommendation engine + email nativo + checkout >78%. El fan llega al sitio. Ahora hay que cerrar.",
+    lead: "Carrito unificado entre múltiples eventos del mismo organizador, recomendaciones personalizadas en checkout, comunicados a tu base de compradores y checkout optimizado con >78% de conversión.",
     heroCount: 0,
     features: [
-      { n: "01", title: "Recommendation engine en checkout", body: "Smart Showcase, cross-sell automático entre eventos del mismo organizador. Aumenta ticket promedio sin fricción.", badge: null },
-      { n: "02", title: "Smart Email Marketing nativo", body: "65% apertura promedio. Sin servicio externo de mailing. Segmentación automática por comportamiento + tipo de evento + frecuencia.", badge: "65% tasa de apertura" },
-      { n: "03", title: "Emails y SMS automáticos", body: "Recordatorios 24h/48h pre-evento, recuperación de carrito abandonado, reintentos de pago automáticos.", badge: null },
-      { n: "04", title: "Checkout optimizado", body: "Conversion rate >78%, multi-currency CLP+USD, Apple Pay + Google Pay express, card saving, carrito persistente.", badge: ">78% conversion" },
+      { n: "01", title: "Carrito unificado multi-evento", body: "El mismo comprador suma tickets de varios eventos del organizador, food, parking, merch y add-ons en un solo carrito. Un único checkout, una sola pasarela de pago, una sola confirmación.", badge: "Multi-evento + add-ons" },
+      { n: "02", title: "Recomendaciones personalizadas en checkout", body: "Cross-sell automático entre eventos del mismo organizador, productos sugeridos en checkout (memberships, streaming, store, season passes). Aumenta ticket promedio sin fricción.", badge: null },
+      { n: "03", title: "Comunicados a tu base de compradores", body: "Email marketing nativo con 65% de apertura promedio — sin servicio externo de mailing. Segmentación automática por comportamiento, tipo de evento y frecuencia. Recordatorios 24h/48h pre-evento, recuperación de carrito y reintentos de pago automáticos.", badge: "65% apertura promedio" },
+      { n: "04", title: "Checkout optimizado", body: "Conversion rate >78%. Multi-currency CLP+USD en la misma URL, Apple Pay + Google Pay express, card saving para recompras, carrito persistente entre sesiones.", badge: ">78% conversion" },
     ],
   },
   {
-    n: "03", tag: "PALANCA 03 · DISTRIBUIR VÍA RED PROPIA", dark: false, id: "distribuir",
-    title: "Buscas que el ticket no termine en el primer comprador.",
-    lead: "Encuentras secondary market + referrals + wallet + loyalty. El ticket no termina en el primer comprador.",
+    n: "03", tag: "DISTRIBUIR", dark: false, id: "distribuir",
+    title: "Buscas que tu audiencia vuelva.",
+    lead: "Reventa controlada dentro del ecosistema, programa de referidos con tracking individual del origen de cada venta, y puntos de fidelización con cross-benefits para que el comprador vuelva al próximo evento.",
     heroCount: 0,
     features: [
-      { n: "01", title: "Secondary market / re-venta dentro del ecosistema", body: "El revenue de la reventa vuelve al productor, no a una reventa externa.", badge: null },
-      { n: "02", title: "Seller referrals con tracking individual", body: "Códigos por influencer, sponsor o partner. Widgets embebibles. Atribución end-to-end al ticket vendido.", badge: null },
-      { n: "03", title: "Wallet de puntos con cross-benefits", body: "Puntos acumulables en eventos, gastables en F&B, merch o tickets futuros.", badge: null },
-      { n: "04", title: "Loyalty programs y promociones automatizadas", body: "Smart Promotions con reglas propias, 2x1, cortesías con compra, clubes de fans.", badge: null },
+      { n: "01", title: "Reventa controlada dentro del ecosistema", body: "El comprador revende su ticket a otro fan dentro de la plataforma Ticketplus — no en sitios de reventa externos. El revenue de la reventa vuelve al productor con split configurable. Sin tickets falsos, sin reventa fraudulenta.", badge: "Revenue vuelve al productor" },
+      { n: "02", title: "Programa de referidos con tracking individual", body: "Cada influencer, sponsor, embajador o partner recibe su código único y widget embebible. Cada ticket vendido queda atribuido al referido que lo originó — identificador end-to-end de dónde viene la venta. Liquidación automática del split por comisión si aplica.", badge: "Atribución por referido" },
+      { n: "03", title: "Wallet de puntos con cross-benefits", body: "Puntos acumulables en cada compra, gastables en F&B, merch, tickets futuros o membresías. Cross-benefits con store y ticketing — el socio que paga su cuota ve descuentos automáticos en barras y entradas.", badge: null },
+      { n: "04", title: "Loyalty programs y promociones automatizadas", body: "Smart Promotions con reglas de negocio propias armadas en diagrama. Exclusive discounts para members, 2x1, loyalty clubs redimibles, referral link con descuento para buyer y referido. Sin código manual, sin intervención del cajero.", badge: null },
     ],
   },
 ];
 
 const overview = [
-  { tag: "01 · Captar", title: "Tu evento visible en el marketplace Ticketplus y en campañas pagadas en Meta, Google y TikTok.", href: "#captar" },
-  { tag: "02 · Convertir", title: "Recomendaciones personalizadas, email marketing nativo y checkout optimizado para más ventas.", href: "#convertir" },
-  { tag: "03 · Distribuir", title: "Reventa controlada, programa de referidos y puntos de fidelización para que tu audiencia vuelva.", href: "#distribuir" },
+  { tag: "01 · Captar", title: "Tu evento visible en el marketplace Ticketplus (+34M visitas/año) y en campañas pagadas en Meta, Google y TikTok.", href: "#captar" },
+  { tag: "02 · Convertir", title: "Carrito unificado multi-evento, recomendaciones personalizadas, comunicados nativos y checkout optimizado.", href: "#convertir" },
+  { tag: "03 · Distribuir", title: "Reventa controlada, programa de referidos con tracking y puntos de fidelización para que tu audiencia vuelva.", href: "#distribuir" },
 ];
 
 const whyCards = [
-  { icon: "📈", title: "Booster gestionado incluido", body: "Operamos Meta + Google + TikTok sin costo extra." },
-  { icon: "🔍", title: "Discovery en marketplace TP", body: "Tu evento aparece junto a otros sin canibalizar tu sitio." },
-  { icon: "📊", title: "Atribución end-to-end", body: "La data vuelve al productor, no se queda en el silo de la agencia." },
-  { icon: "💰", title: "Checkout >78% conversion", body: "Multi-currency, Apple Pay + Google Pay, carrito persistente." },
+  { icon: "🌐", title: "+34M visitas anuales", body: "Tu evento aparece en el marketplace Ticketplus y la App, con base propia de compradores." },
+  { icon: "📈", title: "Booster gestionado incluido", body: "Operamos Meta + Google + TikTok sin honorarios de agencia." },
+  { icon: "🛒", title: "Carrito unificado", body: "Múltiples eventos + food + parking + merch en un solo checkout." },
+  { icon: "🔁", title: "Reventa controlada + referidos", body: "Revenue de reventa vuelve al productor. Atribución end-to-end del referido." },
 ];
 
 const industries = [
@@ -64,31 +66,32 @@ const industries = [
 ];
 
 const checklist = [
-  "Booster gestionado incluido — sin costo extra",
-  "Atribución end-to-end click al ticket",
-  "Discovery app en marketplace TP",
-  "Email marketing nativo (apertura 65%)",
-  "Checkout >78% conversion rate",
-  "Audience analytics propias del productor",
+  "Discovery en marketplace Ticketplus (+34M visitas/año)",
+  "Booster gestionado en Meta, Google y TikTok",
+  "Carrito unificado multi-evento + food + parking + merch",
+  "Comunicados nativos (65% apertura promedio)",
+  "Reventa controlada con revenue al productor",
+  "Programa de referidos con tracking del origen de venta",
 ];
 
 const faqs = [
-  { q: "¿Booster tiene costo aparte?", a: "No. Booster está incluido en el cargo por servicio — sin costo de agencia, sin fee adicional. Tú defines el presupuesto de medios; nuestro equipo opera Meta, Google y TikTok. <strong>Único en el mercado</strong> — ninguna ticketera ofrece esto incluido." },
-  { q: "¿Si vendo en mi sitio, también aparezco en el marketplace TP?", a: "Sí. Vendes desde tu sitio Y publicas en el marketplace TP, ambos sobre el mismo inventario. Sin canibalización — los datos lo confirman." },
+  { q: "¿Cuántas visitas tiene el marketplace Ticketplus?", a: "+34M de visitas anuales entre ticketplus.com y la App Ticketplus (iOS + Android). Tu evento aparece en discovery contextual (por ciudad, fecha, categoría) y en notificaciones push a la base propia de compradores recurrentes." },
+  { q: "¿Booster tiene costo aparte?", a: "No. Booster está incluido en el cargo por servicio — sin honorarios de agencia, sin fee adicional. Tú defines el presupuesto de medios; nuestro equipo opera Meta, Google y TikTok con atribución end-to-end al ticket vendido." },
+  { q: "¿Cómo funciona el carrito unificado entre eventos?", a: "El mismo comprador suma tickets de varios eventos del organizador, food, parking, merch y add-ons en un solo carrito. Una sola pasarela de pago, una sola confirmación. Aumenta ticket promedio sin fricción." },
+  { q: "¿Cómo identifico el origen de cada venta?", a: "Programa de referidos con tracking individual: cada influencer, sponsor o partner recibe su código único + widget embebible. Cada ticket vendido queda atribuido al referido que lo originó. UTM automáticos en cada link generado. Atribución end-to-end del click al ticket." },
+  { q: "¿La reventa va a un sitio externo?", a: "No. La reventa controlada vive dentro del ecosistema Ticketplus — el fan revende su ticket a otro fan en la misma plataforma. El revenue de la reventa vuelve al productor con split configurable. Sin tickets falsos, sin reventa fraudulenta en sitios de terceros." },
   { q: "¿Quién es dueño de la data de los compradores?", a: "El productor. Audience analytics propias, exportables cuando quieras, sin contrato de permanencia. La data no se queda en el silo de Ticketplus ni de una agencia externa. Es tu base, vos decidís qué hacer con ella." },
-  { q: "¿Cuál es la tasa de apertura del email nativo?", a: "65% en promedio, contra el ~20% típico de la industria. La razón: segmentación automática por comportamiento (qué compró antes, qué eventos vio sin comprar) + envío en horarios optimizados por base de datos. Sin servicio externo de mailing." },
-  { q: "¿Cómo funcionan los referrals con influencers o sponsors?", a: "Cada influencer / sponsor recibe su código único + widget embebible para su sitio o redes. Cada ticket vendido por su código queda atribuido — sabés exactamente cuánto vendió cada partner. Liquidación automática si hay split por comisión." },
 ];
 ---
-<Site title="Servicios Ticketplus · Marketplace — Vender más sin contratar agencia">
+<Site title="Servicios Ticketplus · Marketplace — Discovery, Booster y funnel comercial integrado">
 
   <!-- HERO -->
   <header class="biz-hero">
     <div class="container">
       <div class="biz-hero__content">
-        <p class="biz-hero__eyebrow">Marketplace · Vender más</p>
-        <h1 class="biz-hero__title">Publica tu evento. Multiplica su difusión.</h1>
-        <p class="biz-hero__lead">Discovery app en el marketplace Ticketplus, recommendation engine en checkout, email marketing nativo, Booster gestionado, secondary market, referrals y wallet de puntos. Cada canal mide ROAS por evento.</p>
+        <p class="biz-hero__eyebrow">Servicios Ticketplus · Marketplace</p>
+        <h1 class="biz-hero__title">El funnel completo para vender tu evento — captar, convertir y retener.</h1>
+        <p class="biz-hero__lead">Tu evento visible en el marketplace Ticketplus con +34M de visitas anuales, Booster gestionado en Meta/Google/TikTok, carrito unificado multi-evento, comunicados nativos, reventa controlada y programa de referidos con tracking del origen de cada venta.</p>
         <div class="biz-hero__ctas">
           <a href="#contacto" class="btn btn--primary">Cotizar Marketplace →</a>
         </div>
@@ -140,7 +143,7 @@ const faqs = [
       <section class={`biz-scene biz-scene--light biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
-            <span class="biz-scene__eyebrow">{p.tag}</span>
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
             <h2 class="biz-scene__title">{p.title}</h2>
             {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
           </header>
@@ -196,7 +199,7 @@ const faqs = [
       <section class={`biz-scene biz-scene--dark biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
-            <span class="biz-scene__eyebrow">{p.tag}</span>
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
             <h2 class="biz-scene__title">{p.title}</h2>
             {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
           </header>
@@ -236,7 +239,7 @@ const faqs = [
       <section class={`biz-scene biz-scene--light biz-scene--p${pi}`} id={p.id}>
         <div class="container">
           <header class="biz-scene__header">
-            <span class="biz-scene__eyebrow">{p.tag}</span>
+            <span class="biz-scene__eyebrow">{p.n} · {p.tag}</span>
             <h2 class="biz-scene__title">{p.title}</h2>
             {p.lead && <p class="biz-scene__lead">{p.lead}</p>}
           </header>
