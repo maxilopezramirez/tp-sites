@@ -1,43 +1,29 @@
 ---
-// Logos cloud · 10 banners de productores en 2 filas (5 x 2).
-const row1 = [
+// Logos cloud · marquee infinito con 10 banners de productores.
+const banners = [
   { name: "enjoy", alt: "Enjoy", href: "https://enjoy.ticketplus.cl?referal_name=destacados_home_tp", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-enjoy-ebcfa0005745367473f59772724266e0e3cae318.png?1774380817" },
   { name: "gam", alt: "GAM", href: "https://gam.ticketplus.cl?referal_name=destacados_home_tp", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-gam-258be482d01ef8ef3144202bf4897e8e98140a1f.png?1774380812" },
   { name: "corpartes", alt: "CorPartes", href: "https://ticketplus.cl/c/corpartes?referal_name=destacados_home_tp", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-corpartes-655cf586579e2f2452df39aecf09752431dd8b19.png?1774380831" },
   { name: "m100", alt: "Matucana 100", href: "https://ticketplus.cl/c/m100?referal_name=destacados_home_tp", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-m100-94d9b093ff625bff276005aa00ecd5a60f9d122b.png?1774380854" },
   { name: "bar-ruta-78", alt: "Bar Ruta 78", href: "https://ticketplus.cl/c/bar-ruta-78?referal_name=destacados_home_tp", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/partner-ruta-78-e98c9fc74443e37791348464968fa45a89052326.png?1774380879" },
-];
-
-const row2 = [
   { name: "universidad-de-chile", alt: "Teatro Universidad de Chile", href: "https://ceacuchile.ticketplus.cl", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-udechile-e0b61f2e76cc2974b2c936501dff4443be377ece.png?1774381009" },
   { name: "planetario-huechuraba", alt: "Planetario Huechuraba", href: "https://ticketplus.cl/c/planetario-huechuraba", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-huechuraba-6a47dba0f52193077c69bec70c1ee727c8550064.png?1774381021" },
   { name: "teatro-c", alt: "Teatro C", href: "https://ticketplus.cl/c/teatro-c", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-c-6209b6d2a95e8ab774581bea00ff5636ed11c579.png?1774381040" },
   { name: "subterraneo", alt: "Subterraneo", href: "https://ticketplus.cl/c/club-subterraneo", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/index-slide-sub-aea694307fbdb879d7dcf353f5db3169fc3d366e.png?1774381050" },
   { name: "teatro-del-lago", alt: "Teatro del Lago", href: "https://ticketplus.cl/c/teatro-del-lago?referal_name=destacados_home_tp", img: "https://ticketing-uploads-1.ticketplus.global/themes/2/assets/teatro-de-lago-partners-5bf80b4d863cba505ee7d7cc65a3f552e738ae6c.png?1776192100" },
 ];
+
+// Duplicamos el array para crear el efecto de loop infinito sin saltos.
+const loop = [...banners, ...banners];
 ---
-<section class="logos-cloud">
-  <div class="container">
-    <p class="logos-cloud__label">Vinieron buscando una ticketera. Operan con Full Operation.</p>
-    <div class="banner-scroll-wrapper">
-      <div class="banner-grid-row banner-row-1">
-        {row1.map(b => (
-          <div class="banner-item">
-            <a href={b.href} rel="noopener" class="home-element" data-event-name={b.name} data-event-list="featured-grid">
-              <img src={b.img} alt={b.alt} class="img-home-count" loading="lazy" />
-            </a>
-          </div>
-        ))}
-      </div>
-      <div class="banner-grid-row banner-row-2">
-        {row2.map(b => (
-          <div class="banner-item">
-            <a href={b.href} rel="noopener" class="home-element" data-event-name={b.name} data-event-list="featured-grid">
-              <img src={b.img} alt={b.alt} class="img-home-count" loading="lazy" />
-            </a>
-          </div>
-        ))}
-      </div>
+<section class="logos-cloud" aria-label="Productores que operan con Ticketplus">
+  <div class="logos-marquee" aria-hidden="false">
+    <div class="logos-marquee__track">
+      {loop.map((b, i) => (
+        <a href={b.href} rel="noopener" class="logos-marquee__item" data-event-name={b.name} data-event-list="featured-grid" aria-hidden={i >= banners.length ? "true" : "false"}>
+          <img src={b.img} alt={b.alt} loading="lazy" />
+        </a>
+      ))}
     </div>
   </div>
 </section>
@@ -45,65 +31,56 @@ const row2 = [
 <style>
   .logos-cloud {
     background: #0a0a0a;
-    padding: 60px 0 80px;
+    padding: 48px 0 56px;
     border-top: 1px solid rgba(255,255,255,0.06);
     color: #fff;
-  }
-  .logos-cloud .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-  .logos-cloud__label {
-    font-family: var(--font-heading);
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 0 32px;
-  }
-  .banner-scroll-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .banner-grid-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-  .banner-item {
-    border-radius: 10px;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
+  }
+
+  /* Marquee horizontal infinito */
+  .logos-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .logos-marquee__track {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 18px;
+    width: max-content;
+    animation: logos-scroll 45s linear infinite;
+  }
+  .logos-marquee:hover .logos-marquee__track {
+    animation-play-state: paused;
+  }
+  .logos-marquee__item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
     transition: transform .2s ease;
   }
-  .banner-item:hover {
+  .logos-marquee__item:hover {
     transform: translateY(-2px);
   }
-  .banner-item a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .banner-item img.img-home-count {
+  .logos-marquee__item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-
-  @media (max-width: 1024px) {
-    .banner-grid-row { grid-template-columns: repeat(3, 1fr); }
+  @keyframes logos-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 9px)); }
   }
-  @media (max-width: 640px) {
-    .banner-grid-row { grid-template-columns: repeat(2, 1fr); }
+  @media (prefers-reduced-motion: reduce) {
+    .logos-marquee__track { animation: none; }
+  }
+  @media (max-width: 768px) {
+    .logos-marquee__item { width: 160px; height: 90px; }
+    .logos-marquee__track { animation-duration: 35s; }
   }
 </style>
