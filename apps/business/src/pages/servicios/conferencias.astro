@@ -19,7 +19,7 @@ const moments = [
   {
     n: "02", tag: "EL DÍA DEL EVENTO", dark: true, id: "evento",
     title: "Buscas que el congreso sea plataforma de negocios, no auditorio de PowerPoint.",
-    lead: "Encuentras Netlink + check-in por sesión + dashboards configurables. El cliente corporativo paga por el contenido, pero vuelve el próximo año por el networking.",
+    lead: "Encuentras app de networking 1-a-1 + check-in por sesión + dashboards configurables. El cliente corporativo paga por el contenido, pero vuelve el próximo año por el networking.",
     heroCount: 0,
     features: [
       { n: "01", title: "Check-in QR por sesión", body: "Certificación de asistencia con QR único por sesión. Créditos de capacitación, engagement por charla, NPS opcional por sesión.", badge: null },
@@ -49,9 +49,9 @@ const overview = [
 
 const whyCards = [
   { icon: "🪪", title: "Acreditación profesional", body: "Foto + QR + credencial impresa con cordón por categoría." },
-  { icon: "🤝", title: "Netlink B2B", body: "App de meetings 1-a-1 que convierte tu congreso en plataforma de negocios real." },
+  { icon: "🤝", title: "App de networking B2B", body: "App de meetings 1-a-1 que convierte tu congreso en plataforma de negocios real." },
   { icon: "📊", title: "ROI medible", body: "Reportes por sponsor, por sesión, por sala. Renovación con datos concretos." },
-  { icon: "💰", title: "Sin costos ocultos", body: "Acreditación + Netlink + dashboards + soporte incluidos en el cargo." },
+  { icon: "💰", title: "Sin costos ocultos", body: "Acreditación + app de networking + dashboards + soporte incluidos en el cargo." },
 ];
 
 const verticals = [
@@ -65,7 +65,7 @@ const verticals = [
 
 const checklist = [
   "Forms dinámicos por categoría sin licencia extra",
-  "Netlink networking app incluido",
+  "App de networking incluida",
   "Dashboards white-label para tus sponsors",
   "Multi-moneda CLP + USD para ponentes internacionales",
   "Acreditación profesional con foto + cordón",
@@ -75,9 +75,9 @@ const checklist = [
 const faqs = [
   { q: "¿Cómo manejo tarifas distintas por categoría (socio, no socio, prensa, sponsor, C-level)?", a: "Forms condicionales. Cada categoría con sus campos, su tarifa y sus validaciones. Validación automática por RUT empresa para socios de la cámara, dominio corporativo para empresas adheridas, credencial de medio para prensa." },
   { q: "¿Puedo mostrar el dashboard con la marca de mi cliente, no la mía?", a: "Sí. Dashboard white-label opcional con el logo y colores del cliente (cámara, asociación gremial, corporativo). El sponsor ve su ROI con su marca, no con la de la productora." },
-  { q: "¿Netlink funciona si mi audiencia es C-level que no instala apps?", a: "Sí. Es web-app — se abre desde el navegador del celular sin descarga del store. Clave para C-level que no instala apps random. Adopción típica: 60-80% de asistentes lo activan. Si necesitás más, hay versión nativa iOS/Android opcional." },
+  { q: "¿La app de networking funciona si mi audiencia es C-level que no instala apps?", a: "Sí. Es web-app — se abre desde el navegador del celular sin descarga del store. Clave para C-level que no instala apps random. Adopción típica: 60-80% de asistentes la activan. Si necesitas más, hay versión nativa iOS/Android opcional." },
   { q: "¿Pueden cobrar en USD a un ponente internacional?", a: "Sí — multi-moneda nativa. El asistente internacional paga en USD, el local en CLP. La liquidación al ponente internacional va en USD a su cuenta extranjera vía Stripe Connect. Compliance Banco Central resuelto." },
-  { q: "¿Qué reporte le entrego al sponsor gold para que renueve?", a: "Reporte ROI por sponsor: leads capturados con datos completos, meetings 1-a-1 confirmados (vía Netlink), tiempo promedio en stand, perfil demográfico del tráfico, NPS si lo activaste. El sponsor recibe el documento que justifica internamente el presupuesto del próximo año." },
+  { q: "¿Qué reporte le entrego al sponsor gold para que renueve?", a: "Reporte ROI por sponsor: leads capturados con datos completos, meetings 1-a-1 confirmados, tiempo promedio en stand, perfil demográfico del tráfico, NPS si lo activaste. El sponsor recibe el documento que justifica internamente el presupuesto del próximo año." },
 ];
 ---
 <Site title="Servicios Ticketplus · Congresos y eventos corporativos — Tecnología del registro al ROI">
@@ -88,7 +88,7 @@ const faqs = [
       <div class="biz-hero__content">
         <p class="biz-hero__eyebrow">Servicios Ticketplus · Congresos y eventos corporativos</p>
         <h1 class="biz-hero__title">Acreditación, networking y reportería para tu congreso. Todo bajo Ticketplus.</h1>
-        <p class="biz-hero__lead">Para summits, congresos B2B, seminarios y eventos corporativos. Forms dinámicos por categoría, acreditación con foto + cordón, Netlink networking 1-a-1, dashboards white-label para sponsors y multi-moneda CLP+USD.</p>
+        <p class="biz-hero__lead">Para summits, congresos B2B, seminarios y eventos corporativos. Forms dinámicos por categoría, acreditación con foto + cordón, app de networking 1-a-1, dashboards white-label para sponsors y multi-moneda CLP+USD.</p>
         <div class="biz-hero__ctas">
           <a href="#contacto" class="btn btn--primary">Cotizar para mi congreso →</a>
         </div>
@@ -214,7 +214,7 @@ const faqs = [
   <section class="biz-scene biz-scene--dark" id="netlink">
     <div class="container">
       <header class="biz-scene__header">
-        <span class="biz-scene__eyebrow">Módulo 05 · NETLINK</span>
+        <span class="biz-scene__eyebrow">Módulo 05 · APP DE NETWORKING</span>
         <h2 class="biz-scene__title">Buscas que el congreso o feria sea plataforma de negocios con app mobile de networking.</h2>
         <p class="biz-scene__lead">Encuentras una app mobile nativa de networking 1-a-1 integrada con ticketing.</p>
       </header>
@@ -268,7 +268,7 @@ const faqs = [
       <div class="why-tp__header">
         <span class="why-tp__eyebrow">Por qué Ticketplus</span>
         <h2 class="why-tp__title">Lo que recibe tu congreso al elegir Ticketplus.</h2>
-        <p class="why-tp__lead">Acreditación + Netlink + reportería ROI + multi-moneda en una sola plataforma. Un solo responsable.</p>
+        <p class="why-tp__lead">Acreditación + app de networking + reportería ROI + multi-moneda en una sola plataforma. Un solo responsable.</p>
       </div>
       <div class="why-tp__grid">
         {whyCards.map((w) => (
